@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Hexo</title>
+  <title>邢鹏飞的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="邢鹏飞的博客">
 <meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="邢鹏飞的博客">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="邢鹏飞的博客">
 <meta name="twitter:description">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="邢鹏飞的博客" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -37,7 +37,7 @@
 		</a>
 
 		<hgroup>
-		  <h1 class="header-author"><a href="/">John Doe</a></h1>
+		  <h1 class="header-author"><a href="/">Pengfei Xing</a></h1>
 		</hgroup>
 
 		
@@ -101,11 +101,11 @@
 							
 								<a class="github" target="_blank" href="https://github.com/novelidea" title="github">github</a>
 					        
-								<a class="weibo" target="_blank" href="http://www.baidu.com" title="weibo">weibo</a>
+								<a class="weibo" target="_blank" href="http://weibo.com/2878470034/profile" title="weibo">weibo</a>
 					        
-								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+								<a class="mail" target="_blank" href="/novelidea1992@gmail.com" title="mail">mail</a>
 					        
-								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+								<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/pengfei-xing-65886578" title="linkedin">linkedin</a>
 					        
 						</div>
 					</nav>
@@ -156,7 +156,7 @@
       <nav id="mobile-nav">
   	<div class="overlay">
   		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide">John Doe</h1>
+  		<h1 class="header-author js-mobile-header hide">Pengfei Xing</h1>
   	</div>
 	<div class="intrude-less">
 		<header id="header" class="inner">
@@ -166,7 +166,7 @@
 			
 			</div>
 			<hgroup>
-			  <h1 class="header-author">John Doe</h1>
+			  <h1 class="header-author">Pengfei Xing</h1>
 			</hgroup>
 			
 			<nav class="header-menu">
@@ -184,11 +184,11 @@
 					
 						<a class="github" target="_blank" href="https://github.com/novelidea" title="github">github</a>
 			        
-						<a class="weibo" target="_blank" href="http://www.baidu.com" title="weibo">weibo</a>
+						<a class="weibo" target="_blank" href="http://weibo.com/2878470034/profile" title="weibo">weibo</a>
 			        
-						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+						<a class="mail" target="_blank" href="/novelidea1992@gmail.com" title="mail">mail</a>
 			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+						<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/pengfei-xing-65886578" title="linkedin">linkedin</a>
 			        
 				</div>
 			</nav>
@@ -197,199 +197,6 @@
 </nav>
 
       <div class="body-wrap">
-  
-    <article id="post-有向图的单源最短路径算法实现" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/28/有向图的单源最短路径算法实现/" class="article-date">
-  	<time datetime="2016-02-29T02:55:16.000Z" itemprop="datePublished">2016-02-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/28/有向图的单源最短路径算法实现/">有向图的单源最短路径算法实现</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="有向图的实现"><a href="#有向图的实现" class="headerlink" title="有向图的实现"></a>有向图的实现</h2><p>首先，我们再来讨论一下图。图是数据结构中相当重要的一部分，与之相关的算法也有很多，但是如果要让你代码实现有向图，相信很多人都会写很长的时间。下面就用Java实现一个Adjacency List存储的有向图。关于图的存储，可以参见<span style="color: #3366ff;"><a href="http://pengfeixing.com/2016/02/19/图遍历/" target="_blank" rel="external">这篇博客</a></span>。</p>
-<p>这里主要定义了三个类，点(Vertex)、边(Edge)、有向图（Digraph）。</p>
-<pre class="lang:default decode:true" title="Vertex">package GraphImplementation;
-
-/**
- * Created by novelidea on 2/28/16.
- */
-public class Vertex {
-    private String id;
-    private int distance = Integer.MAX_VALUE;
-    public Vertex(String id){
-        this.id = id;
-    }
-    public String getId(){
-        return id;
-    }
-    public int getDistance(){
-        return distance;
-    }
-    public void setDistance(int dis){
-        distance = dis;
-    }
-}
-</pre>
-<pre class="lang:default decode:true" title="Edge">package GraphImplementation;
-
-/**
- * Created by novelidea on 2/28/16.
- */
-public class Edge {
-    private Vertex in;
-    private Vertex out;
-    private int weight;
-
-    Edge(Vertex i, Vertex o, int w){
-        in = i;
-        out = o;
-        weight = w;
-    }
-    public Vertex getIn(){
-        return in;
-    }
-    public Vertex getOut(){
-        return out;
-    }
-    public int getWeight(){
-        return weight;
-    }
-    public Vertex getAdjacentVertex(Vertex v) {
-        return v.getId().equals(in.getId()) ? out : in;
-    }
-}
-</pre>
-<pre class="lang:default decode:true" title="Digraph">package GraphImplementation;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-/**
- * Created by novelidea on 2/28/16.
- */
-public class Digraph {
-    private HashMap&lt;Vertex, ArrayList&lt;Edge&gt;&gt; adjacentList = new HashMap&lt;Vertex, ArrayList&lt;Edge&gt;&gt;();
-    public void addVertex(Vertex v){
-        if(adjacentList.containsKey(v)) return;
-        adjacentList.put(v, new ArrayList&lt;&gt;());
-    }
-    public void addEdge(Vertex in, Vertex out, int weight){
-        this.addVertex(in);
-        this.addVertex(out);
-        adjacentList.get(in).add(new Edge(in, out, weight));
-    }
-    public int outDegree(Vertex v){
-        return adjacentList.get(v).size();
-    }
-    public HashMap&lt;Vertex, ArrayList&lt;Edge&gt;&gt; getMap(){
-        return adjacentList;
-    }
-    public ArrayList&lt;Edge&gt; getAdjacentEdges(Vertex v){
-        return adjacentList.get(v);
-    }
-}
-</pre>
-
-<h2 id="Dijkstra实现"><a href="#Dijkstra实现" class="headerlink" title="Dijkstra实现"></a>Dijkstra实现</h2><p>实现有向图单源最短路径主要是Dijkstra算法，下面为算法实现。</p>
-<p><pre class="lang:default decode:true " title="Dijkstra">package GraphImplementation;</pre></p>
-<p>/**</p>
-<ul>
-<li>Created by novelidea on 2/28/16.<br><em>/<br>import java.util.</em>;</li>
-</ul>
-<p>public class Dijkstra {<br>    private Digraph graph;</p>
-<pre><code>public Dijkstra(Digraph g){
-    if(graph == null){
-        throw new NullPointerException(&quot;the input graph cannot be null&quot;);
-    }
-    this.graph = g;
-}
-
-public class VertexComparator implements Comparator&amp;lt;Vertex&amp;gt; {
-    @Override
-    public int compare(Vertex v1, Vertex v2){
-        return Integer.compare(v1.getDistance(), v2.getDistance());
-    }
-}
-
-public Set&amp;lt;Vertex&amp;gt; findShortestPath(String sourceID){
-    Queue&amp;lt;Vertex&amp;gt; queue = new PriorityQueue&amp;lt;&amp;gt;(10, new VertexComparator());
-    for(Map.Entry&amp;lt;Vertex, ArrayList&amp;lt;Edge&amp;gt;&amp;gt; e : graph.getMap().entrySet()){
-        Vertex v = e.getKey();
-        if(v.getId().equals(sourceID)){
-            v.setDistance(0);
-            queue.add(v);
-        }
-    }
-
-    Set&amp;lt;Vertex&amp;gt; visited = new HashSet&amp;lt;Vertex&amp;gt;();
-
-    while (!queue.isEmpty()){
-        Vertex src = queue.poll();
-        visited.add(src);
-
-        for(Edge e : graph.getAdjacentEdges(src)){
-            Vertex v = e.getAdjacentVertex(src);
-            if(! visited.contains(v)){
-                int newDistance = src.getDistance() + e.getWeight();
-                if(newDistance &amp;lt; v.getDistance()){
-                    v.setDistance(newDistance);
-                    visited.add(v);
-                }
-            }
-        }
-    }
-    return graph.getMap().keySet();
-}
-</code></pre><p>}<br><br>&nbsp;</p>
-<p>&nbsp;</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/算法/">算法</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
   
     <article id="post-面向对象设计" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1303,6 +1110,101 @@ else
 
 
   
+    <article id="post-kmpknuth-morris-pratt-algorithm" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/14/kmpknuth-morris-pratt-algorithm/" class="article-date">
+  	<time datetime="2016-02-14T20:29:28.000Z" itemprop="datePublished">2016-02-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/14/kmpknuth-morris-pratt-algorithm/">KMP(Knuth–Morris–Pratt) Algorithm</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>KMP(Knuth-Morris-Pratt)是较为高级的字符串查找算法，是三个人名字的缩写，主要实现判断一个字符串A是否包含另一个字符串B，暴力解法是遍历循环，时间复杂度是O(mn)，其中m，n分别是字符串AB的长度。</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>由于暴力解法中没有充分利用上一次遍历查找失败的有用信息，所以时间复杂度很高，而KMP算法主要就是解决这一问题，主要思路如下：</p>
+<p>字符串1为：ABCDABCEDEAB</p>
+<p>字符串2为：ABCDAB</p>
+<p>暴力遍历解法在匹配到字符串2中E时报告匹配错误，然后重新从字符串1中第一个B的位置重新开始匹配，但是我们发现，下一次匹配开始的位置其实可在字符串1下标为4的位置，所以在每次匹配失败后会存在一次跳跃，来剪掉那些不可能匹配成功的“枝”。根据KMP算法，这个跳跃值是（本次已经匹配的字符串长度 － 此时未匹配字符所对应的partiallyMatchValue）。partiallyMatchValue可通过查找partially Match Table得到，该table是表征的是一个｛字符：整数｝的关系，字符是所有待查找字符串中的字符（这里是字符串2），此table通过如下关系得到：</p>
+<p>假设我们现在要求字符串2中第二个B所对应的整数值，则首先得到在字符串1中以B结尾的字串为：</p>
+<p>字符串3：ABCDAB</p>
+<p>计算改字符串3的所有prefix组合：｛A, AB, ABC, ABCD,ABCDA};</p>
+<p>计算改字符串3的所有postfix组合：{B, AB, DAB, CDAB, BCDAB}.</p>
+<p>然后，字符串3的prefix和postfix交集为{AB}，交集中的长度最大值为2，故partially Match Table中第二个B对应值为2，遍历字符串2可以得到一张长度为字符串2长度的表。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p><pre class="theme:classic lang:default decode:true "># include &lt;iostream&gt;</pre></p>
+<p>using namespace std;</p>
+<p>class StringSearch{<br>public:<br>    bool stringSearch(string str, string target){<br>        int* table = partialMatchTable(target);<br>        int matchedNum = 0;<br>        for(int i = 0; i &lt; str.length();){<br>            if(matchedNum == target.length()){<br>                delete[] table;<br>                return true;<br>            }else if(str[i] == target[matchedNum]){<br>                matchedNum ++;<br>                i++;<br>            }else{<br>                i += (matchedNum - table[matchedNum]);<br>                matchedNum = 0;<br>            }<br>        }<br>        delete[] table;<br>        return false;<br>    }</p>
+<pre><code>int* partialMatchTable(string s){
+    int len = s.length();
+    if(len &amp;lt; 1) return NULL;
+    int* table = new int[len];
+    memset(table, 0, len);
+    for(int i = 2; i &amp;lt;= len; i ++){
+        table[i - 1] = longestCommonStrOfPrefixAndPostfix(s.substr(0, i));
+    }
+    return table;
+}
+
+int longestCommonStrOfPrefixAndPostfix(string s){
+    int len = s.length();
+    if(len &amp;lt; 1) return 0;
+    for(int i = 1; i &amp;lt; len; i ++){
+        string prefix = s.substr(0, len - i);
+        string postfix = s.substr(i, len - i);
+        if(prefix == postfix){
+            return prefix.length();
+        }
+    }
+    return 0;
+}
+</code></pre><p>};</p>
+<p>int main() {<br>    StringSearch action = StringSearch();<br>    string s = “abababcdabdab”;<br>    string target = “abcdabd”;<br>    cout&lt;&lt;action.stringSearch(s, target)&lt;&lt;endl;<br>    return 0;<br>}<br><br>&nbsp;</p>
+<p>&nbsp;</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/算法/">算法</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1313,7 +1215,7 @@ else
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2016 John Doe
+    		&copy; 2016 Pengfei Xing
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

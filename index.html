@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Hexo</title>
+  <title>邢鹏飞的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="邢鹏飞的博客">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="邢鹏飞的博客">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="邢鹏飞的博客">
 <meta name="twitter:description">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="邢鹏飞的博客" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -37,7 +37,7 @@
 		</a>
 
 		<hgroup>
-		  <h1 class="header-author"><a href="/">John Doe</a></h1>
+		  <h1 class="header-author"><a href="/">Pengfei Xing</a></h1>
 		</hgroup>
 
 		
@@ -101,11 +101,11 @@
 							
 								<a class="github" target="_blank" href="https://github.com/novelidea" title="github">github</a>
 					        
-								<a class="weibo" target="_blank" href="http://www.baidu.com" title="weibo">weibo</a>
+								<a class="weibo" target="_blank" href="http://weibo.com/2878470034/profile" title="weibo">weibo</a>
 					        
-								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+								<a class="mail" target="_blank" href="/novelidea1992@gmail.com" title="mail">mail</a>
 					        
-								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+								<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/pengfei-xing-65886578" title="linkedin">linkedin</a>
 					        
 						</div>
 					</nav>
@@ -156,7 +156,7 @@
       <nav id="mobile-nav">
   	<div class="overlay">
   		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide">John Doe</h1>
+  		<h1 class="header-author js-mobile-header hide">Pengfei Xing</h1>
   	</div>
 	<div class="intrude-less">
 		<header id="header" class="inner">
@@ -166,7 +166,7 @@
 			
 			</div>
 			<hgroup>
-			  <h1 class="header-author">John Doe</h1>
+			  <h1 class="header-author">Pengfei Xing</h1>
 			</hgroup>
 			
 			<nav class="header-menu">
@@ -184,11 +184,11 @@
 					
 						<a class="github" target="_blank" href="https://github.com/novelidea" title="github">github</a>
 			        
-						<a class="weibo" target="_blank" href="http://www.baidu.com" title="weibo">weibo</a>
+						<a class="weibo" target="_blank" href="http://weibo.com/2878470034/profile" title="weibo">weibo</a>
 			        
-						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+						<a class="mail" target="_blank" href="/novelidea1992@gmail.com" title="mail">mail</a>
 			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+						<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/pengfei-xing-65886578" title="linkedin">linkedin</a>
 			        
 				</div>
 			</nav>
@@ -335,82 +335,6 @@
 
 
   
-    <article id="post-IOS开发中的四大对象及程序启动过程混讲" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/21/IOS开发中的四大对象及程序启动过程混讲/" class="article-date">
-  	<time datetime="2016-03-21T16:43:54.000Z" itemprop="datePublished">2016-03-21</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/21/IOS开发中的四大对象及程序启动过程混讲/">IOS开发中的四大对象及程序启动过程混讲</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>四大对象即UIApplication, appDelegate, UIWindow, UIViewController，之所以和程序启动过程混讲，是因为程序启动和它们密不可分。<br>UIApplication对象是应用程序的象征，每个App只有一个该对象，并且是单例，且是IOS程序启动创建的第一个对象。可以通过如下方法获得该对象：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[UIApplication sharedApplication]</span><br></pre></td></tr></table></figure></p>
-<p><strong>功能</strong>：可以进行一些应用级别的操作，比如：设置应用程序桌面图标上的消息数目提醒；设置联网指示器的可见性；设置状态栏等等。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">application.applicationIconBadgeNumber = 12;</span><br><span class="line">application.networkActivityIndicatorVisible = YES;</span><br></pre></td></tr></table></figure></p>
-<p>以上是设置消息数目提醒和联网指示，设置状态栏稍显复杂，首先需要配置plist文件，添加View controller-based status bar，并且设置为NO，然后再用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">application.statusBarHidden = YES;</span><br></pre></td></tr></table></figure></p>
-<p>当然，传统设置状态栏的方法比较简单，通过当前控制器进行，如下设置就可以了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (UIStatusBarStyle)preferredStatusBarStyle &#123;</span><br><span class="line">    return UIStatusBarStyleLightContent;</span><br><span class="line">&#125;</span><br><span class="line">- (BOOL)prefersStatusBarHidden &#123;</span><br><span class="line">    return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>application还有其他的一些功能，比如从本程序跳转到safari打开网页，或者拨打电话、发邮件、短信等等。如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    UIButton* openBaidu = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];</span><br><span class="line">    [openBaidu addTarget:self action:@selector(openBaidu) forControlEvents:UIControlEventTouchUpInside];</span><br><span class="line">    openBaidu.backgroundColor = [UIColor redColor];</span><br><span class="line">    [self.view addSubview:openBaidu];</span><br><span class="line">&#125;</span><br><span class="line">- (void)openBaidu &#123;</span><br><span class="line">// open web</span><br><span class="line">    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@&quot;https://google.com&quot;]];</span><br><span class="line">// call phone</span><br><span class="line">//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@&quot;tel:10086&quot;]];</span><br><span class="line">// send message</span><br><span class="line">//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@&quot;sms:10086&quot;]];</span><br><span class="line">// send email</span><br><span class="line">//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@&quot;mailto:1072131128@qq.com&quot;]];</span><br><span class="line">// open other app</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>现在，基本上可以对UIApplication有个初步的认识了，那问题是，既然UIApplication是程序创建的第一个类，<strong>那么这个类是什么时候创建的呢？</strong>要解开这个问题，就必须去了解程序的启动原理。</p>
-<p>点击app，程序启动，首先进入的是main函数，main函数直接执行UIApplicationMain函数，该函数定义如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UIKIT_EXTERN int UIApplicationMain(int argc, char *argv[], NSString * __nullable principalClassName, NSString * __nullable delegateClassName);</span><br></pre></td></tr></table></figure></p>
-<p>前两个参数argc, argv可以忽略，不影响理解，第三个参数必须是UIApplication类或者其子类，工程默认为nil，这是代表默认为UIApplication，即自动创建UIApplication类（就在这里创建第一个UIApplication类）；第四个参数是要创建的delegate类的名字，即根据delegate class name创建一个代理类，将该代理类赋值给UIApplication中的delegate属性。在上面这些都完成后，就建立主运行循环(Main runloop)，进行事件处理，首先处理的事情是delegate的didFinishLaunchApplication方法。这个就是程序启动的基本原理。</p>
-<p>讲完了UIApplication，现在来讲程序的代理，即appDelegate。所有移动操作系统都有一个致命的缺点：app很容易受到打扰，比如一个来电，或者不小心锁屏了，app都会进入后台，甚至被终止。这些需要设置appDelegate来处理。这里我假设读者都是有一定IOS开发经验的，我们可以模拟一下启动程序，点击home键回到桌面，再次启动程序，这三个过程，分别看看都调用了哪些代理函数。</p>
-<p>程序启动:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions; </span><br><span class="line">- (void)applicationDidBecomeActive:(UIApplication *)application;</span><br></pre></td></tr></table></figure></p>
-<p>回到home:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (void)applicationWillResignActive:(UIApplication *)application;</span><br><span class="line">- (void)applicationDidEnterBackground:(UIApplication *)application；</span><br></pre></td></tr></table></figure></p>
-<p>再次回到程序：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (void)applicationWillEnterForeground:(UIApplication *)application;</span><br><span class="line">- (void)applicationDidBecomeActive:(UIApplication *)application；</span><br></pre></td></tr></table></figure></p>
-<p>模拟完了这三个过程，并且track到了过程中先后调用的代理函数基本就可以对代理有个初步的认识了。</p>
-<p>最后，我们来讲一下UIWindow和UIViewController。这里面的关系为：手机屏幕是一个screen，screen上放置UIWindow，然后各种view就放置在UIWidow上面，一层层累加。而UIViewController可以通过设置为window的rootViewController来达到控制监听事件的功能。</p>
-<p>关于UIWindow一方面可以通过storyboard默认创建，然后程序会默认设置rootViewController和相应的view；另一方面也可以通过代码创建，在appDelegate中通过设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];</span><br><span class="line">self.window.backgroundColor = [UIColor whiteColor];</span><br></pre></td></tr></table></figure></p>
-<p>// window 设置为主窗口 并且可见<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self.window makeKeyAndVisible];</span><br></pre></td></tr></table></figure></p>
-<p>另外，把控制器vc的view显示到window上有两种方法。第一种是直接加view，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self.window addSubview: vc.view];</span><br></pre></td></tr></table></figure></p>
-<p>另外一种是加控制器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.window.rootViewController = vc;</span><br></pre></td></tr></table></figure></p>
-<p>一般采用的都是后者。</p>
-<p>PS:如果项目中包含main storyboard，则不需要再在appDelegate中alloc window，这是无用功。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/IOS/">IOS</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-通过NodeJS和MongoDB创建RESTful-API" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -439,27 +363,17 @@
       
         <h2 id="RESTful-API简介"><a href="#RESTful-API简介" class="headerlink" title="RESTful API简介"></a>RESTful API简介</h2><p>RESTful 是 Representational State Transfer 的缩写，同MVC模式的属性差不多，它们都不是一种标准，而只是一种设计风格，提供一些约束条件和设计原则。本文着重讨论其部署和实现，故略过其介绍。</p>
 <h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>本文平台是Amazon AWS Ubuntu平台。</p>
-<h4 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h4><p>先安装<span style="color: #3366ff;"><a href="https://github.com/creationix/nvm" target="_blank" rel="external">nvm</a>:</span></p>
-<pre class="lang:default decode:true">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash</pre>
-重启终端后执行下面指令安装node:
-<pre class="lang:default decode:true ">nvm install node</pre>
-检查node 和 npm(node package manager) 版本
-<pre class="lang:default decode:true ">node -v
-npm -v</pre>
-
-<h4 id="ExpressJS"><a href="#ExpressJS" class="headerlink" title="ExpressJS"></a>ExpressJS</h4><pre class="lang:default decode:true ">npm install -g express</pre>
-参数 －g 主要作用是在系统全局安装express，而且将其安装到PATH，所有它在系统里面的任何地方都可以运行了。
-
-检查版本：
-<pre class="lang:default decode:true ">express -v</pre>
-
-<h4 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h4><p><pre class="lang:default decode:true">sudo apt-get -y install mongodb</pre><br>检查版本：</p>
-<p><pre class="lang:default decode:true ">mongod –version</pre><br>（未完）</p>
-<p>&nbsp;</p>
+<h4 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h4><p>先安装<a href="https://github.com/creationix/nvm" target="_blank" rel="external">nvm</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash</span><br></pre></td></tr></table></figure></p>
+<p>重启终端后执行下面指令安装node:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install node</span><br></pre></td></tr></table></figure></p>
+<p>检查node 和 npm(node package manager) 版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure></p>
+<h4 id="ExpressJS"><a href="#ExpressJS" class="headerlink" title="ExpressJS"></a>ExpressJS</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g express</span><br></pre></td></tr></table></figure>
+<p>参数 －g 主要作用是在系统全局安装express，而且将其安装到PATH，所有它在系统里面的任何地方都可以运行了。</p>
+<p>检查版本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">express -v</span><br></pre></td></tr></table></figure></p>
+<h4 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -y install mongodb</span><br></pre></td></tr></table></figure>
+<p>检查版本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --version</span><br></pre></td></tr></table></figure></p>
+<p>（未完）</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://adrianmejia.com/blog/2014/10/01/creating-a-restful-api-tutorial-with-nodejs-and-mongodb/" target="_blank" rel="external">http://adrianmejia.com/blog/2014/10/01/creating-a-restful-api-tutorial-with-nodejs-and-mongodb/</a></p>
 <p><a href="https://docs.npmjs.com/files/package.json" target="_blank" rel="external">https://docs.npmjs.com/files/package.json</a></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 
       
     </div>
@@ -516,14 +430,10 @@ npm -v</pre>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h2><p>通过JSON文件创建数据库</p>
-<p><pre class="lang:default decode:true ">mongoimport -db library –collection library_open_time –drop –file library.json</pre><br>此处如果需要将数据转成JSON格式，则可以用Python json库中的dump方法：</p>
-<p><pre class="lang:default decode:true ">import json<br>with open(‘data.txt’, ‘w’) as outfile:<br>    json.dump(data, outfile)</pre><br>启动关闭重启开始使用：</p>
-<p><pre class="lang:default decode:true ">sudo service mongodb start<br>sudo service mongodb stop<br>sudo service mongodb restart<br>mongo</pre><br>查看所有db，以及切换db</p>
-<p><pre class="lang:default decode:true ">show dbs<br>use db-name</pre><br>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+        <h2 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h2><p>通过JSON文件创建数据库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoimport -db library --collection library_open_time --drop --file library.json</span><br></pre></td></tr></table></figure></p>
+<p>此处如果需要将数据转成JSON格式，则可以用Python json库中的dump方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">with open(&apos;data.txt&apos;, &apos;w&apos;) as outfile:</span><br><span class="line">    json.dump(data, outfile)</span><br></pre></td></tr></table></figure></p>
+<p>启动关闭重启开始使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongodb start</span><br><span class="line">sudo service mongodb stop</span><br><span class="line">sudo service mongodb restart</span><br><span class="line">mongo</span><br></pre></td></tr></table></figure></p>
+<p>查看所有db，以及切换db<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show dbs</span><br><span class="line">use db-name</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -580,18 +490,14 @@ npm -v</pre>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>ssh登陆：</p>
-<p><pre class="lang:default decode:true ">ssh -i keyfile user@host-ip<br></pre><br>比如：</p>
-<p><pre class="lang:default decode:true ">ssh -i ~/.ssh/keyfile.pem ubuntu@127.0.0.0</pre><br>后台运行python程序：</p>
-<p><pre class="lang:default decode:true ">nohup python program.py &amp;</pre><br>查看该任务：</p>
-<p><pre class="lang:default decode:true ">ps</pre><br>终止某任务：</p>
-<p>通过上一个指令获得任务的pid，然后直接 kill pid</p>
-<p>或者有时上述方法不行，需要加上参数：</p>
-<p><pre class="lang:default decode:true  ">kill -9 pid<br>其中－9表示SIGKILL<br>ls -ef 可以查看所有pid</pre><br>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+        <p>ssh登陆：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i keyfile user@host-ip</span><br></pre></td></tr></table></figure></p>
+<p>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i ~/.ssh/keyfile.pem ubuntu@127.0.0.0</span><br></pre></td></tr></table></figure></p>
+<p>后台运行python程序：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup python program.py &amp;</span><br></pre></td></tr></table></figure></p>
+<p>查看该任务：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps</span><br></pre></td></tr></table></figure></p>
+<p>终止某任务：</p>
+<p>通过上一个指令获得任务的pid，然后直接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill pid</span><br></pre></td></tr></table></figure></p>
+<p>或者有时上述方法不行，需要加上参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 pid</span><br></pre></td></tr></table></figure></p>
+<p>其中－9表示SIGKILL<br><code>ls -ef</code>可以查看所有pid</p>
 
       
     </div>
@@ -649,21 +555,9 @@ npm -v</pre>
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近在学Sprite Kit，它是Apple原生的2D游戏开发库，下面简要列一下学习中的一些要点。</p>
-<h2 id="音频延迟处理"><a href="#音频延迟处理" class="headerlink" title="音频延迟处理"></a>音频延迟处理</h2><p>在游戏中，如果要给action加上音效，一般会用如下代码实现。</p>
-<pre class="lang:swift decode:true ">self.runAction(SKAction.playSoundFileNamed("hit.wav", waitForCompletion: true))</pre>
-但是该方法有一个缺陷，就是如果对音频实时性要求很高，比如一些碰撞声、炮弹发射声音等等，这就需要提前加载改音频到运存，可以用如下方法实现。
-<pre class="lang:swift decode:true ">do {
-            let sounds = ["cannon", "hit"]
-            for sound in sounds {
-                let player = try AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(sound, ofType: "wav")!))
-                player.prepareToPlay()
-            }
-} catch {
-
-}</pre>
-
-<h2 id="创建自定义Frame-Animation"><a href="#创建自定义Frame-Animation" class="headerlink" title="创建自定义Frame Animation"></a>创建自定义Frame Animation</h2><p>通过一组图片可以自定义动画</p>
-<p><pre class="lang:swift decode:true ">func createFrameAnimation() {<br>        var frames : [SKTexture] = []<br>        for var i : Int = 1; i &lt;= 10; i++ {<br>            let tex : SKTexture  = SKTexture(imageNamed: “(i).png”)<br>            frames.append(tex)<br>        }<br>        //run animation<br>        //object.runAction(SKAction.animateWithTextures(frames, timePerFrame:0.03))<br>}</pre><br>&nbsp;</p>
+<h2 id="音频延迟处理"><a href="#音频延迟处理" class="headerlink" title="音频延迟处理"></a>音频延迟处理</h2><p>在游戏中，如果要给action加上音效，一般会用如下代码实现。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.runAction(<span class="type">SKAction</span>.playSoundFileNamed(<span class="string">"hit.wav"</span>, waitForCompletion: <span class="literal">true</span>))</span><br></pre></td></tr></table></figure></p>
+<p>但是该方法有一个缺陷，就是如果对音频实时性要求很高，比如一些碰撞声、炮弹发射声音等等，这就需要提前加载改音频到运存，可以用如下方法实现。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">	<span class="keyword">let</span> sounds = [<span class="string">"cannon"</span>, <span class="string">"hit"</span>]</span><br><span class="line">    <span class="keyword">for</span> sound <span class="keyword">in</span> sounds &#123;</span><br><span class="line">    	<span class="keyword">let</span> player = <span class="keyword">try</span> <span class="type">AVAudioPlayer</span>(contentsOfURL: <span class="type">NSURL</span>(fileURLWithPath: 					<span class="type">NSBundle</span>.mainBundle().pathForResource(sound, ofType: <span class="string">"wav"</span>)!))</span><br><span class="line">        player.prepareToPlay()</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="创建自定义Frame-Animation"><a href="#创建自定义Frame-Animation" class="headerlink" title="创建自定义Frame Animation"></a>创建自定义Frame Animation</h2><p>通过一组图片可以自定义动画<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">createFrameAnimation</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> frames : [<span class="type">SKTexture</span>] = []</span><br><span class="line">    <span class="keyword">for</span> <span class="keyword">var</span> i : <span class="type">Int</span> = <span class="number">1</span>; i &amp;lt;= <span class="number">10</span>; i++ &#123;</span><br><span class="line">    	<span class="keyword">let</span> tex : <span class="type">SKTexture</span>  = <span class="type">SKTexture</span>(imageNamed: <span class="string">"<span class="subst">\(i)</span>.png"</span>)</span><br><span class="line">    	frames.append(tex)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//run animation</span></span><br><span class="line">    <span class="comment">//object.runAction(SKAction.animateWithTextures(frames, timePerFrame:0.03))</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -791,14 +685,13 @@ npm -v</pre>
       
         <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>沙盒（sandbox）实际上是一个文件目录，其下的子目录用于存放不同的数据，本质上沙盒是对应用程序执行不同操作的权限限制。每个程序有一个沙盒。</p>
 <p>默认情况下，一个沙盒下有三个文件：Document, Library, tmp。</p>
-<p>Document: iTunes备份恢复的时候会包括此目录，一般用于存放应用程序产生的或者浏览到的数据；</p>
-<p>Library: 存放程序的默认设置和其他设置信息</p>
-<p>Library/Cashes: iTunes不会备份此目录，存放缓存文件，但是文件不会在程序退出时删除；</p>
-<p>tmp: 存放临时文件</p>
-<h2 id="获取路径方法"><a href="#获取路径方法" class="headerlink" title="获取路径方法"></a>获取路径方法</h2><p><pre class="lang:swift decode:true ">//        Document Directory<br>        let documentPath : String = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]<br>        print(documentPath)<br>//        Output<br>//        /Users/novelidea/Library/Developer/CoreSimulator/Devices/EC1FAFD8-3F7A-47F7-B589-78CFBB4343D4/data/Containers/Data/Application/BB25EBEA-D976-49D2-A654-3A5C8AD0E1E6/Documents</pre></p>
-<p>//        Library Directory<br>        let libraryPath : String = NSSearchPathForDirectoriesInDomains(.LibraryDirectory, .UserDomainMask, true)[0]<br>        print(libraryPath)<br>//        Output<br>//        /Users/novelidea/Library/Developer/CoreSimulator/Devices/EC1FAFD8-3F7A-47F7-B589-78CFBB4343D4/data/Containers/Data/Application/BB25EBEA-D976-49D2-A654-3A5C8AD0E1E6/Library</p>
-<p>//        tmp Directory<br>        let tmpPath : String = NSTemporaryDirectory()<br>        print(tmpPath)<br>//        Output<br>//        /Users/novelidea/Library/Developer/CoreSimulator/Devices/EC1FAFD8-3F7A-47F7-B589-78CFBB4343D4/data/Containers/Data/Application/BB25EBEA-D976-49D2-A654-3A5C8AD0E1E6/tmp/<br>&nbsp;</p>
-<p>&nbsp;</p>
+<p><code>Document:</code>  iTunes备份恢复的时候会包括此目录，一般用于存放应用程序产生的或者浏览到的数据；</p>
+<p><code>Library:</code>  存放程序的默认设置和其他设置信息</p>
+<p><code>Library/Cashes:</code> iTunes不会备份此目录，存放缓存文件，但是文件不会在程序退出时删除；</p>
+<p><code>tmp:</code> 存放临时文件</p>
+<h2 id="获取路径方法"><a href="#获取路径方法" class="headerlink" title="获取路径方法"></a>获取路径方法</h2><h3 id="Document-Directory"><a href="#Document-Directory" class="headerlink" title="Document Directory"></a>Document Directory</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> documentPath : <span class="type">String</span> = <span class="type">NSSearchPathForDirectoriesInDomains</span>(.<span class="type">DocumentDirectory</span>, .<span class="type">UserDomainMask</span>, <span class="literal">true</span>)[<span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span>(documentPath)</span><br><span class="line"><span class="comment">// Output</span></span><br><span class="line"><span class="comment">// /Users/novelidea/Library/Developer/CoreSimulator/Devices/EC1FAFD8-3F7A-47F7-B589-78CFBB4343D4/data/Containers/Data/Application/BB25EBEA-D976-49D2-A654-3A5C8AD0E1E6/Documents</span></span><br></pre></td></tr></table></figure>
+<h3 id="Library-Directory"><a href="#Library-Directory" class="headerlink" title="Library Directory"></a>Library Directory</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> libraryPath : <span class="type">String</span> = <span class="type">NSSearchPathForDirectoriesInDomains</span>(.<span class="type">LibraryDirectory</span>, .<span class="type">UserDomainMask</span>, <span class="literal">true</span>)[<span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span>(libraryPath)</span><br><span class="line"><span class="comment">// Output</span></span><br><span class="line"><span class="comment">// /Users/novelidea/Library/Developer/CoreSimulator/Devices/EC1FAFD8-3F7A-47F7-B589-78CFBB4343D4/data/Containers/Data/Application/BB25EBEA-D976-49D2-A654-3A5C8AD0E1E6/Library</span></span><br></pre></td></tr></table></figure>
+<h3 id="tmp-Directory"><a href="#tmp-Directory" class="headerlink" title="tmp Directory"></a>tmp Directory</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> tmpPath : <span class="type">String</span> = <span class="type">NSTemporaryDirectory</span>()</span><br><span class="line"><span class="built_in">print</span>(tmpPath)</span><br><span class="line"><span class="comment">// Output</span></span><br><span class="line"><span class="comment">// /Users/novelidea/Library/Developer/CoreSimulator/Devices/EC1FAFD8-3F7A-47F7-B589-78CFBB4343D4/data/Containers/Data/Application/BB25EBEA-D976-49D2-A654-3A5C8AD0E1E6/tmp/</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -856,13 +749,73 @@ npm -v</pre>
     <div class="article-entry" itemprop="articleBody">
       
         <p>对于一些算法题，想出算法的确很重要，但是将算法转化成代码的过程同样也不可忽视，下面就以一道题目来展示一下代码优化的魅力。</p>
-<p>题目是判断一个字符串是否是有效字符串，其中，有效字符串的定义是括号可以正确匹配，比如”(){}[]”和”({<a href=""></a>})”都是有效的，但是”{}[)”是无效的。利用栈我们可以实现如下代码：</p>
-<p><pre class="lang:default decode:true" title="无优化">public class Solution {<br>    public boolean isValid(String s) {<br>        Stack&lt;Character&gt; st = new Stack&lt;Character&gt;();<br>        for(int i = 0; i &lt; s.length(); i ++) {<br>            char c = s.charAt(i);<br>            if (c == ‘)’) {<br>                if(! st.isEmpty() &amp;&amp; st.peek() == ‘(‘) {<br>                    st.pop();<br>                } else {<br>                    return false;<br>                }<br>            } else if (c == ‘}’){<br>                if(! st.isEmpty() &amp;&amp; st.peek() == ‘{‘) {<br>                    st.pop();<br>                } else {<br>                    return false;<br>                }<br>            } else if (c == ‘]’) {<br>                if(! st.isEmpty() &amp;&amp; st.peek() == ‘[‘) {<br>                    st.pop();<br>                } else {<br>                    return false;<br>                }<br>            }<br>            else if (c == ‘(‘ || c == ‘{‘ || c == ‘[‘){<br>                st.push(c);<br>            }<br>        }<br>        return st.isEmpty();<br>    }<br>}</pre><br>0 error, 0 bug, pass all cases. 但是运行时间却只击败了不到13%的程序。</p>
-<p>初步优化是在程序已开始就进行剪枝，快速判断哪些字符串长度为奇数的case。即加上：</p>
-<p><pre class="lang:default decode:true ">if (s.length() % 2 == 1) return false;</pre><br>这时候，该程序可以击败54%的程序。</p>
-<p>但是，还可以做的更好，那就是将最可能的情况放在一开始判断，将if-else改成switch-case：</p>
-<p><pre class="lang:default decode:true ">public class Solution {<br>    public boolean isValid(String s) {<br>        if (s.length() % 2 == 1) return false;<br>        Stack&lt;Character&gt; st = new Stack&lt;Character&gt;();<br>        for(int i = 0; i &lt; s.length(); i ++) {<br>            char c = s.charAt(i);<br>            if (c == ‘(‘ || c == ‘{‘ || c == ‘[‘) {<br>                st.push(c);<br>            } else {<br>                if (st.isEmpty()) return false;<br>                switch (st.pop()) {<br>                    case ‘(‘: {<br>                        if (c != ‘)’) return false;<br>                        break;<br>                    }<br>                    case ‘{‘: {<br>                        if (c != ‘}’) return false;<br>                        break;<br>                    }<br>                    case ‘[‘: {<br>                        if (c != ‘]’) return false;<br>                        break;<br>                    }<br>                }<br>            }<br>        }<br>        return st.isEmpty();<br>    }<br>}</pre><br>&nbsp;</p>
-<p>&nbsp;</p>
+<p>题目是判断一个字符串是否是有效字符串，其中，有效字符串的定义是括号可以正确匹配，比如”(){}[]”和”({<a href=""></a>})”都是有效的，但是”{}[)”是无效的。利用栈我们可以实现如下代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        Stack&lt;Character&gt; st = <span class="keyword">new</span> Stack&lt;Character&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i ++) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">')'</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(! st.isEmpty() &amp;&amp; st.peek() == <span class="string">'('</span>) &#123;</span><br><span class="line">                    st.pop();</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">'&#125;'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(! st.isEmpty() &amp;&amp; st.peek() == <span class="string">'&#123;'</span>) &#123;</span><br><span class="line">                    st.pop();</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">']'</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(! st.isEmpty() &amp;&amp; st.peek() == <span class="string">'['</span>) &#123;</span><br><span class="line">                    st.pop();</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">'('</span> || c == <span class="string">'&#123;'</span> || c == <span class="string">'['</span>)&#123;</span><br><span class="line">                st.push(c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> st.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>虽然“0 error, 0 bug, pass all cases”， 但是运行时间却只击败了不到13%的程序。</p>
+<p>初步优化是在程序已开始就进行剪枝，快速判断哪些字符串长度为奇数的case。即加上：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if (s.length() % 2 == 1) return false;</span><br></pre></td></tr></table></figure></p>
+<p>这时候，该程序可以击败54%的程序。</p>
+<p>但是，还可以做的更好，那就是将最可能的情况放在一开始判断，将if-else改成switch-case：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.length() % <span class="number">2</span> == <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        Stack&lt;Character&gt; st = <span class="keyword">new</span> Stack&lt;Character&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i ++) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">'('</span> || c == <span class="string">'&#123;'</span> || c == <span class="string">'['</span>) &#123;</span><br><span class="line">                st.push(c);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (st.isEmpty()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                <span class="keyword">switch</span> (st.pop()) &#123;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">'('</span>: &#123;</span><br><span class="line">                        <span class="keyword">if</span> (c != <span class="string">')'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">'&#123;'</span>: &#123;</span><br><span class="line">                        <span class="keyword">if</span> (c != <span class="string">'&#125;'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">'['</span>: &#123;</span><br><span class="line">                        <span class="keyword">if</span> (c != <span class="string">']'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> st.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/算法/">算法</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-有向图的单源最短路径算法实现" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/28/有向图的单源最短路径算法实现/" class="article-date">
+  	<time datetime="2016-02-29T02:55:16.000Z" itemprop="datePublished">2016-02-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/28/有向图的单源最短路径算法实现/">有向图的单源最短路径算法实现</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="有向图的实现"><a href="#有向图的实现" class="headerlink" title="有向图的实现"></a>有向图的实现</h2><p>首先，我们再来讨论一下图。图是数据结构中相当重要的一部分，与之相关的算法也有很多，但是如果要让你代码实现有向图，相信很多人都会写很长的时间。下面就用Java实现一个Adjacency List存储的有向图。关于图的存储，可以参见<a href="http://pengfeixing.com/2016/02/19/图遍历/" target="_blank" rel="external">这篇博客</a>。</p>
+<p>这里主要定义了三个类，点(Vertex)、边(Edge)、有向图（Digraph）。</p>
+<h3 id="Vetex-Class"><a href="#Vetex-Class" class="headerlink" title="Vetex Class"></a>Vetex Class</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> GraphImplementation;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by novelidea on 2/28/16.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Vertex</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> distance = Integer.MAX_VALUE;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Vertex</span><span class="params">(String id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getId</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getDistance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> distance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDistance</span><span class="params">(<span class="keyword">int</span> dis)</span></span>&#123;</span><br><span class="line">        distance = dis;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Edge-Class"><a href="#Edge-Class" class="headerlink" title="Edge Class"></a>Edge Class</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> GraphImplementation;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by novelidea on 2/28/16.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Edge</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Vertex in;</span><br><span class="line">    <span class="keyword">private</span> Vertex out;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> weight;</span><br><span class="line">    Edge(Vertex i, Vertex o, <span class="keyword">int</span> w)&#123;</span><br><span class="line">        in = i;</span><br><span class="line">        out = o;</span><br><span class="line">        weight = w;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Vertex <span class="title">getIn</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> in;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Vertex <span class="title">getOut</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> out;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getWeight</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> weight;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Vertex <span class="title">getAdjacentVertex</span><span class="params">(Vertex v)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> v.getId().equals(in.getId()) ? out : in;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Directed-Graph-Class"><a href="#Directed-Graph-Class" class="headerlink" title="Directed Graph Class"></a>Directed Graph Class</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> GraphImplementation;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by novelidea on 2/28/16.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Digraph</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> HashMap&lt;Vertex, ArrayList&lt;Edge&gt;&gt; adjacentList = <span class="keyword">new</span> HashMap&lt;Vertex, ArrayList&lt;Edge&gt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addVertex</span><span class="params">(Vertex v)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(adjacentList.containsKey(v)) <span class="keyword">return</span>;</span><br><span class="line">        adjacentList.put(v, <span class="keyword">new</span> ArrayList&lt;&gt;());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(Vertex in, Vertex out, <span class="keyword">int</span> weight)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.addVertex(in);</span><br><span class="line">        <span class="keyword">this</span>.addVertex(out);</span><br><span class="line">        adjacentList.get(in).add(<span class="keyword">new</span> Edge(in, out, weight));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">outDegree</span><span class="params">(Vertex v)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> adjacentList.get(v).size();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> HashMap&lt;Vertex, ArrayList&lt;Edge&gt;&gt; getMap()&#123;</span><br><span class="line">        <span class="keyword">return</span> adjacentList;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;Edge&gt; <span class="title">getAdjacentEdges</span><span class="params">(Vertex v)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> adjacentList.get(v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Dijkstra实现"><a href="#Dijkstra实现" class="headerlink" title="Dijkstra实现"></a>Dijkstra实现</h2><p>实现有向图单源最短路径主要是Dijkstra算法，下面为算法实现。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> GraphImplementation;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by novelidea on 2/28/16.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dijkstra</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Digraph graph;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Dijkstra</span><span class="params">(Digraph g)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(graph == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"the input graph cannot be null"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.graph = g;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VertexComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&amp;<span class="title">lt</span></span>;Vertex&amp;gt; &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Vertex v1, Vertex v2)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> Integer.compare(v1.getDistance(), v2.getDistance());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Set&lt;Vertex&gt; <span class="title">findShortestPath</span><span class="params">(String sourceID)</span></span>&#123;</span><br><span class="line">        Queue&lt;Vertex&gt; queue = <span class="keyword">new</span> PriorityQueue&lt;&gt;(<span class="number">10</span>, <span class="keyword">new</span> VertexComparator());</span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&lt;Vertex, ArrayList&lt;Edge&gt;&gt; e : graph.getMap().entrySet())&#123;</span><br><span class="line">            Vertex v = e.getKey();</span><br><span class="line">            <span class="keyword">if</span>(v.getId().equals(sourceID))&#123;</span><br><span class="line">                v.setDistance(<span class="number">0</span>);</span><br><span class="line">                queue.add(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Set&lt;Vertex&gt; visited = <span class="keyword">new</span> HashSet&lt;Vertex&gt;();</span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty())&#123;</span><br><span class="line">            Vertex src = queue.poll();</span><br><span class="line">            visited.add(src);</span><br><span class="line">            <span class="keyword">for</span>(Edge e : graph.getAdjacentEdges(src))&#123;</span><br><span class="line">                Vertex v = e.getAdjacentVertex(src);</span><br><span class="line">                <span class="keyword">if</span>(! visited.contains(v))&#123;</span><br><span class="line">                    <span class="keyword">int</span> newDistance = src.getDistance() + e.getWeight();</span><br><span class="line">                    <span class="keyword">if</span>(newDistance &amp;lt; v.getDistance())&#123;</span><br><span class="line">                        v.setDistance(newDistance);</span><br><span class="line">                        visited.add(v);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> graph.getMap().keySet();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -903,7 +856,7 @@ npm -v</pre>
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2016 John Doe
+    		&copy; 2016 Pengfei Xing
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
