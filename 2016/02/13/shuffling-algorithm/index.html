@@ -4,21 +4,21 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Hello World | Hexo</title>
+  <title>Shuffling Algorithm | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+  <meta name="description" content="简介洗牌算法是一个比较经典的算法，主要讨论如何随机生成一副牌。第一次遇见是2013年春腾讯一面的时候，当时妥妥跪了，题目都没听懂，第二次遇见是大三上系统结构课，最后讲到了洗牌算法。比较经典详细的算法解释参见维基百科。这里主要讨论一种流行的简化版本。
+设计实现主要思路是从扑克的最后一张开始，假设下标为 i，然后从在区间[0, i - 1]中生成随机数j，交换下标为i，j所对应的元素。如此从最后一张循">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2016/04/09/hello-world/index.html">
+<meta property="og:title" content="Shuffling Algorithm">
+<meta property="og:url" content="http://yoursite.com/2016/02/13/shuffling-algorithm/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-04-10T03:47:03.000Z">
+<meta property="og:description" content="简介洗牌算法是一个比较经典的算法，主要讨论如何随机生成一副牌。第一次遇见是2013年春腾讯一面的时候，当时妥妥跪了，题目都没听懂，第二次遇见是大三上系统结构课，最后讲到了洗牌算法。比较经典详细的算法解释参见维基百科。这里主要讨论一种流行的简化版本。
+设计实现主要思路是从扑克的最后一张开始，假设下标为 i，然后从在区间[0, i - 1]中生成随机数j，交换下标为i，j所对应的元素。如此从最后一张循">
+<meta property="og:updated_time" content="2016-04-10T05:26:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="Shuffling Algorithm">
+<meta name="twitter:description" content="简介洗牌算法是一个比较经典的算法，主要讨论如何随机生成一副牌。第一次遇见是2013年春腾讯一面的时候，当时妥妥跪了，题目都没听懂，第二次遇见是大三上系统结构课，最后讲到了洗牌算法。比较经典详细的算法解释参见维基百科。这里主要讨论一种流行的简化版本。
+设计实现主要思路是从扑克的最后一张开始，假设下标为 i，然后从在区间[0, i - 1]中生成随机数j，交换下标为i，j所对应的元素。如此从最后一张循">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -200,11 +200,11 @@ Quick">
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-shuffling-algorithm" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/04/09/hello-world/" class="article-date">
-  	<time datetime="2016-04-10T03:47:03.000Z" itemprop="datePublished">2016-04-09</time>
+      <a href="/2016/02/13/shuffling-algorithm/" class="article-date">
+  	<time datetime="2016-02-14T00:49:28.000Z" itemprop="datePublished">2016-02-13</time>
 </a>
     </div>
   
@@ -217,7 +217,7 @@ Quick">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      Shuffling Algorithm
     </h1>
   
 
@@ -226,6 +226,10 @@ Quick">
       <div class="article-info article-info-post">
         
         
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/算法/">算法</a>
+	</div>
+
 
         <div class="clearfix"></div>
       </div>
@@ -233,15 +237,21 @@ Quick">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>洗牌算法是一个比较经典的算法，主要讨论如何随机生成一副牌。第一次遇见是2013年春腾讯一面的时候，当时妥妥跪了，题目都没听懂，第二次遇见是大三上系统结构课，最后讲到了洗牌算法。比较经典详细的算法解释参见<span style="color: #3366ff;"><a href="https://en.wikipedia.org/wiki/Fisher–Yates_shuffle" target="_blank" rel="external">维基百科</a></span>。这里主要讨论一种流行的简化版本。</p>
+<h2 id="设计实现"><a href="#设计实现" class="headerlink" title="设计实现"></a>设计实现</h2><p>主要思路是从扑克的最后一张开始，假设下标为 i，然后从在区间[0, i - 1]中生成随机数j，交换下标为i，j所对应的元素。如此从最后一张循环操作到第二张（到第一张时可以跳出循环）。</p>
+<p>C++代码如下:</p>
+<p><pre class="lang:default decode:true "># include &lt;iostream&gt;</pre></p>
+<h1 id="define-CARDNUM-52"><a href="#define-CARDNUM-52" class="headerlink" title="define CARDNUM 52"></a>define CARDNUM 52</h1><p>using namespace std;</p>
+<p>class Shuffling{<br>public:<br>    int<em> shuffle(){<br>        int</em> cards = new int[CARDNUM];<br>        int index = 0;<br>        for(int i = 1; i &lt;= 13; i ++){<br>            for(int j = 0; j &lt; 4; j ++){<br>                cards[index ++] = i;<br>            }<br>        }<br>        for(int i = CARDNUM - 1; i &gt;= 1; i –){<br>            int j = rand() % i;<br>            swap(cards, i, j);<br>        }<br>        return cards;<br>    }</p>
+<pre><code>void swap(int arr[], int a, int b){
+    int tmp = arr[a];
+    arr[a] = arr[b];
+    arr[b] = tmp;
+}
+</code></pre><p>};</p>
+<p>int main() {<br>    Shuffling action = Shuffling();<br>    int* a = action.shuffle();<br>    for(int i = 0; i &lt; CARDNUM; i ++){<br>        cout&lt;&lt;a[i]&lt;&lt;endl;<br>    }<br>    return 0;<br>}<br><br>Java代码如下：</p>
+<p><pre class="lang:java decode:true ">public int[] shuffle(int max){<br>        Random rand = new Random();<br>        int[] cards = new int[max];<br>        for(int i = 0; i &lt; max; i ++){<br>            cards[i] = i;<br>        }<br>        for(int i = max - 1; i &gt; 0; i –){<br>            int exchange = rand.nextInt(i);<br>            int tmp = cards[i];<br>            cards[i] = cards[exchange];<br>            cards[exchange] = tmp;<br>        }<br>        return cards;<br>    }</pre><br>其中，这里需要注意的是，Java中如果要生成区间[min, max]之间的随机数，则是：</p>
+<p><pre class="lang:default decode:true ">rand.nextInt(max - min + 1) + min;</pre><br>&nbsp;</p>
 
       
     </div>
@@ -251,9 +261,18 @@ Quick">
     
 <nav id="article-nav">
   
+    <a href="/2016/02/14/kmpknuth-morris-pratt-algorithm/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          KMP(Knuth–Morris–Pratt) Algorithm
+        
+      </div>
+    </a>
   
-    <a href="/2016/03/24/导航控制器/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">导航控制器</div>
+  
+    <a href="/2016/02/07/Scrappy安装注意事项/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Scrappy 安装注意事项</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -288,7 +307,7 @@ Quick">
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="hello-world" data-title="Hello World" data-url="http://yoursite.com/2016/04/09/hello-world/"></div>
+	<div class="ds-thread" data-thread-key="shuffling-algorithm" data-title="Shuffling Algorithm" data-url="http://yoursite.com/2016/02/13/shuffling-algorithm/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

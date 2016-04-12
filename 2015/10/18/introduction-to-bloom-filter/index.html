@@ -4,21 +4,21 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Hello World | Hexo</title>
+  <title>analysis to bloom filter | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+  <meta name="description" content="BRIEF INTRODUCTION
+Bloom filter is a space efficient algorithm that can judge whether a record exists in a given record set. For example, FBI needs to judge whether a man is on the list of suspects; t">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2016/04/09/hello-world/index.html">
+<meta property="og:title" content="analysis to bloom filter">
+<meta property="og:url" content="http://yoursite.com/2015/10/18/introduction-to-bloom-filter/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-04-10T03:47:03.000Z">
+<meta property="og:description" content="BRIEF INTRODUCTION
+Bloom filter is a space efficient algorithm that can judge whether a record exists in a given record set. For example, FBI needs to judge whether a man is on the list of suspects; t">
+<meta property="og:updated_time" content="2016-04-10T05:26:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="analysis to bloom filter">
+<meta name="twitter:description" content="BRIEF INTRODUCTION
+Bloom filter is a space efficient algorithm that can judge whether a record exists in a given record set. For example, FBI needs to judge whether a man is on the list of suspects; t">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -200,11 +200,11 @@ Quick">
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-introduction-to-bloom-filter" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/04/09/hello-world/" class="article-date">
-  	<time datetime="2016-04-10T03:47:03.000Z" itemprop="datePublished">2016-04-09</time>
+      <a href="/2015/10/18/introduction-to-bloom-filter/" class="article-date">
+  	<time datetime="2015-10-18T22:02:37.000Z" itemprop="datePublished">2015-10-18</time>
 </a>
     </div>
   
@@ -217,7 +217,7 @@ Quick">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      analysis to bloom filter
     </h1>
   
 
@@ -225,7 +225,15 @@ Quick">
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bloom-filter/">bloom filter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-science/">computer science</a></li></ul>
+	</div>
+
         
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/算法/">算法</a>
+	</div>
+
 
         <div class="clearfix"></div>
       </div>
@@ -233,15 +241,31 @@ Quick">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p><strong>BRIEF INTRODUCTION</strong></p>
+<p>Bloom filter is a space efficient algorithm that can judge whether a record exists in a given record set. For example, FBI needs to judge whether a man is on the list of suspects; typing system needs to judge whether the word we are typing is correct - by computing that whether that word is in the word dictionary; email service provider, such as google, needs to judge whether a email is a spam mail - by recording the email sender who has been reported by others to send spam emails before.</p>
+<p>Take filtering spam mail as an example, indeed, many other machine learning algorithms can be used in this aspect, but all these methods need to deep into the email content, which may cost a lot of time and memory space. Also, others may come with that hash function that can handle searching &amp; matching problems. We can build a blacklist of spam email sender and hash every email address in the set to a value. Then we can run in constant time to judge whether an email is spam email. However, hash method isn’t ‘space efficient’, which means it will need lots of memory to handle this problem considering the large amount of spam mail sender in the world. For example, if we assume there are 5 billion spam mail senders in the world and the space utility rate is 50% and each email address takes 8 Bytes. Then we can calculate the amount of the memory using hash function to handle this problem as follows:</p>
+<p>[latex]5{\times}{10^9}{\times}8{\div}50{\%}Bytes=8{\times}{10^{10}}Bytes=745GB[/latex]</p>
+<p>Actually, normal server doesn’t have such larger memory. Thus, it’s insane to apply hash method to this problem.</p>
+<p>An alternative method or a method that can be combined with those machine learning methods is bloom filter, which is proposed by Burton Howard Bloom in 1970. It can be described as follows:</p>
+<ol>
+<li>Initialize a bit array [latex]M[/latex] with length <strong><em>m </em></strong>and set all the values to 0;</li>
+<li>Build <strong><em>k</em></strong> hash functions;</li>
+<li>Hash every record in the input set <strong><em>S</em></strong> for <strong><em>k</em></strong> times and we can get <strong><em>k</em></strong> values which represent <strong><em>k</em></strong> positions (p1, p2, p3,…, pk) of the bit array;</li>
+<li><p>Set M[p1], M[p2], M[p3],…, M[pk] to 1.<br>Then, we finish building a bloom filter. And given a record, we can easily judge whether the record is in the set <strong><em>S </em></strong>as follows:</p>
+</li>
+<li><p>Hash the given record using the k hash functions and get <strong><em>k</em></strong> values V(v1, v2, v3,…, vk);</p>
+</li>
+<li>if for each M[vi] == 1 where vi belongs to V, then we can say this record is highly possibly in set <strong><em>S</em></strong>. Otherwise, we can say that this record is definitely not in set <strong><em>S</em></strong>.<br>Every coin has two sides. Bloom filter can judge whether a record is not in a given set or a record is <strong>highly possibly</strong> in a give set. That is why the False Negative of this algorithm is equal to zero, but the False Positive is not. We now analyse how to minimise the False Negative by choosing the appropriate value of  <em><strong>k</strong></em>.</li>
+</ol>
+<p><strong>MATHEMATIC ANALYSIS</strong></p>
+<p>We assume we are given a bit array M of which length is m and the number of the set is n. Now after each hashing, the possibility of the value of a chosen position of M is still 0 is</p>
+<p>[latex]1-\frac{1}{m}[/latex]</p>
+<p>and after we hash one record for k times, the possibility of that is</p>
+<p><a href="1-\frac{1}{m}">latex</a>^k[/latex]</p>
+<p>and when we finish the initialization of bloom filter, the possibility changes to</p>
+<p><a href="1-\frac{1}{m}">latex</a>^{kn}[/latex]</p>
+<p>未完待续……</p>
+<p>&nbsp;</p>
 
       
     </div>
@@ -251,11 +275,15 @@ Quick">
     
 <nav id="article-nav">
   
-  
-    <a href="/2016/03/24/导航控制器/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">导航控制器</div>
-      <strong class="article-nav-caption">></strong>
+    <a href="/2015/10/19/introduction-to-some-plugins-for-vim/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          introduction to some plugins for vim
+        
+      </div>
     </a>
+  
   
 </nav>
 
@@ -288,7 +316,7 @@ Quick">
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="hello-world" data-title="Hello World" data-url="http://yoursite.com/2016/04/09/hello-world/"></div>
+	<div class="ds-thread" data-thread-key="introduction-to-bloom-filter" data-title="analysis to bloom filter" data-url="http://yoursite.com/2015/10/18/introduction-to-bloom-filter/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

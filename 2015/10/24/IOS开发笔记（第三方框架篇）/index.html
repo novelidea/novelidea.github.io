@@ -4,21 +4,30 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Hello World | Hexo</title>
+  <title>IOS 开发笔记（第三方框架篇） | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+  <meta name="description" content="&amp;nbsp;
+SDWebImage(https://github.com/rs/SDWebImage)
+该框架在处理网络请求图片优势非常明显，但是本地缓存的图片会吞噬大量内存，所以用该框架的时候，一定要在AppDelegate中实现applicationDidReceiveMemoryWarning的代理。主要是停止图片的下载＋清空缓存。
+[[SDWebImageManager sharedMan">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2016/04/09/hello-world/index.html">
+<meta property="og:title" content="IOS 开发笔记（第三方框架篇）">
+<meta property="og:url" content="http://yoursite.com/2015/10/24/IOS开发笔记（第三方框架篇）/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-04-10T03:47:03.000Z">
+<meta property="og:description" content="&amp;nbsp;
+SDWebImage(https://github.com/rs/SDWebImage)
+该框架在处理网络请求图片优势非常明显，但是本地缓存的图片会吞噬大量内存，所以用该框架的时候，一定要在AppDelegate中实现applicationDidReceiveMemoryWarning的代理。主要是停止图片的下载＋清空缓存。
+[[SDWebImageManager sharedMan">
+<meta property="og:image" content="http://pengfeixing.com/wp-content/uploads/2015/10/AFNetworkingError1-300x101.jpg">
+<meta property="og:image" content="http://pengfeixing.com/wp-content/uploads/2015/10/textPlainError2-300x47.jpg">
+<meta property="og:updated_time" content="2016-04-11T23:38:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="IOS 开发笔记（第三方框架篇）">
+<meta name="twitter:description" content="&amp;nbsp;
+SDWebImage(https://github.com/rs/SDWebImage)
+该框架在处理网络请求图片优势非常明显，但是本地缓存的图片会吞噬大量内存，所以用该框架的时候，一定要在AppDelegate中实现applicationDidReceiveMemoryWarning的代理。主要是停止图片的下载＋清空缓存。
+[[SDWebImageManager sharedMan">
+<meta name="twitter:image" content="http://pengfeixing.com/wp-content/uploads/2015/10/AFNetworkingError1-300x101.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -200,11 +209,11 @@ Quick">
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-IOS开发笔记（第三方框架篇）" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/04/09/hello-world/" class="article-date">
-  	<time datetime="2016-04-10T03:47:03.000Z" itemprop="datePublished">2016-04-09</time>
+      <a href="/2015/10/24/IOS开发笔记（第三方框架篇）/" class="article-date">
+  	<time datetime="2015-10-24T20:02:32.000Z" itemprop="datePublished">2015-10-24</time>
 </a>
     </div>
   
@@ -217,7 +226,7 @@ Quick">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      IOS 开发笔记（第三方框架篇）
     </h1>
   
 
@@ -226,6 +235,10 @@ Quick">
       <div class="article-info article-info-post">
         
         
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/IOS/">IOS</a>
+	</div>
+
 
         <div class="clearfix"></div>
       </div>
@@ -233,15 +246,31 @@ Quick">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>&nbsp;</p>
+<p><strong>SDWebImage(<a href="https://github.com/rs/SDWebImage" target="_blank" rel="external">https://github.com/rs/SDWebImage</a>)</strong></p>
+<p>该框架在处理网络请求图片优势非常明显，但是本地缓存的图片会吞噬大量内存，所以用该框架的时候，一定要在AppDelegate中实现applicationDidReceiveMemoryWarning的代理。主要是停止图片的下载＋清空缓存。</p>
+<p>[[SDWebImageManager sharedManager] cancelAll];</p>
+<p>[[SDWebImageManager sharedManager].imageCache clearMemory];</p>
+<p>&nbsp;</p>
+<p><strong>AFNetworking (<a href="https://github.com/AFNetworking/AFNetworking" target="_blank" rel="external">https://github.com/AFNetworking/AFNetworking</a>)</strong></p>
+<p>该框架提供了很多网络请求的API。有一点需要注意的是，在用</p>
+<p>[AFHTTPRequestOperationManager manager]管理请求的时候，有时会遇到如下error(点击查看大图):</p>
+<p><a href="http://pengfeixing.com/wp-content/uploads/2015/10/AFNetworkingError1.jpg" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2015/10/AFNetworkingError1-300x101.jpg" alt="AFNetworkingError"></a></p>
+<p>&nbsp;</p>
+<p>该图是以向新浪微博请求OAuth授权请求获取token时的报错，主要原因是新浪服务器响应请求的响应头中content-type为text/plain，而该框架不支持该类型，所有我们需要做一些修改。修改只需要找到AFURLResponseSerialization.m文件，在init方法中添加支持的content-type。修改后截图如下（点击查看大图）：</p>
+<p>&nbsp;</p>
+<p><a href="http://pengfeixing.com/wp-content/uploads/2015/10/textPlainError2.jpg" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2015/10/textPlainError2-300x47.jpg" alt="textPlainError2"></a></p>
+<p>&nbsp;</p>
+<p><strong>MJExtension (<a href="https://github.com/CoderMJLee/MJExtension" target="_blank" rel="external">https://github.com/CoderMJLee/MJExtension</a>)</strong></p>
+<p>该框架主要实现字典快速转模型，可通过如下函数实现</p>
+<ul>
+<li>(NSMutableArray <em>)objectArrayWithKeyValuesArray:(NSArray </em>)keyValuesArray;</li>
+</ul>
+<p>但是在用该方法快速实现字典转模型A的时候，如果该字典中含有子字典需要转换成对应的模型B，则需要在模型A的的定义中遵守&lt;MJKeyValue&gt;协议，然后实现以下方法：</p>
+<ul>
+<li>(NSDictionary *)objectClassInArray;</li>
+</ul>
+<p>&nbsp;</p>
 
       
     </div>
@@ -251,9 +280,18 @@ Quick">
     
 <nav id="article-nav">
   
+    <a href="/2015/10/26/Git-Cheat-Sheet/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          git cheat sheet
+        
+      </div>
+    </a>
   
-    <a href="/2016/03/24/导航控制器/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">导航控制器</div>
+  
+    <a href="/2015/10/19/dynamic-programming/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Dynamic Programming</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -288,7 +326,7 @@ Quick">
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="hello-world" data-title="Hello World" data-url="http://yoursite.com/2016/04/09/hello-world/"></div>
+	<div class="ds-thread" data-thread-key="IOS开发笔记（第三方框架篇）" data-title="IOS 开发笔记（第三方框架篇）" data-url="http://yoursite.com/2015/10/24/IOS开发笔记（第三方框架篇）/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

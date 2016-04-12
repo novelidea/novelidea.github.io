@@ -4,21 +4,21 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Hello World | Hexo</title>
+  <title>图的遍历分析 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+  <meta name="description" content="图的存储如果只是粗略地讲图的遍历，即DFS和BFS是完全不用讲这一个点，但是，本着讲（装）透（逼）的原则，还是要简要介绍一下图在计算机中的存储方式，因为在后面的时间复杂度分析中会用到。
+图的存储基本有两种，邻接矩阵（Adjacency Matrix）和邻接表（Adjacency List）。首先来说邻接矩阵，顾名思义，邻接矩阵是一个n*n矩阵，其中n是指图中节点数目，横纵坐标对应相应的节点，对于普">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2016/04/09/hello-world/index.html">
+<meta property="og:title" content="图的遍历分析">
+<meta property="og:url" content="http://yoursite.com/2016/02/19/图的遍历分析/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-04-10T03:47:03.000Z">
+<meta property="og:description" content="图的存储如果只是粗略地讲图的遍历，即DFS和BFS是完全不用讲这一个点，但是，本着讲（装）透（逼）的原则，还是要简要介绍一下图在计算机中的存储方式，因为在后面的时间复杂度分析中会用到。
+图的存储基本有两种，邻接矩阵（Adjacency Matrix）和邻接表（Adjacency List）。首先来说邻接矩阵，顾名思义，邻接矩阵是一个n*n矩阵，其中n是指图中节点数目，横纵坐标对应相应的节点，对于普">
+<meta property="og:updated_time" content="2016-04-11T23:26:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="图的遍历分析">
+<meta name="twitter:description" content="图的存储如果只是粗略地讲图的遍历，即DFS和BFS是完全不用讲这一个点，但是，本着讲（装）透（逼）的原则，还是要简要介绍一下图在计算机中的存储方式，因为在后面的时间复杂度分析中会用到。
+图的存储基本有两种，邻接矩阵（Adjacency Matrix）和邻接表（Adjacency List）。首先来说邻接矩阵，顾名思义，邻接矩阵是一个n*n矩阵，其中n是指图中节点数目，横纵坐标对应相应的节点，对于普">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -200,11 +200,11 @@ Quick">
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-图的遍历分析" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/04/09/hello-world/" class="article-date">
-  	<time datetime="2016-04-10T03:47:03.000Z" itemprop="datePublished">2016-04-09</time>
+      <a href="/2016/02/19/图的遍历分析/" class="article-date">
+  	<time datetime="2016-02-19T19:26:16.000Z" itemprop="datePublished">2016-02-19</time>
 </a>
     </div>
   
@@ -217,7 +217,7 @@ Quick">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      图的遍历分析
     </h1>
   
 
@@ -226,6 +226,10 @@ Quick">
       <div class="article-info article-info-post">
         
         
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/算法/">算法</a>
+	</div>
+
 
         <div class="clearfix"></div>
       </div>
@@ -233,15 +237,33 @@ Quick">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h2 id="图的存储"><a href="#图的存储" class="headerlink" title="图的存储"></a>图的存储</h2><p>如果只是粗略地讲图的遍历，即DFS和BFS是完全不用讲这一个点，但是，本着讲（装）透（逼）的原则，还是要简要介绍一下图在计算机中的存储方式，因为在后面的时间复杂度分析中会用到。</p>
+<p>图的存储基本有两种，邻接矩阵（Adjacency Matrix）和邻接表（Adjacency List）。首先来说邻接矩阵，顾名思义，邻接矩阵是一个n*n矩阵，其中n是指图中节点数目，横纵坐标对应相应的节点，对于普通图来说，如果某两个节点中有边相连，则将这两点在邻接矩阵中对应的元素赋值为1，反之则为0；对于加权图来说，如果某两点间有边相连，则将邻接矩阵中对应的元素赋值为该权值，反之则为＋Infinity。</p>
+<p>邻接矩阵在处理密集图比较好，但是对于稀疏图来说就会存在空间利用率不足的弊端，这就要用到邻接表。邻接表是一种数组与链表相对结合的方式，数组中存放的是图中所有的节点（node），然后每个node又是一个链表的头节点，每个链表中的节点是图中所有与改链表头节点相邻的节点，如果是有向图，则是由头节点指向的节点。可见，邻接表的空间复杂度是和图中节点数和边数成正比的，不像邻接矩阵中的n*n是固定的，所以在处理稀疏图时首选邻接表。</p>
+<p>总结一下，图的两种存储的空间复杂度分别为（图中有n个节点，m条边）：</p>
+<p>邻接矩阵：O(n * n)</p>
+<p>邻接表：O(m + n)</p>
+<h2 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h2><h3 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h3><p>图的遍历分为深度优先（DFS）和广度优先（BFS）。首先来讲广度优先，广度优先是一层一层的遍历图，由于本篇重在分析，所以略过具体的过程描述，伪代码如下。</p>
+<p><pre class="lang:default decode:true ">set start vertex to visited</pre></p>
+<p>load it into queue</p>
+<pre><code>while queue not empty
+
+    for each edge incident to vertex
+
+         if its not visited
+
+             load into queue
+
+             mark vertex&lt;/pre&gt;
+</code></pre><p>现在我们来分析一下它的时间复杂度，简单起见，我们假设图是用邻接表存储的。假设用集合{v1, v2, v3, …, vn}来表示途中的n个节点，则执行时间可以简单描述为：</p>
+<p>v1 + (从v1出去的边数) ＋ v2 ＋ (从v2出去的边数) ＋ v3 ＋ … ＋ vn ＋ (从vn出去的边数)</p>
+<p>变换为：</p>
+<p>(v1 + v2 + … + vn) + {(从v1出去的边数) + (从v2出去的边数) + … + (从vn出去的边数) }</p>
+<p>前一部分是O(n)，后一部分是O(m)，所以，综上，用邻接表存储的图的BFS时间复杂度是O(m + n)。</p>
+<h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3><p>深度优先，深度优先就是一条路走到底，然后再走另外一条。同样略过具体实现细节，类比于BFS，DFS也是将所有点和边都走一边，只不过点边的访问顺序不一样，所以，时间复杂度同样为O(m + n)。</p>
+<h3 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h3><p>这不同于上文所说的图的存储的空间复杂度，而是图在遍历过程中额外的空间开销。在图的遍历中，为了避免因为图中有环而对同一点重复访问造成死循环，所以引入一个矩阵，来标志某点是否已经被访问，该矩阵长度为n，所以DFS和BFS的空间复杂度就为O(n)。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://stackoverflow.com/questions/11468621/why-is-the-time-complexity-of-both-dfs-and-bfs-o-v-e" target="_blank" rel="external">http://stackoverflow.com/questions/11468621/why-is-the-time-complexity-of-both-dfs-and-bfs-o-v-e</a></p>
+<p><a href="http://stackoverflow.com/questions/9844193/what-is-the-time-and-space-complexity-of-a-breadth-first-and-depth-first-tree-tr" target="_blank" rel="external">http://stackoverflow.com/questions/9844193/what-is-the-time-and-space-complexity-of-a-breadth-first-and-depth-first-tree-tr</a></p>
 
       
     </div>
@@ -251,9 +273,18 @@ Quick">
     
 <nav id="article-nav">
   
+    <a href="/2016/02/20/system-design/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          System Design
+        
+      </div>
+    </a>
   
-    <a href="/2016/03/24/导航控制器/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">导航控制器</div>
+  
+    <a href="/2016/02/18/Java中ArrayList排序/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java中ArrayList排序</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -288,7 +319,7 @@ Quick">
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="hello-world" data-title="Hello World" data-url="http://yoursite.com/2016/04/09/hello-world/"></div>
+	<div class="ds-thread" data-thread-key="图的遍历分析" data-title="图的遍历分析" data-url="http://yoursite.com/2016/02/19/图的遍历分析/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

@@ -4,21 +4,27 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Hello World | Hexo</title>
+  <title>通过NodeJS和MongoDB创建RESTful API | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+  <meta name="description" content="RESTful API简介RESTful 是 Representational State Transfer 的缩写，同MVC模式的属性差不多，它们都不是一种标准，而只是一种设计风格，提供一些约束条件和设计原则。本文着重讨论其部署和实现，故略过其介绍。
+环境配置本文平台是Amazon AWS Ubuntu平台。
+NodeJS先安装nvm:
+curl -o- https://raw.githubus">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2016/04/09/hello-world/index.html">
+<meta property="og:title" content="通过NodeJS和MongoDB创建RESTful API">
+<meta property="og:url" content="http://yoursite.com/2016/03/16/通过NodeJS和MongoDB创建RESTful-API/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-04-10T03:47:03.000Z">
+<meta property="og:description" content="RESTful API简介RESTful 是 Representational State Transfer 的缩写，同MVC模式的属性差不多，它们都不是一种标准，而只是一种设计风格，提供一些约束条件和设计原则。本文着重讨论其部署和实现，故略过其介绍。
+环境配置本文平台是Amazon AWS Ubuntu平台。
+NodeJS先安装nvm:
+curl -o- https://raw.githubus">
+<meta property="og:updated_time" content="2016-04-11T23:31:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="通过NodeJS和MongoDB创建RESTful API">
+<meta name="twitter:description" content="RESTful API简介RESTful 是 Representational State Transfer 的缩写，同MVC模式的属性差不多，它们都不是一种标准，而只是一种设计风格，提供一些约束条件和设计原则。本文着重讨论其部署和实现，故略过其介绍。
+环境配置本文平台是Amazon AWS Ubuntu平台。
+NodeJS先安装nvm:
+curl -o- https://raw.githubus">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -200,11 +206,11 @@ Quick">
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-通过NodeJS和MongoDB创建RESTful-API" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/04/09/hello-world/" class="article-date">
-  	<time datetime="2016-04-10T03:47:03.000Z" itemprop="datePublished">2016-04-09</time>
+      <a href="/2016/03/16/通过NodeJS和MongoDB创建RESTful-API/" class="article-date">
+  	<time datetime="2016-03-16T20:46:28.000Z" itemprop="datePublished">2016-03-16</time>
 </a>
     </div>
   
@@ -217,7 +223,7 @@ Quick">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      通过NodeJS和MongoDB创建RESTful API
     </h1>
   
 
@@ -226,6 +232,10 @@ Quick">
       <div class="article-info article-info-post">
         
         
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/general-tech/">general tech</a>
+	</div>
+
 
         <div class="clearfix"></div>
       </div>
@@ -233,15 +243,29 @@ Quick">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h2 id="RESTful-API简介"><a href="#RESTful-API简介" class="headerlink" title="RESTful API简介"></a>RESTful API简介</h2><p>RESTful 是 Representational State Transfer 的缩写，同MVC模式的属性差不多，它们都不是一种标准，而只是一种设计风格，提供一些约束条件和设计原则。本文着重讨论其部署和实现，故略过其介绍。</p>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>本文平台是Amazon AWS Ubuntu平台。</p>
+<h4 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h4><p>先安装<span style="color: #3366ff;"><a href="https://github.com/creationix/nvm" target="_blank" rel="external">nvm</a>:</span></p>
+<pre class="lang:default decode:true">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash</pre>
+重启终端后执行下面指令安装node:
+<pre class="lang:default decode:true ">nvm install node</pre>
+检查node 和 npm(node package manager) 版本
+<pre class="lang:default decode:true ">node -v
+npm -v</pre>
+
+<h4 id="ExpressJS"><a href="#ExpressJS" class="headerlink" title="ExpressJS"></a>ExpressJS</h4><pre class="lang:default decode:true ">npm install -g express</pre>
+参数 －g 主要作用是在系统全局安装express，而且将其安装到PATH，所有它在系统里面的任何地方都可以运行了。
+
+检查版本：
+<pre class="lang:default decode:true ">express -v</pre>
+
+<h4 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h4><p><pre class="lang:default decode:true">sudo apt-get -y install mongodb</pre><br>检查版本：</p>
+<p><pre class="lang:default decode:true ">mongod –version</pre><br>（未完）</p>
+<p>&nbsp;</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://adrianmejia.com/blog/2014/10/01/creating-a-restful-api-tutorial-with-nodejs-and-mongodb/" target="_blank" rel="external">http://adrianmejia.com/blog/2014/10/01/creating-a-restful-api-tutorial-with-nodejs-and-mongodb/</a></p>
+<p><a href="https://docs.npmjs.com/files/package.json" target="_blank" rel="external">https://docs.npmjs.com/files/package.json</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 
       
     </div>
@@ -251,9 +275,18 @@ Quick">
     
 <nav id="article-nav">
   
+    <a href="/2016/03/21/IOS开发中的四大对象及程序启动过程混讲/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          IOS开发中的四大对象及程序启动过程混讲
+        
+      </div>
+    </a>
   
-    <a href="/2016/03/24/导航控制器/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">导航控制器</div>
+  
+    <a href="/2016/03/16/MongoDB开发笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MongoDB开发笔记</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -288,7 +321,7 @@ Quick">
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="hello-world" data-title="Hello World" data-url="http://yoursite.com/2016/04/09/hello-world/"></div>
+	<div class="ds-thread" data-thread-key="通过NodeJS和MongoDB创建RESTful-API" data-title="通过NodeJS和MongoDB创建RESTful API" data-url="http://yoursite.com/2016/03/16/通过NodeJS和MongoDB创建RESTful-API/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

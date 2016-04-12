@@ -4,17 +4,27 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Archives: 2016/4 | Hexo</title>
+  <title>Sprite Kit学习笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2016/04/index.html">
+  <meta name="description" content="最近在学Sprite Kit，它是Apple原生的2D游戏开发库，下面简要列一下学习中的一些要点。
+音频延迟处理在游戏中，如果要给action加上音效，一般会用如下代码实现。
+self.runAction(SKAction.playSoundFileNamed(&quot;hit.wav&quot;, waitForCompletion: true))
+但是该方法有一个缺陷，就是如果对音频实时性要求很高，比如一些碰撞">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sprite Kit学习笔记">
+<meta property="og:url" content="http://yoursite.com/2016/03/13/Sprite-Kit学习笔记/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description">
+<meta property="og:description" content="最近在学Sprite Kit，它是Apple原生的2D游戏开发库，下面简要列一下学习中的一些要点。
+音频延迟处理在游戏中，如果要给action加上音效，一般会用如下代码实现。
+self.runAction(SKAction.playSoundFileNamed(&quot;hit.wav&quot;, waitForCompletion: true))
+但是该方法有一个缺陷，就是如果对音频实时性要求很高，比如一些碰撞">
+<meta property="og:updated_time" content="2016-04-11T23:44:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Sprite Kit学习笔记">
+<meta name="twitter:description" content="最近在学Sprite Kit，它是Apple原生的2D游戏开发库，下面简要列一下学习中的一些要点。
+音频延迟处理在游戏中，如果要给action加上音效，一般会用如下代码实现。
+self.runAction(SKAction.playSoundFileNamed(&quot;hit.wav&quot;, waitForCompletion: true))
+但是该方法有一个缺陷，就是如果对音频实时性要求很高，比如一些碰撞">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -196,49 +206,133 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-Sprite-Kit学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/09/hello-world/" class="archive-article-date">
-  	<time datetime="2016-04-10T03:47:03.000Z" itemprop="datePublished">Apr 9</time>
+    <div class="article-meta">
+      <a href="/2016/03/13/Sprite-Kit学习笔记/" class="article-date">
+  	<time datetime="2016-03-13T17:14:47.000Z" itemprop="datePublished">2016-03-13</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/09/hello-world/">Hello World</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Sprite Kit学习笔记
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/IOS/">IOS</a>
+	</div>
 
-        </div>
+
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在学Sprite Kit，它是Apple原生的2D游戏开发库，下面简要列一下学习中的一些要点。</p>
+<h2 id="音频延迟处理"><a href="#音频延迟处理" class="headerlink" title="音频延迟处理"></a>音频延迟处理</h2><p>在游戏中，如果要给action加上音效，一般会用如下代码实现。</p>
+<pre class="lang:swift decode:true ">self.runAction(SKAction.playSoundFileNamed("hit.wav", waitForCompletion: true))</pre>
+但是该方法有一个缺陷，就是如果对音频实时性要求很高，比如一些碰撞声、炮弹发射声音等等，这就需要提前加载改音频到运存，可以用如下方法实现。
+<pre class="lang:swift decode:true ">do {
+            let sounds = ["cannon", "hit"]
+            for sound in sounds {
+                let player = try AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(sound, ofType: "wav")!))
+                player.prepareToPlay()
+            }
+} catch {
+
+}</pre>
+
+<h2 id="创建自定义Frame-Animation"><a href="#创建自定义Frame-Animation" class="headerlink" title="创建自定义Frame Animation"></a>创建自定义Frame Animation</h2><p>通过一组图片可以自定义动画</p>
+<p><pre class="lang:swift decode:true ">func createFrameAnimation() {<br>        var frames : [SKTexture] = []<br>        for var i : Int = 1; i &lt;= 10; i++ {<br>            let tex : SKTexture  = SKTexture(imageNamed: “(i).png”)<br>            frames.append(tex)<br>        }<br>        //run animation<br>        //object.runAction(SKAction.animateWithTextures(frames, timePerFrame:0.03))<br>}</pre><br>&nbsp;</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/16/aws-开发笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          AWS开发笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/11/知乎日报App-UI-Framework/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">知乎日报App UI Framework</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Sprite-Kit学习笔记" data-title="Sprite Kit学习笔记" data-url="http://yoursite.com/2016/03/13/Sprite-Kit学习笔记/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <footer id="footer">
@@ -264,8 +358,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false
