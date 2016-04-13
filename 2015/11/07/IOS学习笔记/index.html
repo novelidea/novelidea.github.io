@@ -4,48 +4,48 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>IOS规范总结 | 邢鹏飞的博客</title>
+  <title>IOS学习笔记（零碎笔记） | 邢鹏飞的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="命名
+  <meta name="description" content="1.block
 
 &amp;nbsp;
-1. 协议及协议方法命名：
-
-协议名称：类名＋Delegate
-协议方法：类名（不包括类前缀）＋方法描述例子：
-
-在一个名叫XPFBlogView（XPF是项目前缀）中定义一个处理该view中一个按钮（like button）点击事件（didClick）的协议，则命名如下：
-@protocol XPFBlogViewDelegate &amp;lt;NSObject&amp;gt;
--(vo">
+block定义：
+(returnType)(^blockName)(parameterTypes) = ^(parameters) {
+statements
+};
+该block类型为：(returnType)(^)()
+定义block快捷键：inline+enter
+定义类型为block的属性语法：
+@property (nonatomic, strong) voi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IOS规范总结">
-<meta property="og:url" content="http://yoursite.com/2015/11/05/IOS规范总结/index.html">
+<meta property="og:title" content="IOS学习笔记（零碎笔记）">
+<meta property="og:url" content="http://yoursite.com/2015/11/07/IOS学习笔记/index.html">
 <meta property="og:site_name" content="邢鹏飞的博客">
-<meta property="og:description" content="命名
+<meta property="og:description" content="1.block
 
 &amp;nbsp;
-1. 协议及协议方法命名：
-
-协议名称：类名＋Delegate
-协议方法：类名（不包括类前缀）＋方法描述例子：
-
-在一个名叫XPFBlogView（XPF是项目前缀）中定义一个处理该view中一个按钮（like button）点击事件（didClick）的协议，则命名如下：
-@protocol XPFBlogViewDelegate &amp;lt;NSObject&amp;gt;
--(vo">
-<meta property="og:updated_time" content="2016-04-11T23:39:28.000Z">
+block定义：
+(returnType)(^blockName)(parameterTypes) = ^(parameters) {
+statements
+};
+该block类型为：(returnType)(^)()
+定义block快捷键：inline+enter
+定义类型为block的属性语法：
+@property (nonatomic, strong) voi">
+<meta property="og:updated_time" content="2016-04-13T07:53:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IOS规范总结">
-<meta name="twitter:description" content="命名
+<meta name="twitter:title" content="IOS学习笔记（零碎笔记）">
+<meta name="twitter:description" content="1.block
 
 &amp;nbsp;
-1. 协议及协议方法命名：
-
-协议名称：类名＋Delegate
-协议方法：类名（不包括类前缀）＋方法描述例子：
-
-在一个名叫XPFBlogView（XPF是项目前缀）中定义一个处理该view中一个按钮（like button）点击事件（didClick）的协议，则命名如下：
-@protocol XPFBlogViewDelegate &amp;lt;NSObject&amp;gt;
--(vo">
+block定义：
+(returnType)(^blockName)(parameterTypes) = ^(parameters) {
+statements
+};
+该block类型为：(returnType)(^)()
+定义block快捷键：inline+enter
+定义类型为block的属性语法：
+@property (nonatomic, strong) voi">
   
     <link rel="alternative" href="/atom.xml" title="邢鹏飞的博客" type="application/atom+xml">
   
@@ -201,11 +201,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-IOS规范总结" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-IOS学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/11/05/IOS规范总结/" class="article-date">
-  	<time datetime="2015-11-06T05:10:10.000Z" itemprop="datePublished">2015-11-05</time>
+      <a href="/2015/11/07/IOS学习笔记/" class="article-date">
+  	<time datetime="2015-11-07T18:48:48.000Z" itemprop="datePublished">2015-11-07</time>
 </a>
     </div>
   
@@ -218,7 +218,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      IOS规范总结
+      IOS学习笔记（零碎笔记）
     </h1>
   
 
@@ -226,11 +226,11 @@
       
       <div class="article-info article-info-post">
         
-        
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/IOS/">IOS</a>
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li></ul>
 	</div>
 
+        
 
         <div class="clearfix"></div>
       </div>
@@ -238,18 +238,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>命名</strong></p>
+        <p>1.block</p>
 <hr>
 <p>&nbsp;</p>
-<p><strong>1. 协议及协议方法命名：</strong></p>
-<ol>
-<li>协议名称：类名＋Delegate</li>
-<li>协议方法：类名（不包括类前缀）＋方法描述<br>例子：</li>
-</ol>
-<p>在一个名叫XPFBlogView（XPF是项目前缀）中定义一个处理该view中一个按钮（like button）点击事件（didClick）的协议，则命名如下：</p>
-<p>@protocol XPFBlogViewDelegate &lt;NSObject&gt;</p>
-<p>-(void)blogViewDidClickLikeButton:(XPFBlogView *)blogView;</p>
-<p>@end</p>
+<p>block定义：</p>
+<p>(returnType)(^blockName)(parameterTypes) = ^(parameters) {</p>
+<p>statements</p>
+<p>};</p>
+<p>该block类型为：(returnType)(^)()</p>
+<p>定义block快捷键：inline+enter</p>
+<p>定义类型为block的属性语法：</p>
+<p>@property (nonatomic, strong) void(^myBlock)(NSString *str) ;</p>
+<p>注意点1:由于block是c语言的语法，所以在写block参数属性的时候不同于一般oc定义语法；</p>
+<p>注意点2:block名称（myBlock）一定要放在(^)中，不能写成void(^)(NSString *str) myBlock（但是在方法中可以这样定义）;</p>
+<p>&nbsp;</p>
+<p>2.UILabel</p>
+<hr>
+<p>&nbsp;</p>
+<p>若果label多行显示内容，即不限制行数，则要设置</p>
+<p>numberOfLines = 0;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 
       
     </div>
@@ -259,18 +268,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/11/05/IOS开发笔记（代码块篇）/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/11/12/Watch-OS学习笔记/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          IOS开发笔记（代码块篇）
+          WatchOS学习笔记
         
       </div>
     </a>
   
   
-    <a href="/2015/10/26/IOS开发笔记（Bug篇）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">IOS开发笔记（大小坑篇）</div>
+    <a href="/2015/11/05/IOS开发笔记（代码块篇）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">IOS开发笔记（代码块篇）</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -305,7 +314,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="IOS规范总结" data-title="IOS规范总结" data-url="http://yoursite.com/2015/11/05/IOS规范总结/"></div>
+	<div class="ds-thread" data-thread-key="IOS学习笔记" data-title="IOS学习笔记（零碎笔记）" data-url="http://yoursite.com/2015/11/07/IOS学习笔记/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

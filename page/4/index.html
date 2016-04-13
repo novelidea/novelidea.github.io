@@ -54,16 +54,6 @@
 							<div class="ribbon"></div>
 						</div>
 						
-						<div class="icon-wrap icon-link hide" data-idx="2">
-							<div class="loopback_l"></div>
-							<div class="loopback_r"></div>
-						</div>
-						
-						
-						<div class="icon-wrap icon-me hide" data-idx="3">
-							<div class="user"></div>
-							<div class="shoulder"></div>
-						</div>
 						
 					</div>
 					
@@ -74,10 +64,6 @@
 						<li>Menu</li>
 						<li>Tags</li>
 						
-						<li>Links</li>
-						
-						
-						<li>About</li>
 						
 					</ul>
 				</div>
@@ -93,6 +79,12 @@
 							<li><a href="/">主页</a></li>
 				        
 							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/IOS">IOS</a></li>
+				        
+							<li><a href="/tags/Java">Java</a></li>
+				        
+							<li><a href="/tags/算法">算法</a></li>
 				        
 						</ul>
 					</nav>
@@ -114,37 +106,13 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/bloom-filter/" style="font-size: 10px;">bloom filter</a> <a href="/tags/computer-science/" style="font-size: 10px;">computer science</a>
+						<a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a>
 					</div>
 				</section>
 				
 				
 				
-				<section class="switch-part switch-part3">
-					<div id="js-friends">
-					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
-			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
-			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
-			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
-			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
-			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
-			        
-			        </div>
-				</section>
-				
 
-				
-				
-				<section class="switch-part switch-part4">
-				
-					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
-				</section>
 				
 			</div>
 		</div>
@@ -176,6 +144,12 @@
 		        
 					<li><a href="/archives">所有文章</a></li>
 		        
+					<li><a href="/tags/IOS">IOS</a></li>
+		        
+					<li><a href="/tags/Java">Java</a></li>
+		        
+					<li><a href="/tags/算法">算法</a></li>
+		        
 		        <div class="clearfix"></div>
 				</ul>
 			</nav>
@@ -197,6 +171,74 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-IOS规范总结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/05/IOS规范总结/" class="article-date">
+  	<time datetime="2015-11-06T05:10:10.000Z" itemprop="datePublished">2015-11-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/05/IOS规范总结/">IOS规范总结</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>命名</strong></p>
+<hr>
+<p>&nbsp;</p>
+<p><strong>1. 协议及协议方法命名：</strong></p>
+<ol>
+<li>协议名称：类名＋Delegate</li>
+<li>协议方法：类名（不包括类前缀）＋方法描述<br>例子：</li>
+</ol>
+<p>在一个名叫XPFBlogView（XPF是项目前缀）中定义一个处理该view中一个按钮（like button）点击事件（didClick）的协议，则命名如下：</p>
+<p>@protocol XPFBlogViewDelegate &lt;NSObject&gt;</p>
+<p>-(void)blogViewDidClickLikeButton:(XPFBlogView *)blogView;</p>
+<p>@end</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/IOS/">IOS</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-IOS开发笔记（Bug篇）" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -595,14 +637,10 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bloom-filter/">bloom filter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-science/">computer science</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/算法/">算法</a>
-	</div>
-
 
       
       <div class="clearfix"></div>
