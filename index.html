@@ -82,9 +82,15 @@
 				        
 							<li><a href="/tags/IOS">IOS</a></li>
 				        
-							<li><a href="/tags/Java">Java</a></li>
+							<li><a href="/tags/Web">Web</a></li>
 				        
-							<li><a href="/tags/算法">算法</a></li>
+							<li><a href="/tags/Language">语言</a></li>
+				        
+							<li><a href="/tags/Algorithm">算法</a></li>
+				        
+							<li><a href="/tags/System">系统</a></li>
+				        
+							<li><a href="/tags/随笔">随笔</a></li>
 				        
 						</ul>
 					</nav>
@@ -106,7 +112,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a>
+						<a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
 					</div>
 				</section>
 				
@@ -146,9 +152,15 @@
 		        
 					<li><a href="/tags/IOS">IOS</a></li>
 		        
-					<li><a href="/tags/Java">Java</a></li>
+					<li><a href="/tags/Web">Web</a></li>
 		        
-					<li><a href="/tags/算法">算法</a></li>
+					<li><a href="/tags/Language">语言</a></li>
+		        
+					<li><a href="/tags/Algorithm">算法</a></li>
+		        
+					<li><a href="/tags/System">系统</a></li>
+		        
+					<li><a href="/tags/随笔">随笔</a></li>
 		        
 		        <div class="clearfix"></div>
 				</ul>
@@ -295,6 +307,82 @@
 	<a class="article-category-link" href="/categories/IOS/">IOS</a>
 	</div>
 
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-IOS开发中的四大对象及程序启动过程混讲" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/21/IOS开发中的四大对象及程序启动过程混讲/" class="article-date">
+  	<time datetime="2016-03-21T16:43:54.000Z" itemprop="datePublished">2016-03-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/21/IOS开发中的四大对象及程序启动过程混讲/">IOS开发中的四大对象及程序启动过程混讲</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>四大对象即UIApplication, appDelegate, UIWindow, UIViewController，之所以和程序启动过程混讲，是因为程序启动和它们密不可分。<br>UIApplication对象是应用程序的象征，每个App只有一个该对象，并且是单例，且是IOS程序启动创建的第一个对象。可以通过如下方法获得该对象：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[UIApplication sharedApplication]</span><br></pre></td></tr></table></figure></p>
+<p><strong>功能</strong>：可以进行一些应用级别的操作，比如：设置应用程序桌面图标上的消息数目提醒；设置联网指示器的可见性；设置状态栏等等。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">application.applicationIconBadgeNumber = 12;</span><br><span class="line">application.networkActivityIndicatorVisible = YES;</span><br></pre></td></tr></table></figure></p>
+<p>以上是设置消息数目提醒和联网指示，设置状态栏稍显复杂，首先需要配置plist文件，添加View controller-based status bar，并且设置为NO，然后再用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">application.statusBarHidden = YES;</span><br></pre></td></tr></table></figure></p>
+<p>当然，传统设置状态栏的方法比较简单，通过当前控制器进行，如下设置就可以了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (UIStatusBarStyle)preferredStatusBarStyle &#123;</span><br><span class="line">    return UIStatusBarStyleLightContent;</span><br><span class="line">&#125;</span><br><span class="line">- (BOOL)prefersStatusBarHidden &#123;</span><br><span class="line">    return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>application还有其他的一些功能，比如从本程序跳转到safari打开网页，或者拨打电话、发邮件、短信等等。如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    UIButton* openBaidu = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];</span><br><span class="line">    [openBaidu addTarget:self action:@selector(openBaidu) forControlEvents:UIControlEventTouchUpInside];</span><br><span class="line">    openBaidu.backgroundColor = [UIColor redColor];</span><br><span class="line">    [self.view addSubview:openBaidu];</span><br><span class="line">&#125;</span><br><span class="line">- (void)openBaidu &#123;</span><br><span class="line">// open web</span><br><span class="line">    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@&quot;https://google.com&quot;]];</span><br><span class="line">// call phone</span><br><span class="line">//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@&quot;tel:10086&quot;]];</span><br><span class="line">// send message</span><br><span class="line">//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@&quot;sms:10086&quot;]];</span><br><span class="line">// send email</span><br><span class="line">//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@&quot;mailto:1072131128@qq.com&quot;]];</span><br><span class="line">// open other app</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>现在，基本上可以对UIApplication有个初步的认识了，那问题是，既然UIApplication是程序创建的第一个类，<strong>那么这个类是什么时候创建的呢？</strong>要解开这个问题，就必须去了解程序的启动原理。</p>
+<p>点击app，程序启动，首先进入的是main函数，main函数直接执行UIApplicationMain函数，该函数定义如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UIKIT_EXTERN int UIApplicationMain(int argc, char *argv[], NSString * __nullable principalClassName, NSString * __nullable delegateClassName);</span><br></pre></td></tr></table></figure></p>
+<p>前两个参数argc, argv可以忽略，不影响理解，第三个参数必须是UIApplication类或者其子类，工程默认为nil，这是代表默认为UIApplication，即自动创建UIApplication类（就在这里创建第一个UIApplication类）；第四个参数是要创建的delegate类的名字，即根据delegate class name创建一个代理类，将该代理类赋值给UIApplication中的delegate属性。在上面这些都完成后，就建立主运行循环(Main runloop)，进行事件处理，首先处理的事情是delegate的didFinishLaunchApplication方法。这个就是程序启动的基本原理。</p>
+<p>讲完了UIApplication，现在来讲程序的代理，即appDelegate。所有移动操作系统都有一个致命的缺点：app很容易受到打扰，比如一个来电，或者不小心锁屏了，app都会进入后台，甚至被终止。这些需要设置appDelegate来处理。这里我假设读者都是有一定IOS开发经验的，我们可以模拟一下启动程序，点击home键回到桌面，再次启动程序，这三个过程，分别看看都调用了哪些代理函数。</p>
+<p>程序启动:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions; </span><br><span class="line">- (void)applicationDidBecomeActive:(UIApplication *)application;</span><br></pre></td></tr></table></figure></p>
+<p>回到home:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (void)applicationWillResignActive:(UIApplication *)application;</span><br><span class="line">- (void)applicationDidEnterBackground:(UIApplication *)application；</span><br></pre></td></tr></table></figure></p>
+<p>再次回到程序：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (void)applicationWillEnterForeground:(UIApplication *)application;</span><br><span class="line">- (void)applicationDidBecomeActive:(UIApplication *)application；</span><br></pre></td></tr></table></figure></p>
+<p>模拟完了这三个过程，并且track到了过程中先后调用的代理函数基本就可以对代理有个初步的认识了。</p>
+<p>最后，我们来讲一下UIWindow和UIViewController。这里面的关系为：手机屏幕是一个screen，screen上放置UIWindow，然后各种view就放置在UIWidow上面，一层层累加。而UIViewController可以通过设置为window的rootViewController来达到控制监听事件的功能。</p>
+<p>关于UIWindow一方面可以通过storyboard默认创建，然后程序会默认设置rootViewController和相应的view；另一方面也可以通过代码创建，在appDelegate中通过设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];</span><br><span class="line">self.window.backgroundColor = [UIColor whiteColor];</span><br></pre></td></tr></table></figure></p>
+<p>// window 设置为主窗口 并且可见<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self.window makeKeyAndVisible];</span><br></pre></td></tr></table></figure></p>
+<p>另外，把控制器vc的view显示到window上有两种方法。第一种是直接加view，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self.window addSubview: vc.view];</span><br></pre></td></tr></table></figure></p>
+<p>另外一种是加控制器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.window.rootViewController = vc;</span><br></pre></td></tr></table></figure></p>
+<p>一般采用的都是后者。</p>
+<p>PS:如果项目中包含main storyboard，则不需要再在appDelegate中alloc window，这是无用功。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li></ul>
+	</div>
+
+      
 
       
       <div class="clearfix"></div>
@@ -677,11 +765,11 @@
     <div class="article-info article-info-index">
       
       
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/IOS/">IOS</a>
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li></ul>
 	</div>
 
+      
 
       
       <div class="clearfix"></div>
@@ -732,68 +820,6 @@
 <p>初步优化是在程序已开始就进行剪枝，快速判断哪些字符串长度为奇数的case。即加上：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if (s.length() % 2 == 1) return false;</span><br></pre></td></tr></table></figure></p>
 <p>这时候，该程序可以击败54%的程序。</p>
 <p>但是，还可以做的更好，那就是将最可能的情况放在一开始判断，将if-else改成switch-case：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.length() % <span class="number">2</span> == <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        Stack&lt;Character&gt; st = <span class="keyword">new</span> Stack&lt;Character&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i ++) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">'('</span> || c == <span class="string">'&#123;'</span> || c == <span class="string">'['</span>) &#123;</span><br><span class="line">                st.push(c);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (st.isEmpty()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                <span class="keyword">switch</span> (st.pop()) &#123;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">'('</span>: &#123;</span><br><span class="line">                        <span class="keyword">if</span> (c != <span class="string">')'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">'&#123;'</span>: &#123;</span><br><span class="line">                        <span class="keyword">if</span> (c != <span class="string">'&#125;'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">'['</span>: &#123;</span><br><span class="line">                        <span class="keyword">if</span> (c != <span class="string">']'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> st.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/算法/">算法</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-有向图的单源最短路径算法实现" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/28/有向图的单源最短路径算法实现/" class="article-date">
-  	<time datetime="2016-02-29T02:55:16.000Z" itemprop="datePublished">2016-02-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/28/有向图的单源最短路径算法实现/">有向图的单源最短路径算法实现</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="有向图的实现"><a href="#有向图的实现" class="headerlink" title="有向图的实现"></a>有向图的实现</h2><p>首先，我们再来讨论一下图。图是数据结构中相当重要的一部分，与之相关的算法也有很多，但是如果要让你代码实现有向图，相信很多人都会写很长的时间。下面就用Java实现一个Adjacency List存储的有向图。关于图的存储，可以参见<a href="http://pengfeixing.com/2016/02/19/图遍历/" target="_blank" rel="external">这篇博客</a>。</p>
-<p>这里主要定义了三个类，点(Vertex)、边(Edge)、有向图（Digraph）。</p>
-<h3 id="Vetex-Class"><a href="#Vetex-Class" class="headerlink" title="Vetex Class"></a>Vetex Class</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> GraphImplementation;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by novelidea on 2/28/16.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Vertex</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> distance = Integer.MAX_VALUE;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Vertex</span><span class="params">(String id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getId</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getDistance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> distance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDistance</span><span class="params">(<span class="keyword">int</span> dis)</span></span>&#123;</span><br><span class="line">        distance = dis;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Edge-Class"><a href="#Edge-Class" class="headerlink" title="Edge Class"></a>Edge Class</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> GraphImplementation;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by novelidea on 2/28/16.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Edge</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Vertex in;</span><br><span class="line">    <span class="keyword">private</span> Vertex out;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> weight;</span><br><span class="line">    Edge(Vertex i, Vertex o, <span class="keyword">int</span> w)&#123;</span><br><span class="line">        in = i;</span><br><span class="line">        out = o;</span><br><span class="line">        weight = w;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Vertex <span class="title">getIn</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> in;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Vertex <span class="title">getOut</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> out;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getWeight</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> weight;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Vertex <span class="title">getAdjacentVertex</span><span class="params">(Vertex v)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> v.getId().equals(in.getId()) ? out : in;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Directed-Graph-Class"><a href="#Directed-Graph-Class" class="headerlink" title="Directed Graph Class"></a>Directed Graph Class</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> GraphImplementation;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by novelidea on 2/28/16.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Digraph</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> HashMap&lt;Vertex, ArrayList&lt;Edge&gt;&gt; adjacentList = <span class="keyword">new</span> HashMap&lt;Vertex, ArrayList&lt;Edge&gt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addVertex</span><span class="params">(Vertex v)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(adjacentList.containsKey(v)) <span class="keyword">return</span>;</span><br><span class="line">        adjacentList.put(v, <span class="keyword">new</span> ArrayList&lt;&gt;());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(Vertex in, Vertex out, <span class="keyword">int</span> weight)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.addVertex(in);</span><br><span class="line">        <span class="keyword">this</span>.addVertex(out);</span><br><span class="line">        adjacentList.get(in).add(<span class="keyword">new</span> Edge(in, out, weight));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">outDegree</span><span class="params">(Vertex v)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> adjacentList.get(v).size();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> HashMap&lt;Vertex, ArrayList&lt;Edge&gt;&gt; getMap()&#123;</span><br><span class="line">        <span class="keyword">return</span> adjacentList;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;Edge&gt; <span class="title">getAdjacentEdges</span><span class="params">(Vertex v)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> adjacentList.get(v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Dijkstra实现"><a href="#Dijkstra实现" class="headerlink" title="Dijkstra实现"></a>Dijkstra实现</h2><p>实现有向图单源最短路径主要是Dijkstra算法，下面为算法实现。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> GraphImplementation;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by novelidea on 2/28/16.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dijkstra</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Digraph graph;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Dijkstra</span><span class="params">(Digraph g)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(graph == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"the input graph cannot be null"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.graph = g;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VertexComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&amp;<span class="title">lt</span></span>;Vertex&amp;gt; &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Vertex v1, Vertex v2)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> Integer.compare(v1.getDistance(), v2.getDistance());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Set&lt;Vertex&gt; <span class="title">findShortestPath</span><span class="params">(String sourceID)</span></span>&#123;</span><br><span class="line">        Queue&lt;Vertex&gt; queue = <span class="keyword">new</span> PriorityQueue&lt;&gt;(<span class="number">10</span>, <span class="keyword">new</span> VertexComparator());</span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&lt;Vertex, ArrayList&lt;Edge&gt;&gt; e : graph.getMap().entrySet())&#123;</span><br><span class="line">            Vertex v = e.getKey();</span><br><span class="line">            <span class="keyword">if</span>(v.getId().equals(sourceID))&#123;</span><br><span class="line">                v.setDistance(<span class="number">0</span>);</span><br><span class="line">                queue.add(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Set&lt;Vertex&gt; visited = <span class="keyword">new</span> HashSet&lt;Vertex&gt;();</span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty())&#123;</span><br><span class="line">            Vertex src = queue.poll();</span><br><span class="line">            visited.add(src);</span><br><span class="line">            <span class="keyword">for</span>(Edge e : graph.getAdjacentEdges(src))&#123;</span><br><span class="line">                Vertex v = e.getAdjacentVertex(src);</span><br><span class="line">                <span class="keyword">if</span>(! visited.contains(v))&#123;</span><br><span class="line">                    <span class="keyword">int</span> newDistance = src.getDistance() + e.getWeight();</span><br><span class="line">                    <span class="keyword">if</span>(newDistance &amp;lt; v.getDistance())&#123;</span><br><span class="line">                        v.setDistance(newDistance);</span><br><span class="line">                        visited.add(v);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> graph.getMap().keySet();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>

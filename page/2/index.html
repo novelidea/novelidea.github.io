@@ -82,9 +82,15 @@
 				        
 							<li><a href="/tags/IOS">IOS</a></li>
 				        
-							<li><a href="/tags/Java">Java</a></li>
+							<li><a href="/tags/Web">Web</a></li>
 				        
-							<li><a href="/tags/算法">算法</a></li>
+							<li><a href="/tags/Language">语言</a></li>
+				        
+							<li><a href="/tags/Algorithm">算法</a></li>
+				        
+							<li><a href="/tags/System">系统</a></li>
+				        
+							<li><a href="/tags/随笔">随笔</a></li>
 				        
 						</ul>
 					</nav>
@@ -106,7 +112,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a>
+						<a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
 					</div>
 				</section>
 				
@@ -146,9 +152,15 @@
 		        
 					<li><a href="/tags/IOS">IOS</a></li>
 		        
-					<li><a href="/tags/Java">Java</a></li>
+					<li><a href="/tags/Web">Web</a></li>
 		        
-					<li><a href="/tags/算法">算法</a></li>
+					<li><a href="/tags/Language">语言</a></li>
+		        
+					<li><a href="/tags/Algorithm">算法</a></li>
+		        
+					<li><a href="/tags/System">系统</a></li>
+		        
+					<li><a href="/tags/随笔">随笔</a></li>
 		        
 		        <div class="clearfix"></div>
 				</ul>
@@ -171,6 +183,68 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-有向图的单源最短路径算法实现" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/28/有向图的单源最短路径算法实现/" class="article-date">
+  	<time datetime="2016-02-29T02:55:16.000Z" itemprop="datePublished">2016-02-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/28/有向图的单源最短路径算法实现/">有向图的单源最短路径算法实现</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="有向图的实现"><a href="#有向图的实现" class="headerlink" title="有向图的实现"></a>有向图的实现</h2><p>首先，我们再来讨论一下图。图是数据结构中相当重要的一部分，与之相关的算法也有很多，但是如果要让你代码实现有向图，相信很多人都会写很长的时间。下面就用Java实现一个Adjacency List存储的有向图。关于图的存储，可以参见<a href="http://pengfeixing.com/2016/02/19/图遍历/" target="_blank" rel="external">这篇博客</a>。</p>
+<p>这里主要定义了三个类，点(Vertex)、边(Edge)、有向图（Digraph）。</p>
+<h3 id="Vetex-Class"><a href="#Vetex-Class" class="headerlink" title="Vetex Class"></a>Vetex Class</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> GraphImplementation;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by novelidea on 2/28/16.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Vertex</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> distance = Integer.MAX_VALUE;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Vertex</span><span class="params">(String id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getId</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getDistance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> distance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDistance</span><span class="params">(<span class="keyword">int</span> dis)</span></span>&#123;</span><br><span class="line">        distance = dis;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Edge-Class"><a href="#Edge-Class" class="headerlink" title="Edge Class"></a>Edge Class</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> GraphImplementation;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by novelidea on 2/28/16.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Edge</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Vertex in;</span><br><span class="line">    <span class="keyword">private</span> Vertex out;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> weight;</span><br><span class="line">    Edge(Vertex i, Vertex o, <span class="keyword">int</span> w)&#123;</span><br><span class="line">        in = i;</span><br><span class="line">        out = o;</span><br><span class="line">        weight = w;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Vertex <span class="title">getIn</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> in;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Vertex <span class="title">getOut</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> out;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getWeight</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> weight;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Vertex <span class="title">getAdjacentVertex</span><span class="params">(Vertex v)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> v.getId().equals(in.getId()) ? out : in;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Directed-Graph-Class"><a href="#Directed-Graph-Class" class="headerlink" title="Directed Graph Class"></a>Directed Graph Class</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> GraphImplementation;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by novelidea on 2/28/16.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Digraph</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> HashMap&lt;Vertex, ArrayList&lt;Edge&gt;&gt; adjacentList = <span class="keyword">new</span> HashMap&lt;Vertex, ArrayList&lt;Edge&gt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addVertex</span><span class="params">(Vertex v)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(adjacentList.containsKey(v)) <span class="keyword">return</span>;</span><br><span class="line">        adjacentList.put(v, <span class="keyword">new</span> ArrayList&lt;&gt;());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(Vertex in, Vertex out, <span class="keyword">int</span> weight)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.addVertex(in);</span><br><span class="line">        <span class="keyword">this</span>.addVertex(out);</span><br><span class="line">        adjacentList.get(in).add(<span class="keyword">new</span> Edge(in, out, weight));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">outDegree</span><span class="params">(Vertex v)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> adjacentList.get(v).size();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> HashMap&lt;Vertex, ArrayList&lt;Edge&gt;&gt; getMap()&#123;</span><br><span class="line">        <span class="keyword">return</span> adjacentList;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;Edge&gt; <span class="title">getAdjacentEdges</span><span class="params">(Vertex v)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> adjacentList.get(v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Dijkstra实现"><a href="#Dijkstra实现" class="headerlink" title="Dijkstra实现"></a>Dijkstra实现</h2><p>实现有向图单源最短路径主要是Dijkstra算法，下面为算法实现。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> GraphImplementation;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by novelidea on 2/28/16.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dijkstra</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Digraph graph;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Dijkstra</span><span class="params">(Digraph g)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(graph == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"the input graph cannot be null"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.graph = g;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VertexComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&amp;<span class="title">lt</span></span>;Vertex&amp;gt; &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Vertex v1, Vertex v2)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> Integer.compare(v1.getDistance(), v2.getDistance());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Set&lt;Vertex&gt; <span class="title">findShortestPath</span><span class="params">(String sourceID)</span></span>&#123;</span><br><span class="line">        Queue&lt;Vertex&gt; queue = <span class="keyword">new</span> PriorityQueue&lt;&gt;(<span class="number">10</span>, <span class="keyword">new</span> VertexComparator());</span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&lt;Vertex, ArrayList&lt;Edge&gt;&gt; e : graph.getMap().entrySet())&#123;</span><br><span class="line">            Vertex v = e.getKey();</span><br><span class="line">            <span class="keyword">if</span>(v.getId().equals(sourceID))&#123;</span><br><span class="line">                v.setDistance(<span class="number">0</span>);</span><br><span class="line">                queue.add(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Set&lt;Vertex&gt; visited = <span class="keyword">new</span> HashSet&lt;Vertex&gt;();</span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty())&#123;</span><br><span class="line">            Vertex src = queue.poll();</span><br><span class="line">            visited.add(src);</span><br><span class="line">            <span class="keyword">for</span>(Edge e : graph.getAdjacentEdges(src))&#123;</span><br><span class="line">                Vertex v = e.getAdjacentVertex(src);</span><br><span class="line">                <span class="keyword">if</span>(! visited.contains(v))&#123;</span><br><span class="line">                    <span class="keyword">int</span> newDistance = src.getDistance() + e.getWeight();</span><br><span class="line">                    <span class="keyword">if</span>(newDistance &amp;lt; v.getDistance())&#123;</span><br><span class="line">                        v.setDistance(newDistance);</span><br><span class="line">                        visited.add(v);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> graph.getMap().keySet();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/算法/">算法</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-面向对象设计" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -273,11 +347,11 @@ suit = otherCard.suit;
     <div class="article-info article-info-index">
       
       
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/general-tech/">general tech</a>
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
 	</div>
 
+      
 
       
       <div class="clearfix"></div>
@@ -1066,101 +1140,6 @@ else
 	<a class="article-category-link" href="/categories/算法/">算法</a>
 	</div>
 
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-kmpknuth-morris-pratt-algorithm" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/14/kmpknuth-morris-pratt-algorithm/" class="article-date">
-  	<time datetime="2016-02-14T20:29:28.000Z" itemprop="datePublished">2016-02-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/14/kmpknuth-morris-pratt-algorithm/">KMP(Knuth–Morris–Pratt) Algorithm</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>KMP(Knuth-Morris-Pratt)是较为高级的字符串查找算法，是三个人名字的缩写，主要实现判断一个字符串A是否包含另一个字符串B，暴力解法是遍历循环，时间复杂度是O(mn)，其中m，n分别是字符串AB的长度。</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>由于暴力解法中没有充分利用上一次遍历查找失败的有用信息，所以时间复杂度很高，而KMP算法主要就是解决这一问题，主要思路如下：</p>
-<p>字符串1为：ABCDABCEDEAB</p>
-<p>字符串2为：ABCDAB</p>
-<p>暴力遍历解法在匹配到字符串2中E时报告匹配错误，然后重新从字符串1中第一个B的位置重新开始匹配，但是我们发现，下一次匹配开始的位置其实可在字符串1下标为4的位置，所以在每次匹配失败后会存在一次跳跃，来剪掉那些不可能匹配成功的“枝”。根据KMP算法，这个跳跃值是（本次已经匹配的字符串长度 － 此时未匹配字符所对应的partiallyMatchValue）。partiallyMatchValue可通过查找partially Match Table得到，该table是表征的是一个｛字符：整数｝的关系，字符是所有待查找字符串中的字符（这里是字符串2），此table通过如下关系得到：</p>
-<p>假设我们现在要求字符串2中第二个B所对应的整数值，则首先得到在字符串1中以B结尾的字串为：</p>
-<p>字符串3：ABCDAB</p>
-<p>计算改字符串3的所有prefix组合：｛A, AB, ABC, ABCD,ABCDA};</p>
-<p>计算改字符串3的所有postfix组合：{B, AB, DAB, CDAB, BCDAB}.</p>
-<p>然后，字符串3的prefix和postfix交集为{AB}，交集中的长度最大值为2，故partially Match Table中第二个B对应值为2，遍历字符串2可以得到一张长度为字符串2长度的表。</p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p><pre class="theme:classic lang:default decode:true "># include &lt;iostream&gt;</pre></p>
-<p>using namespace std;</p>
-<p>class StringSearch{<br>public:<br>    bool stringSearch(string str, string target){<br>        int* table = partialMatchTable(target);<br>        int matchedNum = 0;<br>        for(int i = 0; i &lt; str.length();){<br>            if(matchedNum == target.length()){<br>                delete[] table;<br>                return true;<br>            }else if(str[i] == target[matchedNum]){<br>                matchedNum ++;<br>                i++;<br>            }else{<br>                i += (matchedNum - table[matchedNum]);<br>                matchedNum = 0;<br>            }<br>        }<br>        delete[] table;<br>        return false;<br>    }</p>
-<pre><code>int* partialMatchTable(string s){
-    int len = s.length();
-    if(len &amp;lt; 1) return NULL;
-    int* table = new int[len];
-    memset(table, 0, len);
-    for(int i = 2; i &amp;lt;= len; i ++){
-        table[i - 1] = longestCommonStrOfPrefixAndPostfix(s.substr(0, i));
-    }
-    return table;
-}
-
-int longestCommonStrOfPrefixAndPostfix(string s){
-    int len = s.length();
-    if(len &amp;lt; 1) return 0;
-    for(int i = 1; i &amp;lt; len; i ++){
-        string prefix = s.substr(0, len - i);
-        string postfix = s.substr(i, len - i);
-        if(prefix == postfix){
-            return prefix.length();
-        }
-    }
-    return 0;
-}
-</code></pre><p>};</p>
-<p>int main() {<br>    StringSearch action = StringSearch();<br>    string s = “abababcdabdab”;<br>    string target = “abcdabd”;<br>    cout&lt;&lt;action.stringSearch(s, target)&lt;&lt;endl;<br>    return 0;<br>}<br><br>&nbsp;</p>
-<p>&nbsp;</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-	</div>
-
-      
 
       
       <div class="clearfix"></div>

@@ -82,9 +82,15 @@
 				        
 							<li><a href="/tags/IOS">IOS</a></li>
 				        
-							<li><a href="/tags/Java">Java</a></li>
+							<li><a href="/tags/Web">Web</a></li>
 				        
-							<li><a href="/tags/算法">算法</a></li>
+							<li><a href="/tags/Language">语言</a></li>
+				        
+							<li><a href="/tags/Algorithm">算法</a></li>
+				        
+							<li><a href="/tags/System">系统</a></li>
+				        
+							<li><a href="/tags/随笔">随笔</a></li>
 				        
 						</ul>
 					</nav>
@@ -106,7 +112,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a>
+						<a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
 					</div>
 				</section>
 				
@@ -146,9 +152,15 @@
 		        
 					<li><a href="/tags/IOS">IOS</a></li>
 		        
-					<li><a href="/tags/Java">Java</a></li>
+					<li><a href="/tags/Web">Web</a></li>
 		        
-					<li><a href="/tags/算法">算法</a></li>
+					<li><a href="/tags/Language">语言</a></li>
+		        
+					<li><a href="/tags/Algorithm">算法</a></li>
+		        
+					<li><a href="/tags/System">系统</a></li>
+		        
+					<li><a href="/tags/随笔">随笔</a></li>
 		        
 		        <div class="clearfix"></div>
 				</ul>
@@ -171,6 +183,144 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-IOS学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/07/IOS学习笔记/" class="article-date">
+  	<time datetime="2015-11-07T18:48:48.000Z" itemprop="datePublished">2015-11-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/07/IOS学习笔记/">IOS学习笔记（零碎笔记）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.block</p>
+<hr>
+<p>&nbsp;</p>
+<p>block定义：</p>
+<p>(returnType)(^blockName)(parameterTypes) = ^(parameters) {</p>
+<p>statements</p>
+<p>};</p>
+<p>该block类型为：(returnType)(^)()</p>
+<p>定义block快捷键：inline+enter</p>
+<p>定义类型为block的属性语法：</p>
+<p>@property (nonatomic, strong) void(^myBlock)(NSString *str) ;</p>
+<p>注意点1:由于block是c语言的语法，所以在写block参数属性的时候不同于一般oc定义语法；</p>
+<p>注意点2:block名称（myBlock）一定要放在(^)中，不能写成void(^)(NSString *str) myBlock（但是在方法中可以这样定义）;</p>
+<p>&nbsp;</p>
+<p>2.UILabel</p>
+<hr>
+<p>&nbsp;</p>
+<p>若果label多行显示内容，即不限制行数，则要设置</p>
+<p>numberOfLines = 0;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-IOS开发笔记（代码块篇）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/05/IOS开发笔记（代码块篇）/" class="article-date">
+  	<time datetime="2015-11-06T05:37:19.000Z" itemprop="datePublished">2015-11-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/05/IOS开发笔记（代码块篇）/">IOS开发笔记（代码块篇）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1. when informing delegation object to run optional delegate method</p>
+<p>在通知代理对象处理optional代理方法的时候需要判断该代理对象是否实现了该optional delgate method，因为如果直接通知代理对象去执行该对象未实现的代理方法，程序会奔溃。代码块如下：</p>
+<p>if([self.delegate respondsToSelector:@selector(blogViewDidClickLikeButton)]){</p>
+<p>[self.delegate blogViewDidClickLikeButton];</p>
+<p>}</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-IOS规范总结" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -217,11 +367,11 @@
     <div class="article-info article-info-index">
       
       
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/IOS/">IOS</a>
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li></ul>
 	</div>
 
+      
 
       
       <div class="clearfix"></div>
@@ -282,11 +432,11 @@
     <div class="article-info article-info-index">
       
       
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/IOS/">IOS</a>
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li></ul>
 	</div>
 
+      
 
       
       <div class="clearfix"></div>
@@ -432,11 +582,11 @@
     <div class="article-info article-info-index">
       
       
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/IOS/">IOS</a>
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li></ul>
 	</div>
 
+      
 
       
       <div class="clearfix"></div>
