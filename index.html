@@ -78,25 +78,13 @@
 						
 							<li><a href="/">主页</a></li>
 				        
-							<li><a href="/archives">所有文章</a></li>
+							<li><a href="/archives">文章</a></li>
 				        
-							<li><a href="/tags/IOS">IOS</a></li>
+							<li><a href="/tags/FullStack">全栈</a></li>
 				        
-							<li><a href="/tags/Web">前端</a></li>
+							<li><a href="/tags/Project">项目</a></li>
 				        
-							<li><a href="/tags/Game">游戏</a></li>
-				        
-							<li><a href="/tags/Language">语言</a></li>
-				        
-							<li><a href="/tags/Algorithm">算法</a></li>
-				        
-							<li><a href="/tags/System">系统</a></li>
-				        
-							<li><a href="/tags/Backend">后端</a></li>
-				        
-							<li><a href="/tags/Tool">工具</a></li>
-				        
-							<li><a href="/tags/随笔">随笔</a></li>
+							<li><a href="/tags/Diary">随笔</a></li>
 				        
 						</ul>
 					</nav>
@@ -118,7 +106,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Algorithm/" style="font-size: 17.5px;">Algorithm</a> <a href="/tags/Backend/" style="font-size: 15px;">Backend</a> <a href="/tags/Game/" style="font-size: 12.5px;">Game</a> <a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/Language/" style="font-size: 12.5px;">Language</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Tool/" style="font-size: 12.5px;">Tool</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+						<a href="/tags/Algorithm/" style="font-size: 17.5px;">Algorithm</a> <a href="/tags/Backend/" style="font-size: 15px;">Backend</a> <a href="/tags/Diary/" style="font-size: 10px;">Diary</a> <a href="/tags/Game/" style="font-size: 12.5px;">Game</a> <a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/Language/" style="font-size: 12.5px;">Language</a> <a href="/tags/SpriteKit/" style="font-size: 10px;">SpriteKit</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Tool/" style="font-size: 10px;">Tool</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a>
 					</div>
 				</section>
 				
@@ -154,25 +142,13 @@
 				
 					<li><a href="/">主页</a></li>
 		        
-					<li><a href="/archives">所有文章</a></li>
+					<li><a href="/archives">文章</a></li>
 		        
-					<li><a href="/tags/IOS">IOS</a></li>
+					<li><a href="/tags/FullStack">全栈</a></li>
 		        
-					<li><a href="/tags/Web">前端</a></li>
+					<li><a href="/tags/Project">项目</a></li>
 		        
-					<li><a href="/tags/Game">游戏</a></li>
-		        
-					<li><a href="/tags/Language">语言</a></li>
-		        
-					<li><a href="/tags/Algorithm">算法</a></li>
-		        
-					<li><a href="/tags/System">系统</a></li>
-		        
-					<li><a href="/tags/Backend">后端</a></li>
-		        
-					<li><a href="/tags/Tool">工具</a></li>
-		        
-					<li><a href="/tags/随笔">随笔</a></li>
+					<li><a href="/tags/Diary">随笔</a></li>
 		        
 		        <div class="clearfix"></div>
 				</ul>
@@ -195,6 +171,79 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-SpriteKit项目总结（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/16/SpriteKit项目总结（一）/" class="article-date">
+  	<time datetime="2016-04-16T20:35:40.000Z" itemprop="datePublished">2016-04-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/16/SpriteKit项目总结（一）/">SpriteKit项目总结（一）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-SpritKit基础概念"><a href="#1-SpritKit基础概念" class="headerlink" title="1. SpritKit基础概念"></a>1. SpritKit基础概念</h2><h3 id="0-0-position"><a href="#0-0-position" class="headerlink" title="(0,0) position"></a>(0,0) position</h3><p>SpriteKit中(0,0)是指屏幕左下角的点，不同于UIKit，是左上角的点。</p>
+<h3 id="Anchor-point"><a href="#Anchor-point" class="headerlink" title="Anchor point"></a>Anchor point</h3><p>如果给SKView加上一个background图片，需要设定改background的position，这里有两种方法。</p>
+<h4 id="直接设置position"><a href="#直接设置position" class="headerlink" title="直接设置position"></a>直接设置position</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> background = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"background1"</span>)</span><br><span class="line">background.position = <span class="type">CGPoint</span>(x: size.width / <span class="number">2</span>, y: size.height / <span class="number">2</span>)</span><br><span class="line">addChild(background)</span><br></pre></td></tr></table></figure>
+<h4 id="通过设置background的anchor-point"><a href="#通过设置background的anchor-point" class="headerlink" title="通过设置background的anchor point"></a>通过设置background的anchor point</h4><p>先将背景图片的anchor point从默认状态的中间(0.5, 0.5)修改为左下角(0,0)，然后在将background的position直接和view的零点重合<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> background = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"background1"</span></span><br><span class="line">background.anchorPoint = <span class="type">CGPoint</span>.zero</span><br><span class="line">background.position = <span class="type">CGPoint</span>.zero</span><br><span class="line">addChild(background)</span><br></pre></td></tr></table></figure></p>
+<h4 id="Rotate"><a href="#Rotate" class="headerlink" title="Rotate"></a>Rotate</h4><p>SpriteKit中的rotate都是以anchor point为参考点的，可通过以下方法旋转background<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background.zRotation = <span class="type">CGFloat</span>(<span class="type">M_PI</span>) / <span class="number">8</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="Size"><a href="#Size" class="headerlink" title="Size"></a>Size</h4><p>获取对象大小<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> mySize = background.size</span><br></pre></td></tr></table></figure></p>
+<h4 id="ignoresSiblingOrder-和-zPosition"><a href="#ignoresSiblingOrder-和-zPosition" class="headerlink" title="ignoresSiblingOrder 和 zPosition"></a>ignoresSiblingOrder 和 zPosition</h4><p>这两个属性所有SKNode的一个可设置属性，其中<code>ignoresSiblingOrder</code>主要是用来判断是否管理node间的parent-children关系，如果该属性设置为true，则<code>zPosition</code>数值相同的node就在同一层，并且是比改数值小的node的children。<br>需要注意的是，如果不小心将background的<code>zPosition</code>和其中的某个node（比如说一只小猫）的<code>zPosition</code>设置为相同的数值（比如说0），那么小猫有可能会被遮挡。所以，为了避免类似的bug产生，可以将永远在最高层（相对于屏幕来说就是最里面）的node的<code>zPosition</code>设置为－1。</p>
+<h4 id="小结：添加sprite到scene的步骤"><a href="#小结：添加sprite到scene的步骤" class="headerlink" title="小结：添加sprite到scene的步骤"></a>小结：添加sprite到scene的步骤</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 生成sprite;</span><br><span class="line">2. 设置position;</span><br><span class="line">3. 设置zPosition(可选)；</span><br><span class="line">4. 将该sprite添加到scene.</span><br></pre></td></tr></table></figure>
+<h2 id="2-Manual-Movement"><a href="#2-Manual-Movement" class="headerlink" title="2. Manual Movement"></a>2. Manual Movement</h2><h3 id="FPS"><a href="#FPS" class="headerlink" title="FPS"></a>FPS</h3><p><code>frame（帧）</code>:每张独立的图片。<br>一般在游戏中，为了使动画看起来平滑连贯，需要每秒播放30 － 60 张图片（frame），这个数值被称为<code>frame rate</code>，又叫做<code>frames per second(FPS)</code>。在用SpriteKit开放过程中，改值默认显示在屏幕的右下角。可以通过如下方法移除改显示<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">skView.showsFPS = <span class="literal">false</span></span><br><span class="line">skView.showsNodeCount = <span class="literal">false</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="update性能优化"><a href="#update性能优化" class="headerlink" title="update性能优化"></a>update性能优化</h3><p>SpriteKit通过<code>update</code>函数来更新frame，一般来说，<code>FPS</code>的极限最大值是60，也就是说大概每16毫秒update一次。但是，在一些情况下<code>update</code>函数可能过于冗长，或者硬件性能达不到<code>FPS</code>的数值，那<code>FPS</code>就会变小，这种情况是我们所不愿意看到的。所以，优秀的程序员会在实现功能的同时对代码运行时候的性能做出优化，主要可以从以下两个方面着手：</p>
+<ol>
+<li><code>优化update函数</code>:尽可能减小update函数的负担，将不必要的处理移除改函数，比如一些算法；</li>
+<li><code>减小node数目</code>：当一些node不再使用时，将这些node移出scene。</li>
+</ol>
+<h3 id="Movement优化"><a href="#Movement优化" class="headerlink" title="Movement优化"></a>Movement优化</h3><p>之前提到Sprite可以每<code>16ms</code>更新一次frame，但是，由于硬件的不稳定性，这个更新间隔五法精准控制，这种不稳定性可以通过以下代码来跟踪。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> zombie = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"zombie1"</span>)</span><br><span class="line"><span class="keyword">var</span> lastUpdateTime : <span class="type">NSTimeInterval</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">var</span> dt : <span class="type">NSTimeInterval</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">update</span><span class="params">(currentTime: NSTimeInterval)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> lastUpdateTime &gt; <span class="number">0</span> &#123;</span><br><span class="line">    	dt = currentTime - lastUpdateTime</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    	dt = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(dt * <span class="number">1000</span>)</span> milliseconds since last update"</span>)</span><br><span class="line">    lastUpdateTime = currentTime</span><br><span class="line">	zombie.position = <span class="type">CGPoint</span>(x: zombie.position.x + <span class="number">8</span>, y: zombie.position.y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这种更新频率的波动带来的后果就是视觉效果的不稳定性。为了解决改问题，我们可以将<code>更新间隔 ＊ 速率</code>作为物体在该update时间段内移动的距离。代码如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> zombieMovePointsPerSec : <span class="type">CGFloat</span> = <span class="number">480.0</span></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">update</span><span class="params">(currentTime: NSTimeInterval)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> lastUpdateTime &gt; <span class="number">0</span> &#123;</span><br><span class="line">    	dt = currentTime - lastUpdateTime</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    	dt = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    lastUpdateTime = currentTime</span><br><span class="line">    moveSprite(zombie, velocity: <span class="type">CGPoint</span>(x: zombieMovePointsPerSec, y: <span class="number">0</span>))</span><br><span class="line">&#125;    </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">moveSprite</span><span class="params">(sprite: SKSpriteNode, velocity: CGPoint)</span></span> &#123;</span><br><span class="line">    <span class="keyword">let</span> amountToMove = <span class="type">CGPoint</span>(</span><br><span class="line">    	x: velocity.x * <span class="type">CGFloat</span>(dt),</span><br><span class="line">        y: velocity.y * <span class="type">CGFloat</span>(dt))    </span><br><span class="line">   	sprite.position = <span class="type">CGPoint</span>(</span><br><span class="line">        x: sprite.position.x + amountToMove.x,</span><br><span class="line">        y: sprite.position.y + amountToMove.y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="处理点击事件"><a href="#处理点击事件" class="headerlink" title="处理点击事件"></a>处理点击事件</h3><p>控制点击事件的参数是<code>userInteractionEnabled</code>，该参数默认是<code>true</code>。为了实现点击，只需要重写<code>touchesBegan(withEvent:)</code>和<code>touchesMoved(withEvent:)</code>函数，<code>touchesEnded(withEvent:)</code>的实现为可选项。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpriteKit/">SpriteKit</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -782,68 +831,6 @@
 	</div>
 
       
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-从判断括号字符串是否有效看代码优化" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/02/从判断括号字符串是否有效看代码优化/" class="article-date">
-  	<time datetime="2016-03-02T23:02:57.000Z" itemprop="datePublished">2016-03-02</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/02/从判断括号字符串是否有效看代码优化/">从有效括号判断代码看代码优化</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>对于一些算法题，想出算法的确很重要，但是将算法转化成代码的过程同样也不可忽视，下面就以一道题目来展示一下代码优化的魅力。</p>
-<p>题目是判断一个字符串是否是有效字符串，其中，有效字符串的定义是括号可以正确匹配，比如”(){}[]”和”({<a href=""></a>})”都是有效的，但是”{}[)”是无效的。利用栈我们可以实现如下代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        Stack&lt;Character&gt; st = <span class="keyword">new</span> Stack&lt;Character&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i ++) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">')'</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(! st.isEmpty() &amp;&amp; st.peek() == <span class="string">'('</span>) &#123;</span><br><span class="line">                    st.pop();</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">'&#125;'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(! st.isEmpty() &amp;&amp; st.peek() == <span class="string">'&#123;'</span>) &#123;</span><br><span class="line">                    st.pop();</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">']'</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(! st.isEmpty() &amp;&amp; st.peek() == <span class="string">'['</span>) &#123;</span><br><span class="line">                    st.pop();</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">'('</span> || c == <span class="string">'&#123;'</span> || c == <span class="string">'['</span>)&#123;</span><br><span class="line">                st.push(c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> st.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>虽然“0 error, 0 bug, pass all cases”， 但是运行时间却只击败了不到13%的程序。</p>
-<p>初步优化是在程序已开始就进行剪枝，快速判断哪些字符串长度为奇数的case。即加上：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if (s.length() % 2 == 1) return false;</span><br></pre></td></tr></table></figure></p>
-<p>这时候，该程序可以击败54%的程序。</p>
-<p>但是，还可以做的更好，那就是将最可能的情况放在一开始判断，将if-else改成switch-case：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.length() % <span class="number">2</span> == <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        Stack&lt;Character&gt; st = <span class="keyword">new</span> Stack&lt;Character&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i ++) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">'('</span> || c == <span class="string">'&#123;'</span> || c == <span class="string">'['</span>) &#123;</span><br><span class="line">                st.push(c);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (st.isEmpty()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                <span class="keyword">switch</span> (st.pop()) &#123;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">'('</span>: &#123;</span><br><span class="line">                        <span class="keyword">if</span> (c != <span class="string">')'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">'&#123;'</span>: &#123;</span><br><span class="line">                        <span class="keyword">if</span> (c != <span class="string">'&#125;'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">'['</span>: &#123;</span><br><span class="line">                        <span class="keyword">if</span> (c != <span class="string">']'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> st.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/算法/">算法</a>
-	</div>
-
 
       
       <div class="clearfix"></div>

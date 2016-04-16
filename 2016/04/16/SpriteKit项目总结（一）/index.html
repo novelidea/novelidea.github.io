@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>SpriteKit项目总结（一） | 邢鹏飞的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. SpritKit基础概念(0,0) positionSpriteKit中(0,0)是指屏幕左下角的点，不同于UIKit，是左上角的点。
+Anchor point如果给SKView加上一个background图片，需要设定改background的position，这里有两种方法。
+直接设置position123let background = SKSpriteNode(imageNamed:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpriteKit项目总结（一）">
+<meta property="og:url" content="http://yoursite.com/2016/04/16/SpriteKit项目总结（一）/index.html">
+<meta property="og:site_name" content="邢鹏飞的博客">
+<meta property="og:description" content="1. SpritKit基础概念(0,0) positionSpriteKit中(0,0)是指屏幕左下角的点，不同于UIKit，是左上角的点。
+Anchor point如果给SKView加上一个background图片，需要设定改background的position，这里有两种方法。
+直接设置position123let background = SKSpriteNode(imageNamed:">
+<meta property="og:updated_time" content="2016-04-16T23:23:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SpriteKit项目总结（一）">
+<meta name="twitter:description" content="1. SpritKit基础概念(0,0) positionSpriteKit中(0,0)是指屏幕左下角的点，不同于UIKit，是左上角的点。
+Anchor point如果给SKView加上一个background图片，需要设定改background的position，这里有两种方法。
+直接设置position123let background = SKSpriteNode(imageNamed:">
+  
+    <link rel="alternative" href="/atom.xml" title="邢鹏飞的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="null" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Pengfei Xing</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">文章</a></li>
+				        
+							<li><a href="/tags/FullStack">全栈</a></li>
+				        
+							<li><a href="/tags/Project">项目</a></li>
+				        
+							<li><a href="/tags/Diary">随笔</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/novelidea" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/2878470034/profile" title="weibo">weibo</a>
+					        
+								<a class="mail" target="_blank" href="/novelidea1992@gmail.com" title="mail">mail</a>
+					        
+								<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/pengfei-xing-65886578" title="linkedin">linkedin</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Algorithm/" style="font-size: 17.5px;">Algorithm</a> <a href="/tags/Backend/" style="font-size: 15px;">Backend</a> <a href="/tags/Diary/" style="font-size: 10px;">Diary</a> <a href="/tags/Game/" style="font-size: 12.5px;">Game</a> <a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/Language/" style="font-size: 12.5px;">Language</a> <a href="/tags/SpriteKit/" style="font-size: 10px;">SpriteKit</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Tool/" style="font-size: 10px;">Tool</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Pengfei Xing</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="null" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Pengfei Xing</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">文章</a></li>
+		        
+					<li><a href="/tags/FullStack">全栈</a></li>
+		        
+					<li><a href="/tags/Project">项目</a></li>
+		        
+					<li><a href="/tags/Diary">随笔</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/novelidea" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/2878470034/profile" title="weibo">weibo</a>
+			        
+						<a class="mail" target="_blank" href="/novelidea1992@gmail.com" title="mail">mail</a>
+			        
+						<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/pengfei-xing-65886578" title="linkedin">linkedin</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-SpriteKit项目总结（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/16/SpriteKit项目总结（一）/" class="article-date">
+  	<time datetime="2016-04-16T20:35:40.000Z" itemprop="datePublished">2016-04-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SpriteKit项目总结（一）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpriteKit/">SpriteKit</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-SpritKit基础概念"><a href="#1-SpritKit基础概念" class="headerlink" title="1. SpritKit基础概念"></a>1. SpritKit基础概念</h2><h3 id="0-0-position"><a href="#0-0-position" class="headerlink" title="(0,0) position"></a>(0,0) position</h3><p>SpriteKit中(0,0)是指屏幕左下角的点，不同于UIKit，是左上角的点。</p>
+<h3 id="Anchor-point"><a href="#Anchor-point" class="headerlink" title="Anchor point"></a>Anchor point</h3><p>如果给SKView加上一个background图片，需要设定改background的position，这里有两种方法。</p>
+<h4 id="直接设置position"><a href="#直接设置position" class="headerlink" title="直接设置position"></a>直接设置position</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> background = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"background1"</span>)</span><br><span class="line">background.position = <span class="type">CGPoint</span>(x: size.width / <span class="number">2</span>, y: size.height / <span class="number">2</span>)</span><br><span class="line">addChild(background)</span><br></pre></td></tr></table></figure>
+<h4 id="通过设置background的anchor-point"><a href="#通过设置background的anchor-point" class="headerlink" title="通过设置background的anchor point"></a>通过设置background的anchor point</h4><p>先将背景图片的anchor point从默认状态的中间(0.5, 0.5)修改为左下角(0,0)，然后在将background的position直接和view的零点重合<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> background = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"background1"</span></span><br><span class="line">background.anchorPoint = <span class="type">CGPoint</span>.zero</span><br><span class="line">background.position = <span class="type">CGPoint</span>.zero</span><br><span class="line">addChild(background)</span><br></pre></td></tr></table></figure></p>
+<h4 id="Rotate"><a href="#Rotate" class="headerlink" title="Rotate"></a>Rotate</h4><p>SpriteKit中的rotate都是以anchor point为参考点的，可通过以下方法旋转background<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background.zRotation = <span class="type">CGFloat</span>(<span class="type">M_PI</span>) / <span class="number">8</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="Size"><a href="#Size" class="headerlink" title="Size"></a>Size</h4><p>获取对象大小<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> mySize = background.size</span><br></pre></td></tr></table></figure></p>
+<h4 id="ignoresSiblingOrder-和-zPosition"><a href="#ignoresSiblingOrder-和-zPosition" class="headerlink" title="ignoresSiblingOrder 和 zPosition"></a>ignoresSiblingOrder 和 zPosition</h4><p>这两个属性所有SKNode的一个可设置属性，其中<code>ignoresSiblingOrder</code>主要是用来判断是否管理node间的parent-children关系，如果该属性设置为true，则<code>zPosition</code>数值相同的node就在同一层，并且是比改数值小的node的children。<br>需要注意的是，如果不小心将background的<code>zPosition</code>和其中的某个node（比如说一只小猫）的<code>zPosition</code>设置为相同的数值（比如说0），那么小猫有可能会被遮挡。所以，为了避免类似的bug产生，可以将永远在最高层（相对于屏幕来说就是最里面）的node的<code>zPosition</code>设置为－1。</p>
+<h4 id="小结：添加sprite到scene的步骤"><a href="#小结：添加sprite到scene的步骤" class="headerlink" title="小结：添加sprite到scene的步骤"></a>小结：添加sprite到scene的步骤</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 生成sprite;</span><br><span class="line">2. 设置position;</span><br><span class="line">3. 设置zPosition(可选)；</span><br><span class="line">4. 将该sprite添加到scene.</span><br></pre></td></tr></table></figure>
+<h2 id="2-Manual-Movement"><a href="#2-Manual-Movement" class="headerlink" title="2. Manual Movement"></a>2. Manual Movement</h2><h3 id="FPS"><a href="#FPS" class="headerlink" title="FPS"></a>FPS</h3><p><code>frame（帧）</code>:每张独立的图片。<br>一般在游戏中，为了使动画看起来平滑连贯，需要每秒播放30 － 60 张图片（frame），这个数值被称为<code>frame rate</code>，又叫做<code>frames per second(FPS)</code>。在用SpriteKit开放过程中，改值默认显示在屏幕的右下角。可以通过如下方法移除改显示<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">skView.showsFPS = <span class="literal">false</span></span><br><span class="line">skView.showsNodeCount = <span class="literal">false</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="update性能优化"><a href="#update性能优化" class="headerlink" title="update性能优化"></a>update性能优化</h3><p>SpriteKit通过<code>update</code>函数来更新frame，一般来说，<code>FPS</code>的极限最大值是60，也就是说大概每16毫秒update一次。但是，在一些情况下<code>update</code>函数可能过于冗长，或者硬件性能达不到<code>FPS</code>的数值，那<code>FPS</code>就会变小，这种情况是我们所不愿意看到的。所以，优秀的程序员会在实现功能的同时对代码运行时候的性能做出优化，主要可以从以下两个方面着手：</p>
+<ol>
+<li><code>优化update函数</code>:尽可能减小update函数的负担，将不必要的处理移除改函数，比如一些算法；</li>
+<li><code>减小node数目</code>：当一些node不再使用时，将这些node移出scene。</li>
+</ol>
+<h3 id="Movement优化"><a href="#Movement优化" class="headerlink" title="Movement优化"></a>Movement优化</h3><p>之前提到Sprite可以每<code>16ms</code>更新一次frame，但是，由于硬件的不稳定性，这个更新间隔五法精准控制，这种不稳定性可以通过以下代码来跟踪。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> zombie = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"zombie1"</span>)</span><br><span class="line"><span class="keyword">var</span> lastUpdateTime : <span class="type">NSTimeInterval</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">var</span> dt : <span class="type">NSTimeInterval</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">update</span><span class="params">(currentTime: NSTimeInterval)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> lastUpdateTime &gt; <span class="number">0</span> &#123;</span><br><span class="line">    	dt = currentTime - lastUpdateTime</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    	dt = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(dt * <span class="number">1000</span>)</span> milliseconds since last update"</span>)</span><br><span class="line">    lastUpdateTime = currentTime</span><br><span class="line">	zombie.position = <span class="type">CGPoint</span>(x: zombie.position.x + <span class="number">8</span>, y: zombie.position.y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这种更新频率的波动带来的后果就是视觉效果的不稳定性。为了解决改问题，我们可以将<code>更新间隔 ＊ 速率</code>作为物体在该update时间段内移动的距离。代码如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> zombieMovePointsPerSec : <span class="type">CGFloat</span> = <span class="number">480.0</span></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">update</span><span class="params">(currentTime: NSTimeInterval)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> lastUpdateTime &gt; <span class="number">0</span> &#123;</span><br><span class="line">    	dt = currentTime - lastUpdateTime</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    	dt = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    lastUpdateTime = currentTime</span><br><span class="line">    moveSprite(zombie, velocity: <span class="type">CGPoint</span>(x: zombieMovePointsPerSec, y: <span class="number">0</span>))</span><br><span class="line">&#125;    </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">moveSprite</span><span class="params">(sprite: SKSpriteNode, velocity: CGPoint)</span></span> &#123;</span><br><span class="line">    <span class="keyword">let</span> amountToMove = <span class="type">CGPoint</span>(</span><br><span class="line">    	x: velocity.x * <span class="type">CGFloat</span>(dt),</span><br><span class="line">        y: velocity.y * <span class="type">CGFloat</span>(dt))    </span><br><span class="line">   	sprite.position = <span class="type">CGPoint</span>(</span><br><span class="line">        x: sprite.position.x + amountToMove.x,</span><br><span class="line">        y: sprite.position.y + amountToMove.y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="处理点击事件"><a href="#处理点击事件" class="headerlink" title="处理点击事件"></a>处理点击事件</h3><p>控制点击事件的参数是<code>userInteractionEnabled</code>，该参数默认是<code>true</code>。为了实现点击，只需要重写<code>touchesBegan(withEvent:)</code>和<code>touchesMoved(withEvent:)</code>函数，<code>touchesEnded(withEvent:)</code>的实现为可选项。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/04/09/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="SpriteKit项目总结（一）" data-title="SpriteKit项目总结（一）" data-url="http://yoursite.com/2016/04/16/SpriteKit项目总结（一）/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Pengfei Xing
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

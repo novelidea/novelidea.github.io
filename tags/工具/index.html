@@ -4,21 +4,17 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>算法小题汇总 | 邢鹏飞的博客</title>
+  <title>Tag: 工具 | 邢鹏飞的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="翻转字符串中的单词
-public String reverseWords(String s){        String[] words = s.split(“ “);        for(int i = 0; i &amp;lt; words.length / 2; i ++){            String tmp = words[i];            words[i] = word">
-<meta property="og:type" content="article">
-<meta property="og:title" content="算法小题汇总">
-<meta property="og:url" content="http://yoursite.com/2016/02/23/算法小题汇总/index.html">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="邢鹏飞的博客">
+<meta property="og:url" content="http://yoursite.com/tags/工具/index.html">
 <meta property="og:site_name" content="邢鹏飞的博客">
-<meta property="og:description" content="翻转字符串中的单词
-public String reverseWords(String s){        String[] words = s.split(“ “);        for(int i = 0; i &amp;lt; words.length / 2; i ++){            String tmp = words[i];            words[i] = word">
-<meta property="og:updated_time" content="2016-04-14T01:53:23.000Z">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="算法小题汇总">
-<meta name="twitter:description" content="翻转字符串中的单词
-public String reverseWords(String s){        String[] words = s.split(“ “);        for(int i = 0; i &amp;lt; words.length / 2; i ++){            String tmp = words[i];            words[i] = word">
+<meta name="twitter:title" content="邢鹏飞的博客">
+<meta name="twitter:description">
   
     <link rel="alternative" href="/atom.xml" title="邢鹏飞的博客" type="application/atom+xml">
   
@@ -174,132 +170,53 @@ public String reverseWords(String s){        String[] words = s.split(“ “); 
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-算法小题汇总" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap">
   
-    <div class="article-meta">
-      <a href="/2016/02/23/算法小题汇总/" class="article-date">
-  	<time datetime="2016-02-23T09:09:21.000Z" itemprop="datePublished">2016-02-23</time>
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2015" class="archive-year">2015</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2015/10/26/Git-Cheat-Sheet/" class="archive-article-date">
+  	<time datetime="2015-10-27T02:39:23.000Z" itemprop="datePublished">Oct 26</time>
 </a>
-    </div>
+        </div>
+    	 
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      算法小题汇总
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2015/10/26/Git-Cheat-Sheet/">git cheat sheet</a>
     </h1>
   
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具/">工具</a></li></ul>
 	</div>
 
-        
+          
 
+        </div>
         <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>翻转字符串中的单词</p>
-<p><pre class="lang:java decode:true ">public String reverseWords(String s){<br>        String[] words = s.split(“ “);<br>        for(int i = 0; i &lt; words.length / 2; i ++){<br>            String tmp = words[i];<br>            words[i] = words[words.length - 1 - i];<br>            words[words.length - 1 - i] = tmp;<br>        }<br>        StringBuilder sb = new StringBuilder();<br>        for(String str : words){<br>            sb.append(str + “ “);<br>        }<br>        String result = sb.toString();<br>        result.trim();<br>        return result;<br>}</pre><br>2Sum</p>
-<p><pre class="lang:java decode:true ">public int[] twoSum(int[] nums, int target) {<br>        int[] defaultResult = {0,0};<br>        if(null == nums) return defaultResult;</pre></p>
-<pre><code>    Map&amp;lt;Integer, Integer&amp;gt; mp = new HashMap&amp;lt;Integer, Integer&amp;gt;();
-    for(int i = 0; i &amp;lt; nums.length; i ++){
-        if(mp.containsKey(target - nums[i]) == true) {
-            int[] result1 = {mp.get(target - nums[i]), i};
-            return result1;
-        }else{
-            mp.put(nums[i], i);
-        }
-    }
-    return defaultResult;
-}&lt;/pre&gt;
-</code></pre><p>&nbsp;</p>
-
-      
-    </div>
-    
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2016/02/25/Java疑难问题/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Java疑难问题
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/02/22/Top-K问题/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">top k问题</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 
-
-<div class="share_jia">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">Share to: &nbsp; </span>
-		<a class="jiathis_button_facebook"></a> 
-    <a class="jiathis_button_twitter"></a>
-    <a class="jiathis_button_plus"></a> 
-    <a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
-
-
-
-
-
-
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="算法小题汇总" data-title="算法小题汇总" data-url="http://yoursite.com/2016/02/23/算法小题汇总/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"true"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-
-
+    
 
 </div>
       <footer id="footer">
@@ -325,9 +242,9 @@ public String reverseWords(String s){        String[] words = s.split(“ “); 
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false
 	}

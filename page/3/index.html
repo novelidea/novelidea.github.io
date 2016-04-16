@@ -78,25 +78,13 @@
 						
 							<li><a href="/">主页</a></li>
 				        
-							<li><a href="/archives">所有文章</a></li>
+							<li><a href="/archives">文章</a></li>
 				        
-							<li><a href="/tags/IOS">IOS</a></li>
+							<li><a href="/tags/FullStack">全栈</a></li>
 				        
-							<li><a href="/tags/Web">前端</a></li>
+							<li><a href="/tags/Project">项目</a></li>
 				        
-							<li><a href="/tags/Game">游戏</a></li>
-				        
-							<li><a href="/tags/Language">语言</a></li>
-				        
-							<li><a href="/tags/Algorithm">算法</a></li>
-				        
-							<li><a href="/tags/System">系统</a></li>
-				        
-							<li><a href="/tags/Backend">后端</a></li>
-				        
-							<li><a href="/tags/Tool">工具</a></li>
-				        
-							<li><a href="/tags/随笔">随笔</a></li>
+							<li><a href="/tags/Diary">随笔</a></li>
 				        
 						</ul>
 					</nav>
@@ -118,7 +106,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Algorithm/" style="font-size: 17.5px;">Algorithm</a> <a href="/tags/Backend/" style="font-size: 15px;">Backend</a> <a href="/tags/Game/" style="font-size: 12.5px;">Game</a> <a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/Language/" style="font-size: 12.5px;">Language</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Tool/" style="font-size: 12.5px;">Tool</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+						<a href="/tags/Algorithm/" style="font-size: 17.5px;">Algorithm</a> <a href="/tags/Backend/" style="font-size: 15px;">Backend</a> <a href="/tags/Diary/" style="font-size: 10px;">Diary</a> <a href="/tags/Game/" style="font-size: 12.5px;">Game</a> <a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/Language/" style="font-size: 12.5px;">Language</a> <a href="/tags/SpriteKit/" style="font-size: 10px;">SpriteKit</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Tool/" style="font-size: 10px;">Tool</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a>
 					</div>
 				</section>
 				
@@ -154,25 +142,13 @@
 				
 					<li><a href="/">主页</a></li>
 		        
-					<li><a href="/archives">所有文章</a></li>
+					<li><a href="/archives">文章</a></li>
 		        
-					<li><a href="/tags/IOS">IOS</a></li>
+					<li><a href="/tags/FullStack">全栈</a></li>
 		        
-					<li><a href="/tags/Web">前端</a></li>
+					<li><a href="/tags/Project">项目</a></li>
 		        
-					<li><a href="/tags/Game">游戏</a></li>
-		        
-					<li><a href="/tags/Language">语言</a></li>
-		        
-					<li><a href="/tags/Algorithm">算法</a></li>
-		        
-					<li><a href="/tags/System">系统</a></li>
-		        
-					<li><a href="/tags/Backend">后端</a></li>
-		        
-					<li><a href="/tags/Tool">工具</a></li>
-		        
-					<li><a href="/tags/随笔">随笔</a></li>
+					<li><a href="/tags/Diary">随笔</a></li>
 		        
 		        <div class="clearfix"></div>
 				</ul>
@@ -195,6 +171,143 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-区间重叠问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/18/区间重叠问题/" class="article-date">
+  	<time datetime="2016-02-18T22:34:02.000Z" itemprop="datePublished">2016-02-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/18/区间重叠问题/">区间重叠问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定n个区间，找出重叠数量最多所对应的点。形象化描述是有4个飞机的schedule:[1,2], [3,4], [2,5], [3,6]，空中最多有多少架飞机。这里答案是3，因为在时刻3和4，空中飞机的数量最多，为3。为了简单起见，有两个假设：</p>
+<p>假设1: 区间起点和终点都是整数；</p>
+<p>假设2:假设同一时刻有一个飞机降落，另外一架飞机起飞，则先降落后起飞。</p>
+<h2 id="暴力解法"><a href="#暴力解法" class="headerlink" title="暴力解法"></a>暴力解法</h2><p>首先想到的是greedy algorithm，进行三层遍历循环。先将所有区间按照起始数值排序，然后依次遍历区间数组，在每次遍历某个区间时，又遍历该区间的每个数值，将该数值和区间数组中的剩下的区间进行比较，看是否重合。该算法在OJ上能通过87%的case，但是当测试集变大之后就会超时。算法实现如下：</p>
+<pre class="lang:java decode:true " title="Brute Force Algorithm Implementation">/**
+ * Definition of Interval:
+ * public classs Interval {
+ *     int start, end;
+ *     Interval(int start, int end) {
+ *         this.start = start;
+ *         this.end = end;
+ *     }
+ */
+
+class Solution {
+    /**
+     * @param intervals: An interval array
+     * @return: Count of airplanes are in the sky.
+     */
+    public int countOfAirplanes(List&lt;Interval&gt; airplanes){
+        if(airplanes.size() == 0) return 0;
+        sortList(airplanes);
+        int maxCount = 1;
+        while (airplanes.size() &gt; 1){
+            Interval head = airplanes.get(0);
+            for (int i = head.start; i &lt; head.end; i++){
+                int count = 1;
+                for (int j = 1; j &lt; airplanes.size(); j++){
+                    Interval time = airplanes.get(j);
+                    if (time.start &lt;= i &amp;&amp; time.end &gt; i){
+                        count++;
+                    } else if (time.end &lt;= i){
+                        airplanes.remove(j);
+                    }
+                }
+                maxCount = Math.max(count, maxCount);
+            }
+            airplanes.remove(0);
+        }
+        return maxCount;
+    }
+    //sort a Interval list by the start point(ascending order)
+    private void sortList(List&lt;Interval&gt; list){
+        for (int i = 0; i &lt; list.size() - 1; i++){
+            for (int j = i + 1; j &lt; list.size(); j++){
+                if (list.get(i).start &gt; list.get(j).start){
+                    Interval tmp = list.get(i);
+                    list.set(i, list.get(j));
+                    list.set(j, tmp);
+                }
+            }
+        }
+    }
+    /*
+    TEST CASE:
+        [1,1]
+        [1,2],[2,3]
+    */
+}</pre>
+
+<h2 id="算法优化"><a href="#算法优化" class="headerlink" title="算法优化"></a>算法优化</h2><p>为了对算法进行进一步的优化，我们可以对问题进行类比，区间重叠问题可以类比为括号最大深度的问题，即求解“()((()))()”中最大的括号深度，答案是3。算法实现如下：</p>
+<p><pre class="lang:java decode:true " title="Algorithm Optimisation">/**</pre></p>
+<ul>
+<li>Definition of Interval:</li>
+<li>public classs Interval {</li>
+<li>int start, end;</li>
+<li>Interval(int start, int end) {</li>
+<li>this.start = start;</li>
+<li>this.end = end;</li>
+<li>}<br>*/<br>class Pair {<br>int time;<br>int isStart;<br>Pair(int time, int isStart) {<br> this.time = time;<br> this.isStart = isStart;<br>}<br>public static Comparator&lt;Pair&gt; PairComparator = new Comparator&lt;Pair&gt;(){<br> public int compare(Pair p1, Pair p2){<pre><code>if (p1.time == p2.time) return p1.isStart - p2.isStart;
+else
+    return p1.time - p2.time;
+</code></pre> }<br>};<br>}<br>class Solution {<br>/**<ul>
+<li>@param intervals: An interval array</li>
+<li>@return: Count of airplanes are in the sky.<br><em>/<br>public int countOfAirplanes(List&lt;Interval&gt; airplanes){<br>List&lt;Pair&gt; list = new ArrayList&lt;&gt;(2 </em> airplanes.size());<br>for (Interval i : airplanes){<br>   list.add(new Pair(i.start, 1));<br>   list.add(new Pair(i.end, 0));<br>}<br>Collections.sort(list, Pair.PairComparator);<br>int count = 0;<br>int ans = 0;<br>for (Pair p : list){<br>   if (p.isStart == 1) {<pre><code>count++;
+</code></pre>   } else {<pre><code>count--;
+</code></pre>   }<br>   ans = Math.max(ans, count);<br>}<br>return ans;<br>}<br>/<em><br>TEST CASE:<br>[1,1]<br>[1,2],[2,3]
+</em>/<br>}<br>由于Java中没有类似C++中的Pair数据类型，所以我们在这边就手写了一个class，用来实现和Pair类似的功能。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-kmpknuth-morris-pratt-algorithm" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -648,7 +761,7 @@ moving forward and backward
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Diary/">Diary</a></li></ul>
 	</div>
 
       
@@ -884,67 +997,6 @@ moving forward and backward
 <p>numberOfLines = 0;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-IOS开发笔记（代码块篇）" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/05/IOS开发笔记（代码块篇）/" class="article-date">
-  	<time datetime="2015-11-06T05:37:19.000Z" itemprop="datePublished">2015-11-05</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/05/IOS开发笔记（代码块篇）/">IOS开发笔记（代码块篇）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1. when informing delegation object to run optional delegate method</p>
-<p>在通知代理对象处理optional代理方法的时候需要判断该代理对象是否实现了该optional delgate method，因为如果直接通知代理对象去执行该对象未实现的代理方法，程序会奔溃。代码块如下：</p>
-<p>if([self.delegate respondsToSelector:@selector(blogViewDidClickLikeButton)]){</p>
-<p>[self.delegate blogViewDidClickLikeButton];</p>
-<p>}</p>
 
       
     </div>
