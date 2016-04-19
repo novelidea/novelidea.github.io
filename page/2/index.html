@@ -62,7 +62,7 @@
 					<div class="tips-arrow"></div>
 					<ul class="tips-inner">
 						<li>Menu</li>
-						<li>Tags</li>
+						<li>Тэги</li>
 						
 						
 					</ul>
@@ -108,7 +108,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Algorithm/" style="font-size: 16.67px;">Algorithm</a> <a href="/tags/Backend/" style="font-size: 13.33px;">Backend</a> <a href="/tags/Diary/" style="font-size: 10px;">Diary</a> <a href="/tags/FullStack/" style="font-size: 15px;">FullStack</a> <a href="/tags/Game/" style="font-size: 10px;">Game</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/IOS/" style="font-size: 18.33px;">IOS</a> <a href="/tags/Java/" style="font-size: 11.67px;">Java</a> <a href="/tags/Mobile/" style="font-size: 20px;">Mobile</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/OOD/" style="font-size: 10px;">OOD</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Scrappy/" style="font-size: 10px;">Scrappy</a> <a href="/tags/SpriteKit/" style="font-size: 13.33px;">SpriteKit</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/WatchOS/" style="font-size: 10px;">WatchOS</a>
+						<a href="/tags/Algorithm/" style="font-size: 16.67px;">Algorithm</a> <a href="/tags/Backend/" style="font-size: 13.33px;">Backend</a> <a href="/tags/Diary/" style="font-size: 10px;">Diary</a> <a href="/tags/FullStack/" style="font-size: 15px;">FullStack</a> <a href="/tags/Game/" style="font-size: 10px;">Game</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/IOS/" style="font-size: 18.33px;">IOS</a> <a href="/tags/Java/" style="font-size: 11.67px;">Java</a> <a href="/tags/Mobile/" style="font-size: 20px;">Mobile</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/OOD/" style="font-size: 10px;">OOD</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Scrappy/" style="font-size: 10px;">Scrappy</a> <a href="/tags/SpriteKit/" style="font-size: 11.67px;">SpriteKit</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/WatchOS/" style="font-size: 10px;">WatchOS</a>
 					</div>
 				</section>
 				
@@ -175,68 +175,6 @@
 </nav>
 
       <div class="body-wrap">
-  
-    <article id="post-从判断括号字符串是否有效看代码优化" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/02/从判断括号字符串是否有效看代码优化/" class="article-date">
-  	<time datetime="2016-03-02T23:02:57.000Z" itemprop="datePublished">2016-03-02</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/02/从判断括号字符串是否有效看代码优化/">从有效括号判断代码看代码优化</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>对于一些算法题，想出算法的确很重要，但是将算法转化成代码的过程同样也不可忽视，下面就以一道题目来展示一下代码优化的魅力。</p>
-<p>题目是判断一个字符串是否是有效字符串，其中，有效字符串的定义是括号可以正确匹配，比如”(){}[]”和”({<a href=""></a>})”都是有效的，但是”{}[)”是无效的。利用栈我们可以实现如下代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        Stack&lt;Character&gt; st = <span class="keyword">new</span> Stack&lt;Character&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i ++) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">')'</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(! st.isEmpty() &amp;&amp; st.peek() == <span class="string">'('</span>) &#123;</span><br><span class="line">                    st.pop();</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">'&#125;'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(! st.isEmpty() &amp;&amp; st.peek() == <span class="string">'&#123;'</span>) &#123;</span><br><span class="line">                    st.pop();</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">']'</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(! st.isEmpty() &amp;&amp; st.peek() == <span class="string">'['</span>) &#123;</span><br><span class="line">                    st.pop();</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">'('</span> || c == <span class="string">'&#123;'</span> || c == <span class="string">'['</span>)&#123;</span><br><span class="line">                st.push(c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> st.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>虽然“0 error, 0 bug, pass all cases”， 但是运行时间却只击败了不到13%的程序。</p>
-<p>初步优化是在程序已开始就进行剪枝，快速判断哪些字符串长度为奇数的case。即加上：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if (s.length() % 2 == 1) return false;</span><br></pre></td></tr></table></figure></p>
-<p>这时候，该程序可以击败54%的程序。</p>
-<p>但是，还可以做的更好，那就是将最可能的情况放在一开始判断，将if-else改成switch-case：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.length() % <span class="number">2</span> == <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        Stack&lt;Character&gt; st = <span class="keyword">new</span> Stack&lt;Character&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i ++) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">'('</span> || c == <span class="string">'&#123;'</span> || c == <span class="string">'['</span>) &#123;</span><br><span class="line">                st.push(c);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (st.isEmpty()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                <span class="keyword">switch</span> (st.pop()) &#123;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">'('</span>: &#123;</span><br><span class="line">                        <span class="keyword">if</span> (c != <span class="string">')'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">'&#123;'</span>: &#123;</span><br><span class="line">                        <span class="keyword">if</span> (c != <span class="string">'&#125;'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">'['</span>: &#123;</span><br><span class="line">                        <span class="keyword">if</span> (c != <span class="string">']'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> st.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Algorithm/">Algorithm</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
   
     <article id="post-有向图的单源最短路径算法实现" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1119,6 +1057,101 @@ else
 </ul>
 </li>
 </ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-kmpknuth-morris-pratt-algorithm" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/14/kmpknuth-morris-pratt-algorithm/" class="article-date">
+  	<time datetime="2016-02-14T20:29:28.000Z" itemprop="datePublished">2016-02-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/14/kmpknuth-morris-pratt-algorithm/">KMP(Knuth–Morris–Pratt) Algorithm</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>KMP(Knuth-Morris-Pratt)是较为高级的字符串查找算法，是三个人名字的缩写，主要实现判断一个字符串A是否包含另一个字符串B，暴力解法是遍历循环，时间复杂度是O(mn)，其中m，n分别是字符串AB的长度。</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>由于暴力解法中没有充分利用上一次遍历查找失败的有用信息，所以时间复杂度很高，而KMP算法主要就是解决这一问题，主要思路如下：</p>
+<p>字符串1为：ABCDABCEDEAB</p>
+<p>字符串2为：ABCDAB</p>
+<p>暴力遍历解法在匹配到字符串2中E时报告匹配错误，然后重新从字符串1中第一个B的位置重新开始匹配，但是我们发现，下一次匹配开始的位置其实可在字符串1下标为4的位置，所以在每次匹配失败后会存在一次跳跃，来剪掉那些不可能匹配成功的“枝”。根据KMP算法，这个跳跃值是（本次已经匹配的字符串长度 － 此时未匹配字符所对应的partiallyMatchValue）。partiallyMatchValue可通过查找partially Match Table得到，该table是表征的是一个｛字符：整数｝的关系，字符是所有待查找字符串中的字符（这里是字符串2），此table通过如下关系得到：</p>
+<p>假设我们现在要求字符串2中第二个B所对应的整数值，则首先得到在字符串1中以B结尾的字串为：</p>
+<p>字符串3：ABCDAB</p>
+<p>计算改字符串3的所有prefix组合：｛A, AB, ABC, ABCD,ABCDA};</p>
+<p>计算改字符串3的所有postfix组合：{B, AB, DAB, CDAB, BCDAB}.</p>
+<p>然后，字符串3的prefix和postfix交集为{AB}，交集中的长度最大值为2，故partially Match Table中第二个B对应值为2，遍历字符串2可以得到一张长度为字符串2长度的表。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p><pre class="theme:classic lang:default decode:true "># include &lt;iostream&gt;</pre></p>
+<p>using namespace std;</p>
+<p>class StringSearch{<br>public:<br>    bool stringSearch(string str, string target){<br>        int* table = partialMatchTable(target);<br>        int matchedNum = 0;<br>        for(int i = 0; i &lt; str.length();){<br>            if(matchedNum == target.length()){<br>                delete[] table;<br>                return true;<br>            }else if(str[i] == target[matchedNum]){<br>                matchedNum ++;<br>                i++;<br>            }else{<br>                i += (matchedNum - table[matchedNum]);<br>                matchedNum = 0;<br>            }<br>        }<br>        delete[] table;<br>        return false;<br>    }</p>
+<pre><code>int* partialMatchTable(string s){
+    int len = s.length();
+    if(len &amp;lt; 1) return NULL;
+    int* table = new int[len];
+    memset(table, 0, len);
+    for(int i = 2; i &amp;lt;= len; i ++){
+        table[i - 1] = longestCommonStrOfPrefixAndPostfix(s.substr(0, i));
+    }
+    return table;
+}
+
+int longestCommonStrOfPrefixAndPostfix(string s){
+    int len = s.length();
+    if(len &amp;lt; 1) return 0;
+    for(int i = 1; i &amp;lt; len; i ++){
+        string prefix = s.substr(0, len - i);
+        string postfix = s.substr(i, len - i);
+        if(prefix == postfix){
+            return prefix.length();
+        }
+    }
+    return 0;
+}
+</code></pre><p>};</p>
+<p>int main() {<br>    StringSearch action = StringSearch();<br>    string s = “abababcdabdab”;<br>    string target = “abcdabd”;<br>    cout&lt;&lt;action.stringSearch(s, target)&lt;&lt;endl;<br>    return 0;<br>}<br><br>&nbsp;</p>
+<p>&nbsp;</p>
 
       
     </div>
