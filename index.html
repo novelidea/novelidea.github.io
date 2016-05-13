@@ -108,7 +108,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Algorithm/" style="font-size: 16.67px;">Algorithm</a> <a href="/tags/Backend/" style="font-size: 13.33px;">Backend</a> <a href="/tags/Diary/" style="font-size: 10px;">Diary</a> <a href="/tags/FullStack/" style="font-size: 15px;">FullStack</a> <a href="/tags/Game/" style="font-size: 10px;">Game</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/IOS/" style="font-size: 18.33px;">IOS</a> <a href="/tags/Java/" style="font-size: 11.67px;">Java</a> <a href="/tags/Mobile/" style="font-size: 20px;">Mobile</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/OOD/" style="font-size: 10px;">OOD</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Scrappy/" style="font-size: 10px;">Scrappy</a> <a href="/tags/SpriteKit/" style="font-size: 11.67px;">SpriteKit</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/WatchOS/" style="font-size: 10px;">WatchOS</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a>
+						<a href="/tags/Algorithm/" style="font-size: 16.67px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Backend/" style="font-size: 13.33px;">Backend</a> <a href="/tags/Diary/" style="font-size: 10px;">Diary</a> <a href="/tags/FullStack/" style="font-size: 15px;">FullStack</a> <a href="/tags/Game/" style="font-size: 10px;">Game</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/IOS/" style="font-size: 18.33px;">IOS</a> <a href="/tags/Java/" style="font-size: 11.67px;">Java</a> <a href="/tags/Mobile/" style="font-size: 20px;">Mobile</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/OOD/" style="font-size: 10px;">OOD</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Scrappy/" style="font-size: 10px;">Scrappy</a> <a href="/tags/SpriteKit/" style="font-size: 11.67px;">SpriteKit</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/WatchOS/" style="font-size: 10px;">WatchOS</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a>
 					</div>
 				</section>
 				
@@ -176,11 +176,135 @@
 
       <div class="body-wrap">
   
+    <article id="post-Android事件处理" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/13/Android事件处理/" class="article-date">
+  	<time datetime="2016-05-13T18:24:44.000Z" itemprop="datePublished">2016-05-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/13/Android事件处理/">Android事件处理</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Button事件处理"><a href="#Button事件处理" class="headerlink" title="Button事件处理"></a>Button事件处理</h2><p>安卓中给Button添加事件处理主要有两种方法。第一种方法是直接在layout中添加button时注册时间处理方法，然后再去java文件中实现该方法；第二种方法是在java文件中通过id获取该button，然后直接添加监听事件方法。</p>
+<h3 id="layout文件中注册时间处理方法"><a href="#layout文件中注册时间处理方法" class="headerlink" title="layout文件中注册时间处理方法"></a>layout文件中注册时间处理方法</h3><p>首先在layout文件中添加button的时候加上时间处理方法名。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;Button</span><br><span class="line">        android:id=<span class="string">"@+id/button"</span></span><br><span class="line">        ...</span><br><span class="line">        android:onClick=<span class="string">"buttonClickHandler"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>然后鼠标放在该注册方法上，按住<code>opt</code> + <code>Enter</code>，弹出需要实现该方法的java文件列表（如果工程中只有一个java文件，则默认该文件），最后在选定的目标文件中实现该方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buttonClickHandler</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">        EditText et = (EditText) findViewById(R.id.nameText);</span><br><span class="line">        String name = et.getText().toString();</span><br><span class="line">        Snackbar.make(coordinatorLayout,</span><br><span class="line">                <span class="string">"Your name is: "</span> + name, Snackbar.LENGTH_LONG)</span><br><span class="line">                .setAction(<span class="string">"Action"</span>, <span class="keyword">null</span>).show();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="直接给按钮添加事件处理方法"><a href="#直接给按钮添加事件处理方法" class="headerlink" title="直接给按钮添加事件处理方法"></a>直接给按钮添加事件处理方法</h3><p>该方法直接通过id获取按钮，然后给按钮添加监听事件方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Button button = (Button) findViewById(R.id.SubmitButton);</span><br><span class="line">        button.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                EditText et = (EditText) findViewById(R.id.nameText);</span><br><span class="line">                String entry = et.getText().toString();</span><br><span class="line">                Snackbar.make(v, <span class="string">"You entered: "</span> + entry, Snackbar.LENGTH_LONG)</span><br><span class="line">                        .setAction(<span class="string">"Action"</span>, <span class="keyword">null</span>).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Android笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/12/Android笔记/" class="article-date">
+  	<time datetime="2016-05-12T18:12:42.000Z" itemprop="datePublished">2016-05-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/12/Android笔记/">Android笔记</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Android-Studio快捷方式"><a href="#Android-Studio快捷方式" class="headerlink" title="Android Studio快捷方式"></a>Android Studio快捷方式</h2><h3 id="reformate-code-in-order-to-make-it-easier-to-read"><a href="#reformate-code-in-order-to-make-it-easier-to-read" class="headerlink" title="reformate code in order to make it easier to read"></a>reformate code in order to make it easier to read</h3><p><code>Mac</code>: cmd + opt + l<br><code>Win</code>: ctr + alt + l</p>
+<h3 id="find-file-in-the-entire-project"><a href="#find-file-in-the-entire-project" class="headerlink" title="find file in the entire project"></a>find file in the entire project</h3><p>double click <code>shift</code></p>
+<h3 id="自动纠错"><a href="#自动纠错" class="headerlink" title="自动纠错"></a>自动纠错</h3><p>opt + Enter</p>
+<h3 id="Refactor"><a href="#Refactor" class="headerlink" title="Refactor"></a>Refactor</h3><p>ctl + shift + R</p>
+<h2 id="Android-Project理解"><a href="#Android-Project理解" class="headerlink" title="Android Project理解"></a>Android Project理解</h2><ol>
+<li>layout加载顺序<br>先是家在<code>xml</code>中的layout设置，然后再加载代码中的layout。</li>
+</ol>
+<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><h3 id="Toast"><a href="#Toast" class="headerlink" title="Toast"></a>Toast</h3><p>Android Studio中输入<code>Toast</code>，然后回车便可出线代码如下代码模板：<br>Toast.makeText(MainActivity.this, “”, Toast.LENGTH_SHORT).show();<br>Toast显示的内容不受程序生命周期影响，即使在toast持续时间范围内关闭程序，toast内容也会显示。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-IOS开发中的四大对象及程序启动过程混讲" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2016/05/07/IOS开发中的四大对象及程序启动过程混讲/" class="article-date">
-  	<time datetime="2016-05-07T11:43:54.000Z" itemprop="datePublished">2016-05-07</time>
+  	<time datetime="2016-05-08T02:43:54.000Z" itemprop="datePublished">2016-05-07</time>
 </a>
     </div>
   
@@ -202,10 +326,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>四大对象即UIApplication, appDelegate, UIWindow, UIViewController，之所以和程序启动过程混讲，是因为程序启动和它们密不可分。<br>UIApplication对象是应用程序的象征，每个App只有一个该对象，并且是单例，且是IOS程序启动创建的第一个对象。可以通过如下方法获得该对象：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[UIApplication sharedApplication]</span><br></pre></td></tr></table></figure></p>
-<p><strong>功能</strong>：可以进行一些应用级别的操作，比如：设置应用程序桌面图标上的消息数目提醒；设置联网指示器的可见性；设置状态栏等等。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">application.applicationIconBadgeNumber = 12;</span><br><span class="line">application.networkActivityIndicatorVisible = YES;</span><br></pre></td></tr></table></figure></p>
-<p>以上是设置消息数目提醒和联网指示，设置状态栏稍显复杂，首先需要配置plist文件，添加View controller-based status bar，并且设置为NO，然后再用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">application.statusBarHidden = YES;</span><br></pre></td></tr></table></figure></p>
-<p>当然，传统设置状态栏的方法比较简单，通过当前控制器进行，如下设置就可以了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (UIStatusBarStyle)preferredStatusBarStyle &#123;</span><br><span class="line">    return UIStatusBarStyleLightContent;</span><br><span class="line">&#125;</span><br><span class="line">- (BOOL)prefersStatusBarHidden &#123;</span><br><span class="line">    return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>IOS中的四大对象即UIApplication, appDelegate, UIWindow, UIViewController，之所以和程序启动过程混讲，是因为程序启动和它们密不可分。<br>UIApplication对象是应用程序的象征，每个App只有一个该对象，即UIApplication是单例，且是IOS程序启动创建的第一个对象,可以通过如下方法获得该对象：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> application = <span class="type">UIApplication</span>.sharedApplication()</span><br></pre></td></tr></table></figure></p>
+<p><strong>功能</strong>：可以进行一些应用级别的操作，比如：设置应用程序桌面图标上的消息数目提醒；设置联网指示器的可见性；设置状态栏等等。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">application.applicationIconBadgeNumber = <span class="number">12</span>;</span><br><span class="line">application.networkActivityIndicatorVisible = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure></p>
+<p>以上是设置消息数目提醒和联网指示，设置状态栏稍显复杂，首先需要配置plist文件，添加View controller-based status bar，并且设置为NO，然后再用<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">application.statusBarHidden = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure></p>
+<p>当然，传统设置状态栏的方法比较简单，通过当前控制器进行，如下设置就可以了。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">preferredStatusBarStyle</span><span class="params">()</span></span> -&gt; <span class="type">UIStatusBarStyle</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">UIStatusBarStyle</span>.<span class="type">LightContent</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">prefersStatusBarHidden</span><span class="params">()</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>application还有其他的一些功能，比如从本程序跳转到safari打开网页，或者拨打电话、发邮件、短信等等。如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    UIButton* openBaidu = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];</span><br><span class="line">    [openBaidu addTarget:self action:@selector(openBaidu) forControlEvents:UIControlEventTouchUpInside];</span><br><span class="line">    openBaidu.backgroundColor = [UIColor redColor];</span><br><span class="line">    [self.view addSubview:openBaidu];</span><br><span class="line">&#125;</span><br><span class="line">- (void)openBaidu &#123;</span><br><span class="line">// open web</span><br><span class="line">    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@&quot;https://google.com&quot;]];</span><br><span class="line">// call phone</span><br><span class="line">//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@&quot;tel:10086&quot;]];</span><br><span class="line">// send message</span><br><span class="line">//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@&quot;sms:10086&quot;]];</span><br><span class="line">// send email</span><br><span class="line">//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@&quot;mailto:1072131128@qq.com&quot;]];</span><br><span class="line">// open other app</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>现在，基本上可以对UIApplication有个初步的认识了，那问题是，既然UIApplication是程序创建的第一个类，<strong>那么这个类是什么时候创建的呢？</strong>要解开这个问题，就必须去了解程序的启动原理。</p>
 <p>点击app，程序启动，首先进入的是main函数，main函数直接执行UIApplicationMain函数，该函数定义如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UIKIT_EXTERN int UIApplicationMain(int argc, char *argv[], NSString * __nullable principalClassName, NSString * __nullable delegateClassName);</span><br></pre></td></tr></table></figure></p>
@@ -256,7 +380,7 @@
   
     <div class="article-meta">
       <a href="/2016/04/20/用户系统设计流程/" class="article-date">
-  	<time datetime="2016-04-20T09:54:30.000Z" itemprop="datePublished">2016-04-20</time>
+  	<time datetime="2016-04-21T00:54:30.000Z" itemprop="datePublished">2016-04-20</time>
 </a>
     </div>
   
@@ -312,7 +436,7 @@
   
     <div class="article-meta">
       <a href="/2016/04/16/SpriteKit项目总结（一）/" class="article-date">
-  	<time datetime="2016-04-16T05:35:40.000Z" itemprop="datePublished">2016-04-16</time>
+  	<time datetime="2016-04-16T20:35:40.000Z" itemprop="datePublished">2016-04-16</time>
 </a>
     </div>
   
@@ -348,7 +472,7 @@
 <li><code>优化update函数</code>:尽可能减小update函数的负担，将不必要的处理移除改函数，比如一些算法；</li>
 <li><code>减小node数目</code>：当一些node不再使用时，将这些node移出scene。</li>
 </ol>
-<h3 id="Movement优化"><a href="#Movement优化" class="headerlink" title="Movement优化"></a>Movement优化</h3><p>之前提到Sprite可以每<code>16ms</code>更新一次frame，但是，由于硬件的不稳定性，这个更新间隔五法精准控制，这种不稳定性可以通过以下代码来跟踪。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> zombie = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"zombie1"</span>)</span><br><span class="line"><span class="keyword">var</span> lastUpdateTime : <span class="type">NSTimeInterval</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">var</span> dt : <span class="type">NSTimeInterval</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">update</span><span class="params">(currentTime: NSTimeInterval)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> lastUpdateTime &gt; <span class="number">0</span> &#123;</span><br><span class="line">    	dt = currentTime - lastUpdateTime</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    	dt = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(dt * <span class="number">1000</span>)</span> milliseconds since last update"</span>)</span><br><span class="line">    lastUpdateTime = currentTime</span><br><span class="line">	zombie.position = <span class="type">CGPoint</span>(x: zombie.position.x + <span class="number">8</span>, y: zombie.position.y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Movement优化"><a href="#Movement优化" class="headerlink" title="Movement优化"></a>Movement优化</h3><p>之前提到Sprite可以每<code>16ms</code>更新一次frame，但是，由于硬件的不稳定性，这个更新间隔五法精准控制，这种不稳定性可以通过以下代码来跟踪。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> zombie = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"zombie1"</span>)</span><br><span class="line"><span class="keyword">var</span> lastUpdateTime : <span class="type">NSTimeInterval</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">var</span> dt : <span class="type">NSTimeInterval</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">update</span><span class="params">(currentTime: NSTimeInterval)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> lastUpdateTime &gt; <span class="number">0</span> &#123;</span><br><span class="line">    	dt = currentTime - lastUpdateTime</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    	dt = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"\(dt * 1000) milliseconds since last update"</span>)</span><br><span class="line">    lastUpdateTime = currentTime</span><br><span class="line">	zombie.position = <span class="type">CGPoint</span>(x: zombie.position.x + <span class="number">8</span>, y: zombie.position.y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这种更新频率的波动带来的后果就是视觉效果的不稳定性。为了解决改问题，我们可以将<code>更新间隔 ＊ 速率</code>作为物体在该update时间段内移动的距离。代码如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> zombieMovePointsPerSec : <span class="type">CGFloat</span> = <span class="number">480.0</span></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">update</span><span class="params">(currentTime: NSTimeInterval)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> lastUpdateTime &gt; <span class="number">0</span> &#123;</span><br><span class="line">    	dt = currentTime - lastUpdateTime</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    	dt = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    lastUpdateTime = currentTime</span><br><span class="line">    moveSprite(zombie, velocity: <span class="type">CGPoint</span>(x: zombieMovePointsPerSec, y: <span class="number">0</span>))</span><br><span class="line">&#125;    </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">moveSprite</span><span class="params">(sprite: SKSpriteNode, velocity: CGPoint)</span></span> &#123;</span><br><span class="line">    <span class="keyword">let</span> amountToMove = <span class="type">CGPoint</span>(</span><br><span class="line">    	x: velocity.x * <span class="type">CGFloat</span>(dt),</span><br><span class="line">        y: velocity.y * <span class="type">CGFloat</span>(dt))    </span><br><span class="line">   	sprite.position = <span class="type">CGPoint</span>(</span><br><span class="line">        x: sprite.position.x + amountToMove.x,</span><br><span class="line">        y: sprite.position.y + amountToMove.y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="处理点击事件"><a href="#处理点击事件" class="headerlink" title="处理点击事件"></a>处理点击事件</h3><p>控制点击事件的参数是<code>userInteractionEnabled</code>，该参数默认是<code>true</code>。为了实现点击，只需要重写<code>touchesBegan(withEvent:)</code>和<code>touchesMoved(withEvent:)</code>函数，<code>touchesEnded(withEvent:)</code>的实现为可选项。</p>
 <h3 id="边界检测（Bounds-Checking）"><a href="#边界检测（Bounds-Checking）" class="headerlink" title="边界检测（Bounds Checking）"></a>边界检测（Bounds Checking）</h3><p>为了防止游戏界面中的物体运动出屏幕，需要进行边界检测，可以如下实现：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">boundsCheckZombie</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">let</span> bottomLeft = <span class="type">CGPointZero</span></span><br><span class="line">    <span class="keyword">let</span> topRight = <span class="type">CGPoint</span>(x: size.width, y: size.height)    </span><br><span class="line">    <span class="keyword">if</span> (zombie.position.x - zombie.size.width / <span class="number">2</span>) &lt;= bottomLeft.x &#123;</span><br><span class="line">    	zombie.position.x = bottomLeft.x + zombie.size.width / <span class="number">2</span></span><br><span class="line">        velocity.x = -velocity.x</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (zombie.position.x + zombie.size.width / <span class="number">2</span>) &gt;= topRight.x &#123;</span><br><span class="line">        zombie.position.x = topRight.x - zombie.size.width / <span class="number">2</span></span><br><span class="line">        velocity.x = -velocity.x</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (zombie.position.y - zombie.size.height / <span class="number">2</span>) &lt;= bottomLeft.y &#123;</span><br><span class="line">        zombie.position.y = bottomLeft.y + zombie.size.height / <span class="number">2</span></span><br><span class="line">        velocity.y = -velocity.y</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (zombie.position.y + zombie.size.height / <span class="number">2</span>) &gt;= topRight.y &#123;</span><br><span class="line">        zombie.position.y = topRight.y - zombie.size.height / <span class="number">2</span></span><br><span class="line">        velocity.y = -velocity.y</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -366,7 +490,7 @@
 <h3 id="Reverse-action"><a href="#Reverse-action" class="headerlink" title="Reverse action"></a>Reverse action</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> reverseMid = actionMidMove.reversedAction()</span><br></pre></td></tr></table></figure>
 <h3 id="Repeat-action"><a href="#Repeat-action" class="headerlink" title="Repeat action"></a>Repeat action</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sequence = <span class="type">SKAction</span>.sequence([</span><br><span class="line">               actionMidMove, logMessage, wait, actionMove,</span><br><span class="line">               reverseMove, logMessage, wait, reverseMid</span><br><span class="line">])</span><br><span class="line"><span class="keyword">let</span> action = <span class="type">SKAction</span>.repeatActionForever(sequence)</span><br><span class="line">enemy.runAction(action)</span><br></pre></td></tr></table></figure>
 <h3 id="Remove-node-from-parent"><a href="#Remove-node-from-parent" class="headerlink" title="Remove node from parent"></a>Remove node from parent</h3><p>正如之前<code>update性能优化</code>中所说，当一个node不再需要时，比如一个导弹从左移到右，直到移除屏幕范围，就需要将改node从parent中移除（这里考虑的时不断新建node，而不是重用node），可以通过以下方法实现：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> actionMove = <span class="type">SKAction</span>.moveToX(-enemy.size.width/<span class="number">2</span>, duration: <span class="number">2.0</span>)</span><br><span class="line"><span class="keyword">let</span> actionRemove = <span class="type">SKAction</span>.removeFromParent()</span><br><span class="line">enemy.runAction(<span class="type">SKAction</span>.sequence([actionMove, actionRemove]))</span><br></pre></td></tr></table></figure></p>
-<h3 id="Animation-Action"><a href="#Animation-Action" class="headerlink" title="Animation Action"></a>Animation Action</h3><p>可以通过一组图片来串联成动态图，模拟任务的动作。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> zombieAnimation: <span class="type">SKAction</span></span><br><span class="line"><span class="keyword">override</span> <span class="keyword">init</span>(size: <span class="type">CGSize</span>) &#123;        </span><br><span class="line">	<span class="keyword">var</span> textures: [<span class="type">SKTexture</span>] = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span>...<span class="number">4</span> &#123;</span><br><span class="line">    	textures.append(<span class="type">SKTexture</span>(imageNamed: <span class="string">"zombie<span class="subst">\(i)</span>"</span>))</span><br><span class="line">    &#125;</span><br><span class="line">    textures.append(textures[<span class="number">2</span>])</span><br><span class="line">    textures.append(textures[<span class="number">1</span>])</span><br><span class="line">    zombieAnimation = <span class="type">SKAction</span>.animateWithTextures(textures,</span><br><span class="line">                                                   timePerFrame: <span class="number">0.1</span>)</span><br><span class="line">    ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Animation-Action"><a href="#Animation-Action" class="headerlink" title="Animation Action"></a>Animation Action</h3><p>可以通过一组图片来串联成动态图，模拟任务的动作。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> zombieAnimation: <span class="type">SKAction</span></span><br><span class="line"><span class="keyword">override</span> <span class="keyword">init</span>(size: <span class="type">CGSize</span>) &#123;        </span><br><span class="line">	<span class="keyword">var</span> textures: [<span class="type">SKTexture</span>] = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span>...<span class="number">4</span> &#123;</span><br><span class="line">    	textures.append(<span class="type">SKTexture</span>(imageNamed: <span class="string">"zombie\(i)"</span>))</span><br><span class="line">    &#125;</span><br><span class="line">    textures.append(textures[<span class="number">2</span>])</span><br><span class="line">    textures.append(textures[<span class="number">1</span>])</span><br><span class="line">    zombieAnimation = <span class="type">SKAction</span>.animateWithTextures(textures,</span><br><span class="line">                                                   timePerFrame: <span class="number">0.1</span>)</span><br><span class="line">    ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="Stop-Animation"><a href="#Stop-Animation" class="headerlink" title="Stop Animation"></a>Stop Animation</h3><p>主要实现功能是当任务走路时调用走动动画，当静止时就停止，主要用到的方法是<code>repeatActionForever</code>，<code>removeActionForKey</code>。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">startZombieAnimation</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> zombie.actionForKey(<span class="string">"animation"</span>) == <span class="literal">nil</span> &#123;</span><br><span class="line">    	zombie.runAction(</span><br><span class="line">        	<span class="type">SKAction</span>.repeatActionForever(zombieAnimation), withKey: <span class="string">"Animation"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">&#125;    </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">stopZombieAnimation</span><span class="params">()</span></span> &#123;</span><br><span class="line">	zombie.removeActionForKey(<span class="string">"Animation"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="Scale"><a href="#Scale" class="headerlink" title="Scale"></a>Scale</h3><p>主要实现物体的缩放功能。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">SKAction</span>.scaleTo(scale, duration)</span><br><span class="line"><span class="type">SKAction</span>.scaleXTo(scale, duration)</span><br><span class="line"><span class="type">SKAction</span>.scaleYTo(scale, duration)</span><br></pre></td></tr></table></figure></p>
 <h3 id="Rotate-action"><a href="#Rotate-action" class="headerlink" title="Rotate action"></a>Rotate action</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat.zRotation = -π / <span class="number">16.0</span></span><br><span class="line"><span class="keyword">let</span> leftWiggle = <span class="type">SKAction</span>.rotateByAngle(π/<span class="number">8.0</span>, duration: <span class="number">0.5</span>)</span><br><span class="line"><span class="keyword">let</span> rightWiggle = leftWiggle.reversedAction()</span><br><span class="line"><span class="keyword">let</span> fullWiggle = <span class="type">SKAction</span>.sequence([leftWiggle, rightWiggle])</span><br><span class="line"><span class="keyword">let</span> wiggleWait = <span class="type">SKAction</span>.repeatAction(fullWiggle, <span class="built_in">count</span>: <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
@@ -409,7 +533,7 @@
   
     <div class="article-meta">
       <a href="/2016/03/24/导航控制器/" class="article-date">
-  	<time datetime="2016-03-24T02:04:22.000Z" itemprop="datePublished">2016-03-24</time>
+  	<time datetime="2016-03-24T17:04:22.000Z" itemprop="datePublished">2016-03-24</time>
 </a>
     </div>
   
@@ -485,7 +609,7 @@
   
     <div class="article-meta">
       <a href="/2016/03/16/通过NodeJS和MongoDB创建RESTful-API/" class="article-date">
-  	<time datetime="2016-03-16T05:46:28.000Z" itemprop="datePublished">2016-03-16</time>
+  	<time datetime="2016-03-16T20:46:28.000Z" itemprop="datePublished">2016-03-16</time>
 </a>
     </div>
   
@@ -554,7 +678,7 @@
   
     <div class="article-meta">
       <a href="/2016/03/16/MongoDB开发笔记/" class="article-date">
-  	<time datetime="2016-03-16T00:59:46.000Z" itemprop="datePublished">2016-03-16</time>
+  	<time datetime="2016-03-16T15:59:46.000Z" itemprop="datePublished">2016-03-16</time>
 </a>
     </div>
   
@@ -614,7 +738,7 @@
   
     <div class="article-meta">
       <a href="/2016/03/16/aws-开发笔记/" class="article-date">
-  	<time datetime="2016-03-16T00:12:27.000Z" itemprop="datePublished">2016-03-16</time>
+  	<time datetime="2016-03-16T15:12:27.000Z" itemprop="datePublished">2016-03-16</time>
 </a>
     </div>
   
@@ -678,7 +802,7 @@
   
     <div class="article-meta">
       <a href="/2016/03/13/Sprite-Kit学习笔记/" class="article-date">
-  	<time datetime="2016-03-13T01:14:47.000Z" itemprop="datePublished">2016-03-13</time>
+  	<time datetime="2016-03-13T17:14:47.000Z" itemprop="datePublished">2016-03-13</time>
 </a>
     </div>
   
@@ -703,7 +827,7 @@
         <p>最近在学Sprite Kit，它是Apple原生的2D游戏开发库，下面简要列一下学习中的一些要点。</p>
 <h2 id="音频延迟处理"><a href="#音频延迟处理" class="headerlink" title="音频延迟处理"></a>音频延迟处理</h2><p>在游戏中，如果要给action加上音效，一般会用如下代码实现。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.runAction(<span class="type">SKAction</span>.playSoundFileNamed(<span class="string">"hit.wav"</span>, waitForCompletion: <span class="literal">true</span>))</span><br></pre></td></tr></table></figure></p>
 <p>但是该方法有一个缺陷，就是如果对音频实时性要求很高，比如一些碰撞声、炮弹发射声音等等，这就需要提前加载改音频到运存，可以用如下方法实现。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">	<span class="keyword">let</span> sounds = [<span class="string">"cannon"</span>, <span class="string">"hit"</span>]</span><br><span class="line">    <span class="keyword">for</span> sound <span class="keyword">in</span> sounds &#123;</span><br><span class="line">    	<span class="keyword">let</span> player = <span class="keyword">try</span> <span class="type">AVAudioPlayer</span>(contentsOfURL: <span class="type">NSURL</span>(fileURLWithPath: 					<span class="type">NSBundle</span>.mainBundle().pathForResource(sound, ofType: <span class="string">"wav"</span>)!))</span><br><span class="line">        player.prepareToPlay()</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="创建自定义Frame-Animation"><a href="#创建自定义Frame-Animation" class="headerlink" title="创建自定义Frame Animation"></a>创建自定义Frame Animation</h2><p>通过一组图片可以自定义动画<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">createFrameAnimation</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> frames : [<span class="type">SKTexture</span>] = []</span><br><span class="line">    <span class="keyword">for</span> <span class="keyword">var</span> i : <span class="type">Int</span> = <span class="number">1</span>; i &amp;lt;= <span class="number">10</span>; i++ &#123;</span><br><span class="line">    	<span class="keyword">let</span> tex : <span class="type">SKTexture</span>  = <span class="type">SKTexture</span>(imageNamed: <span class="string">"<span class="subst">\(i)</span>.png"</span>)</span><br><span class="line">    	frames.append(tex)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//run animation</span></span><br><span class="line">    <span class="comment">//object.runAction(SKAction.animateWithTextures(frames, timePerFrame:0.03))</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="创建自定义Frame-Animation"><a href="#创建自定义Frame-Animation" class="headerlink" title="创建自定义Frame Animation"></a>创建自定义Frame Animation</h2><p>通过一组图片可以自定义动画<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">createFrameAnimation</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> frames : [<span class="type">SKTexture</span>] = []</span><br><span class="line">    <span class="keyword">for</span> <span class="keyword">var</span> i : <span class="type">Int</span> = <span class="number">1</span>; i &amp;lt;= <span class="number">10</span>; i++ &#123;</span><br><span class="line">    	<span class="keyword">let</span> tex : <span class="type">SKTexture</span>  = <span class="type">SKTexture</span>(imageNamed: <span class="string">"\(i).png"</span>)</span><br><span class="line">    	frames.append(tex)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//run animation</span></span><br><span class="line">    <span class="comment">//object.runAction(SKAction.animateWithTextures(frames, timePerFrame:0.03))</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -713,140 +837,6 @@
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpriteKit/">SpriteKit</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-知乎日报App-UI-Framework" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/11/知乎日报App-UI-Framework/" class="article-date">
-  	<time datetime="2016-03-11T11:08:22.000Z" itemprop="datePublished">2016-03-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/11/知乎日报App-UI-Framework/">知乎日报App UI Framework</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近没有项目，所以就打算总结一些设计比较有美感的UI框架，首先就从知乎日报开始吧～虽然网上已经有类似的仿写项目了，但是基本上都还是用Objective-C来实现的，而且用的是storyboard来布局，并不是纯代码，所以，就有了这个项目。</p>
-<p>关键字：知乎日报，UI Framework，<strong>Swift</strong>，<strong>纯代码</strong>。</p>
-<h2 id="效果展示-点击查看动图"><a href="#效果展示-点击查看动图" class="headerlink" title="效果展示(点击查看动图)"></a>效果展示(点击查看动图)</h2><p><a href="http://pengfeixing.com/wp-content/uploads/2016/03/zh-home.gif" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2016/03/zh-home-167x300.gif" alt="home"></a>           <a href="http://pengfeixing.com/wp-content/uploads/2016/03/sidebar.gif" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2016/03/sidebar-165x300.gif" alt="sidebar"></a></p>
-<h2 id="项目架构"><a href="#项目架构" class="headerlink" title="项目架构"></a>项目架构</h2><p>1. 主页</p>
-<p>|－－－1.1 标题栏</p>
-<p>|－－－1.2 图片轮转</p>
-<p>|－－－1.3 Cell</p>
-<p>2. 侧边栏</p>
-<p>|－－－2.1 布局</p>
-<p>|－－－2.2 特效</p>
-<h2 id="实现细节"><a href="#实现细节" class="headerlink" title="实现细节"></a>实现细节</h2><p>（待续）</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-IOS沙盒简介" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/09/IOS沙盒简介/" class="article-date">
-  	<time datetime="2016-03-09T14:30:41.000Z" itemprop="datePublished">2016-03-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/09/IOS沙盒简介/">IOS沙盒简介</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>沙盒（sandbox）实际上是一个文件目录，其下的子目录用于存放不同的数据，本质上沙盒是对应用程序执行不同操作的权限限制。每个程序有一个沙盒。</p>
-<p>默认情况下，一个沙盒下有三个文件：Document, Library, tmp。</p>
-<p><code>Document:</code>  iTunes备份恢复的时候会包括此目录，一般用于存放应用程序产生的或者浏览到的数据；</p>
-<p><code>Library:</code>  存放程序的默认设置和其他设置信息</p>
-<p><code>Library/Cashes:</code> iTunes不会备份此目录，存放缓存文件，但是文件不会在程序退出时删除；</p>
-<p><code>tmp:</code> 存放临时文件</p>
-<h2 id="获取路径方法"><a href="#获取路径方法" class="headerlink" title="获取路径方法"></a>获取路径方法</h2><h3 id="Document-Directory"><a href="#Document-Directory" class="headerlink" title="Document Directory"></a>Document Directory</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> documentPath : <span class="type">String</span> = <span class="type">NSSearchPathForDirectoriesInDomains</span>(.<span class="type">DocumentDirectory</span>, .<span class="type">UserDomainMask</span>, <span class="literal">true</span>)[<span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span>(documentPath)</span><br><span class="line"><span class="comment">// Output</span></span><br><span class="line"><span class="comment">// /Users/novelidea/Library/Developer/CoreSimulator/Devices/EC1FAFD8-3F7A-47F7-B589-78CFBB4343D4/data/Containers/Data/Application/BB25EBEA-D976-49D2-A654-3A5C8AD0E1E6/Documents</span></span><br></pre></td></tr></table></figure>
-<h3 id="Library-Directory"><a href="#Library-Directory" class="headerlink" title="Library Directory"></a>Library Directory</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> libraryPath : <span class="type">String</span> = <span class="type">NSSearchPathForDirectoriesInDomains</span>(.<span class="type">LibraryDirectory</span>, .<span class="type">UserDomainMask</span>, <span class="literal">true</span>)[<span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span>(libraryPath)</span><br><span class="line"><span class="comment">// Output</span></span><br><span class="line"><span class="comment">// /Users/novelidea/Library/Developer/CoreSimulator/Devices/EC1FAFD8-3F7A-47F7-B589-78CFBB4343D4/data/Containers/Data/Application/BB25EBEA-D976-49D2-A654-3A5C8AD0E1E6/Library</span></span><br></pre></td></tr></table></figure>
-<h3 id="tmp-Directory"><a href="#tmp-Directory" class="headerlink" title="tmp Directory"></a>tmp Directory</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> tmpPath : <span class="type">String</span> = <span class="type">NSTemporaryDirectory</span>()</span><br><span class="line"><span class="built_in">print</span>(tmpPath)</span><br><span class="line"><span class="comment">// Output</span></span><br><span class="line"><span class="comment">// /Users/novelidea/Library/Developer/CoreSimulator/Devices/EC1FAFD8-3F7A-47F7-B589-78CFBB4343D4/data/Containers/Data/Application/BB25EBEA-D976-49D2-A654-3A5C8AD0E1E6/tmp/</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li></ul>
 	</div>
 
       

@@ -4,48 +4,21 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>IOS规范总结 | 邢鹏飞的博客</title>
+  <title>Android事件处理 | 邢鹏飞的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="命名
-
-&amp;nbsp;
-1. 协议及协议方法命名：
-
-协议名称：类名＋Delegate
-协议方法：类名（不包括类前缀）＋方法描述例子：
-
-在一个名叫XPFBlogView（XPF是项目前缀）中定义一个处理该view中一个按钮（like button）点击事件（didClick）的协议，则命名如下：
-@protocol XPFBlogViewDelegate &amp;lt;NSObject&amp;gt;
--(vo">
+  <meta name="description" content="Button事件处理安卓中给Button添加事件处理主要有两种方法。第一种方法是直接在layout中添加button时注册时间处理方法，然后再去java文件中实现该方法；第二种方法是在java文件中通过id获取该button，然后直接添加监听事件方法。
+layout文件中注册时间处理方法首先在layout文件中添加button的时候加上时间处理方法名。1234&amp;lt;Button        a">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IOS规范总结">
-<meta property="og:url" content="http://yoursite.com/2015/11/05/IOS规范总结/index.html">
+<meta property="og:title" content="Android事件处理">
+<meta property="og:url" content="http://yoursite.com/2016/05/13/Android事件处理/index.html">
 <meta property="og:site_name" content="邢鹏飞的博客">
-<meta property="og:description" content="命名
-
-&amp;nbsp;
-1. 协议及协议方法命名：
-
-协议名称：类名＋Delegate
-协议方法：类名（不包括类前缀）＋方法描述例子：
-
-在一个名叫XPFBlogView（XPF是项目前缀）中定义一个处理该view中一个按钮（like button）点击事件（didClick）的协议，则命名如下：
-@protocol XPFBlogViewDelegate &amp;lt;NSObject&amp;gt;
--(vo">
-<meta property="og:updated_time" content="2016-04-18T20:34:07.000Z">
+<meta property="og:description" content="Button事件处理安卓中给Button添加事件处理主要有两种方法。第一种方法是直接在layout中添加button时注册时间处理方法，然后再去java文件中实现该方法；第二种方法是在java文件中通过id获取该button，然后直接添加监听事件方法。
+layout文件中注册时间处理方法首先在layout文件中添加button的时候加上时间处理方法名。1234&amp;lt;Button        a">
+<meta property="og:updated_time" content="2016-05-13T22:29:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IOS规范总结">
-<meta name="twitter:description" content="命名
-
-&amp;nbsp;
-1. 协议及协议方法命名：
-
-协议名称：类名＋Delegate
-协议方法：类名（不包括类前缀）＋方法描述例子：
-
-在一个名叫XPFBlogView（XPF是项目前缀）中定义一个处理该view中一个按钮（like button）点击事件（didClick）的协议，则命名如下：
-@protocol XPFBlogViewDelegate &amp;lt;NSObject&amp;gt;
--(vo">
+<meta name="twitter:title" content="Android事件处理">
+<meta name="twitter:description" content="Button事件处理安卓中给Button添加事件处理主要有两种方法。第一种方法是直接在layout中添加button时注册时间处理方法，然后再去java文件中实现该方法；第二种方法是在java文件中通过id获取该button，然后直接添加监听事件方法。
+layout文件中注册时间处理方法首先在layout文件中添加button的时候加上时间处理方法名。1234&amp;lt;Button        a">
   
     <link rel="alternative" href="/atom.xml" title="邢鹏飞的博客" type="application/atom+xml">
   
@@ -205,11 +178,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-IOS规范总结" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Android事件处理" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/11/05/IOS规范总结/" class="article-date">
-  	<time datetime="2015-11-06T05:10:10.000Z" itemprop="datePublished">2015-11-05</time>
+      <a href="/2016/05/13/Android事件处理/" class="article-date">
+  	<time datetime="2016-05-13T18:24:44.000Z" itemprop="datePublished">2016-05-13</time>
 </a>
     </div>
   
@@ -222,7 +195,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      IOS规范总结
+      Android事件处理
     </h1>
   
 
@@ -231,7 +204,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li></ul>
 	</div>
 
         
@@ -242,18 +215,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>命名</strong></p>
-<hr>
-<p>&nbsp;</p>
-<p><strong>1. 协议及协议方法命名：</strong></p>
-<ol>
-<li>协议名称：类名＋Delegate</li>
-<li>协议方法：类名（不包括类前缀）＋方法描述<br>例子：</li>
-</ol>
-<p>在一个名叫XPFBlogView（XPF是项目前缀）中定义一个处理该view中一个按钮（like button）点击事件（didClick）的协议，则命名如下：</p>
-<p>@protocol XPFBlogViewDelegate &lt;NSObject&gt;</p>
-<p>-(void)blogViewDidClickLikeButton:(XPFBlogView *)blogView;</p>
-<p>@end</p>
+        <h2 id="Button事件处理"><a href="#Button事件处理" class="headerlink" title="Button事件处理"></a>Button事件处理</h2><p>安卓中给Button添加事件处理主要有两种方法。第一种方法是直接在layout中添加button时注册时间处理方法，然后再去java文件中实现该方法；第二种方法是在java文件中通过id获取该button，然后直接添加监听事件方法。</p>
+<h3 id="layout文件中注册时间处理方法"><a href="#layout文件中注册时间处理方法" class="headerlink" title="layout文件中注册时间处理方法"></a>layout文件中注册时间处理方法</h3><p>首先在layout文件中添加button的时候加上时间处理方法名。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;Button</span><br><span class="line">        android:id=<span class="string">"@+id/button"</span></span><br><span class="line">        ...</span><br><span class="line">        android:onClick=<span class="string">"buttonClickHandler"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>然后鼠标放在该注册方法上，按住<code>opt</code> + <code>Enter</code>，弹出需要实现该方法的java文件列表（如果工程中只有一个java文件，则默认该文件），最后在选定的目标文件中实现该方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buttonClickHandler</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">        EditText et = (EditText) findViewById(R.id.nameText);</span><br><span class="line">        String name = et.getText().toString();</span><br><span class="line">        Snackbar.make(coordinatorLayout,</span><br><span class="line">                <span class="string">"Your name is: "</span> + name, Snackbar.LENGTH_LONG)</span><br><span class="line">                .setAction(<span class="string">"Action"</span>, <span class="keyword">null</span>).show();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="直接给按钮添加事件处理方法"><a href="#直接给按钮添加事件处理方法" class="headerlink" title="直接给按钮添加事件处理方法"></a>直接给按钮添加事件处理方法</h3><p>该方法直接通过id获取按钮，然后给按钮添加监听事件方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Button button = (Button) findViewById(R.id.SubmitButton);</span><br><span class="line">        button.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                EditText et = (EditText) findViewById(R.id.nameText);</span><br><span class="line">                String entry = et.getText().toString();</span><br><span class="line">                Snackbar.make(v, <span class="string">"You entered: "</span> + entry, Snackbar.LENGTH_LONG)</span><br><span class="line">                        .setAction(<span class="string">"Action"</span>, <span class="keyword">null</span>).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -263,18 +228,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/11/05/IOS开发笔记（代码块篇）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          IOS开发笔记（代码块篇）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/10/26/IOS开发笔记（Bug篇）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">IOS开发笔记（大小坑篇）</div>
+    <a href="/2016/05/12/Android笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android笔记</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -309,7 +265,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="IOS规范总结" data-title="IOS规范总结" data-url="http://yoursite.com/2015/11/05/IOS规范总结/"></div>
+	<div class="ds-thread" data-thread-key="Android事件处理" data-title="Android事件处理" data-url="http://yoursite.com/2016/05/13/Android事件处理/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
