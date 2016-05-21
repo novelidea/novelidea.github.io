@@ -97,8 +97,6 @@
 							
 								<a class="github" target="_blank" href="https://github.com/novelidea" title="github">github</a>
 					        
-								<a class="weibo" target="_blank" href="http://weibo.com/2878470034/profile" title="weibo">weibo</a>
-					        
 								<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/pengfei-xing-65886578" title="linkedin">linkedin</a>
 					        
 						</div>
@@ -163,8 +161,6 @@
 				<div class="social">
 					
 						<a class="github" target="_blank" href="https://github.com/novelidea" title="github">github</a>
-			        
-						<a class="weibo" target="_blank" href="http://weibo.com/2878470034/profile" title="weibo">weibo</a>
 			        
 						<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/pengfei-xing-65886578" title="linkedin">linkedin</a>
 			        
@@ -266,10 +262,20 @@
 <h3 id="find-file-in-the-entire-project"><a href="#find-file-in-the-entire-project" class="headerlink" title="find file in the entire project"></a>find file in the entire project</h3><p>double click <code>shift</code></p>
 <h3 id="自动纠错"><a href="#自动纠错" class="headerlink" title="自动纠错"></a>自动纠错</h3><p>opt + Enter</p>
 <h3 id="Refactor"><a href="#Refactor" class="headerlink" title="Refactor"></a>Refactor</h3><p>ctl + shift + R</p>
+<h3 id="自动补全"><a href="#自动补全" class="headerlink" title="自动补全"></a>自动补全</h3><p>ctl + space：如果选项唯一，则自动补全。<br>例子:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:src=<span class="string">"@drawable/logo"</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="提取dimension-resource"><a href="#提取dimension-resource" class="headerlink" title="提取dimension resource"></a>提取dimension resource</h3><p>提取dimension resource目的相当于给数字创建全局变量，方便以后修改。方法是鼠标定位到该行，然后按住<code>opt</code> + <code>Enter</code>即可。</p>
 <h2 id="Android-Project理解"><a href="#Android-Project理解" class="headerlink" title="Android Project理解"></a>Android Project理解</h2><ol>
-<li>layout加载顺序<br>先是家在<code>xml</code>中的layout设置，然后再加载代码中的layout。</li>
+<li><p>layout加载顺序<br>先是家在<code>xml</code>中的layout设置，然后再加载代码中的layout。</p>
+</li>
+<li><p>Debug方法<br>在logcat中过滤出AndroidRuntime日志。</p>
+</li>
 </ol>
 <h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><h3 id="Toast"><a href="#Toast" class="headerlink" title="Toast"></a>Toast</h3><p>Android Studio中输入<code>Toast</code>，然后回车便可出线代码如下代码模板：<br>Toast.makeText(MainActivity.this, “”, Toast.LENGTH_SHORT).show();<br>Toast显示的内容不受程序生命周期影响，即使在toast持续时间范围内关闭程序，toast内容也会显示。</p>
+<h3 id="布局参数"><a href="#布局参数" class="headerlink" title="布局参数"></a>布局参数</h3><h4 id="相对位置"><a href="#相对位置" class="headerlink" title="相对位置"></a>相对位置</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">android:layout_above=<span class="string">"@+id/photo"</span></span><br><span class="line">android:layout_below=<span class="string">"@+id/imageView"</span></span><br><span class="line">android:layout_alignParentBottom=<span class="string">"true"</span></span><br><span class="line">android:layout_centerHorizontal=<span class="string">"true"</span></span><br></pre></td></tr></table></figure>
+<h3 id="图片展示"><a href="#图片展示" class="headerlink" title="图片展示"></a>图片展示</h3><h4 id="静态展示方法"><a href="#静态展示方法" class="headerlink" title="静态展示方法"></a>静态展示方法</h4><p>直接在layout文件定义ImageView时赋值。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;ImageView</span><br><span class="line">    ...</span><br><span class="line">	android:src=<span class="string">"@drawable/logo"</span> /&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="动态展示方法"><a href="#动态展示方法" class="headerlink" title="动态展示方法"></a>动态展示方法</h4><h5 id="根据图片在工程文件中的路径获取图片"><a href="#根据图片在工程文件中的路径获取图片" class="headerlink" title="根据图片在工程文件中的路径获取图片"></a>根据图片在工程文件中的路径获取图片</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ImageView iv = (ImageView) findViewById(R.id.photo);</span><br><span class="line">iv.setImageResource(R.drawable.jacket101);</span><br></pre></td></tr></table></figure>
+<h5 id="根据图片名字获取图片"><a href="#根据图片名字获取图片" class="headerlink" title="根据图片名字获取图片"></a>根据图片名字获取图片</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ImageView iv = (ImageView) findViewById(R.id.photo);</span><br><span class="line">String imageName = <span class="string">"jacket101"</span>;</span><br><span class="line"><span class="keyword">int</span> res = getResources().getIdentifier(imageName, <span class="string">"drawable"</span>, getPackageName());</span><br><span class="line">iv.setImageResource(res);</span><br></pre></td></tr></table></figure>
+<h5 id="通过asset来获取图片"><a href="#通过asset来获取图片" class="headerlink" title="通过asset来获取图片"></a>通过asset来获取图片</h5><p>添加asset方法：Android-&gt;app-&gt;File-&gt;New-&gt;Folder-&gt;Assets Folder。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	InputStream stream = getAssets().open(imageName + <span class="string">".png"</span>);</span><br><span class="line">    Drawable d = Drawable.createFromStream(stream, <span class="keyword">null</span>);</span><br><span class="line">    iv.setImageDrawable(d);</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
