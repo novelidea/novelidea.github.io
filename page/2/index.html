@@ -106,7 +106,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Algorithm/" style="font-size: 16.67px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Backend/" style="font-size: 13.33px;">Backend</a> <a href="/tags/Diary/" style="font-size: 10px;">Diary</a> <a href="/tags/FullStack/" style="font-size: 15px;">FullStack</a> <a href="/tags/Game/" style="font-size: 10px;">Game</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/IOS/" style="font-size: 18.33px;">IOS</a> <a href="/tags/Java/" style="font-size: 11.67px;">Java</a> <a href="/tags/Mobile/" style="font-size: 20px;">Mobile</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/OOD/" style="font-size: 10px;">OOD</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Scrappy/" style="font-size: 10px;">Scrappy</a> <a href="/tags/SpriteKit/" style="font-size: 11.67px;">SpriteKit</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/WatchOS/" style="font-size: 10px;">WatchOS</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a>
+						<a href="/tags/Algorithm/" style="font-size: 16px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 12px;">Android</a> <a href="/tags/Backend/" style="font-size: 14px;">Backend</a> <a href="/tags/Cheet-Sheet/" style="font-size: 10px;">Cheet Sheet</a> <a href="/tags/Diary/" style="font-size: 10px;">Diary</a> <a href="/tags/FullStack/" style="font-size: 16px;">FullStack</a> <a href="/tags/Game/" style="font-size: 10px;">Game</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/IOS/" style="font-size: 18px;">IOS</a> <a href="/tags/Java/" style="font-size: 12px;">Java</a> <a href="/tags/Mobile/" style="font-size: 20px;">Mobile</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/OOD/" style="font-size: 10px;">OOD</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Scrappy/" style="font-size: 10px;">Scrappy</a> <a href="/tags/SpriteKit/" style="font-size: 12px;">SpriteKit</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/WatchOS/" style="font-size: 10px;">WatchOS</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a>
 					</div>
 				</section>
 				
@@ -171,6 +171,66 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-Sprite-Kit学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/13/Sprite-Kit学习笔记/" class="article-date">
+  	<time datetime="2016-03-13T17:14:47.000Z" itemprop="datePublished">2016-03-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/13/Sprite-Kit学习笔记/">Sprite Kit学习笔记</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在学Sprite Kit，它是Apple原生的2D游戏开发库，下面简要列一下学习中的一些要点。</p>
+<h2 id="音频延迟处理"><a href="#音频延迟处理" class="headerlink" title="音频延迟处理"></a>音频延迟处理</h2><p>在游戏中，如果要给action加上音效，一般会用如下代码实现。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.runAction(<span class="type">SKAction</span>.playSoundFileNamed(<span class="string">"hit.wav"</span>, waitForCompletion: <span class="literal">true</span>))</span><br></pre></td></tr></table></figure></p>
+<p>但是该方法有一个缺陷，就是如果对音频实时性要求很高，比如一些碰撞声、炮弹发射声音等等，这就需要提前加载改音频到运存，可以用如下方法实现。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">	<span class="keyword">let</span> sounds = [<span class="string">"cannon"</span>, <span class="string">"hit"</span>]</span><br><span class="line">    <span class="keyword">for</span> sound <span class="keyword">in</span> sounds &#123;</span><br><span class="line">    	<span class="keyword">let</span> player = <span class="keyword">try</span> <span class="type">AVAudioPlayer</span>(contentsOfURL: <span class="type">NSURL</span>(fileURLWithPath: 					<span class="type">NSBundle</span>.mainBundle().pathForResource(sound, ofType: <span class="string">"wav"</span>)!))</span><br><span class="line">        player.prepareToPlay()</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="创建自定义Frame-Animation"><a href="#创建自定义Frame-Animation" class="headerlink" title="创建自定义Frame Animation"></a>创建自定义Frame Animation</h2><p>通过一组图片可以自定义动画<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">createFrameAnimation</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> frames : [<span class="type">SKTexture</span>] = []</span><br><span class="line">    <span class="keyword">for</span> <span class="keyword">var</span> i : <span class="type">Int</span> = <span class="number">1</span>; i &amp;lt;= <span class="number">10</span>; i++ &#123;</span><br><span class="line">    	<span class="keyword">let</span> tex : <span class="type">SKTexture</span>  = <span class="type">SKTexture</span>(imageNamed: <span class="string">"\(i).png"</span>)</span><br><span class="line">    	frames.append(tex)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//run animation</span></span><br><span class="line">    <span class="comment">//object.runAction(SKAction.animateWithTextures(frames, timePerFrame:0.03))</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpriteKit/">SpriteKit</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-知乎日报App-UI-Framework" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -683,10 +743,10 @@ suit = otherCard.suit;
 
 
   
-    <article id="post-算法小题汇总" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-basic-algorithm" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/02/23/算法小题汇总/" class="article-date">
+      <a href="/2016/02/23/basic-algorithm/" class="article-date">
   	<time datetime="2016-02-23T09:09:21.000Z" itemprop="datePublished">2016-02-23</time>
 </a>
     </div>
@@ -700,7 +760,7 @@ suit = otherCard.suit;
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/23/算法小题汇总/">算法小题汇总</a>
+      <a class="article-title" href="/2016/02/23/basic-algorithm/">Basic Algorithm</a>
     </h1>
   
 
@@ -709,22 +769,9 @@ suit = otherCard.suit;
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>翻转字符串中的单词</p>
-<p><pre class="lang:java decode:true ">public String reverseWords(String s){<br>        String[] words = s.split(“ “);<br>        for(int i = 0; i &lt; words.length / 2; i ++){<br>            String tmp = words[i];<br>            words[i] = words[words.length - 1 - i];<br>            words[words.length - 1 - i] = tmp;<br>        }<br>        StringBuilder sb = new StringBuilder();<br>        for(String str : words){<br>            sb.append(str + “ “);<br>        }<br>        String result = sb.toString();<br>        result.trim();<br>        return result;<br>}</pre><br>2Sum</p>
-<p><pre class="lang:java decode:true ">public int[] twoSum(int[] nums, int target) {<br>        int[] defaultResult = {0,0};<br>        if(null == nums) return defaultResult;</pre></p>
-<pre><code>    Map&amp;lt;Integer, Integer&amp;gt; mp = new HashMap&amp;lt;Integer, Integer&amp;gt;();
-    for(int i = 0; i &amp;lt; nums.length; i ++){
-        if(mp.containsKey(target - nums[i]) == true) {
-            int[] result1 = {mp.get(target - nums[i]), i};
-            return result1;
-        }else{
-            mp.put(nums[i], i);
-        }
-    }
-    return defaultResult;
-}&lt;/pre&gt;
-</code></pre><p>&nbsp;</p>
-
+        <h3 id="翻转字符串中的单词"><a href="#翻转字符串中的单词" class="headerlink" title="翻转字符串中的单词"></a>翻转字符串中的单词</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">reverseWords</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        String[] words = s.split(<span class="string">" "</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; words.length / <span class="number">2</span>; i ++)&#123;</span><br><span class="line">            String tmp = words[i];</span><br><span class="line">            words[i] = words[words.length - <span class="number">1</span> - i];</span><br><span class="line">            words[words.length - <span class="number">1</span> - i] = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(String str : words)&#123;</span><br><span class="line">            sb.append(str + <span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        String result = sb.toString();</span><br><span class="line">        result.trim();</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2Sum"><a href="#2Sum" class="headerlink" title="2Sum"></a>2Sum</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] defaultResult = &#123;<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">null</span> == nums) <span class="keyword">return</span> defaultResult;</span><br><span class="line">        Map&lt;Integer, Integer&gt; mp = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i ++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(mp.containsKey(target - nums[i]) == <span class="keyword">true</span>) &#123;</span><br><span class="line">                <span class="keyword">int</span>[] result1 = &#123;mp.get(target - nums[i]), i&#125;;</span><br><span class="line">                <span class="keyword">return</span> result1;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                mp.put(nums[i], i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> defaultResult;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Binary-Search"><a href="#Binary-Search" class="headerlink" title="Binary Search"></a>Binary Search</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> end = nums.length - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(start &lt;= end) &#123;</span><br><span class="line">		<span class="keyword">int</span> mid = start + (end - start) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">			<span class="keyword">return</span> mid;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">			start = mid + <span class="number">1</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			mid = mid - <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -790,89 +837,6 @@ suit = otherCard.suit;
 <p>实现如下：</p>
 <p>＃我们假设有找出数组中第k大的数的函数，为findkthLargestNumber(int[] nums, int k);<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TopKWords</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> String[] topKWordsQuickSearch(String stream, <span class="keyword">int</span> k) &#123;</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">WordFrequency</span> <span class="keyword">implements</span> <span class="title">Comparable</span>(<span class="title">WordFrequency</span>)</span>&#123;</span><br><span class="line">            String word;</span><br><span class="line">            <span class="keyword">int</span> frequency;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="title">WordFrequency</span><span class="params">(String word, <span class="keyword">int</span> frequency)</span></span>&#123;</span><br><span class="line">                <span class="keyword">this</span>.word = word;</span><br><span class="line">                <span class="keyword">this</span>.frequency = frequency;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(WordFrequency o)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> Integer.compare(<span class="keyword">this</span>.frequency, o.frequency);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        HashMap&lt;String, Integer&gt; mp = <span class="keyword">new</span> HashMap&amp;lt;String, Integer&amp;gt;();</span><br><span class="line">        PriorityQueue&amp;lt;WordFrequency&amp;gt; topKHeap = <span class="keyword">new</span> PriorityQueue&lt;WordFrequency&gt;(k);</span><br><span class="line"></span><br><span class="line">        String[] words = stream.toLowerCase().trim().split(<span class="string">" "</span>);</span><br><span class="line">        <span class="keyword">for</span>(String word : words)&#123;</span><br><span class="line">            <span class="keyword">int</span> wordFrequency = mp.containsKey(word) ? mp.get(word) + <span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">            mp.put(word, wordFrequency);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] frequency = <span class="keyword">new</span> <span class="keyword">int</span>[mp.size()];</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&amp;lt;String, Integer&amp;gt; e : mp)&#123;</span><br><span class="line">            frequency[index ++] = e.getValue();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> kthFrequency = findkthLargestNumber(frequency, k);</span><br><span class="line"></span><br><span class="line">        String[] topK = <span class="keyword">new</span> String[k];</span><br><span class="line">        index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&amp;lt;String, Integer&amp;gt; e : mp.entrySet())&#123;</span><br><span class="line">            <span class="keyword">if</span>(e.getValue() &amp;gt;= kthFrequency)&#123;</span><br><span class="line">                topK[index ++] = e.getKey();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> topK;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.zrzahid.com/top-k-or-k-most-frequent-words-in-a-document/" target="_blank" rel="external">http://www.zrzahid.com/top-k-or-k-most-frequent-words-in-a-document/</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-图的遍历分析" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/19/图的遍历分析/" class="article-date">
-  	<time datetime="2016-02-19T19:26:16.000Z" itemprop="datePublished">2016-02-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/19/图的遍历分析/">图的遍历分析</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="图的存储"><a href="#图的存储" class="headerlink" title="图的存储"></a>图的存储</h2><p>如果只是粗略地讲图的遍历，即DFS和BFS是完全不用讲这一个点，但是，本着讲（装）透（逼）的原则，还是要简要介绍一下图在计算机中的存储方式，因为在后面的时间复杂度分析中会用到。</p>
-<p>图的存储基本有两种，邻接矩阵（Adjacency Matrix）和邻接表（Adjacency List）。首先来说邻接矩阵，顾名思义，邻接矩阵是一个n*n矩阵，其中n是指图中节点数目，横纵坐标对应相应的节点，对于普通图来说，如果某两个节点中有边相连，则将这两点在邻接矩阵中对应的元素赋值为1，反之则为0；对于加权图来说，如果某两点间有边相连，则将邻接矩阵中对应的元素赋值为该权值，反之则为＋Infinity。</p>
-<p>邻接矩阵在处理密集图比较好，但是对于稀疏图来说就会存在空间利用率不足的弊端，这就要用到邻接表。邻接表是一种数组与链表相对结合的方式，数组中存放的是图中所有的节点（node），然后每个node又是一个链表的头节点，每个链表中的节点是图中所有与改链表头节点相邻的节点，如果是有向图，则是由头节点指向的节点。可见，邻接表的空间复杂度是和图中节点数和边数成正比的，不像邻接矩阵中的n*n是固定的，所以在处理稀疏图时首选邻接表。</p>
-<p>总结一下，图的两种存储的空间复杂度分别为（图中有n个节点，m条边）：</p>
-<p>邻接矩阵：O(n * n)</p>
-<p>邻接表：O(m + n)</p>
-<h2 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h2><h3 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h3><p>图的遍历分为深度优先（DFS）和广度优先（BFS）。首先来讲广度优先，广度优先是一层一层的遍历图，由于本篇重在分析，所以略过具体的过程描述，伪代码如下。</p>
-<p><pre class="lang:default decode:true ">set start vertex to visited</pre></p>
-<p>load it into queue</p>
-<pre><code>while queue not empty
-
-    for each edge incident to vertex
-
-         if its not visited
-
-             load into queue
-
-             mark vertex&lt;/pre&gt;
-</code></pre><p>现在我们来分析一下它的时间复杂度，简单起见，我们假设图是用邻接表存储的。假设用集合{v1, v2, v3, …, vn}来表示途中的n个节点，则执行时间可以简单描述为：</p>
-<p>v1 + (从v1出去的边数) ＋ v2 ＋ (从v2出去的边数) ＋ v3 ＋ … ＋ vn ＋ (从vn出去的边数)</p>
-<p>变换为：</p>
-<p>(v1 + v2 + … + vn) + {(从v1出去的边数) + (从v2出去的边数) + … + (从vn出去的边数) }</p>
-<p>前一部分是O(n)，后一部分是O(m)，所以，综上，用邻接表存储的图的BFS时间复杂度是O(m + n)。</p>
-<h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3><p>深度优先，深度优先就是一条路走到底，然后再走另外一条。同样略过具体实现细节，类比于BFS，DFS也是将所有点和边都走一边，只不过点边的访问顺序不一样，所以，时间复杂度同样为O(m + n)。</p>
-<h3 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h3><p>这不同于上文所说的图的存储的空间复杂度，而是图在遍历过程中额外的空间开销。在图的遍历中，为了避免因为图中有环而对同一点重复访问造成死循环，所以引入一个矩阵，来标志某点是否已经被访问，该矩阵长度为n，所以DFS和BFS的空间复杂度就为O(n)。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://stackoverflow.com/questions/11468621/why-is-the-time-complexity-of-both-dfs-and-bfs-o-v-e" target="_blank" rel="external">http://stackoverflow.com/questions/11468621/why-is-the-time-complexity-of-both-dfs-and-bfs-o-v-e</a></p>
-<p><a href="http://stackoverflow.com/questions/9844193/what-is-the-time-and-space-complexity-of-a-breadth-first-and-depth-first-tree-tr" target="_blank" rel="external">http://stackoverflow.com/questions/9844193/what-is-the-time-and-space-complexity-of-a-breadth-first-and-depth-first-tree-tr</a></p>
 
       
     </div>

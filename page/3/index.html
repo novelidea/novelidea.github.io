@@ -106,7 +106,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Algorithm/" style="font-size: 16.67px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Backend/" style="font-size: 13.33px;">Backend</a> <a href="/tags/Diary/" style="font-size: 10px;">Diary</a> <a href="/tags/FullStack/" style="font-size: 15px;">FullStack</a> <a href="/tags/Game/" style="font-size: 10px;">Game</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/IOS/" style="font-size: 18.33px;">IOS</a> <a href="/tags/Java/" style="font-size: 11.67px;">Java</a> <a href="/tags/Mobile/" style="font-size: 20px;">Mobile</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/OOD/" style="font-size: 10px;">OOD</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Scrappy/" style="font-size: 10px;">Scrappy</a> <a href="/tags/SpriteKit/" style="font-size: 11.67px;">SpriteKit</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/WatchOS/" style="font-size: 10px;">WatchOS</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a>
+						<a href="/tags/Algorithm/" style="font-size: 16px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 12px;">Android</a> <a href="/tags/Backend/" style="font-size: 14px;">Backend</a> <a href="/tags/Cheet-Sheet/" style="font-size: 10px;">Cheet Sheet</a> <a href="/tags/Diary/" style="font-size: 10px;">Diary</a> <a href="/tags/FullStack/" style="font-size: 16px;">FullStack</a> <a href="/tags/Game/" style="font-size: 10px;">Game</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/IOS/" style="font-size: 18px;">IOS</a> <a href="/tags/Java/" style="font-size: 12px;">Java</a> <a href="/tags/Mobile/" style="font-size: 20px;">Mobile</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/OOD/" style="font-size: 10px;">OOD</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Scrappy/" style="font-size: 10px;">Scrappy</a> <a href="/tags/SpriteKit/" style="font-size: 12px;">SpriteKit</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/WatchOS/" style="font-size: 10px;">WatchOS</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a>
 					</div>
 				</section>
 				
@@ -171,6 +171,89 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-图的遍历分析" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/19/图的遍历分析/" class="article-date">
+  	<time datetime="2016-02-19T19:26:16.000Z" itemprop="datePublished">2016-02-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/19/图的遍历分析/">图的遍历分析</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="图的存储"><a href="#图的存储" class="headerlink" title="图的存储"></a>图的存储</h2><p>如果只是粗略地讲图的遍历，即DFS和BFS是完全不用讲这一个点，但是，本着讲（装）透（逼）的原则，还是要简要介绍一下图在计算机中的存储方式，因为在后面的时间复杂度分析中会用到。</p>
+<p>图的存储基本有两种，邻接矩阵（Adjacency Matrix）和邻接表（Adjacency List）。首先来说邻接矩阵，顾名思义，邻接矩阵是一个n*n矩阵，其中n是指图中节点数目，横纵坐标对应相应的节点，对于普通图来说，如果某两个节点中有边相连，则将这两点在邻接矩阵中对应的元素赋值为1，反之则为0；对于加权图来说，如果某两点间有边相连，则将邻接矩阵中对应的元素赋值为该权值，反之则为＋Infinity。</p>
+<p>邻接矩阵在处理密集图比较好，但是对于稀疏图来说就会存在空间利用率不足的弊端，这就要用到邻接表。邻接表是一种数组与链表相对结合的方式，数组中存放的是图中所有的节点（node），然后每个node又是一个链表的头节点，每个链表中的节点是图中所有与改链表头节点相邻的节点，如果是有向图，则是由头节点指向的节点。可见，邻接表的空间复杂度是和图中节点数和边数成正比的，不像邻接矩阵中的n*n是固定的，所以在处理稀疏图时首选邻接表。</p>
+<p>总结一下，图的两种存储的空间复杂度分别为（图中有n个节点，m条边）：</p>
+<p>邻接矩阵：O(n * n)</p>
+<p>邻接表：O(m + n)</p>
+<h2 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h2><h3 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h3><p>图的遍历分为深度优先（DFS）和广度优先（BFS）。首先来讲广度优先，广度优先是一层一层的遍历图，由于本篇重在分析，所以略过具体的过程描述，伪代码如下。</p>
+<p><pre class="lang:default decode:true ">set start vertex to visited</pre></p>
+<p>load it into queue</p>
+<pre><code>while queue not empty
+
+    for each edge incident to vertex
+
+         if its not visited
+
+             load into queue
+
+             mark vertex&lt;/pre&gt;
+</code></pre><p>现在我们来分析一下它的时间复杂度，简单起见，我们假设图是用邻接表存储的。假设用集合{v1, v2, v3, …, vn}来表示途中的n个节点，则执行时间可以简单描述为：</p>
+<p>v1 + (从v1出去的边数) ＋ v2 ＋ (从v2出去的边数) ＋ v3 ＋ … ＋ vn ＋ (从vn出去的边数)</p>
+<p>变换为：</p>
+<p>(v1 + v2 + … + vn) + {(从v1出去的边数) + (从v2出去的边数) + … + (从vn出去的边数) }</p>
+<p>前一部分是O(n)，后一部分是O(m)，所以，综上，用邻接表存储的图的BFS时间复杂度是O(m + n)。</p>
+<h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3><p>深度优先，深度优先就是一条路走到底，然后再走另外一条。同样略过具体实现细节，类比于BFS，DFS也是将所有点和边都走一边，只不过点边的访问顺序不一样，所以，时间复杂度同样为O(m + n)。</p>
+<h3 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h3><p>这不同于上文所说的图的存储的空间复杂度，而是图在遍历过程中额外的空间开销。在图的遍历中，为了避免因为图中有环而对同一点重复访问造成死循环，所以引入一个矩阵，来标志某点是否已经被访问，该矩阵长度为n，所以DFS和BFS的空间复杂度就为O(n)。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://stackoverflow.com/questions/11468621/why-is-the-time-complexity-of-both-dfs-and-bfs-o-v-e" target="_blank" rel="external">http://stackoverflow.com/questions/11468621/why-is-the-time-complexity-of-both-dfs-and-bfs-o-v-e</a></p>
+<p><a href="http://stackoverflow.com/questions/9844193/what-is-the-time-and-space-complexity-of-a-breadth-first-and-depth-first-tree-tr" target="_blank" rel="external">http://stackoverflow.com/questions/9844193/what-is-the-time-and-space-complexity-of-a-breadth-first-and-depth-first-tree-tr</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Java中ArrayList排序" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1110,64 +1193,6 @@ moving forward and backward
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Watch-OS学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/12/Watch-OS学习笔记/" class="article-date">
-  	<time datetime="2015-11-12T23:23:18.000Z" itemprop="datePublished">2015-11-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/12/Watch-OS学习笔记/">WatchOS学习笔记</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.UIImage</p>
-<p>设置图片的时候尽量使用setImageNamed，而不是setImageData和setImage，主要原因是第一种方法提前将图片加载到watchKit App Target中去了，而后两种方法的图片在watchKit Extension中，运行时需将图片资源加载到watchKit App Target中，会造成传输中的延迟，影响用户体验。但是在一开始导入图片的时候，如果选择setImageNamed方法，则需要将图片同时加到watchKit App Target和watchKit Extension中，不同于后两种方法，只需要将图片直接加到watchKit Extension即可。这里是用空间换取时间。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WatchOS/">WatchOS</a></li></ul>
 	</div>
 
       
