@@ -32,7 +32,7 @@
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
 			
-			<img lazy-src="https://scontent-lax3-1.xx.fbcdn.net/hphotos-xaf1/v/t1.0-9/13015683_1735336710075080_3719248814767112109_n.jpg?oh=55422f70edcaba4fbfecf1107cdbcecc&amp;oe=577C7D07" class="js-avatar">
+			<img lazy-src="http://o6szdc7js.bkt.clouddn.com/blog_profile_new.jpg" class="js-avatar">
 			
 		</a>
 
@@ -106,7 +106,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Algorithm/" style="font-size: 16px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 12px;">Android</a> <a href="/tags/Backend/" style="font-size: 14px;">Backend</a> <a href="/tags/Cheet-Sheet/" style="font-size: 10px;">Cheet Sheet</a> <a href="/tags/Diary/" style="font-size: 10px;">Diary</a> <a href="/tags/FullStack/" style="font-size: 16px;">FullStack</a> <a href="/tags/Game/" style="font-size: 10px;">Game</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/IOS/" style="font-size: 18px;">IOS</a> <a href="/tags/Java/" style="font-size: 12px;">Java</a> <a href="/tags/Mobile/" style="font-size: 20px;">Mobile</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/OOD/" style="font-size: 10px;">OOD</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Scrappy/" style="font-size: 10px;">Scrappy</a> <a href="/tags/SpriteKit/" style="font-size: 12px;">SpriteKit</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/WatchOS/" style="font-size: 10px;">WatchOS</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a>
+						<a href="/tags/Algorithm/" style="font-size: 16px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 12px;">Android</a> <a href="/tags/Backend/" style="font-size: 14px;">Backend</a> <a href="/tags/Cheet-Sheet/" style="font-size: 10px;">Cheet Sheet</a> <a href="/tags/Diary/" style="font-size: 14px;">Diary</a> <a href="/tags/FullStack/" style="font-size: 16px;">FullStack</a> <a href="/tags/Game/" style="font-size: 10px;">Game</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/IOS/" style="font-size: 18px;">IOS</a> <a href="/tags/Java/" style="font-size: 12px;">Java</a> <a href="/tags/Mobile/" style="font-size: 20px;">Mobile</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/OOD/" style="font-size: 10px;">OOD</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Scrappy/" style="font-size: 10px;">Scrappy</a> <a href="/tags/SpriteKit/" style="font-size: 12px;">SpriteKit</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/WatchOS/" style="font-size: 10px;">WatchOS</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a>
 					</div>
 				</section>
 				
@@ -130,7 +130,7 @@
 		<header id="header" class="inner">
 			<div class="profilepic">
 			
-				<img lazy-src="https://scontent-lax3-1.xx.fbcdn.net/hphotos-xaf1/v/t1.0-9/13015683_1735336710075080_3719248814767112109_n.jpg?oh=55422f70edcaba4fbfecf1107cdbcecc&amp;oe=577C7D07" class="js-avatar">
+				<img lazy-src="http://o6szdc7js.bkt.clouddn.com/blog_profile_new.jpg" class="js-avatar">
 			
 			</div>
 			<hgroup>
@@ -171,6 +171,133 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-MongoDB开发笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/16/MongoDB开发笔记/" class="article-date">
+  	<time datetime="2016-03-16T15:59:46.000Z" itemprop="datePublished">2016-03-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/16/MongoDB开发笔记/">MongoDB开发笔记</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h2><p>通过JSON文件创建数据库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoimport -db library --collection library_open_time --drop --file library.json</span><br></pre></td></tr></table></figure></p>
+<p>此处如果需要将数据转成JSON格式，则可以用Python json库中的dump方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">with open(&apos;data.txt&apos;, &apos;w&apos;) as outfile:</span><br><span class="line">    json.dump(data, outfile)</span><br></pre></td></tr></table></figure></p>
+<p>启动关闭重启开始使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongodb start</span><br><span class="line">sudo service mongodb stop</span><br><span class="line">sudo service mongodb restart</span><br><span class="line">mongo</span><br></pre></td></tr></table></figure></p>
+<p>查看所有db，以及切换db<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show dbs</span><br><span class="line">use db-name</span><br></pre></td></tr></table></figure></p>
+<p>查看collection纪录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.collection_name.find();</span><br></pre></td></tr></table></figure></p>
+<p>通过id删除记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.collection_name.remove(&#123;&quot;_id&quot; : ObjectId(&quot;5773747f041e3dc116fd71ba&quot;)&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h2><p>js脚本执行MongoDB命令：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test.js:</span><br><span class="line">use test</span><br><span class="line">db.collections.find()</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo &lt; test.js</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Backend/">Backend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FullStack/">FullStack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/">MongoDB</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-aws-开发笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/16/aws-开发笔记/" class="article-date">
+  	<time datetime="2016-03-16T15:12:27.000Z" itemprop="datePublished">2016-03-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/16/aws-开发笔记/">AWS开发笔记</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ssh登陆：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i keyfile user@host-ip</span><br></pre></td></tr></table></figure></p>
+<p>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i ~/.ssh/keyfile.pem ubuntu@127.0.0.0</span><br></pre></td></tr></table></figure></p>
+<p>后台运行python程序：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup python program.py &amp;</span><br></pre></td></tr></table></figure></p>
+<p>查看该任务：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps</span><br></pre></td></tr></table></figure></p>
+<p>终止某任务：</p>
+<p>通过上一个指令获得任务的pid，然后直接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill pid</span><br></pre></td></tr></table></figure></p>
+<p>或者有时上述方法不行，需要加上参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 pid</span><br></pre></td></tr></table></figure></p>
+<p>其中－9表示SIGKILL<br><code>ls -ef</code>可以查看所有pid</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Backend/">Backend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FullStack/">FullStack</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Sprite-Kit学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -722,130 +849,6 @@ suit = otherCard.suit;
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FullStack/">FullStack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-basic-algorithm" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/23/basic-algorithm/" class="article-date">
-  	<time datetime="2016-02-23T09:09:21.000Z" itemprop="datePublished">2016-02-23</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/23/basic-algorithm/">Basic Algorithm</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="翻转字符串中的单词"><a href="#翻转字符串中的单词" class="headerlink" title="翻转字符串中的单词"></a>翻转字符串中的单词</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">reverseWords</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        String[] words = s.split(<span class="string">" "</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; words.length / <span class="number">2</span>; i ++)&#123;</span><br><span class="line">            String tmp = words[i];</span><br><span class="line">            words[i] = words[words.length - <span class="number">1</span> - i];</span><br><span class="line">            words[words.length - <span class="number">1</span> - i] = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(String str : words)&#123;</span><br><span class="line">            sb.append(str + <span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        String result = sb.toString();</span><br><span class="line">        result.trim();</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2Sum"><a href="#2Sum" class="headerlink" title="2Sum"></a>2Sum</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] defaultResult = &#123;<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">null</span> == nums) <span class="keyword">return</span> defaultResult;</span><br><span class="line">        Map&lt;Integer, Integer&gt; mp = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i ++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(mp.containsKey(target - nums[i]) == <span class="keyword">true</span>) &#123;</span><br><span class="line">                <span class="keyword">int</span>[] result1 = &#123;mp.get(target - nums[i]), i&#125;;</span><br><span class="line">                <span class="keyword">return</span> result1;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                mp.put(nums[i], i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> defaultResult;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Binary-Search"><a href="#Binary-Search" class="headerlink" title="Binary Search"></a>Binary Search</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> end = nums.length - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(start &lt;= end) &#123;</span><br><span class="line">		<span class="keyword">int</span> mid = start + (end - start) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">			<span class="keyword">return</span> mid;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">			start = mid + <span class="number">1</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			mid = mid - <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Top-K问题" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/22/Top-K问题/" class="article-date">
-  	<time datetime="2016-02-23T06:38:56.000Z" itemprop="datePublished">2016-02-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/22/Top-K问题/">top k问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>top k问题是指给定元素集合，找出前k大的元素，或者找出出现频率前k大的元素。这个问题在算法课上经常讨论，但是却从未实现过，现在就来实现一下改算法。</p>
-<p>top k问题暴力求解方法当然是对所有元素的比较依据元素进行排序，然后选出前k大的元素，这里的时间复杂度是O(nlg(n))，空间复杂度是O(1)。但是这个效率不高，改进主要有两种方法，一种是利用堆，一种是利用快排的辅助函数quick search算法。</p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>首先，我们用第一种方法来实现一下，以找出文中出现频率最高的单词为例。首先，我们需要遍历文本，构造｛单词：频率｝的哈希表，这里的时间复杂度是O(1)，空间复杂度是O(n)。然后我们再遍历一遍哈希表，利用小顶堆找出出现频率钱k大的单词，该时间复杂度是O(nlog(k))，空间复杂度是O(k)（关于堆操作的时间空间复杂度在这就不再赘述了）。综上，利用堆来处理topK问题的时间复杂度是O(nlog(k))，空间复杂度是O(n)。</p>
-<p>代码实现如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.pengfeixing;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.lang.model.util.ElementFilter;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.PriorityQueue;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by novelidea on 2/22/16.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TopKWords</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String[] topKWords(String stream, <span class="keyword">int</span> k)&#123;</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">WordFrequency</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">WordFrequency</span>&gt;</span>&#123;</span><br><span class="line">            String word;</span><br><span class="line">            <span class="keyword">int</span> frequency;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="title">WordFrequency</span><span class="params">(String word, <span class="keyword">int</span> frequency)</span></span>&#123;</span><br><span class="line">                <span class="keyword">this</span>.word = word;</span><br><span class="line">                <span class="keyword">this</span>.frequency = frequency;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(WordFrequency o)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> Integer.compare(<span class="keyword">this</span>.frequency, o.frequency);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        HashMap&amp;lt;String, Integer&amp;gt; mp = <span class="keyword">new</span> HashMap&amp;lt;String, Integer&amp;gt;();</span><br><span class="line">        PriorityQueue&amp;lt;WordFrequency&amp;gt; topKHeap = <span class="keyword">new</span> PriorityQueue&amp;lt;WordFrequency&amp;gt;(k);</span><br><span class="line"></span><br><span class="line">        String[] words = stream.toLowerCase().trim().split(<span class="string">" "</span>);</span><br><span class="line">        <span class="keyword">for</span>(String word : words)&#123;</span><br><span class="line">            <span class="keyword">int</span> wordFrequency = mp.containsKey(word) ? mp.get(word) + <span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">            mp.put(word, wordFrequency);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&amp;lt;String, Integer&amp;gt; e : mp.entrySet())&#123;</span><br><span class="line">            <span class="keyword">if</span>(topKHeap.size() &amp;lt; k)&#123;</span><br><span class="line">                topKHeap.add(<span class="keyword">new</span> WordFrequency(e.getKey(), e.getValue()));</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(e.getValue() &amp;gt; topKHeap.peek().frequency)&#123;</span><br><span class="line">                topKHeap.remove();</span><br><span class="line">                topKHeap.add(<span class="keyword">new</span> WordFrequency(e.getKey(), e.getValue()));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        String[] topK = <span class="keyword">new</span> String[k];</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(topKHeap.size() &amp;gt; <span class="number">0</span>)&#123;</span><br><span class="line">            topK[index ++] = topKHeap.remove().word;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> topK;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里需要注意的是，由于是topK，所有用小顶堆。如果是选取出现最少的，则用大顶堆，只需要将compareTo中的反回方法顺序调换一下。关于compareTo的返回值，有三个0，1，－1。</p>
-<p>接下来，我们用快排算法中用到的quick search来解决top k问题。即找到第k大的出现频率，然后将所有单词的频率和该频率进行比较，大于该数值的则为输出结果。该算法的时间复杂度是O(n)，空间复杂度是O(k)。</p>
-<p>实现如下：</p>
-<p>＃我们假设有找出数组中第k大的数的函数，为findkthLargestNumber(int[] nums, int k);<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TopKWords</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> String[] topKWordsQuickSearch(String stream, <span class="keyword">int</span> k) &#123;</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">WordFrequency</span> <span class="keyword">implements</span> <span class="title">Comparable</span>(<span class="title">WordFrequency</span>)</span>&#123;</span><br><span class="line">            String word;</span><br><span class="line">            <span class="keyword">int</span> frequency;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="title">WordFrequency</span><span class="params">(String word, <span class="keyword">int</span> frequency)</span></span>&#123;</span><br><span class="line">                <span class="keyword">this</span>.word = word;</span><br><span class="line">                <span class="keyword">this</span>.frequency = frequency;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(WordFrequency o)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> Integer.compare(<span class="keyword">this</span>.frequency, o.frequency);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        HashMap&lt;String, Integer&gt; mp = <span class="keyword">new</span> HashMap&amp;lt;String, Integer&amp;gt;();</span><br><span class="line">        PriorityQueue&amp;lt;WordFrequency&amp;gt; topKHeap = <span class="keyword">new</span> PriorityQueue&lt;WordFrequency&gt;(k);</span><br><span class="line"></span><br><span class="line">        String[] words = stream.toLowerCase().trim().split(<span class="string">" "</span>);</span><br><span class="line">        <span class="keyword">for</span>(String word : words)&#123;</span><br><span class="line">            <span class="keyword">int</span> wordFrequency = mp.containsKey(word) ? mp.get(word) + <span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">            mp.put(word, wordFrequency);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] frequency = <span class="keyword">new</span> <span class="keyword">int</span>[mp.size()];</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&amp;lt;String, Integer&amp;gt; e : mp)&#123;</span><br><span class="line">            frequency[index ++] = e.getValue();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> kthFrequency = findkthLargestNumber(frequency, k);</span><br><span class="line"></span><br><span class="line">        String[] topK = <span class="keyword">new</span> String[k];</span><br><span class="line">        index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&amp;lt;String, Integer&amp;gt; e : mp.entrySet())&#123;</span><br><span class="line">            <span class="keyword">if</span>(e.getValue() &amp;gt;= kthFrequency)&#123;</span><br><span class="line">                topK[index ++] = e.getKey();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> topK;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.zrzahid.com/top-k-or-k-most-frequent-words-in-a-document/" target="_blank" rel="external">http://www.zrzahid.com/top-k-or-k-most-frequent-words-in-a-document/</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
 	</div>
 
       
