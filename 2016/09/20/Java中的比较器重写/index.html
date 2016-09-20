@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Java中的比较器重写 | 邢鹏飞的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="问题描述Java中经常会遇到重写比较器的情况，比如给某个自定义类根据一个属性的值进行排序，今天看到一个非常经典的数据结构设计的问题，不仅问题设计很好，中间居然还会重写两种比较器（因为之前接触的都是单独出现的），不禁拍案叫绝！
+问题是要求设计一个简化版Twitter的数据结构，能够支持post, follow, unfollow几种操作，具体要求如下：
+12341. postTweet(userId">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java中的比较器重写">
+<meta property="og:url" content="http://yoursite.com/2016/09/20/Java中的比较器重写/index.html">
+<meta property="og:site_name" content="邢鹏飞的博客">
+<meta property="og:description" content="问题描述Java中经常会遇到重写比较器的情况，比如给某个自定义类根据一个属性的值进行排序，今天看到一个非常经典的数据结构设计的问题，不仅问题设计很好，中间居然还会重写两种比较器（因为之前接触的都是单独出现的），不禁拍案叫绝！
+问题是要求设计一个简化版Twitter的数据结构，能够支持post, follow, unfollow几种操作，具体要求如下：
+12341. postTweet(userId">
+<meta property="og:updated_time" content="2016-09-20T21:39:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java中的比较器重写">
+<meta name="twitter:description" content="问题描述Java中经常会遇到重写比较器的情况，比如给某个自定义类根据一个属性的值进行排序，今天看到一个非常经典的数据结构设计的问题，不仅问题设计很好，中间居然还会重写两种比较器（因为之前接触的都是单独出现的），不禁拍案叫绝！
+问题是要求设计一个简化版Twitter的数据结构，能够支持post, follow, unfollow几种操作，具体要求如下：
+12341. postTweet(userId">
+  
+    <link rel="alternative" href="/atom.xml" title="邢鹏飞的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://o6szdc7js.bkt.clouddn.com/blog_profile_new.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Pengfei Xing</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">文章</a></li>
+				        
+							<li><a href="/tags/Mobile">移动开发</a></li>
+				        
+							<li><a href="/tags/FullStack">全栈</a></li>
+				        
+							<li><a href="/tags/System">系统</a></li>
+				        
+							<li><a href="/tags/algorithm">算法</a></li>
+				        
+							<li><a href="/tags/Diary">随笔</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/novelidea" title="github">github</a>
+					        
+								<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/pengfei-xing-65886578" title="linkedin">linkedin</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Algorithm/" style="font-size: 16.67px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Backend/" style="font-size: 13.33px;">Backend</a> <a href="/tags/Cheet-Sheet/" style="font-size: 10px;">Cheet Sheet</a> <a href="/tags/Diary/" style="font-size: 13.33px;">Diary</a> <a href="/tags/FullStack/" style="font-size: 15px;">FullStack</a> <a href="/tags/Game/" style="font-size: 10px;">Game</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/IOS/" style="font-size: 18.33px;">IOS</a> <a href="/tags/Java/" style="font-size: 11.67px;">Java</a> <a href="/tags/Mobile/" style="font-size: 20px;">Mobile</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/OOD/" style="font-size: 10px;">OOD</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Scrappy/" style="font-size: 10px;">Scrappy</a> <a href="/tags/SpriteKit/" style="font-size: 11.67px;">SpriteKit</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/WatchOS/" style="font-size: 10px;">WatchOS</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Pengfei Xing</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://o6szdc7js.bkt.clouddn.com/blog_profile_new.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Pengfei Xing</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">文章</a></li>
+		        
+					<li><a href="/tags/Mobile">移动开发</a></li>
+		        
+					<li><a href="/tags/FullStack">全栈</a></li>
+		        
+					<li><a href="/tags/System">系统</a></li>
+		        
+					<li><a href="/tags/algorithm">算法</a></li>
+		        
+					<li><a href="/tags/Diary">随笔</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/novelidea" title="github">github</a>
+			        
+						<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/pengfei-xing-65886578" title="linkedin">linkedin</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Java中的比较器重写" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/20/Java中的比较器重写/" class="article-date">
+  	<time datetime="2016-09-20T21:04:59.000Z" itemprop="datePublished">2016-09-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java中的比较器重写
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>Java中经常会遇到重写比较器的情况，比如给某个自定义类根据一个属性的值进行排序，今天看到一个非常经典的数据结构设计的问题，不仅问题设计很好，中间居然还会重写两种比较器（因为之前接触的都是单独出现的），不禁拍案叫绝！</p>
+<p>问题是要求设计一个简化版Twitter的数据结构，能够支持post, follow, unfollow几种操作，具体要求如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. postTweet(userId, tweetId): Compose a new tweet.</span><br><span class="line">2. getNewsFeed(userId): Retrieve the 10 most recent tweet ids in the user&apos;s news feed. Each item in the news feed must be posted by users who the user followed or by the user herself. Tweets must be ordered from most recent to least recent.</span><br><span class="line">3. follow(followerId, followeeId): Follower follows a followee.</span><br><span class="line">4. unfollow(followerId, followeeId): Follower unfollows a followee.</span><br></pre></td></tr></table></figure>
+<h3 id="分析思路"><a href="#分析思路" class="headerlink" title="分析思路"></a>分析思路</h3><p>首先，需要为该系统引入两个HashMap。第一个Map是<user, list<user="">&gt;，主要用来记录某个用户关注的用户列表；第二个Map是<user, list<twitter="">&gt;，主要用来记录某个用户发送的所有微博。</user,></user,></p>
+<p>功能1只需要修改第二个Map，比较easy;<br>功能3，4只需要修改第一个Map；<br>功能三需要通过建立小顶堆来实现，较前几个功能稍显复杂。</p>
+<p>正如开头所说，代码中比较有意思的是两种比较器的重写。第一种是给自定义类写比较器，比如在后续代码中需要用到该类的比较、排序等等。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">A</span>&gt; </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> val;</span><br><span class="line">	&lt;!--do something here--&gt;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(A other)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.val - other.val; &lt;!--Increasing Order--&gt;</span><br><span class="line">		<span class="keyword">return</span> other.val - <span class="keyword">this</span>.val; &lt;!--Decreasing Order--&gt;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>第二种是在容器的sort方法中重写。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">A[] arr = <span class="keyword">new</span> A[<span class="number">10</span>];</span><br><span class="line">Collections.sort(A, <span class="keyword">new</span> Comparator&lt;A&gt;()&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(A a, A b)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> a.val - b.val; &lt;!--Increasing Order--&gt;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Twitter</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">TContent</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">TContent</span>&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> id;</span><br><span class="line">        <span class="keyword">int</span> tweetId;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">TContent</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">int</span> tweetId)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.id = id;</span><br><span class="line">            <span class="keyword">this</span>.tweetId = tweetId;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(TContent other)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.id - other.id;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line">    Map&lt;Integer, Set&lt;Integer&gt;&gt; follow;</span><br><span class="line">    Map&lt;Integer, List&lt;TContent&gt;&gt; tweet;</span><br><span class="line">    <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Twitter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        follow = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        tweet = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        id = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/** Compose a new tweet. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postTweet</span><span class="params">(<span class="keyword">int</span> userId, <span class="keyword">int</span> tweetId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (! tweet.containsKey(userId)) tweet.put(userId, <span class="keyword">new</span> ArrayList&lt;TContent&gt;());</span><br><span class="line">        List&lt;TContent&gt; tweets = tweet.get(userId);</span><br><span class="line">        tweets.add(<span class="keyword">new</span> TContent(id ++, tweetId));</span><br><span class="line">        tweet.put(userId, tweets);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/** Retrieve the 10 most recent tweet ids in the user's news feed. Each item in the news feed must be posted by users who the user followed or by the user herself. Tweets must be ordered from most recent to least recent. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">getNewsFeed</span><span class="params">(<span class="keyword">int</span> userId)</span> </span>&#123;</span><br><span class="line">        Set&lt;Integer&gt; users = follow.containsKey(userId) ? follow.get(userId) : <span class="keyword">new</span> HashSet&lt;Integer&gt;();</span><br><span class="line">        users.add(userId);</span><br><span class="line">        PriorityQueue&lt;TContent&gt; queue = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;Integer, List&lt;TContent&gt;&gt; e : tweet.entrySet()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (users.contains(e.getKey())) &#123;</span><br><span class="line">                List&lt;TContent&gt; ts = e.getValue();</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ts.size(); i ++) &#123;</span><br><span class="line">                    queue.add(ts.get(i));</span><br><span class="line">                    <span class="keyword">if</span> (queue.size() &gt; <span class="number">10</span>) queue.poll();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        List&lt;TContent&gt; tmp = <span class="keyword">new</span> ArrayList&lt;TContent&gt;();</span><br><span class="line">        <span class="keyword">while</span> (! queue.isEmpty()) &#123;</span><br><span class="line">            tmp.add(queue.poll());</span><br><span class="line">        &#125;</span><br><span class="line">        Collections.sort(tmp, <span class="keyword">new</span> Comparator&lt;TContent&gt;() &#123;</span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(TContent a, TContent b)</span> </span>&#123;</span><br><span class="line">               <span class="keyword">return</span> b.id - a.id;</span><br><span class="line">           &#125; </span><br><span class="line">        &#125;);</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; tmp.size(); i ++) &#123;</span><br><span class="line">            result.add(tmp.get(i).tweetId);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/** Follower follows a followee. If the operation is invalid, it should be a no-op. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">follow</span><span class="params">(<span class="keyword">int</span> followerId, <span class="keyword">int</span> followeeId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (! follow.containsKey(followerId)) follow.put(followerId, <span class="keyword">new</span> HashSet&lt;Integer&gt;());</span><br><span class="line">        Set&lt;Integer&gt; followees = follow.get(followerId);</span><br><span class="line">        followees.add(followeeId);</span><br><span class="line">        follow.put(followerId, followees);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/** Follower unfollows a followee. If the operation is invalid, it should be a no-op. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unfollow</span><span class="params">(<span class="keyword">int</span> followerId, <span class="keyword">int</span> followeeId)</span> </span>&#123;</span><br><span class="line">        Set&lt;Integer&gt; followees = follow.get(followerId);</span><br><span class="line">        <span class="keyword">if</span> (followees == <span class="keyword">null</span> || !followees.contains(followeeId)) <span class="keyword">return</span>;</span><br><span class="line">        followees.remove(followeeId);</span><br><span class="line">        follow.put(followerId, followees);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/09/13/LOLls/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LOL！！！</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Java中的比较器重写" data-title="Java中的比较器重写" data-url="http://yoursite.com/2016/09/20/Java中的比较器重写/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Pengfei Xing
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

@@ -106,7 +106,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Algorithm/" style="font-size: 16px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 12px;">Android</a> <a href="/tags/Backend/" style="font-size: 14px;">Backend</a> <a href="/tags/Cheet-Sheet/" style="font-size: 10px;">Cheet Sheet</a> <a href="/tags/Diary/" style="font-size: 14px;">Diary</a> <a href="/tags/FullStack/" style="font-size: 16px;">FullStack</a> <a href="/tags/Game/" style="font-size: 10px;">Game</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/IOS/" style="font-size: 18px;">IOS</a> <a href="/tags/Java/" style="font-size: 12px;">Java</a> <a href="/tags/Mobile/" style="font-size: 20px;">Mobile</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/OOD/" style="font-size: 10px;">OOD</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Scrappy/" style="font-size: 10px;">Scrappy</a> <a href="/tags/SpriteKit/" style="font-size: 12px;">SpriteKit</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/WatchOS/" style="font-size: 10px;">WatchOS</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a>
+						<a href="/tags/Algorithm/" style="font-size: 16.67px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Backend/" style="font-size: 13.33px;">Backend</a> <a href="/tags/Cheet-Sheet/" style="font-size: 10px;">Cheet Sheet</a> <a href="/tags/Diary/" style="font-size: 13.33px;">Diary</a> <a href="/tags/FullStack/" style="font-size: 15px;">FullStack</a> <a href="/tags/Game/" style="font-size: 10px;">Game</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/IOS/" style="font-size: 18.33px;">IOS</a> <a href="/tags/Java/" style="font-size: 11.67px;">Java</a> <a href="/tags/Mobile/" style="font-size: 20px;">Mobile</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/OOD/" style="font-size: 10px;">OOD</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Scrappy/" style="font-size: 10px;">Scrappy</a> <a href="/tags/SpriteKit/" style="font-size: 11.67px;">SpriteKit</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/WatchOS/" style="font-size: 10px;">WatchOS</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a>
 					</div>
 				</section>
 				
@@ -171,6 +171,76 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-Java疑难问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/25/Java疑难问题/" class="article-date">
+  	<time datetime="2016-02-26T06:31:59.000Z" itemprop="datePublished">2016-02-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/25/Java疑难问题/">Java疑难问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>类中类</p>
+<p><pre class="lang:default decode:true ">package com.pengfeixing;</pre></p>
+<p>import java.util.HashMap;<br>import java.util.Map;<br>import java.util.ArrayList;</p>
+<p>public class DirectedGraph {<br>    public static class Vertex{<br>        private int value;<br>        public Vertex(int val){<br>            this.value = val;<br>        }<br>        public int getValue(){<br>            return this.value;<br>        }<br>    }</p>
+<pre><code>public static void main(String[] args){
+    DirectedGraph test = new DirectedGraph();
+    test.addVertex(new Vertex(0));
+    test.addVertex(new Vertex(1));
+}
+</code></pre><p>}<br><br>为何Vertex要定义成静态类？</p>
+<p>答：这里可以理解为类方法，假设类A含有内部类B，则将B声明为静态类，即可将B看成A的类方法，生成类B只需要用类A名就可以了，而不需要生成一个类A，即A.B b = new A.B();相反，如果B不是静态类，生成类B则需要先生成类A，即A.B b = new A().new B()。如果该内部类定义为私有，则只能在外部类内访问。</p>
+<p><a href="http://stackoverflow.com/questions/70324/java-inner-class-and-static-nested-class" target="_blank" rel="external">http://stackoverflow.com/questions/70324/java-inner-class-and-static-nested-class</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FullStack/">FullStack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-basic-algorithm" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1078,76 +1148,9 @@ moving forward and backward
 
 
   
-    <article id="post-sina-microblog-app-for-apple-watch" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/08/sina-microblog-app-for-apple-watch/" class="article-date">
-  	<time datetime="2016-01-09T07:28:07.000Z" itemprop="datePublished">2016-01-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/08/sina-microblog-app-for-apple-watch/">Sina Microblog App for Apple Watch</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Nowadays, the best Sina Microblog app for Apple Watch is designed by Weico Co. which is a third-party app development company. However, this app can just allows users to read the 20 newest statuses which makes it impossible to read older statuses via the microblog app. Thus, based on the situation, I designed and implemented a totally new Apple Watch app that has the following breakthrough new features:</p>
-<ol>
-<li>Be the first Apple Watch app that can refresh and load more status;</li>
-<li>Be the first Apple Watch app that can display shared status;</li>
-<li>Allow users to read more detailed information about a status;</li>
-<li>Allow users to ‘like’ or ‘share’ status.<br>Posters about new features:</li>
-</ol>
-<p><a href="http://pengfeixing.com/wp-content/uploads/2016/01/1.pic_.jpg" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2016/01/1.pic_-169x300.jpg" alt="home.pic"></a> <a href="http://pengfeixing.com/wp-content/uploads/2016/01/2.pic_.jpg" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2016/01/2.pic_-169x300.jpg" alt="refresh.pic"></a> <a href="http://pengfeixing.com/wp-content/uploads/2016/01/3.pic_.jpg" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2016/01/3.pic_-169x300.jpg" alt="more.pic"></a></p>
-<p><a href="http://pengfeixing.com/wp-content/uploads/2016/01/4.pic_.jpg" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2016/01/4.pic_-169x300.jpg" alt="detail.pic"></a> <a href="http://pengfeixing.com/wp-content/uploads/2016/01/2.pic_1.jpg" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2016/01/2.pic_1-169x300.jpg" alt="2.pic"></a> <a href="http://pengfeixing.com/wp-content/uploads/2016/01/5.pic_.jpg" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2016/01/5.pic_-169x300.jpg" alt="shareAndlike.pic"></a></p>
-<p>Demo Presentation:</p>
-<p><a href="https://youtu.be/HjWLoYmpzhg" target="_blank" rel="external">https://youtu.be/HjWLoYmpzhg</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 </div>

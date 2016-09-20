@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Tag: RESTful | 邢鹏飞的博客</title>
+  <title>邢鹏飞的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="邢鹏飞的博客">
-<meta property="og:url" content="http://yoursite.com/tags/RESTful/index.html">
+<meta property="og:url" content="http://yoursite.com/page/5/index.html">
 <meta property="og:site_name" content="邢鹏飞的博客">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
@@ -172,52 +172,92 @@
 
       <div class="body-wrap">
   
+    <article id="post-introduction-to-bloom-filter" class="article article-type-post" itemscope itemprop="blogPost">
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/03/16/通过NodeJS和MongoDB创建RESTful-API/" class="archive-article-date">
-  	<time datetime="2016-03-16T20:46:28.000Z" itemprop="datePublished">Mar 16</time>
+    <div class="article-meta">
+      <a href="/2015/10/18/introduction-to-bloom-filter/" class="article-date">
+  	<time datetime="2015-10-18T22:02:37.000Z" itemprop="datePublished">2015-10-18</time>
 </a>
-        </div>
-    	 
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/16/通过NodeJS和MongoDB创建RESTful-API/">通过NodeJS和MongoDB创建RESTful API</a>
+      <a class="article-title" href="/2015/10/18/introduction-to-bloom-filter/">analysis to bloom filter</a>
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>BRIEF INTRODUCTION</strong></p>
+<p>Bloom filter is a space efficient algorithm that can judge whether a record exists in a given record set. For example, FBI needs to judge whether a man is on the list of suspects; typing system needs to judge whether the word we are typing is correct - by computing that whether that word is in the word dictionary; email service provider, such as google, needs to judge whether a email is a spam mail - by recording the email sender who has been reported by others to send spam emails before.</p>
+<p>Take filtering spam mail as an example, indeed, many other machine learning algorithms can be used in this aspect, but all these methods need to deep into the email content, which may cost a lot of time and memory space. Also, others may come with that hash function that can handle searching &amp; matching problems. We can build a blacklist of spam email sender and hash every email address in the set to a value. Then we can run in constant time to judge whether an email is spam email. However, hash method isn’t ‘space efficient’, which means it will need lots of memory to handle this problem considering the large amount of spam mail sender in the world. For example, if we assume there are 5 billion spam mail senders in the world and the space utility rate is 50% and each email address takes 8 Bytes. Then we can calculate the amount of the memory using hash function to handle this problem as follows:</p>
+<p>[latex]5{\times}{10^9}{\times}8{\div}50{\%}Bytes=8{\times}{10^{10}}Bytes=745GB[/latex]</p>
+<p>Actually, normal server doesn’t have such larger memory. Thus, it’s insane to apply hash method to this problem.</p>
+<p>An alternative method or a method that can be combined with those machine learning methods is bloom filter, which is proposed by Burton Howard Bloom in 1970. It can be described as follows:</p>
+<ol>
+<li>Initialize a bit array [latex]M[/latex] with length <strong><em>m </em></strong>and set all the values to 0;</li>
+<li>Build <strong><em>k</em></strong> hash functions;</li>
+<li>Hash every record in the input set <strong><em>S</em></strong> for <strong><em>k</em></strong> times and we can get <strong><em>k</em></strong> values which represent <strong><em>k</em></strong> positions (p1, p2, p3,…, pk) of the bit array;</li>
+<li><p>Set M[p1], M[p2], M[p3],…, M[pk] to 1.<br>Then, we finish building a bloom filter. And given a record, we can easily judge whether the record is in the set <strong><em>S </em></strong>as follows:</p>
+</li>
+<li><p>Hash the given record using the k hash functions and get <strong><em>k</em></strong> values V(v1, v2, v3,…, vk);</p>
+</li>
+<li>if for each M[vi] == 1 where vi belongs to V, then we can say this record is highly possibly in set <strong><em>S</em></strong>. Otherwise, we can say that this record is definitely not in set <strong><em>S</em></strong>.<br>Every coin has two sides. Bloom filter can judge whether a record is not in a given set or a record is <strong>highly possibly</strong> in a give set. That is why the False Negative of this algorithm is equal to zero, but the False Positive is not. We now analyse how to minimise the False Negative by choosing the appropriate value of  <em><strong>k</strong></em>.</li>
+</ol>
+<p><strong>MATHEMATIC ANALYSIS</strong></p>
+<p>We assume we are given a bit array M of which length is m and the number of the set is n. Now after each hashing, the possibility of the value of a chosen position of M is still 0 is</p>
+<p>[latex]1-\frac{1}{m}[/latex]</p>
+<p>and after we hash one record for k times, the possibility of that is</p>
+<p><a href="1-\frac{1}{m}">latex</a>^k[/latex]</p>
+<p>and when we finish the initialization of bloom filter, the possibility changes to</p>
+<p><a href="1-\frac{1}{m}">latex</a>^{kn}[/latex]</p>
+<p>未完待续……</p>
+<p>&nbsp;</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Backend/">Backend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FullStack/">FullStack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RESTful/">RESTful</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      
+      <div class="clearfix"></div>
+    </div>
     
+  </div>
+  
+</article>
 
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    </nav>
+  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -241,10 +281,10 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: false,
+		isHome: true,
 		isPost: false,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false
 	}
