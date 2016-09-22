@@ -172,6 +172,100 @@
 
       <div class="body-wrap">
   
+    <article id="post-unity-3d-note" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/02/unity-3d-note/" class="article-date">
+  	<time datetime="2016-02-02T18:27:39.000Z" itemprop="datePublished">2016-02-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/02/unity-3d-note/">Unity 3D Note</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>change size</p>
+<pre class="lang:c# decode:true ">void OnTriggerEnter(Collider other) 
+    {
+        if (other.gameObject.CompareTag("Diamond")){
+            other.gameObject.SetActive (false);
+
+            Color newColor = new Color( Random.value, Random.value, Random.value, 1.0f );
+            // apply it on current object's material
+            GetComponent&lt;Renderer&gt;().material.color = Color.green;
+
+            transform.localScale -= new Vector3(0.4F, 0.4F, 0.4F);
+        }
+
+    }</pre>
+rotate
+<pre class="lang:c# decode:true ">void Update () {
+        transform.Rotate (new Vector3 (0, 90, 0) * Time.deltaTime / 4);
+    }</pre>
+moving forward and backward
+<pre class="lang:c# decode:true ">public class moveForwardAndBackward : MonoBehaviour {
+
+    Vector3 origin;
+    float distance = 6;
+    float speed = 0.3f;
+
+    void Start(){
+        origin = transform.position;
+    }
+
+    void Update () {
+        transform.position = origin + (transform.forward*(Mathf.PingPong(Time.time*distance*speed + (distance*speed/2), distance*2)-distance));
+    }
+
+}</pre>
+触发某事件从而使另外一个物体消失
+<pre class="lang:c# decode:true  ">if (other.gameObject.CompareTag ("CaveGround")) {
+            GameObject arrow = GameObject.FindGameObjectWithTag("CaveArrow");
+            arrow.SetActive(false);
+}</pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Game/">Game</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity/">Unity</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-sina-microblog-app-for-apple-watch" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -809,87 +903,6 @@
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FullStack/">FullStack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-IOS开发笔记（第三方框架篇）" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/10/24/IOS开发笔记（第三方框架篇）/" class="article-date">
-  	<time datetime="2015-10-24T20:02:32.000Z" itemprop="datePublished">2015-10-24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/24/IOS开发笔记（第三方框架篇）/">IOS 开发笔记（第三方框架篇）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&nbsp;</p>
-<p><strong>SDWebImage(<a href="https://github.com/rs/SDWebImage" target="_blank" rel="external">https://github.com/rs/SDWebImage</a>)</strong></p>
-<p>该框架在处理网络请求图片优势非常明显，但是本地缓存的图片会吞噬大量内存，所以用该框架的时候，一定要在AppDelegate中实现applicationDidReceiveMemoryWarning的代理。主要是停止图片的下载＋清空缓存。</p>
-<p>[[SDWebImageManager sharedManager] cancelAll];</p>
-<p>[[SDWebImageManager sharedManager].imageCache clearMemory];</p>
-<p>&nbsp;</p>
-<p><strong>AFNetworking (<a href="https://github.com/AFNetworking/AFNetworking" target="_blank" rel="external">https://github.com/AFNetworking/AFNetworking</a>)</strong></p>
-<p>该框架提供了很多网络请求的API。有一点需要注意的是，在用</p>
-<p>[AFHTTPRequestOperationManager manager]管理请求的时候，有时会遇到如下error(点击查看大图):</p>
-<p><a href="http://pengfeixing.com/wp-content/uploads/2015/10/AFNetworkingError1.jpg" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2015/10/AFNetworkingError1-300x101.jpg" alt="AFNetworkingError"></a></p>
-<p>&nbsp;</p>
-<p>该图是以向新浪微博请求OAuth授权请求获取token时的报错，主要原因是新浪服务器响应请求的响应头中content-type为text/plain，而该框架不支持该类型，所有我们需要做一些修改。修改只需要找到AFURLResponseSerialization.m文件，在init方法中添加支持的content-type。修改后截图如下（点击查看大图）：</p>
-<p>&nbsp;</p>
-<p><a href="http://pengfeixing.com/wp-content/uploads/2015/10/textPlainError2.jpg" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2015/10/textPlainError2-300x47.jpg" alt="textPlainError2"></a></p>
-<p>&nbsp;</p>
-<p><strong>MJExtension (<a href="https://github.com/CoderMJLee/MJExtension" target="_blank" rel="external">https://github.com/CoderMJLee/MJExtension</a>)</strong></p>
-<p>该框架主要实现字典快速转模型，可通过如下函数实现</p>
-<ul>
-<li>(NSMutableArray <em>)objectArrayWithKeyValuesArray:(NSArray </em>)keyValuesArray;</li>
-</ul>
-<p>但是在用该方法快速实现字典转模型A的时候，如果该字典中含有子字典需要转换成对应的模型B，则需要在模型A的的定义中遵守&lt;MJKeyValue&gt;协议，然后实现以下方法：</p>
-<ul>
-<li>(NSDictionary *)objectClassInArray;</li>
-</ul>
-<p>&nbsp;</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li></ul>
 	</div>
 
       

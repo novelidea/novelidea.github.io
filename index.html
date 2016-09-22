@@ -172,6 +172,68 @@
 
       <div class="body-wrap">
   
+    <article id="post-类Sweep-Line问题分析" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/22/类Sweep-Line问题分析/" class="article-date">
+  	<time datetime="2016-09-22T20:44:23.000Z" itemprop="datePublished">2016-09-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/22/类Sweep-Line问题分析/">类Sweep Line问题分析</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>最近发现了一种非常有意思的算法，叫做Sweep Line，但是该算法问题界定的范围不像DP, Greedy那么明确，所以暂称类Sweep Line问题吧。下面就通过实际问题来阐述。</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><h4 id="最长递增子序列问题"><a href="#最长递增子序列问题" class="headerlink" title="最长递增子序列问题"></a>最长递增子序列问题</h4><p>该问题的描述如下：<br>给定一个未排序的序列，找到其中最长的递增子序列，可以不连续。一般该问题可以用 DP 来解决，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLIS</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == nums || <span class="number">1</span> &gt; nums.length) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line">        <span class="keyword">int</span>[] opt = <span class="keyword">new</span> <span class="keyword">int</span>[len];</span><br><span class="line">        Arrays.fill(opt, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i ++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j ++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[i] &gt; nums[j]) &#123;</span><br><span class="line">                    opt[i] = Math.max(opt[i], opt[j] + <span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            result = Math.max(result, opt[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该 DP 算法的时间复杂度为<code>O(n^2)</code>。这是大部分算法学习者都可以达到的正常水平，但是在这之外，我无意中发现有人用开挂技能来KO这道题，这就是文章一开始说的 Sweep Line 算法，而该算法可以达到<code>O(nlog(n))</code>的时间复杂度。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLIS</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</span><br><span class="line">    <span class="keyword">int</span> size = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> x : nums) &#123;</span><br><span class="line">    	<span class="keyword">int</span> i = <span class="number">0</span>, j = size;</span><br><span class="line">       	<span class="keyword">while</span> (i != j) &#123;</span><br><span class="line">        	<span class="keyword">int</span> m = (i + j) / <span class="number">2</span>;</span><br><span class="line">           	<span class="keyword">if</span> (result[m] &lt; x)</span><br><span class="line">            	i = m + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            	j = m;</span><br><span class="line">        &#125;</span><br><span class="line">       	result[i] = x;</span><br><span class="line">        <span class="keyword">if</span> (i == size) ++size;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> size;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该算法主要是维护了一个已经访问过的最长的递增序列，当新的数来临时，找到序列中第一个比该数大的数进行替换，如果都比该数小，则将该数放到递增子序列的末尾，递增子序列长度加一。所以外层遍历时间复杂度是<code>O(n)</code>,而由于递增子序列已经递增有序，所以找到第一个比该数大的数可以用二分查找，时间复杂度是 <code>O(log(n))</code>。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Java中的比较器重写" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -767,82 +829,6 @@
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpriteKit/">SpriteKit</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-导航控制器" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/24/导航控制器/" class="article-date">
-  	<time datetime="2016-03-24T17:04:22.000Z" itemprop="datePublished">2016-03-24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/24/导航控制器/">导航控制器</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>导航控制器（NavigationController）一些常用方法笔记如下:</p>
-<h3 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PUSH:</span><br><span class="line">[self.navigationController pushViewController: vc Animated:YES];</span><br><span class="line">POP:</span><br><span class="line">[self.navigationController popViewControllerAnimated: YES];</span><br><span class="line">POP TO ROOT:</span><br><span class="line">[self.navigationController popToRootViewControllerAnimated:YES];</span><br></pre></td></tr></table></figure>
-<h3 id="设置标题"><a href="#设置标题" class="headerlink" title="设置标题"></a>设置标题</h3><p>设置标题不需要导航控制器，只需要当前控制器的navigationItem属性。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.navigationItem.title = @“name”;</span><br></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.title = @&quot;&quot;;</span><br></pre></td></tr></table></figure>
-<h3 id="设置导航条左右图标"><a href="#设置导航条左右图标" class="headerlink" title="设置导航条左右图标"></a>设置导航条左右图标</h3><p>将导航条左边按钮设置成相机。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UIBarButtonItem *cameraItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemCamera target:nil action:nil];</span><br><span class="line">self.navigationItem.leftBarButtonItem = cameraItem;</span><br></pre></td></tr></table></figure>
-<p>也可以同时并排添加多个按钮，但是多个按钮的位置无法改变，系统默认。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UIBarButtonItem *composeItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemCompose target:nil action:nil];</span><br><span class="line">self.navigationItem.leftBarButtonItems = @[cameraItem, composeItem];</span><br></pre></td></tr></table></figure>
-<h3 id="自定义返回按钮名字"><a href="#自定义返回按钮名字" class="headerlink" title="自定义返回按钮名字"></a>自定义返回按钮名字</h3><p>首先自定义返回按钮名字，如果要设置当前控制器的导航条返回按钮，则需要在上一个控制器中进行设置。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@“” style: UIBarButtonItemStylePlain target:nil action:nil];</span><br><span class="line">self.navigationItem.backBarButtonItem = backItem;</span><br></pre></td></tr></table></figure>
-<h3 id="将返回按钮设置成图片"><a href="#将返回按钮设置成图片" class="headerlink" title="将返回按钮设置成图片"></a>将返回按钮设置成图片</h3><p>下面是失败的两种实现方法：<br>第一种失败方法是直接将item通过图片初始化</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:uiimage style: UIBarButtonItemStylePlain target:nil action:nil];</span><br><span class="line">self.navigationItem.backBarButtonItem = item;</span><br></pre></td></tr></table></figure>
-<p>第二种失败方法是自定义按钮，然后通过通过view初始化button。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">UIButton *btn = [[UIButton alloc] init];</span><br><span class="line">btn.bounds = CGRectMake(0，0，46，31);</span><br><span class="line">btn.setBackgroundImage:** forState:UIControlStateNormal];</span><br><span class="line">UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];</span><br><span class="line">self.navigationItem.backBarButtonItem = item;</span><br></pre></td></tr></table></figure>
-<p>以上两种方法都不行，需要进行第三种方法的尝试，就是直接在当前控制器设置当前导航条中的left button。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">UIButton *btn = [[UIButton alloc] init];</span><br><span class="line">btn.bounds = CGRectMake(0，0，46，31);</span><br><span class="line">btn.setBackgroundImage:** forState:UIControlStateNormal];</span><br><span class="line">UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];</span><br><span class="line">self.navigationItem.leftBarButtonItem = item</span><br></pre></td></tr></table></figure>
-<p>这里是直接在需要返回的改控制器内修改导航条的left button，然后需要<strong>额外监听点击事件</strong>。</p>
-<h3 id="导航控制器布局"><a href="#导航控制器布局" class="headerlink" title="导航控制器布局"></a>导航控制器布局</h3><p>这里主要讲IOS7之后的布局。布局层次如下：首先屏幕上有个window，然后window最上面有个状态栏，状态栏再往下有个导航条，之后导航控制器的view的size直接和window一样大，覆盖整个屏幕，然后root view controller的view也是覆盖整个导航控制器的view。</p>
-<h3 id="设置NavigationBar-backgroundColor"><a href="#设置NavigationBar-backgroundColor" class="headerlink" title="设置NavigationBar backgroundColor"></a>设置NavigationBar backgroundColor</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[[UINavigationBar appearance] setBarTintColor:[UIColor redColor]];</span><br><span class="line"></span><br><span class="line">[[UINavigationBar appearance] setTranslucent:NO];</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li></ul>
 	</div>
 
       

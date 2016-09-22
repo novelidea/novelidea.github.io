@@ -172,6 +172,69 @@
 
       <div class="body-wrap">
   
+    <article id="post-Trie的典型应用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/26/Trie的典型应用/" class="article-date">
+  	<time datetime="2016-02-27T02:35:47.000Z" itemprop="datePublished">2016-02-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/26/Trie的典型应用/">单词查找树（Trie）的典型应用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>单词查找树是介绍详见<a href="https://en.wikipedia.org/wiki/Trie" target="_blank" rel="external">维基百科</a>，主要解决的问题是在一个字符串集合中快速找出目标字符串。实现如下：</p>
+<p>给定一个字符串数组，构建单词查找树。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TrieNode</span></span>&#123;</span><br><span class="line">        TrieNode[] next = <span class="keyword">new</span> TrieNode[<span class="number">26</span>];</span><br><span class="line">        String word;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TrieNode <span class="title">buildTrie</span><span class="params">(String[] words)</span></span>&#123;</span><br><span class="line">        TrieNode root = <span class="keyword">new</span> TrieNode();</span><br><span class="line">        <span class="keyword">for</span>(String w : words)&#123;</span><br><span class="line">            TrieNode p = root;</span><br><span class="line">            <span class="keyword">for</span>(Character c : w.toCharArray())&#123;</span><br><span class="line">                <span class="keyword">int</span> index = c - <span class="string">'a'</span>;</span><br><span class="line">                <span class="keyword">if</span>(p.next[index] == <span class="keyword">null</span>) p.next[index] = <span class="keyword">new</span> TrieNode();</span><br><span class="line">                p = p.next[index];</span><br><span class="line">            &#125;</span><br><span class="line">            p.word = w;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里我们的应用场景是给定一个N*M的字符串矩阵，一个单词列表，返回所有可以在字符串矩阵中存在的单词。该问题过于复杂，我们可以先来处理简化版本。</p>
+<p>简化版本是，将单词列表换成一个单词，判断该字符串矩阵是否能找出该单词。比如，给定<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  [<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'E'</span>],</span><br><span class="line">  [<span class="string">'S'</span>,<span class="string">'F'</span>,<span class="string">'C'</span>,<span class="string">'S'</span>],</span><br><span class="line">  [<span class="string">'A'</span>,<span class="string">'D'</span>,<span class="string">'E'</span>,<span class="string">'E'</span>]</span><br><span class="line">]</span><br><span class="line"><span class="string">"ABCCED"</span>-&gt;TRUE</span><br><span class="line"><span class="string">"SEE"</span>-&gt;TRUE</span><br><span class="line"><span class="string">"ABCB"</span>-&gt;FALSE</span><br></pre></td></tr></table></figure></p>
+<p>该问题可以用dfs递归解决，算法实现如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">boolean</span> visited[][];</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">exist</span><span class="params">(<span class="keyword">char</span>[][] board, String word)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(board.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; board.length; i ++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &amp;lt; board[i].length; j++) &#123;</span><br><span class="line">                <span class="keyword">return</span> dfs(board, visited, word, i, j, <span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">dfs</span><span class="params">(<span class="keyword">char</span>[][] board, <span class="keyword">boolean</span>[][] visited, String word, <span class="keyword">int</span> i, <span class="keyword">int</span> j, <span class="keyword">int</span> index)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index == word.length()) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(i &amp;lt; <span class="number">0</span> || i &lt; board.length || j &amp;lt; <span class="number">0</span> || j &amp;gt; board[<span class="number">0</span>].length) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(visited[i][j] == <span class="keyword">true</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(word.charAt(index) != board[i][j]) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        visited[i][j] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">boolean</span> result = dfs(board, visited, word, i - <span class="number">1</span>, j, index + <span class="number">1</span>) ||</span><br><span class="line">                         dfs(board, visited, word, i + <span class="number">1</span>, j, index + <span class="number">1</span>) ||</span><br><span class="line">                         dfs(board, visited, word, i, j - <span class="number">1</span>, index + <span class="number">1</span>) ||</span><br><span class="line">                         dfs(board, visited, word, i, j + <span class="number">1</span>, index + <span class="number">1</span>);</span><br><span class="line">        visited[i][j] = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>但是，当要查找的目标变成一个字符串集合时，问题就会变复杂了，当然可以暴力遍历改集合，不断调用上面方法，但是时间复杂度很高。所有，这里就要借用单词查找树（Trie）。实现如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&amp;lt;String&amp;gt; findWords(<span class="keyword">char</span>[][] board, String[] words) &#123;</span><br><span class="line">        List&amp;lt;String&amp;gt; result = <span class="keyword">new</span> ArrayList&amp;lt;&amp;gt;();</span><br><span class="line">        TrieNode root = buildTrie(words);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; board.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &amp;lt; board[<span class="number">0</span>].length; j++) &#123;</span><br><span class="line">                dfs(board, i, j, root, result);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">char</span>[][] board, <span class="keyword">int</span> i, <span class="keyword">int</span> j, TrieNode p, List&amp;lt;String&amp;gt; result)</span></span>&#123;</span><br><span class="line">        <span class="comment">// if(i &amp;lt; 0 || i &amp;gt;= board.length || j &amp;lt; 0 || j &amp;gt;= board[0].length) return;</span></span><br><span class="line">        <span class="keyword">char</span> c = board[i][j];</span><br><span class="line">        <span class="keyword">if</span>(c == <span class="string">'#'</span> || p.next[c - <span class="string">'a'</span>] == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        p = p.next[c - <span class="string">'a'</span>];</span><br><span class="line">        <span class="keyword">if</span>(p.word != <span class="keyword">null</span>)&#123;</span><br><span class="line">            result.add(p.word);</span><br><span class="line">            p.word = <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        board[i][j] = <span class="string">'#'</span>;</span><br><span class="line">        <span class="keyword">if</span>(i &amp;gt; <span class="number">0</span>) dfs(board, i - <span class="number">1</span>, j, p, result);</span><br><span class="line">        <span class="keyword">if</span>(j &amp;gt; <span class="number">0</span>) dfs(board, i, j - <span class="number">1</span>, p, result);</span><br><span class="line">        <span class="keyword">if</span>(i &amp;lt; board.length - <span class="number">1</span>) dfs(board, i + <span class="number">1</span>, j, p, result);</span><br><span class="line">        <span class="keyword">if</span>(j &amp;lt; board[<span class="number">0</span>].length - <span class="number">1</span>) dfs(board, i, j + <span class="number">1</span>, p, result);</span><br><span class="line">        board[i][j] = c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&nbsp;</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Java疑难问题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1033,100 +1096,6 @@ int longestCommonStrOfPrefixAndPostfix(string s){
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FullStack/">FullStack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scrappy/">Scrappy</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-unity-3d-note" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/02/unity-3d-note/" class="article-date">
-  	<time datetime="2016-02-02T18:27:39.000Z" itemprop="datePublished">2016-02-02</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/02/unity-3d-note/">Unity 3D Note</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>change size</p>
-<pre class="lang:c# decode:true ">void OnTriggerEnter(Collider other) 
-    {
-        if (other.gameObject.CompareTag("Diamond")){
-            other.gameObject.SetActive (false);
-
-            Color newColor = new Color( Random.value, Random.value, Random.value, 1.0f );
-            // apply it on current object's material
-            GetComponent&lt;Renderer&gt;().material.color = Color.green;
-
-            transform.localScale -= new Vector3(0.4F, 0.4F, 0.4F);
-        }
-
-    }</pre>
-rotate
-<pre class="lang:c# decode:true ">void Update () {
-        transform.Rotate (new Vector3 (0, 90, 0) * Time.deltaTime / 4);
-    }</pre>
-moving forward and backward
-<pre class="lang:c# decode:true ">public class moveForwardAndBackward : MonoBehaviour {
-
-    Vector3 origin;
-    float distance = 6;
-    float speed = 0.3f;
-
-    void Start(){
-        origin = transform.position;
-    }
-
-    void Update () {
-        transform.position = origin + (transform.forward*(Mathf.PingPong(Time.time*distance*speed + (distance*speed/2), distance*2)-distance));
-    }
-
-}</pre>
-触发某事件从而使另外一个物体消失
-<pre class="lang:c# decode:true  ">if (other.gameObject.CompareTag ("CaveGround")) {
-            GameObject arrow = GameObject.FindGameObjectWithTag("CaveArrow");
-            arrow.SetActive(false);
-}</pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Game/">Game</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity/">Unity</a></li></ul>
 	</div>
 
       
