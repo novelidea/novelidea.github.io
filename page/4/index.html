@@ -172,6 +172,69 @@
 
       <div class="body-wrap">
   
+    <article id="post-Scrappy安装注意事项" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/07/Scrappy安装注意事项/" class="article-date">
+  	<time datetime="2016-02-08T01:14:05.000Z" itemprop="datePublished">2016-02-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/07/Scrappy安装注意事项/">Scrappy 安装注意事项</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>安装时报错为：</p>
+<p><pre class="lang:default decode:true ">ImportError: cannot import name xmlrpc client</pre><br>解决方法：</p>
+<p><pre class="lang:default decode:true  ">sudo rm -rf /Library/Python/2.7/site-packages/six<em><br>sudo rm -rf /System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/six</em><br>sudo pip install six</pre></p>
+<p>scrapy crawl huawei</p>
+<p>docker: Cannot connect to the Docker daemon. Is the docker daemon running on this host?.<br>See ‘docker run –help’.</p>
+<p>eval “$(docker-machine env default)”<br>&nbsp;</p>
+<p>&nbsp;</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FullStack/">FullStack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scrappy/">Scrappy</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-unity-3d-note" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -834,75 +897,6 @@ moving forward and backward
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Git-Cheat-Sheet" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/10/26/Git-Cheat-Sheet/" class="article-date">
-  	<time datetime="2015-10-27T02:39:23.000Z" itemprop="datePublished">2015-10-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/26/Git-Cheat-Sheet/">git cheat sheet</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>Add files from working directory to stage(index):</strong></p>
-<p>git add filename</p>
-<p>git add -A</p>
-<p>git add .</p>
-<p>&nbsp;</p>
-<p><strong>get branch from github</strong></p>
-<p>git clone -b branchname git@github.com:username/projectname.git</p>
-<p>or</p>
-<p>git clone -b branchname <a href="http://git@github.com:username/projectname.git" target="_blank" rel="external">http://git@github.com:username/projectname.git</a></p>
-<p>&nbsp;</p>
-<p><strong>push file</strong></p>
-<p>push filename origin branchname</p>
-<p>&nbsp;</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FullStack/">FullStack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
 	</div>
 
       

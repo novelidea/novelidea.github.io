@@ -172,6 +172,130 @@
 
       <div class="body-wrap">
   
+    <article id="post-面向对象设计" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/28/面向对象设计/" class="article-date">
+  	<time datetime="2016-02-28T21:21:57.000Z" itemprop="datePublished">2016-02-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/28/面向对象设计/">面向对象设计</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文主要讨论用面相对象的思想设计一副纸牌，并且实现洗牌算法。设计了两个类Card, Deck，以及两个枚举Suit, Face.</p>
+<p><pre class="lang:default decode:true " title="Suit">package com.pengfeixing.ood;</pre></p>
+<p>/**</p>
+<ul>
+<li>Created by novelidea on 2/28/16.<br>*/<br>public enum Suit {<br> Club(0), Diamond(1), Heart(2), Spade(3);<br> private int value;<br> private Suit(int v){<pre><code>value = v;
+</code></pre> }<br> public int getValue(){<pre><code>return value;
+</code></pre> }<br> public static Suit getSuitFromValue(int value){<pre><code>switch (value){
+    case 0 : return Suit.Club;
+    case 1 : return Suit.Diamond;
+    case 2 : return Suit.Heart;
+    case 3 : return Suit.Spade;
+    default: return null;
+}
+</code></pre> }<br>}<br><br><pre class="lang:default decode:true " title="Face">package com.pengfeixing.ood;</pre></li>
+</ul>
+<p>/**</p>
+<ul>
+<li><p>Created by novelidea on 2/28/16.<br>*/<br>public enum Face {<br> A(1), Two(2), Three(3), Four(4), Five(5), Six(6), Seven(7), Eight(8), Nine(9), Ten(10), Jack(11), Queen(12), King(13);</p>
+<p> private int value;<br> private Face(int v){</p>
+<pre><code>value = v;
+</code></pre><p> }<br> public int getValue(){</p>
+<pre><code>return value;
+</code></pre><p> }<br> public static Face getFaceFromValue(int v){</p>
+<pre><code>switch (v){
+    case 1 : return Face.A;
+    case 2 : return Face.Two;
+    case 3 : return Face.Three;
+    case 4 : return Face.Four;
+    case 5 : return Face.Five;
+    case 6 : return Face.Six;
+    case 7 : return Face.Seven;
+    case 8 : return Face.Eight;
+    case 9 : return Face.Nine;
+    case 10 : return Face.Ten;
+    case 11 : return Face.Jack;
+    case 12 : return Face.Queen;
+    case 13 : return Face.King;
+    default: return null;
+}
+</code></pre><p> }<br>}<br><br><pre class="lang:default decode:true " title="Card">package com.pengfeixing.ood;</pre></p>
+</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>Created by novelidea on 2/28/16.<br>*/<br>public class Card {<br> private Face faceValue;<br> private Suit suit;<br> public Card(Face v, Suit s){<pre><code>faceValue = v;
+suit = s;
+</code></pre> }<br> public Card(Card otherCard){<pre><code>faceValue = otherCard.faceValue;
+suit = otherCard.suit;
+</code></pre> }<br> public Face getFaceValue(){<pre><code>return faceValue;
+</code></pre> }<br> public Suit getSuit(){<pre><code>return suit;
+</code></pre> }<br>}<br><br><pre class="lang:default decode:true " title="Deck">package com.pengfeixing.ood;</pre></li>
+</ul>
+<p>/**</p>
+<ul>
+<li>Created by novelidea on 2/28/16.<br>*/<br>import java.util.ArrayList;<br>import java.util.Random;</li>
+</ul>
+<p>public class Deck {<br>    private static int SUIT_PER_DECK = 4;<br>    private static int CARDS_PER_SUIT = 13;<br>    private ArrayList&lt;Card&gt; cards;<br>    public Deck(){<br>        cards = new ArrayList&lt;Card&gt;(SUIT_PER_DECK <em> CARDS_PER_SUIT);<br>        int index = 0;<br>        for (int i = 0; i &lt; SUIT_PER_DECK; i ++) {<br>            for (int j = 1; j &lt;= CARDS_PER_SUIT; j ++){<br>                index = i </em> CARDS_PER_SUIT + j - 1;<br>                Card card = new Card(Face.getFaceFromValue(j), Suit.getSuitFromValue(i));<br>                cards.add(card);<br>            }<br>        }<br>    }<br>    public void Shuffle(){<br>        if(cards.isEmpty()){<br>            return;<br>        }<br>        Random rand = new Random();<br>        for (int i = SUIT_PER_DECK * CARDS_PER_SUIT - 1; i &gt; 0; i –){<br>            int j = rand.nextInt(i);<br>            Card tmp = new Card(cards.get(i));<br>            cards.set(i, cards.get(j));<br>            cards.set(j, tmp);<br>        }<br>        return;<br>    }</p>
+<pre><code>public void printCards(){
+    for(int i = 0; i &amp;lt; CARDS_PER_SUIT * SUIT_PER_DECK; i ++){
+        Card card = cards.get(i);
+        System.out.println(card.getFaceValue() + &quot;,  &quot; + card.getSuit());
+    }
+}
+</code></pre><p>}<br><br>测试函数：</p>
+<p><pre class="lang:default decode:true">package com.pengfeixing.ood;</pre></p>
+<p>public class Main {<br>    public static void main(String[] args) {<br>        Deck deck = new Deck();<br>        deck.Shuffle();<br>        deck.printCards();<br>    }<br>}<br><br>输出结果：</p>
+<p><pre class="lang:default decode:true " title="Result">Five,  Heart<br>Two,  Spade<br>Five,  Club<br>King,  Heart<br>Jack,  Spade<br>Queen,  Heart<br>Ten,  Spade<br>Three,  Diamond<br>Jack,  Club<br>Ten,  Heart<br>Four,  Diamond<br>King,  Diamond<br>Nine,  Spade<br>King,  Spade<br>Two,  Club<br>Eight,  Heart<br>Seven,  Diamond<br>Three,  Club<br>Three,  Heart<br>Nine,  Heart<br>King,  Club<br>Six,  Club<br>A,  Club<br>Eight,  Club<br>A,  Spade<br>A,  Heart<br>Nine,  Diamond<br>Nine,  Club<br>Eight,  Spade<br>A,  Diamond<br>Three,  Spade<br>Jack,  Diamond<br>Two,  Diamond<br>Seven,  Heart<br>Queen,  Diamond<br>Eight,  Diamond<br>Two,  Heart<br>Five,  Spade<br>Jack,  Heart<br>Six,  Heart<br>Seven,  Club<br>Seven,  Spade<br>Queen,  Spade<br>Six,  Diamond<br>Queen,  Club<br>Six,  Spade<br>Five,  Diamond<br>Four,  Spade<br>Four,  Heart<br>Ten,  Club<br>Four,  Club<br>Ten,  Diamond</pre></p>
+<p>Process finished with exit code 0<br><br>&nbsp;</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OOD/">OOD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Trie的典型应用" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1033,69 +1157,6 @@ int longestCommonStrOfPrefixAndPostfix(string s){
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Scrappy安装注意事项" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/07/Scrappy安装注意事项/" class="article-date">
-  	<time datetime="2016-02-08T01:14:05.000Z" itemprop="datePublished">2016-02-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/07/Scrappy安装注意事项/">Scrappy 安装注意事项</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>安装时报错为：</p>
-<p><pre class="lang:default decode:true ">ImportError: cannot import name xmlrpc client</pre><br>解决方法：</p>
-<p><pre class="lang:default decode:true  ">sudo rm -rf /Library/Python/2.7/site-packages/six<em><br>sudo rm -rf /System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/six</em><br>sudo pip install six</pre></p>
-<p>scrapy crawl huawei</p>
-<p>docker: Cannot connect to the Docker daemon. Is the docker daemon running on this host?.<br>See ‘docker run –help’.</p>
-<p>eval “$(docker-machine env default)”<br>&nbsp;</p>
-<p>&nbsp;</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FullStack/">FullStack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scrappy/">Scrappy</a></li></ul>
 	</div>
 
       
