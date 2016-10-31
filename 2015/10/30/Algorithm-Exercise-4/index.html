@@ -4,18 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Basic Algorithm | 邢鹏飞的博客</title>
+  <title>Algorithm Exercise 4 | 邢鹏飞的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="翻转字符串中的单词123456789101112131415public String reverseWords(String s)&amp;#123;        String[] words = s.split(&quot; &quot;);        for(int i = 0; i &amp;lt; words.length / 2; i ++)&amp;#123;            String tmp = words[">
+  <meta name="description">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Basic Algorithm">
-<meta property="og:url" content="http://yoursite.com/2016/02/23/basic-algorithm/index.html">
+<meta property="og:title" content="Algorithm Exercise 4">
+<meta property="og:url" content="http://yoursite.com/2015/10/30/Algorithm-Exercise-4/index.html">
 <meta property="og:site_name" content="邢鹏飞的博客">
-<meta property="og:description" content="翻转字符串中的单词123456789101112131415public String reverseWords(String s)&amp;#123;        String[] words = s.split(&quot; &quot;);        for(int i = 0; i &amp;lt; words.length / 2; i ++)&amp;#123;            String tmp = words[">
-<meta property="og:updated_time" content="2016-07-09T20:11:37.000Z">
+<meta property="og:description">
+<meta property="og:updated_time" content="2016-10-31T04:00:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Basic Algorithm">
-<meta name="twitter:description" content="翻转字符串中的单词123456789101112131415public String reverseWords(String s)&amp;#123;        String[] words = s.split(&quot; &quot;);        for(int i = 0; i &amp;lt; words.length / 2; i ++)&amp;#123;            String tmp = words[">
+<meta name="twitter:title" content="Algorithm Exercise 4">
+<meta name="twitter:description">
   
     <link rel="alternative" href="/atom.xml" title="邢鹏飞的博客" type="application/atom+xml">
   
@@ -171,11 +171,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-basic-algorithm" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Algorithm-Exercise-4" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/02/23/basic-algorithm/" class="article-date">
-  	<time datetime="2016-02-23T09:09:21.000Z" itemprop="datePublished">2016-02-23</time>
+      <a href="/2015/10/30/Algorithm-Exercise-4/" class="article-date">
+  	<time datetime="2015-10-31T03:59:34.000Z" itemprop="datePublished">2015-10-30</time>
 </a>
     </div>
   
@@ -188,7 +188,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Basic Algorithm
+      Algorithm Exercise 4
     </h1>
   
 
@@ -208,9 +208,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="翻转字符串中的单词"><a href="#翻转字符串中的单词" class="headerlink" title="翻转字符串中的单词"></a>翻转字符串中的单词</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">reverseWords</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        String[] words = s.split(<span class="string">" "</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; words.length / <span class="number">2</span>; i ++)&#123;</span><br><span class="line">            String tmp = words[i];</span><br><span class="line">            words[i] = words[words.length - <span class="number">1</span> - i];</span><br><span class="line">            words[words.length - <span class="number">1</span> - i] = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(String str : words)&#123;</span><br><span class="line">            sb.append(str + <span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        String result = sb.toString();</span><br><span class="line">        result.trim();</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2Sum"><a href="#2Sum" class="headerlink" title="2Sum"></a>2Sum</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] defaultResult = &#123;<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">null</span> == nums) <span class="keyword">return</span> defaultResult;</span><br><span class="line">        Map&lt;Integer, Integer&gt; mp = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i ++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(mp.containsKey(target - nums[i]) == <span class="keyword">true</span>) &#123;</span><br><span class="line">                <span class="keyword">int</span>[] result1 = &#123;mp.get(target - nums[i]), i&#125;;</span><br><span class="line">                <span class="keyword">return</span> result1;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                mp.put(nums[i], i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> defaultResult;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Binary-Search"><a href="#Binary-Search" class="headerlink" title="Binary Search"></a>Binary Search</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> end = nums.length - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(start &lt;= end) &#123;</span><br><span class="line">		<span class="keyword">int</span> mid = start + (end - start) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">			<span class="keyword">return</span> mid;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">			start = mid + <span class="number">1</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			mid = mid - <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
       
     </div>
     
@@ -219,18 +217,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/02/25/Java疑难问题/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/11/05/IOS规范总结/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Java疑难问题
+          IOS规范总结
         
       </div>
     </a>
   
   
-    <a href="/2016/02/22/Top-K问题/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">top k问题</div>
+    <a href="/2015/10/29/Algorithm-Exercise-3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Algorithm Exercise 3</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -265,7 +263,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="basic-algorithm" data-title="Basic Algorithm" data-url="http://yoursite.com/2016/02/23/basic-algorithm/"></div>
+	<div class="ds-thread" data-thread-key="Algorithm-Exercise-4" data-title="Algorithm Exercise 4" data-url="http://yoursite.com/2015/10/30/Algorithm-Exercise-4/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
