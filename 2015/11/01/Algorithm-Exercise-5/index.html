@@ -4,27 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Java疑难问题 | 邢鹏飞的博客</title>
+  <title>Algorithm Exercise 5 | 邢鹏飞的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="类中类
-package com.pengfeixing;
-import java.util.HashMap;import java.util.Map;import java.util.ArrayList;
-public class DirectedGraph {    public static class Vertex{        private int value;        publ">
+  <meta name="description">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java疑难问题">
-<meta property="og:url" content="http://yoursite.com/2016/02/25/Java疑难问题/index.html">
+<meta property="og:title" content="Algorithm Exercise 5">
+<meta property="og:url" content="http://yoursite.com/2015/11/01/Algorithm-Exercise-5/index.html">
 <meta property="og:site_name" content="邢鹏飞的博客">
-<meta property="og:description" content="类中类
-package com.pengfeixing;
-import java.util.HashMap;import java.util.Map;import java.util.ArrayList;
-public class DirectedGraph {    public static class Vertex{        private int value;        publ">
-<meta property="og:updated_time" content="2016-04-18T20:35:17.000Z">
+<meta property="og:description">
+<meta property="og:updated_time" content="2016-11-02T03:34:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java疑难问题">
-<meta name="twitter:description" content="类中类
-package com.pengfeixing;
-import java.util.HashMap;import java.util.Map;import java.util.ArrayList;
-public class DirectedGraph {    public static class Vertex{        private int value;        publ">
+<meta name="twitter:title" content="Algorithm Exercise 5">
+<meta name="twitter:description">
   
     <link rel="alternative" href="/atom.xml" title="邢鹏飞的博客" type="application/atom+xml">
   
@@ -180,11 +171,11 @@ public class DirectedGraph {    public static class Vertex{        private int v
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-Java疑难问题" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Algorithm-Exercise-5" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/02/25/Java疑难问题/" class="article-date">
-  	<time datetime="2016-02-26T06:31:59.000Z" itemprop="datePublished">2016-02-25</time>
+      <a href="/2015/11/01/Algorithm-Exercise-5/" class="article-date">
+  	<time datetime="2015-11-02T04:34:02.000Z" itemprop="datePublished">2015-11-01</time>
 </a>
     </div>
   
@@ -197,7 +188,7 @@ public class DirectedGraph {    public static class Vertex{        private int v
         
   
     <h1 class="article-title" itemprop="name">
-      Java疑难问题
+      Algorithm Exercise 5
     </h1>
   
 
@@ -206,7 +197,7 @@ public class DirectedGraph {    public static class Vertex{        private int v
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FullStack/">FullStack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
 	</div>
 
         
@@ -217,21 +208,7 @@ public class DirectedGraph {    public static class Vertex{        private int v
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>类中类</p>
-<p><pre class="lang:default decode:true ">package com.pengfeixing;</pre></p>
-<p>import java.util.HashMap;<br>import java.util.Map;<br>import java.util.ArrayList;</p>
-<p>public class DirectedGraph {<br>    public static class Vertex{<br>        private int value;<br>        public Vertex(int val){<br>            this.value = val;<br>        }<br>        public int getValue(){<br>            return this.value;<br>        }<br>    }</p>
-<pre><code>public static void main(String[] args){
-    DirectedGraph test = new DirectedGraph();
-    test.addVertex(new Vertex(0));
-    test.addVertex(new Vertex(1));
-}
-</code></pre><p>}<br><br>为何Vertex要定义成静态类？</p>
-<p>答：这里可以理解为类方法，假设类A含有内部类B，则将B声明为静态类，即可将B看成A的类方法，生成类B只需要用类A名就可以了，而不需要生成一个类A，即A.B b = new A.B();相反，如果B不是静态类，生成类B则需要先生成类A，即A.B b = new A().new B()。如果该内部类定义为私有，则只能在外部类内访问。</p>
-<p><a href="http://stackoverflow.com/questions/70324/java-inner-class-and-static-nested-class" target="_blank" rel="external">http://stackoverflow.com/questions/70324/java-inner-class-and-static-nested-class</a></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-
+        
       
     </div>
     
@@ -240,18 +217,18 @@ public class DirectedGraph {    public static class Vertex{        private int v
     
 <nav id="article-nav">
   
-    <a href="/2016/02/26/Trie的典型应用/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/11/05/IOS规范总结/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          单词查找树（Trie）的典型应用
+          IOS规范总结
         
       </div>
     </a>
   
   
-    <a href="/2016/02/23/basic-algorithm/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Basic Algorithm</div>
+    <a href="/2015/10/30/Algorithm-Exercise-4/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Algorithm Exercise 4</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -286,7 +263,7 @@ public class DirectedGraph {    public static class Vertex{        private int v
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Java疑难问题" data-title="Java疑难问题" data-url="http://yoursite.com/2016/02/25/Java疑难问题/"></div>
+	<div class="ds-thread" data-thread-key="Algorithm-Exercise-5" data-title="Algorithm Exercise 5" data-url="http://yoursite.com/2015/11/01/Algorithm-Exercise-5/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
