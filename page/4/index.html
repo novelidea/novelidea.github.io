@@ -106,7 +106,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 12px;">Android</a> <a href="/tags/Backend/" style="font-size: 14px;">Backend</a> <a href="/tags/Cheet-Sheet/" style="font-size: 10px;">Cheet Sheet</a> <a href="/tags/Diary/" style="font-size: 12px;">Diary</a> <a href="/tags/FullStack/" style="font-size: 16px;">FullStack</a> <a href="/tags/Game/" style="font-size: 10px;">Game</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/IOS/" style="font-size: 18px;">IOS</a> <a href="/tags/Java/" style="font-size: 12px;">Java</a> <a href="/tags/Mobile/" style="font-size: 20px;">Mobile</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/OOD/" style="font-size: 10px;">OOD</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Scrappy/" style="font-size: 10px;">Scrappy</a> <a href="/tags/SpriteKit/" style="font-size: 12px;">SpriteKit</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/WatchOS/" style="font-size: 10px;">WatchOS</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a>
+						<a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Backend/" style="font-size: 13.33px;">Backend</a> <a href="/tags/Cheet-Sheet/" style="font-size: 10px;">Cheet Sheet</a> <a href="/tags/Diary/" style="font-size: 11.67px;">Diary</a> <a href="/tags/FullStack/" style="font-size: 15px;">FullStack</a> <a href="/tags/Game/" style="font-size: 10px;">Game</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/IOS/" style="font-size: 16.67px;">IOS</a> <a href="/tags/Java/" style="font-size: 11.67px;">Java</a> <a href="/tags/Mobile/" style="font-size: 18.33px;">Mobile</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/OOD/" style="font-size: 10px;">OOD</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Scrappy/" style="font-size: 10px;">Scrappy</a> <a href="/tags/SpriteKit/" style="font-size: 11.67px;">SpriteKit</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/WatchOS/" style="font-size: 10px;">WatchOS</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a>
 					</div>
 				</section>
 				
@@ -171,6 +171,172 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-kmpknuth-morris-pratt-algorithm" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/14/kmpknuth-morris-pratt-algorithm/" class="article-date">
+  	<time datetime="2016-02-14T20:29:28.000Z" itemprop="datePublished">2016-02-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/14/kmpknuth-morris-pratt-algorithm/">KMP(Knuth–Morris–Pratt) Algorithm</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>KMP(Knuth-Morris-Pratt)是较为高级的字符串查找算法，是三个人名字的缩写，主要实现判断一个字符串A是否包含另一个字符串B，暴力解法是遍历循环，时间复杂度是O(mn)，其中m，n分别是字符串AB的长度。</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>由于暴力解法中没有充分利用上一次遍历查找失败的有用信息，所以时间复杂度很高，而KMP算法主要就是解决这一问题，主要思路如下：</p>
+<p>字符串1为：ABCDABCEDEAB</p>
+<p>字符串2为：ABCDAB</p>
+<p>暴力遍历解法在匹配到字符串2中E时报告匹配错误，然后重新从字符串1中第一个B的位置重新开始匹配，但是我们发现，下一次匹配开始的位置其实可在字符串1下标为4的位置，所以在每次匹配失败后会存在一次跳跃，来剪掉那些不可能匹配成功的“枝”。根据KMP算法，这个跳跃值是（本次已经匹配的字符串长度 － 此时未匹配字符所对应的partiallyMatchValue）。partiallyMatchValue可通过查找partially Match Table得到，该table是表征的是一个｛字符：整数｝的关系，字符是所有待查找字符串中的字符（这里是字符串2），此table通过如下关系得到：</p>
+<p>假设我们现在要求字符串2中第二个B所对应的整数值，则首先得到在字符串1中以B结尾的字串为：</p>
+<p>字符串3：ABCDAB</p>
+<p>计算改字符串3的所有prefix组合：｛A, AB, ABC, ABCD,ABCDA};</p>
+<p>计算改字符串3的所有postfix组合：{B, AB, DAB, CDAB, BCDAB}.</p>
+<p>然后，字符串3的prefix和postfix交集为{AB}，交集中的长度最大值为2，故partially Match Table中第二个B对应值为2，遍历字符串2可以得到一张长度为字符串2长度的表。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p><pre class="theme:classic lang:default decode:true "># include &lt;iostream&gt;</pre></p>
+<p>using namespace std;</p>
+<p>class StringSearch{<br>public:<br>    bool stringSearch(string str, string target){<br>        int* table = partialMatchTable(target);<br>        int matchedNum = 0;<br>        for(int i = 0; i &lt; str.length();){<br>            if(matchedNum == target.length()){<br>                delete[] table;<br>                return true;<br>            }else if(str[i] == target[matchedNum]){<br>                matchedNum ++;<br>                i++;<br>            }else{<br>                i += (matchedNum - table[matchedNum]);<br>                matchedNum = 0;<br>            }<br>        }<br>        delete[] table;<br>        return false;<br>    }</p>
+<pre><code>int* partialMatchTable(string s){
+    int len = s.length();
+    if(len &amp;lt; 1) return NULL;
+    int* table = new int[len];
+    memset(table, 0, len);
+    for(int i = 2; i &amp;lt;= len; i ++){
+        table[i - 1] = longestCommonStrOfPrefixAndPostfix(s.substr(0, i));
+    }
+    return table;
+}
+
+int longestCommonStrOfPrefixAndPostfix(string s){
+    int len = s.length();
+    if(len &amp;lt; 1) return 0;
+    for(int i = 1; i &amp;lt; len; i ++){
+        string prefix = s.substr(0, len - i);
+        string postfix = s.substr(i, len - i);
+        if(prefix == postfix){
+            return prefix.length();
+        }
+    }
+    return 0;
+}
+</code></pre><p>};</p>
+<p>int main() {<br>    StringSearch action = StringSearch();<br>    string s = “abababcdabdab”;<br>    string target = “abcdabd”;<br>    cout&lt;&lt;action.stringSearch(s, target)&lt;&lt;endl;<br>    return 0;<br>}<br><br>&nbsp;</p>
+<p>&nbsp;</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-shuffling-algorithm" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/13/shuffling-algorithm/" class="article-date">
+  	<time datetime="2016-02-14T00:49:28.000Z" itemprop="datePublished">2016-02-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/13/shuffling-algorithm/">Shuffling Algorithm</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>洗牌算法是一个比较经典的算法，主要讨论如何随机生成一副牌。第一次遇见是2013年春腾讯一面的时候，当时妥妥跪了，题目都没听懂，第二次遇见是大三上系统结构课，最后讲到了洗牌算法。比较经典详细的算法解释参见<span style="color: #3366ff;"><a href="https://en.wikipedia.org/wiki/Fisher–Yates_shuffle" target="_blank" rel="external">维基百科</a></span>。这里主要讨论一种流行的简化版本。</p>
+<h2 id="设计实现"><a href="#设计实现" class="headerlink" title="设计实现"></a>设计实现</h2><p>主要思路是从扑克的最后一张开始，假设下标为 i，然后从在区间[0, i - 1]中生成随机数j，交换下标为i，j所对应的元素。如此从最后一张循环操作到第二张（到第一张时可以跳出循环）。</p>
+<p>C++代码如下:</p>
+<p><pre class="lang:default decode:true "># include &lt;iostream&gt;</pre></p>
+<h1 id="define-CARDNUM-52"><a href="#define-CARDNUM-52" class="headerlink" title="define CARDNUM 52"></a>define CARDNUM 52</h1><p>using namespace std;</p>
+<p>class Shuffling{<br>public:<br>    int<em> shuffle(){<br>        int</em> cards = new int[CARDNUM];<br>        int index = 0;<br>        for(int i = 1; i &lt;= 13; i ++){<br>            for(int j = 0; j &lt; 4; j ++){<br>                cards[index ++] = i;<br>            }<br>        }<br>        for(int i = CARDNUM - 1; i &gt;= 1; i –){<br>            int j = rand() % i;<br>            swap(cards, i, j);<br>        }<br>        return cards;<br>    }</p>
+<pre><code>void swap(int arr[], int a, int b){
+    int tmp = arr[a];
+    arr[a] = arr[b];
+    arr[b] = tmp;
+}
+</code></pre><p>};</p>
+<p>int main() {<br>    Shuffling action = Shuffling();<br>    int* a = action.shuffle();<br>    for(int i = 0; i &lt; CARDNUM; i ++){<br>        cout&lt;&lt;a[i]&lt;&lt;endl;<br>    }<br>    return 0;<br>}<br><br>Java代码如下：</p>
+<p><pre class="lang:java decode:true ">public int[] shuffle(int max){<br>        Random rand = new Random();<br>        int[] cards = new int[max];<br>        for(int i = 0; i &lt; max; i ++){<br>            cards[i] = i;<br>        }<br>        for(int i = max - 1; i &gt; 0; i –){<br>            int exchange = rand.nextInt(i);<br>            int tmp = cards[i];<br>            cards[i] = cards[exchange];<br>            cards[exchange] = tmp;<br>        }<br>        return cards;<br>    }</pre><br>其中，这里需要注意的是，Java中如果要生成区间[min, max]之间的随机数，则是：</p>
+<p><pre class="lang:default decode:true ">rand.nextInt(max - min + 1) + min;</pre><br>&nbsp;</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Scrappy安装注意事项" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -764,130 +930,6 @@ moving forward and backward
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-IOS规范总结" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/05/IOS规范总结/" class="article-date">
-  	<time datetime="2015-11-06T05:10:10.000Z" itemprop="datePublished">2015-11-05</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/05/IOS规范总结/">IOS规范总结</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>命名</strong></p>
-<hr>
-<p>&nbsp;</p>
-<p><strong>1. 协议及协议方法命名：</strong></p>
-<ol>
-<li>协议名称：类名＋Delegate</li>
-<li>协议方法：类名（不包括类前缀）＋方法描述<br>例子：</li>
-</ol>
-<p>在一个名叫XPFBlogView（XPF是项目前缀）中定义一个处理该view中一个按钮（like button）点击事件（didClick）的协议，则命名如下：</p>
-<p>@protocol XPFBlogViewDelegate &lt;NSObject&gt;</p>
-<p>-(void)blogViewDidClickLikeButton:(XPFBlogView *)blogView;</p>
-<p>@end</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Algorithm-Exercise-5" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/01/Algorithm-Exercise-5/" class="article-date">
-  	<time datetime="2015-11-02T04:34:02.000Z" itemprop="datePublished">2015-11-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/01/Algorithm-Exercise-5/">Algorithm Exercise 5</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
 	</div>
 
       
