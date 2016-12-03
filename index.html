@@ -172,6 +172,119 @@
 
       <div class="body-wrap">
   
+    <article id="post-hash相关" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/11/15/hash相关/" class="article-date">
+  	<time datetime="2016-11-15T18:40:05.000Z" itemprop="datePublished">2016-11-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/15/hash相关/">hash相关</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Good-Hash-Function-for-String"><a href="#Good-Hash-Function-for-String" class="headerlink" title="Good Hash Function for String"></a>Good Hash Function for String</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> hash = <span class="number">7</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; strlen; i++) &#123;</span><br><span class="line">    hash = hash*<span class="number">31</span> + charAt(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一半可用于bloomfilter。</p>
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><p><a href="http://stackoverflow.com/questions/2624192/good-hash-function-for-strings" target="_blank" rel="external">http://stackoverflow.com/questions/2624192/good-hash-function-for-strings</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Java死锁例子" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/11/14/Java死锁例子/" class="article-date">
+  	<time datetime="2016-11-15T06:56:34.000Z" itemprop="datePublished">2016-11-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/14/Java死锁例子/">Java死锁例子</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by novelidea on 11/14/16.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeadLock</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Resource</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> val;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getVal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.val;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setVal</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.val = val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ResourceManager</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> Resource resOne, resTwo;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ResourceManager</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.resOne = <span class="keyword">new</span> Resource();</span><br><span class="line">            <span class="keyword">this</span>.resTwo = <span class="keyword">new</span> Resource();</span><br><span class="line">            resOne.setVal(<span class="number">0</span>);</span><br><span class="line">            resTwo.setVal(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (<span class="keyword">this</span>.resOne) &#123;</span><br><span class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">" read operation has get the lock for resource One"</span>);</span><br><span class="line">                <span class="keyword">synchronized</span> (<span class="keyword">this</span>.resTwo) &#123;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName() + <span class="string">" read operation has get the lock for resource Two"</span>);</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">this</span>.resOne.getVal() + <span class="keyword">this</span>.resTwo.getVal();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">int</span> one, <span class="keyword">int</span> two)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (<span class="keyword">this</span>.resTwo) &#123;</span><br><span class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">" write operation has get the lock for resource Two"</span>);</span><br><span class="line">                <span class="keyword">synchronized</span> (<span class="keyword">this</span>.resOne) &#123;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName() + <span class="string">" write opetion has get the lock for resource One"</span>);</span><br><span class="line">                    <span class="keyword">this</span>.resOne.setVal(one);</span><br><span class="line">                    <span class="keyword">this</span>.resTwo.setVal(two);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">CustomeThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> ResourceManager manager;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> valOne, valTwo;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">CustomeThread</span><span class="params">(ResourceManager manager, <span class="keyword">int</span> one, <span class="keyword">int</span> two)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.manager = manager;</span><br><span class="line">            <span class="keyword">this</span>.valOne = one;</span><br><span class="line">            <span class="keyword">this</span>.valTwo = two;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">                manager.read();</span><br><span class="line">                manager.write(valOne, valTwo);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ResourceManager manager = <span class="keyword">new</span> ResourceManager();</span><br><span class="line">        CustomeThread threadA = <span class="keyword">new</span> CustomeThread(manager, <span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">        CustomeThread threadB = <span class="keyword">new</span> CustomeThread(manager, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">        threadA.start();</span><br><span class="line">        threadB.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="http://blog.csdn.net/defonds/article/details/5258120" target="_blank" rel="external">http://blog.csdn.net/defonds/article/details/5258120</a><br><a href="http://blog.csdn.net/abigale1011/article/details/6450845" target="_blank" rel="external">http://blog.csdn.net/abigale1011/article/details/6450845</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Java中abstract和interface区别" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -663,159 +776,9 @@
 
 
   
-    <article id="post-Android笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/12/Android笔记/" class="article-date">
-  	<time datetime="2016-05-12T18:12:42.000Z" itemprop="datePublished">2016-05-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/12/Android笔记/">Android笔记</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Android-Studio快捷方式"><a href="#Android-Studio快捷方式" class="headerlink" title="Android Studio快捷方式"></a>Android Studio快捷方式</h2><h3 id="reformate-code-in-order-to-make-it-easier-to-read"><a href="#reformate-code-in-order-to-make-it-easier-to-read" class="headerlink" title="reformate code in order to make it easier to read"></a>reformate code in order to make it easier to read</h3><p><code>Mac</code>: cmd + opt + l<br><code>Win</code>: ctr + alt + l</p>
-<h3 id="find-file-in-the-entire-project"><a href="#find-file-in-the-entire-project" class="headerlink" title="find file in the entire project"></a>find file in the entire project</h3><p>double click <code>shift</code></p>
-<h3 id="自动纠错"><a href="#自动纠错" class="headerlink" title="自动纠错"></a>自动纠错</h3><p>opt + Enter</p>
-<h3 id="Refactor"><a href="#Refactor" class="headerlink" title="Refactor"></a>Refactor</h3><p>ctl + shift + R</p>
-<h3 id="自动补全"><a href="#自动补全" class="headerlink" title="自动补全"></a>自动补全</h3><p>ctl + space：如果选项唯一，则自动补全。<br>例子:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:src=<span class="string">"@drawable/logo"</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="提取dimension-resource"><a href="#提取dimension-resource" class="headerlink" title="提取dimension resource"></a>提取dimension resource</h3><p>提取dimension resource目的相当于给数字创建全局变量，方便以后修改。方法是鼠标定位到该行，然后按住<code>opt</code> + <code>Enter</code>即可。</p>
-<h2 id="Android-Project理解"><a href="#Android-Project理解" class="headerlink" title="Android Project理解"></a>Android Project理解</h2><ol>
-<li><p>layout加载顺序<br>先是家在<code>xml</code>中的layout设置，然后再加载代码中的layout。</p>
-</li>
-<li><p>Debug方法<br>在logcat中过滤出AndroidRuntime日志。</p>
-</li>
-</ol>
-<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><h3 id="Toast"><a href="#Toast" class="headerlink" title="Toast"></a>Toast</h3><p>Android Studio中输入<code>Toast</code>，然后回车便可出线代码如下代码模板：<br>Toast.makeText(MainActivity.this, “”, Toast.LENGTH_SHORT).show();<br>Toast显示的内容不受程序生命周期影响，即使在toast持续时间范围内关闭程序，toast内容也会显示。</p>
-<h3 id="布局参数"><a href="#布局参数" class="headerlink" title="布局参数"></a>布局参数</h3><h4 id="相对位置"><a href="#相对位置" class="headerlink" title="相对位置"></a>相对位置</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">android:layout_above=<span class="string">"@+id/photo"</span></span><br><span class="line">android:layout_below=<span class="string">"@+id/imageView"</span></span><br><span class="line">android:layout_alignParentBottom=<span class="string">"true"</span></span><br><span class="line">android:layout_centerHorizontal=<span class="string">"true"</span></span><br></pre></td></tr></table></figure>
-<h3 id="图片展示"><a href="#图片展示" class="headerlink" title="图片展示"></a>图片展示</h3><h4 id="静态展示方法"><a href="#静态展示方法" class="headerlink" title="静态展示方法"></a>静态展示方法</h4><p>直接在layout文件定义ImageView时赋值。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;ImageView</span><br><span class="line">    ...</span><br><span class="line">	android:src=<span class="string">"@drawable/logo"</span> /&gt;</span><br></pre></td></tr></table></figure></p>
-<h4 id="动态展示方法"><a href="#动态展示方法" class="headerlink" title="动态展示方法"></a>动态展示方法</h4><h5 id="根据图片在工程文件中的路径获取图片"><a href="#根据图片在工程文件中的路径获取图片" class="headerlink" title="根据图片在工程文件中的路径获取图片"></a>根据图片在工程文件中的路径获取图片</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ImageView iv = (ImageView) findViewById(R.id.photo);</span><br><span class="line">iv.setImageResource(R.drawable.jacket101);</span><br></pre></td></tr></table></figure>
-<h5 id="根据图片名字获取图片"><a href="#根据图片名字获取图片" class="headerlink" title="根据图片名字获取图片"></a>根据图片名字获取图片</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ImageView iv = (ImageView) findViewById(R.id.photo);</span><br><span class="line">String imageName = <span class="string">"jacket101"</span>;</span><br><span class="line"><span class="keyword">int</span> res = getResources().getIdentifier(imageName, <span class="string">"drawable"</span>, getPackageName());</span><br><span class="line">iv.setImageResource(res);</span><br></pre></td></tr></table></figure>
-<h5 id="通过asset来获取图片"><a href="#通过asset来获取图片" class="headerlink" title="通过asset来获取图片"></a>通过asset来获取图片</h5><p>添加asset方法：Android-&gt;app-&gt;File-&gt;New-&gt;Folder-&gt;Assets Folder。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	InputStream stream = getAssets().open(imageName + <span class="string">".png"</span>);</span><br><span class="line">    Drawable d = Drawable.createFromStream(stream, <span class="keyword">null</span>);</span><br><span class="line">    iv.setImageDrawable(d);</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-IOS开发中的四大对象及程序启动过程混讲" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/07/IOS开发中的四大对象及程序启动过程混讲/" class="article-date">
-  	<time datetime="2016-05-08T02:43:54.000Z" itemprop="datePublished">2016-05-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/07/IOS开发中的四大对象及程序启动过程混讲/">IOS开发中的四大对象及程序启动过程混讲</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>IOS中的四大对象即UIApplication, appDelegate, UIWindow, UIViewController，之所以和程序启动过程混讲，是因为程序启动和它们密不可分。<br>UIApplication对象是应用程序的象征，每个App只有一个该对象，即UIApplication是单例，且是IOS程序启动创建的第一个对象,可以通过如下方法获得该对象：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> application = <span class="type">UIApplication</span>.sharedApplication()</span><br></pre></td></tr></table></figure></p>
-<p><strong>功能</strong>：可以进行一些应用级别的操作，比如：设置应用程序桌面图标上的消息数目提醒；设置联网指示器的可见性；设置状态栏等等。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">application.applicationIconBadgeNumber = <span class="number">12</span>;</span><br><span class="line">application.networkActivityIndicatorVisible = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure></p>
-<p>以上是设置消息数目提醒和联网指示，设置状态栏稍显复杂，首先需要配置plist文件，添加View controller-based status bar，并且设置为NO，然后再用<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">application.statusBarHidden = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure></p>
-<p>当然，传统设置状态栏的方法比较简单，通过当前控制器进行，如下设置就可以了。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">preferredStatusBarStyle</span><span class="params">()</span></span> -&gt; <span class="type">UIStatusBarStyle</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">UIStatusBarStyle</span>.<span class="type">LightContent</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">prefersStatusBarHidden</span><span class="params">()</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>application还有其他的一些功能，比如从本程序跳转到safari打开网页，或者拨打电话、发邮件、短信等等。如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    UIButton* openBaidu = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];</span><br><span class="line">    [openBaidu addTarget:self action:@selector(openBaidu) forControlEvents:UIControlEventTouchUpInside];</span><br><span class="line">    openBaidu.backgroundColor = [UIColor redColor];</span><br><span class="line">    [self.view addSubview:openBaidu];</span><br><span class="line">&#125;</span><br><span class="line">- (void)openBaidu &#123;</span><br><span class="line">// open web</span><br><span class="line">    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@&quot;https://google.com&quot;]];</span><br><span class="line">// call phone</span><br><span class="line">//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@&quot;tel:10086&quot;]];</span><br><span class="line">// send message</span><br><span class="line">//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@&quot;sms:10086&quot;]];</span><br><span class="line">// send email</span><br><span class="line">//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@&quot;mailto:1072131128@qq.com&quot;]];</span><br><span class="line">// open other app</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>现在，基本上可以对UIApplication有个初步的认识了，那问题是，既然UIApplication是程序创建的第一个类，<strong>那么这个类是什么时候创建的呢？</strong>要解开这个问题，就必须去了解程序的启动原理。</p>
-<p>点击app，程序启动，首先进入的是main函数，main函数直接执行UIApplicationMain函数，该函数定义如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UIKIT_EXTERN int UIApplicationMain(int argc, char *argv[], NSString * __nullable principalClassName, NSString * __nullable delegateClassName);</span><br></pre></td></tr></table></figure></p>
-<p>前两个参数argc, argv可以忽略，不影响理解，第三个参数必须是UIApplication类或者其子类，工程默认为nil，这是代表默认为UIApplication，即自动创建UIApplication类（就在这里创建第一个UIApplication类）；第四个参数是要创建的delegate类的名字，即根据delegate class name创建一个代理类，将该代理类赋值给UIApplication中的delegate属性。在上面这些都完成后，就建立主运行循环(Main runloop)，进行事件处理，首先处理的事情是delegate的didFinishLaunchApplication方法。这个就是程序启动的基本原理。</p>
-<p>讲完了UIApplication，现在来讲程序的代理，即appDelegate。所有移动操作系统都有一个致命的缺点：app很容易受到打扰，比如一个来电，或者不小心锁屏了，app都会进入后台，甚至被终止。这些需要设置appDelegate来处理。这里我假设读者都是有一定IOS开发经验的，我们可以模拟一下启动程序，点击home键回到桌面，再次启动程序，这三个过程，分别看看都调用了哪些代理函数。</p>
-<p>程序启动:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions; </span><br><span class="line">- (void)applicationDidBecomeActive:(UIApplication *)application;</span><br></pre></td></tr></table></figure></p>
-<p>回到home:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (void)applicationWillResignActive:(UIApplication *)application;</span><br><span class="line">- (void)applicationDidEnterBackground:(UIApplication *)application；</span><br></pre></td></tr></table></figure></p>
-<p>再次回到程序：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (void)applicationWillEnterForeground:(UIApplication *)application;</span><br><span class="line">- (void)applicationDidBecomeActive:(UIApplication *)application；</span><br></pre></td></tr></table></figure></p>
-<p>模拟完了这三个过程，并且track到了过程中先后调用的代理函数基本就可以对代理有个初步的认识了。</p>
-<p>最后，我们来讲一下UIWindow和UIViewController。这里面的关系为：手机屏幕是一个screen，screen上放置UIWindow，然后各种view就放置在UIWidow上面，一层层累加。而UIViewController可以通过设置为window的rootViewController来达到控制监听事件的功能。</p>
-<p>关于UIWindow一方面可以通过storyboard默认创建，然后程序会默认设置rootViewController和相应的view；另一方面也可以通过代码创建，在appDelegate中通过设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];</span><br><span class="line">self.window.backgroundColor = [UIColor whiteColor];</span><br></pre></td></tr></table></figure></p>
-<p>// window 设置为主窗口 并且可见<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self.window makeKeyAndVisible];</span><br></pre></td></tr></table></figure></p>
-<p>另外，把控制器vc的view显示到window上有两种方法。第一种是直接加view，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self.window addSubview: vc.view];</span><br></pre></td></tr></table></figure></p>
-<p>另外一种是加控制器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.window.rootViewController = vc;</span><br></pre></td></tr></table></figure></p>
-<p>一般采用的都是后者。</p>
-<p>PS:如果项目中包含main storyboard，则不需要再在appDelegate中alloc window，这是无用功。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>
