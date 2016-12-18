@@ -4,17 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>邢鹏飞的博客</title>
+  <title>google onsite | 邢鹏飞的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="邢鹏飞的博客">
-<meta property="og:url" content="http://yoursite.com/page/6/index.html">
+  <meta name="description" content="http://www.1point3acres.com/bbs/forum.php?mod=viewthread&amp;amp;tid=215494&amp;amp;extra=page%3D1%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3046%5D%5Bvalue%5D%3D1%26searchoption%5B3046%5D%5Btype%5D%3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="google onsite">
+<meta property="og:url" content="http://yoursite.com/2015/01/09/google-onsite/index.html">
 <meta property="og:site_name" content="邢鹏飞的博客">
-<meta property="og:description">
+<meta property="og:description" content="http://www.1point3acres.com/bbs/forum.php?mod=viewthread&amp;amp;tid=215494&amp;amp;extra=page%3D1%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3046%5D%5Bvalue%5D%3D1%26searchoption%5B3046%5D%5Btype%5D%3">
+<meta property="og:updated_time" content="2016-12-18T06:28:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="邢鹏飞的博客">
-<meta name="twitter:description">
+<meta name="twitter:title" content="google onsite">
+<meta name="twitter:description" content="http://www.1point3acres.com/bbs/forum.php?mod=viewthread&amp;amp;tid=215494&amp;amp;extra=page%3D1%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3046%5D%5Bvalue%5D%3D1%26searchoption%5B3046%5D%5Btype%5D%3">
   
     <link rel="alternative" href="/atom.xml" title="邢鹏飞的博客" type="application/atom+xml">
   
@@ -170,240 +171,7 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
-  
-    <article id="post-Git-Cheat-Sheet" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/10/26/Git-Cheat-Sheet/" class="article-date">
-  	<time datetime="2015-10-27T02:39:23.000Z" itemprop="datePublished">2015-10-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/26/Git-Cheat-Sheet/">git cheat sheet</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>Add files from working directory to stage(index):</strong></p>
-<p>git add filename</p>
-<p>git add -A</p>
-<p>git add .</p>
-<p>&nbsp;</p>
-<p><strong>get branch from github</strong></p>
-<p>git clone -b branchname git@github.com:username/projectname.git</p>
-<p>or</p>
-<p>git clone -b branchname <a href="http://git@github.com:username/projectname.git" target="_blank" rel="external">http://git@github.com:username/projectname.git</a></p>
-<p>&nbsp;</p>
-<p><strong>push file</strong></p>
-<p>push filename origin branchname</p>
-<p>&nbsp;</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FullStack/">FullStack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-IOS开发笔记（第三方框架篇）" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/10/24/IOS开发笔记（第三方框架篇）/" class="article-date">
-  	<time datetime="2015-10-24T20:02:32.000Z" itemprop="datePublished">2015-10-24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/24/IOS开发笔记（第三方框架篇）/">IOS 开发笔记（第三方框架篇）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&nbsp;</p>
-<p><strong>SDWebImage(<a href="https://github.com/rs/SDWebImage" target="_blank" rel="external">https://github.com/rs/SDWebImage</a>)</strong></p>
-<p>该框架在处理网络请求图片优势非常明显，但是本地缓存的图片会吞噬大量内存，所以用该框架的时候，一定要在AppDelegate中实现applicationDidReceiveMemoryWarning的代理。主要是停止图片的下载＋清空缓存。</p>
-<p>[[SDWebImageManager sharedManager] cancelAll];</p>
-<p>[[SDWebImageManager sharedManager].imageCache clearMemory];</p>
-<p>&nbsp;</p>
-<p><strong>AFNetworking (<a href="https://github.com/AFNetworking/AFNetworking" target="_blank" rel="external">https://github.com/AFNetworking/AFNetworking</a>)</strong></p>
-<p>该框架提供了很多网络请求的API。有一点需要注意的是，在用</p>
-<p>[AFHTTPRequestOperationManager manager]管理请求的时候，有时会遇到如下error(点击查看大图):</p>
-<p><a href="http://pengfeixing.com/wp-content/uploads/2015/10/AFNetworkingError1.jpg" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2015/10/AFNetworkingError1-300x101.jpg" alt="AFNetworkingError"></a></p>
-<p>&nbsp;</p>
-<p>该图是以向新浪微博请求OAuth授权请求获取token时的报错，主要原因是新浪服务器响应请求的响应头中content-type为text/plain，而该框架不支持该类型，所有我们需要做一些修改。修改只需要找到AFURLResponseSerialization.m文件，在init方法中添加支持的content-type。修改后截图如下（点击查看大图）：</p>
-<p>&nbsp;</p>
-<p><a href="http://pengfeixing.com/wp-content/uploads/2015/10/textPlainError2.jpg" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2015/10/textPlainError2-300x47.jpg" alt="textPlainError2"></a></p>
-<p>&nbsp;</p>
-<p><strong>MJExtension (<a href="https://github.com/CoderMJLee/MJExtension" target="_blank" rel="external">https://github.com/CoderMJLee/MJExtension</a>)</strong></p>
-<p>该框架主要实现字典快速转模型，可通过如下函数实现</p>
-<ul>
-<li>(NSMutableArray <em>)objectArrayWithKeyValuesArray:(NSArray </em>)keyValuesArray;</li>
-</ul>
-<p>但是在用该方法快速实现字典转模型A的时候，如果该字典中含有子字典需要转换成对应的模型B，则需要在模型A的的定义中遵守&lt;MJKeyValue&gt;协议，然后实现以下方法：</p>
-<ul>
-<li>(NSDictionary *)objectClassInArray;</li>
-</ul>
-<p>&nbsp;</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-introduction-to-bloom-filter" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/10/18/introduction-to-bloom-filter/" class="article-date">
-  	<time datetime="2015-10-18T22:02:37.000Z" itemprop="datePublished">2015-10-18</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/18/introduction-to-bloom-filter/">analysis to bloom filter</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>BRIEF INTRODUCTION</strong></p>
-<p>Bloom filter is a space efficient algorithm that can judge whether a record exists in a given record set. For example, FBI needs to judge whether a man is on the list of suspects; typing system needs to judge whether the word we are typing is correct - by computing that whether that word is in the word dictionary; email service provider, such as google, needs to judge whether a email is a spam mail - by recording the email sender who has been reported by others to send spam emails before.</p>
-<p>Take filtering spam mail as an example, indeed, many other machine learning algorithms can be used in this aspect, but all these methods need to deep into the email content, which may cost a lot of time and memory space. Also, others may come with that hash function that can handle searching &amp; matching problems. We can build a blacklist of spam email sender and hash every email address in the set to a value. Then we can run in constant time to judge whether an email is spam email. However, hash method isn’t ‘space efficient’, which means it will need lots of memory to handle this problem considering the large amount of spam mail sender in the world. For example, if we assume there are 5 billion spam mail senders in the world and the space utility rate is 50% and each email address takes 8 Bytes. Then we can calculate the amount of the memory using hash function to handle this problem as follows:</p>
-<p>[latex]5{\times}{10^9}{\times}8{\div}50{\%}Bytes=8{\times}{10^{10}}Bytes=745GB[/latex]</p>
-<p>Actually, normal server doesn’t have such larger memory. Thus, it’s insane to apply hash method to this problem.</p>
-<p>An alternative method or a method that can be combined with those machine learning methods is bloom filter, which is proposed by Burton Howard Bloom in 1970. It can be described as follows:</p>
-<ol>
-<li>Initialize a bit array [latex]M[/latex] with length <strong><em>m </em></strong>and set all the values to 0;</li>
-<li>Build <strong><em>k</em></strong> hash functions;</li>
-<li>Hash every record in the input set <strong><em>S</em></strong> for <strong><em>k</em></strong> times and we can get <strong><em>k</em></strong> values which represent <strong><em>k</em></strong> positions (p1, p2, p3,…, pk) of the bit array;</li>
-<li><p>Set M[p1], M[p2], M[p3],…, M[pk] to 1.<br>Then, we finish building a bloom filter. And given a record, we can easily judge whether the record is in the set <strong><em>S </em></strong>as follows:</p>
-</li>
-<li><p>Hash the given record using the k hash functions and get <strong><em>k</em></strong> values V(v1, v2, v3,…, vk);</p>
-</li>
-<li>if for each M[vi] == 1 where vi belongs to V, then we can say this record is highly possibly in set <strong><em>S</em></strong>. Otherwise, we can say that this record is definitely not in set <strong><em>S</em></strong>.<br>Every coin has two sides. Bloom filter can judge whether a record is not in a given set or a record is <strong>highly possibly</strong> in a give set. That is why the False Negative of this algorithm is equal to zero, but the False Positive is not. We now analyse how to minimise the False Negative by choosing the appropriate value of  <em><strong>k</strong></em>.</li>
-</ol>
-<p><strong>MATHEMATIC ANALYSIS</strong></p>
-<p>We assume we are given a bit array M of which length is m and the number of the set is n. Now after each hashing, the possibility of the value of a chosen position of M is still 0 is</p>
-<p>[latex]1-\frac{1}{m}[/latex]</p>
-<p>and after we hash one record for k times, the possibility of that is</p>
-<p><a href="1-\frac{1}{m}">latex</a>^k[/latex]</p>
-<p>and when we finish the initialization of bloom filter, the possibility changes to</p>
-<p><a href="1-\frac{1}{m}">latex</a>^{kn}[/latex]</p>
-<p>未完待续……</p>
-<p>&nbsp;</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-google-onsite" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-google-onsite" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2015/01/09/google-onsite/" class="article-date">
@@ -419,12 +187,19 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/09/google-onsite/">google onsite</a>
+    <h1 class="article-title" itemprop="name">
+      google onsite
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -450,33 +225,72 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/10/18/introduction-to-bloom-filter/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          analysis to bloom filter
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
   
 </article>
 
 
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
 
 
 
 
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="google-onsite" data-title="google onsite" data-url="http://yoursite.com/2015/01/09/google-onsite/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
-    </nav>
-  
+
+
+
 </div>
       <footer id="footer">
   <div class="outer">
@@ -500,8 +314,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
