@@ -106,7 +106,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Backend/" style="font-size: 13.33px;">Backend</a> <a href="/tags/Cheet-Sheet/" style="font-size: 10px;">Cheet Sheet</a> <a href="/tags/Diary/" style="font-size: 11.67px;">Diary</a> <a href="/tags/FullStack/" style="font-size: 15px;">FullStack</a> <a href="/tags/Game/" style="font-size: 10px;">Game</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/IOS/" style="font-size: 16.67px;">IOS</a> <a href="/tags/Java/" style="font-size: 11.67px;">Java</a> <a href="/tags/Mobile/" style="font-size: 18.33px;">Mobile</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/OOD/" style="font-size: 10px;">OOD</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Scrappy/" style="font-size: 10px;">Scrappy</a> <a href="/tags/SpriteKit/" style="font-size: 11.67px;">SpriteKit</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/WatchOS/" style="font-size: 10px;">WatchOS</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a>
+						<a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Backend/" style="font-size: 13.33px;">Backend</a> <a href="/tags/Cheet-Sheet/" style="font-size: 10px;">Cheet Sheet</a> <a href="/tags/Diary/" style="font-size: 13.33px;">Diary</a> <a href="/tags/FullStack/" style="font-size: 15px;">FullStack</a> <a href="/tags/Game/" style="font-size: 10px;">Game</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/IOS/" style="font-size: 16.67px;">IOS</a> <a href="/tags/Java/" style="font-size: 11.67px;">Java</a> <a href="/tags/Mobile/" style="font-size: 18.33px;">Mobile</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/OOD/" style="font-size: 10px;">OOD</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Scrappy/" style="font-size: 10px;">Scrappy</a> <a href="/tags/SpriteKit/" style="font-size: 11.67px;">SpriteKit</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/WatchOS/" style="font-size: 10px;">WatchOS</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a>
 					</div>
 				</section>
 				
@@ -171,6 +171,245 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-Java中ArrayList排序" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/18/Java中ArrayList排序/" class="article-date">
+  	<time datetime="2016-02-19T06:22:58.000Z" itemprop="datePublished">2016-02-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/18/Java中ArrayList排序/">Java中ArrayList排序</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>在Java中，如果需要将一个arrayList排序，我们需要利用Collections类。首先先游离一下主题，先简要介绍一下Collections，Collections不同于Collection，后者（java.util.Collection）是一个集合接口，它提供的是对集合对象进行基本操作的通用接口方法，而前者（java.util.Collections）是一个包装类，它包含有各种有关集合操作的静态多态方法，此类不能被实例化，就像一个工具类，服务于Java的Collection框架。</p>
+<p>在本文中，我们讨论ArrayList排序，用到的就是Collections的sort方法，下面的例子简单实现了对ArrayList&lt;Integer&gt; 和ArrayList&lt;String&gt;的升序排序和降序排序。</p>
+<pre class="lang:default decode:true " title="Collections.sort()">package com.pengfeixing;
+import java.util.*;
+
+public class TEST {
+    public static void main(String[] args) {
+        ArrayList&lt;Integer&gt; intList = new ArrayList&lt;Integer&gt;();
+        intList.add(2);
+        intList.add(1);
+        intList.add(3);
+        System.out.println("Before Soring");
+        for (int i : intList) {
+            System.out.println(i);
+        }
+        Collections.sort(intList);
+        System.out.println("After Sorting");
+        for (int i : intList) {
+            System.out.println(i);
+        }
+        Collections.sort(intList, Collections.reverseOrder());
+        System.out.println("Reverse Sorting");
+        for (int i : intList) {
+            System.out.println(i);
+        }
+
+        ArrayList&lt;String&gt; stringList = new ArrayList&lt;String&gt;();
+        stringList.add("ABC");
+        stringList.add("ABE");
+        stringList.add("AAB");
+        System.out.println("Before Soring");
+        for (String s : stringList) {
+            System.out.println(s);
+        }
+        Collections.sort(stringList);
+        System.out.println("After Sorting");
+        for (String s : stringList) {
+            System.out.println(s);
+        }
+        Collections.sort(stringList, Collections.reverseOrder());
+        System.out.println("Reverse Sorting");
+        for (String s : stringList) {
+            System.out.println(s);
+        }
+
+    }
+}
+</pre>
+
+<h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><p>下面我们主要讨论如何对对象的某个属性进行排序，我们不能直接将对象实例名字作为传入sort函数，这样程序会由于sort函数没有排序比较的依据而报错。我们可以有两种选择，如果只需要根据单一实例变量进行排序，我们只需要让需要比较的类继承Comparable，然后在该类中重写Comparable的comparaTo方法，例子如下：</p>
+<pre class="lang:default decode:true " title="类定义">package com.pengfeixing;
+
+import java.util.Comparator;
+
+/**
+ * Created by novelidea on 2/18/16.
+ */
+public class Student implements Comparable {
+    private String name;
+    private int age;
+    public Student(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+    int getAge(){
+        return this.age;
+    }
+    void setAge(int age){
+        this.age = age;
+    }
+
+    @Override
+    public int compareTo(Student comparestu){
+        int compareAge = ((Student)comparestu).getAge();
+        return this.age - compareAge;
+    }
+}
+</pre>
+<pre class="lang:java decode:true " title="测试函数">package com.pengfeixing;
+
+import java.util.*;
+
+public class TEST {
+    public static void main(String[] args) {
+        ArrayList&lt;Student&gt; studentList = new ArrayList&lt;Student&gt;();
+        studentList.add(new Student("Tom", 12));
+        studentList.add(new Student(("Jim", 10));
+        studentList.add(new Student("Sam", 14));
+
+        Collections.sort(studentList);
+
+        for(Student stu : studentList){
+            System.out.println(stu);
+        }
+    }
+}
+</pre>
+如果我们排序的依据是类的多个属性，则需要重写Comparator中的compare方法。例子如下：
+<pre class="lang:java decode:true " title="类定义">package com.pengfeixing;
+
+import java.util.Comparator;
+
+/**
+ * Created by novelidea on 2/18/16.
+ */
+public class Student {
+    private String name;
+    private int age;
+    public Student(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+    int getAge(){
+        return this.age;
+    }
+    void setAge(int age){
+        this.age = age;
+    }
+
+    String getName(){
+        return this.name;
+    }
+    void setName(String name){
+        this.name = name;
+    }
+
+    /*Comparator for sorting the list by Student Name*/
+    public static Comparator&lt;Student&gt; StuNameComparator = new Comparator&lt;Student&gt;() {
+
+        public int compare(Student s1, Student s2) {
+            String StudentName1 = s1.getName().toUpperCase();
+            String StudentName2 = s2.getName().toUpperCase();
+
+            //ascending order
+            return StudentName1.compareTo(StudentName2);
+
+            //descending order
+            //return StudentName2.compareTo(StudentName1);
+        }};
+
+    /*Comparator for sorting the list by age*/
+    public static Comparator&lt;Student&gt; StuAgeComparator = new Comparator&lt;Student&gt;() {
+
+        public int compare(Student s1, Student s2) {
+            int age1 = s1.getAge();
+            int age2 = s2.getAge();
+
+            /*For ascending order*/
+            return age1-age2;
+
+            /*For descending order*/
+            //rollno2-rollno1;
+        }};
+
+}
+</pre>
+<pre class="lang:java decode:true " title="测试函数">package com.pengfeixing;
+
+import java.util.*;
+
+public class TEST {
+    public static void main(String[] args) {
+        ArrayList&lt;Student&gt; studentList = new ArrayList&lt;Student&gt;();
+        studentList.add(new Student("Tom", 12));
+        studentList.add(new Student(("Jim", 10));
+        studentList.add(new Student("Sam", 14));
+
+        Collections.sort(studentList, Student.StuNameComparator);
+        for(Student stu : studentList){
+            System.out.println(stu);
+        }
+
+        Collections.sort(studentList, Student.StuAgeComparator);
+        for(Student stu : studentList){
+            System.out.println(stu);
+        }
+    }
+}
+</pre>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://beginnersbook.com/2013/12/java-arraylist-of-object-sort-example-comparable-and-comparator/" target="_blank" rel="external">http://beginnersbook.com/2013/12/java-arraylist-of-object-sort-example-comparable-and-comparator/</a></p>
+<p><a href="http://pengcqu.iteye.com/blog/492196" target="_blank" rel="external">http://pengcqu.iteye.com/blog/492196</a></p>
+<p>&nbsp;</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FullStack/">FullStack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-区间重叠问题" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -716,7 +955,7 @@ moving forward and backward
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/31/写在岁末年初/">写在岁末年初</a>
+      <a class="article-title" href="/2015/12/31/写在岁末年初/">写在岁末年初（2015）</a>
     </h1>
   
 
@@ -951,64 +1190,6 @@ moving forward and backward
 
 
   
-    <article id="post-Watch-OS学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/12/Watch-OS学习笔记/" class="article-date">
-  	<time datetime="2015-11-12T23:23:18.000Z" itemprop="datePublished">2015-11-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/12/Watch-OS学习笔记/">WatchOS学习笔记</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.UIImage</p>
-<p>设置图片的时候尽量使用setImageNamed，而不是setImageData和setImage，主要原因是第一种方法提前将图片加载到watchKit App Target中去了，而后两种方法的图片在watchKit Extension中，运行时需将图片资源加载到watchKit App Target中，会造成传输中的延迟，影响用户体验。但是在一开始导入图片的时候，如果选择setImageNamed方法，则需要将图片同时加到watchKit App Target和watchKit Extension中，不同于后两种方法，只需要将图片直接加到watchKit Extension即可。这里是用空间换取时间。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WatchOS/">WatchOS</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -1019,7 +1200,7 @@ moving forward and backward
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2016 Pengfei Xing
+    		&copy; 2017 Pengfei Xing
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
