@@ -172,6 +172,491 @@
 
       <div class="body-wrap">
   
+    <article id="post-用户系统设计流程" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/20/用户系统设计流程/" class="article-date">
+  	<time datetime="2016-04-21T00:54:30.000Z" itemprop="datePublished">2016-04-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/20/用户系统设计流程/">用户系统设计流程</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系统/">系统</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-SpriteKit项目总结（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/16/SpriteKit项目总结（一）/" class="article-date">
+  	<time datetime="2016-04-16T20:35:40.000Z" itemprop="datePublished">2016-04-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/16/SpriteKit项目总结（一）/">SpriteKit项目总结（一）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-SpritKit基础概念"><a href="#1-SpritKit基础概念" class="headerlink" title="1. SpritKit基础概念"></a>1. SpritKit基础概念</h2><h3 id="0-0-position"><a href="#0-0-position" class="headerlink" title="(0,0) position"></a>(0,0) position</h3><p>SpriteKit中(0,0)是指屏幕左下角的点，不同于UIKit，是左上角的点。</p>
+<h3 id="Anchor-point"><a href="#Anchor-point" class="headerlink" title="Anchor point"></a>Anchor point</h3><p>如果给SKView加上一个background图片，需要设定改background的position，这里有两种方法。</p>
+<h4 id="直接设置position"><a href="#直接设置position" class="headerlink" title="直接设置position"></a>直接设置position</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> background = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"background1"</span>)</span><br><span class="line">background.position = <span class="type">CGPoint</span>(x: size.width / <span class="number">2</span>, y: size.height / <span class="number">2</span>)</span><br><span class="line">addChild(background)</span><br></pre></td></tr></table></figure>
+<h4 id="通过设置background的anchor-point"><a href="#通过设置background的anchor-point" class="headerlink" title="通过设置background的anchor point"></a>通过设置background的anchor point</h4><p>先将背景图片的anchor point从默认状态的中间(0.5, 0.5)修改为左下角(0,0)，然后在将background的position直接和view的零点重合<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> background = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"background1"</span></span><br><span class="line">background.anchorPoint = <span class="type">CGPoint</span>.zero</span><br><span class="line">background.position = <span class="type">CGPoint</span>.zero</span><br><span class="line">addChild(background)</span><br></pre></td></tr></table></figure></p>
+<h4 id="Rotate"><a href="#Rotate" class="headerlink" title="Rotate"></a>Rotate</h4><p>SpriteKit中的rotate都是以anchor point为参考点的，可通过以下方法旋转background<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background.zRotation = <span class="type">CGFloat</span>(<span class="type">M_PI</span>) / <span class="number">8</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="Size"><a href="#Size" class="headerlink" title="Size"></a>Size</h4><p>获取对象大小<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> mySize = background.size</span><br></pre></td></tr></table></figure></p>
+<h4 id="ignoresSiblingOrder-和-zPosition"><a href="#ignoresSiblingOrder-和-zPosition" class="headerlink" title="ignoresSiblingOrder 和 zPosition"></a>ignoresSiblingOrder 和 zPosition</h4><p>这两个属性所有SKNode的一个可设置属性，其中<code>ignoresSiblingOrder</code>主要是用来判断是否管理node间的parent-children关系，如果该属性设置为true，则<code>zPosition</code>数值相同的node就在同一层，并且是比改数值小的node的children。<br>需要注意的是，如果不小心将background的<code>zPosition</code>和其中的某个node（比如说一只小猫）的<code>zPosition</code>设置为相同的数值（比如说0），那么小猫有可能会被遮挡。所以，为了避免类似的bug产生，可以将永远在最高层（相对于屏幕来说就是最里面）的node的<code>zPosition</code>设置为－1。</p>
+<h4 id="小结：添加sprite到scene的步骤"><a href="#小结：添加sprite到scene的步骤" class="headerlink" title="小结：添加sprite到scene的步骤"></a>小结：添加sprite到scene的步骤</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 生成sprite;</span><br><span class="line">2. 设置position;</span><br><span class="line">3. 设置zPosition(可选)；</span><br><span class="line">4. 将该sprite添加到scene.</span><br></pre></td></tr></table></figure>
+<h2 id="2-Manual-Movement"><a href="#2-Manual-Movement" class="headerlink" title="2. Manual Movement"></a>2. Manual Movement</h2><h3 id="FPS"><a href="#FPS" class="headerlink" title="FPS"></a>FPS</h3><p><code>frame（帧）</code>:每张独立的图片。<br>一般在游戏中，为了使动画看起来平滑连贯，需要每秒播放30 － 60 张图片（frame），这个数值被称为<code>frame rate</code>，又叫做<code>frames per second(FPS)</code>。在用SpriteKit开放过程中，改值默认显示在屏幕的右下角。可以通过如下方法移除改显示<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">skView.showsFPS = <span class="literal">false</span></span><br><span class="line">skView.showsNodeCount = <span class="literal">false</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="update性能优化"><a href="#update性能优化" class="headerlink" title="update性能优化"></a>update性能优化</h3><p>SpriteKit通过<code>update</code>函数来更新frame，一般来说，<code>FPS</code>的极限最大值是60，也就是说大概每16毫秒update一次。但是，在一些情况下<code>update</code>函数可能过于冗长，或者硬件性能达不到<code>FPS</code>的数值，那<code>FPS</code>就会变小，这种情况是我们所不愿意看到的。所以，优秀的程序员会在实现功能的同时对代码运行时候的性能做出优化，主要可以从以下两个方面着手：</p>
+<ol>
+<li><code>优化update函数</code>:尽可能减小update函数的负担，将不必要的处理移除改函数，比如一些算法；</li>
+<li><code>减小node数目</code>：当一些node不再使用时，将这些node移出scene。</li>
+</ol>
+<h3 id="Movement优化"><a href="#Movement优化" class="headerlink" title="Movement优化"></a>Movement优化</h3><p>之前提到Sprite可以每<code>16ms</code>更新一次frame，但是，由于硬件的不稳定性，这个更新间隔五法精准控制，这种不稳定性可以通过以下代码来跟踪。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> zombie = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"zombie1"</span>)</span><br><span class="line"><span class="keyword">var</span> lastUpdateTime : <span class="type">NSTimeInterval</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">var</span> dt : <span class="type">NSTimeInterval</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">update</span><span class="params">(currentTime: NSTimeInterval)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> lastUpdateTime &gt; <span class="number">0</span> &#123;</span><br><span class="line">    	dt = currentTime - lastUpdateTime</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    	dt = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"\(dt * 1000) milliseconds since last update"</span>)</span><br><span class="line">    lastUpdateTime = currentTime</span><br><span class="line">	zombie.position = <span class="type">CGPoint</span>(x: zombie.position.x + <span class="number">8</span>, y: zombie.position.y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这种更新频率的波动带来的后果就是视觉效果的不稳定性。为了解决改问题，我们可以将<code>更新间隔 ＊ 速率</code>作为物体在该update时间段内移动的距离。代码如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> zombieMovePointsPerSec : <span class="type">CGFloat</span> = <span class="number">480.0</span></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">update</span><span class="params">(currentTime: NSTimeInterval)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> lastUpdateTime &gt; <span class="number">0</span> &#123;</span><br><span class="line">    	dt = currentTime - lastUpdateTime</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    	dt = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    lastUpdateTime = currentTime</span><br><span class="line">    moveSprite(zombie, velocity: <span class="type">CGPoint</span>(x: zombieMovePointsPerSec, y: <span class="number">0</span>))</span><br><span class="line">&#125;    </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">moveSprite</span><span class="params">(sprite: SKSpriteNode, velocity: CGPoint)</span></span> &#123;</span><br><span class="line">    <span class="keyword">let</span> amountToMove = <span class="type">CGPoint</span>(</span><br><span class="line">    	x: velocity.x * <span class="type">CGFloat</span>(dt),</span><br><span class="line">        y: velocity.y * <span class="type">CGFloat</span>(dt))    </span><br><span class="line">   	sprite.position = <span class="type">CGPoint</span>(</span><br><span class="line">        x: sprite.position.x + amountToMove.x,</span><br><span class="line">        y: sprite.position.y + amountToMove.y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="处理点击事件"><a href="#处理点击事件" class="headerlink" title="处理点击事件"></a>处理点击事件</h3><p>控制点击事件的参数是<code>userInteractionEnabled</code>，该参数默认是<code>true</code>。为了实现点击，只需要重写<code>touchesBegan(withEvent:)</code>和<code>touchesMoved(withEvent:)</code>函数，<code>touchesEnded(withEvent:)</code>的实现为可选项。</p>
+<h3 id="边界检测（Bounds-Checking）"><a href="#边界检测（Bounds-Checking）" class="headerlink" title="边界检测（Bounds Checking）"></a>边界检测（Bounds Checking）</h3><p>为了防止游戏界面中的物体运动出屏幕，需要进行边界检测，可以如下实现：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">boundsCheckZombie</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">let</span> bottomLeft = <span class="type">CGPointZero</span></span><br><span class="line">    <span class="keyword">let</span> topRight = <span class="type">CGPoint</span>(x: size.width, y: size.height)    </span><br><span class="line">    <span class="keyword">if</span> (zombie.position.x - zombie.size.width / <span class="number">2</span>) &lt;= bottomLeft.x &#123;</span><br><span class="line">    	zombie.position.x = bottomLeft.x + zombie.size.width / <span class="number">2</span></span><br><span class="line">        velocity.x = -velocity.x</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (zombie.position.x + zombie.size.width / <span class="number">2</span>) &gt;= topRight.x &#123;</span><br><span class="line">        zombie.position.x = topRight.x - zombie.size.width / <span class="number">2</span></span><br><span class="line">        velocity.x = -velocity.x</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (zombie.position.y - zombie.size.height / <span class="number">2</span>) &lt;= bottomLeft.y &#123;</span><br><span class="line">        zombie.position.y = bottomLeft.y + zombie.size.height / <span class="number">2</span></span><br><span class="line">        velocity.y = -velocity.y</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (zombie.position.y + zombie.size.height / <span class="number">2</span>) &gt;= topRight.y &#123;</span><br><span class="line">        zombie.position.y = topRight.y - zombie.size.height / <span class="number">2</span></span><br><span class="line">        velocity.y = -velocity.y</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里需要注意的是，由于物体（比如叫做zombie）的anchor point为中心点，所以判断的时候需要考虑到zombie的自身高度和宽度。<br>仍然存在的问题是：当游戏自适应iPhone和iPad时，iPhone的background会有一些background在屏幕外，所以即使有边界检测，物体仍然会运动出屏幕一小段距离，该如何优雅地解决改bug？</p>
+<h4 id="iPhone上边界检测问题解决方法"><a href="#iPhone上边界检测问题解决方法" class="headerlink" title="iPhone上边界检测问题解决方法"></a>iPhone上边界检测问题解决方法</h4><p>在上面提到了边界检测中，由于要自适应iPhone和iPad，所以物体会运动出iPhone屏幕一段距离，解决方法是党运行在iPhone上时，给游戏区域加一个边界，及用一个CGRect类型的属性来存储改游戏区域，而不是直接读取background来获取游戏区域，实现方法如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> playableRect : <span class="type">CGRect</span></span><br><span class="line"><span class="keyword">override</span> <span class="keyword">init</span>(size: <span class="type">CGSize</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> maxAspectRatio: <span class="type">CGFloat</span> = <span class="number">16.0</span> / <span class="number">9.0</span></span><br><span class="line">    <span class="keyword">let</span> playableHeight = size.width / maxAspectRatio</span><br><span class="line">    <span class="keyword">let</span> playableMargin = (size.height - playableHeight) / <span class="number">2.0</span></span><br><span class="line">    playableRect = <span class="type">CGRect</span>(x: <span class="number">0</span>, y: playableMargin, width: size.width, height: playableHeight)</span><br><span class="line">    <span class="keyword">super</span>.<span class="keyword">init</span>(size:size)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">required</span> <span class="keyword">init</span>?(coder aDecoder: <span class="type">NSCoder</span>) &#123;</span><br><span class="line">    <span class="built_in">fatalError</span>(<span class="string">"init(coder:) has not been implemented"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">boundsCheckZombie</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">let</span> bottomLeft = <span class="type">CGPoint</span>(x: <span class="number">0</span>, y: <span class="type">CGRectGetMinY</span>(playableRect))</span><br><span class="line">    <span class="keyword">let</span> topRight = <span class="type">CGPoint</span>(x: size.width, y: <span class="type">CGRectGetMaxY</span>(playableRect))</span><br><span class="line">	……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在debug改功能的时候，可以给改区域加个颜色高亮，实现方法如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">debugDrawPlayableArea</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">let</span> shape = <span class="type">SKShapeNode</span>()</span><br><span class="line">    <span class="keyword">let</span> path = <span class="type">CGPathCreateMutable</span>()</span><br><span class="line">    <span class="type">CGPathAddRect</span>(path, <span class="literal">nil</span>, playableRect)</span><br><span class="line">    shape.path = path</span><br><span class="line">    shape.strokeColor = <span class="type">SKColor</span>.redColor()</span><br><span class="line">    shape.lineWidth = <span class="number">4.0</span></span><br><span class="line">    addChild(shape)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h3><p>对于一些需要旋转的SKSpriteNode，比如一个人物要永远面向自己前进的方向，可以通过设置该SKSpriteNode的<code>zRotation</code>属性来实现。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">rotateSprite</span><span class="params">(sprite: SKSpriteNode, direction: CGPoint)</span></span> &#123;</span><br><span class="line">	sprite.zRotation = <span class="type">CGFloat</span>(atan2(<span class="type">Double</span>(direction.y), <span class="type">Double</span>(direction.x)))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="node移动到指定点击点"><a href="#node移动到指定点击点" class="headerlink" title="node移动到指定点击点"></a>node移动到指定点击点</h3><p>实现方法是记录上一次的点击点位置，然后在<code>update</code>函数中算出当前点和目标点的距离，如果小于特定值（可以取每次update改变的值），就停止移动。下面是获取上一次点击位置坐标点方法：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> lastTouchLocation: <span class="type">CGPoint</span>?</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sceneTouched</span><span class="params">(touchLocation:CGPoint)</span></span> &#123;</span><br><span class="line">	lastTouchLocation = touchLocation</span><br><span class="line">    moveZombieToward(touchLocation)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">touchesBegan</span><span class="params">(touches: Set&lt;UITouch&gt;,</span><br><span class="line">							withEvent event: UIEvent?)</span></span> &#123;</span><br><span class="line">	<span class="keyword">guard</span> <span class="keyword">let</span> touch = touches.first <span class="keyword">else</span> &#123;</span><br><span class="line">    	<span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> touchLocation = touch.locationInNode(<span class="keyword">self</span>)</span><br><span class="line">    sceneTouched(touchLocation)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">touchesMoved</span><span class="params">(touches: Set&lt;UITouch&gt;,</span><br><span class="line">                           withEvent event: UIEvent?)</span></span> &#123;</span><br><span class="line">	<span class="keyword">guard</span> <span class="keyword">let</span> touch = touches.first <span class="keyword">else</span> &#123;</span><br><span class="line">    	<span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> touchLocation = touch.locationInNode(<span class="keyword">self</span>)</span><br><span class="line">    sceneTouched(touchLocation)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>update</code>函数中进行判断。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> lastTouchLocation = lastTouchLocation &#123;</span><br><span class="line">	<span class="keyword">let</span> diff = lastTouchLocation - zombie.position</span><br><span class="line">    <span class="keyword">if</span> (diff.length() &lt;= zombieMovePointsPerSec * <span class="type">CGFloat</span>(dt)) &#123;</span><br><span class="line">    	zombie.position = lastTouchLocation</span><br><span class="line">        velocity = <span class="type">CGPointZero</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        moveSprite(zombie, velocity: velocity)</span><br><span class="line">       	rotateSprite(zombie, direction: velocity, </span><br><span class="line">       				rotateRadiansPerSec: zombieRotateRadiansPerSec)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-Action"><a href="#3-Action" class="headerlink" title="3. Action"></a>3. Action</h2><h3 id="Move-action"><a href="#Move-action" class="headerlink" title="Move action"></a>Move action</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> actionMidMove = <span class="type">SKAction</span>.moveTo(<span class="type">CGPoint</span>(x: size.width / <span class="number">2</span>, </span><br><span class="line">											y: <span class="type">CGRectGetMinY</span>(playableRect)), 									 duration: <span class="number">1.0</span>)</span><br><span class="line">enemy.runAction(actionMidMove)</span><br></pre></td></tr></table></figure>
+<h3 id="Block-action"><a href="#Block-action" class="headerlink" title="Block action"></a>Block action</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> logMessage = <span class="type">SKAction</span>.runBlock() &#123;</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">"Reach bottom!"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Wait-action"><a href="#Wait-action" class="headerlink" title="Wait action"></a>Wait action</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> wait = <span class="type">SKAction</span>.waitForDuration(<span class="number">0.5</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="Sequence-action"><a href="#Sequence-action" class="headerlink" title="Sequence action"></a>Sequence action</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> actionMidMove = <span class="type">SKAction</span>.moveTo(<span class="type">CGPoint</span>(x: size.width / <span class="number">2</span>, </span><br><span class="line">											 y: <span class="type">CGRectGetMinY</span>(playableRect)), 									 duration: <span class="number">1.0</span>)</span><br><span class="line"><span class="keyword">let</span> actionMove = <span class="type">SKAction</span>.moveTo(<span class="type">CGPoint</span>(x: -enemy.size.width / <span class="number">2</span>, </span><br><span class="line">										  y: enemy.position.y), </span><br><span class="line">										  duration: <span class="number">1.0</span>)</span><br><span class="line"><span class="keyword">let</span> sequence = <span class="type">SKAction</span>.sequence([actionMidMove, logMessage, wait, actionMove])</span><br><span class="line">enemy.runAction(sequence)</span><br></pre></td></tr></table></figure>
+<h3 id="Reverse-action"><a href="#Reverse-action" class="headerlink" title="Reverse action"></a>Reverse action</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> reverseMid = actionMidMove.reversedAction()</span><br></pre></td></tr></table></figure>
+<h3 id="Repeat-action"><a href="#Repeat-action" class="headerlink" title="Repeat action"></a>Repeat action</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sequence = <span class="type">SKAction</span>.sequence([</span><br><span class="line">               actionMidMove, logMessage, wait, actionMove,</span><br><span class="line">               reverseMove, logMessage, wait, reverseMid</span><br><span class="line">])</span><br><span class="line"><span class="keyword">let</span> action = <span class="type">SKAction</span>.repeatActionForever(sequence)</span><br><span class="line">enemy.runAction(action)</span><br></pre></td></tr></table></figure>
+<h3 id="Remove-node-from-parent"><a href="#Remove-node-from-parent" class="headerlink" title="Remove node from parent"></a>Remove node from parent</h3><p>正如之前<code>update性能优化</code>中所说，当一个node不再需要时，比如一个导弹从左移到右，直到移除屏幕范围，就需要将改node从parent中移除（这里考虑的时不断新建node，而不是重用node），可以通过以下方法实现：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> actionMove = <span class="type">SKAction</span>.moveToX(-enemy.size.width/<span class="number">2</span>, duration: <span class="number">2.0</span>)</span><br><span class="line"><span class="keyword">let</span> actionRemove = <span class="type">SKAction</span>.removeFromParent()</span><br><span class="line">enemy.runAction(<span class="type">SKAction</span>.sequence([actionMove, actionRemove]))</span><br></pre></td></tr></table></figure></p>
+<h3 id="Animation-Action"><a href="#Animation-Action" class="headerlink" title="Animation Action"></a>Animation Action</h3><p>可以通过一组图片来串联成动态图，模拟任务的动作。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> zombieAnimation: <span class="type">SKAction</span></span><br><span class="line"><span class="keyword">override</span> <span class="keyword">init</span>(size: <span class="type">CGSize</span>) &#123;        </span><br><span class="line">	<span class="keyword">var</span> textures: [<span class="type">SKTexture</span>] = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span>...<span class="number">4</span> &#123;</span><br><span class="line">    	textures.append(<span class="type">SKTexture</span>(imageNamed: <span class="string">"zombie\(i)"</span>))</span><br><span class="line">    &#125;</span><br><span class="line">    textures.append(textures[<span class="number">2</span>])</span><br><span class="line">    textures.append(textures[<span class="number">1</span>])</span><br><span class="line">    zombieAnimation = <span class="type">SKAction</span>.animateWithTextures(textures,</span><br><span class="line">                                                   timePerFrame: <span class="number">0.1</span>)</span><br><span class="line">    ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Stop-Animation"><a href="#Stop-Animation" class="headerlink" title="Stop Animation"></a>Stop Animation</h3><p>主要实现功能是当任务走路时调用走动动画，当静止时就停止，主要用到的方法是<code>repeatActionForever</code>，<code>removeActionForKey</code>。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">startZombieAnimation</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> zombie.actionForKey(<span class="string">"animation"</span>) == <span class="literal">nil</span> &#123;</span><br><span class="line">    	zombie.runAction(</span><br><span class="line">        	<span class="type">SKAction</span>.repeatActionForever(zombieAnimation), withKey: <span class="string">"Animation"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">&#125;    </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">stopZombieAnimation</span><span class="params">()</span></span> &#123;</span><br><span class="line">	zombie.removeActionForKey(<span class="string">"Animation"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Scale"><a href="#Scale" class="headerlink" title="Scale"></a>Scale</h3><p>主要实现物体的缩放功能。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">SKAction</span>.scaleTo(scale, duration)</span><br><span class="line"><span class="type">SKAction</span>.scaleXTo(scale, duration)</span><br><span class="line"><span class="type">SKAction</span>.scaleYTo(scale, duration)</span><br></pre></td></tr></table></figure></p>
+<h3 id="Rotate-action"><a href="#Rotate-action" class="headerlink" title="Rotate action"></a>Rotate action</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat.zRotation = -π / <span class="number">16.0</span></span><br><span class="line"><span class="keyword">let</span> leftWiggle = <span class="type">SKAction</span>.rotateByAngle(π/<span class="number">8.0</span>, duration: <span class="number">0.5</span>)</span><br><span class="line"><span class="keyword">let</span> rightWiggle = leftWiggle.reversedAction()</span><br><span class="line"><span class="keyword">let</span> fullWiggle = <span class="type">SKAction</span>.sequence([leftWiggle, rightWiggle])</span><br><span class="line"><span class="keyword">let</span> wiggleWait = <span class="type">SKAction</span>.repeatAction(fullWiggle, <span class="built_in">count</span>: <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="Group-actions"><a href="#Group-actions" class="headerlink" title="Group actions"></a>Group actions</h3><p><code>group actions</code>主要是把几个action放在同一时间内执行，比如<code>scale</code>和<code>rotation</code>。具体步骤如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. 定义单个action；</span><br><span class="line">2. 多个action组成sequence；</span><br><span class="line">3. 将repeat action sequence转换成action;</span><br><span class="line">4. 将多个3中的action转换成sequence;</span><br><span class="line">5. group 4中的sequence;</span><br><span class="line">6. 将group sequence action转换成action;</span><br><span class="line">7. run 6中action.</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> group = <span class="type">SKAction</span>.group([fullScale, fullWiggle])</span><br><span class="line"><span class="keyword">let</span> groupWait = <span class="type">SKAction</span>.repeatAction(group, <span class="built_in">count</span>: <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="优化碰撞检测"><a href="#优化碰撞检测" class="headerlink" title="优化碰撞检测"></a>优化碰撞检测</h3><p>碰撞检测应该重写<code>didEvaluateActions</code>函数中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">override func didEvaluateActions() &#123;</span><br><span class="line">	checkCollisions()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Sound"><a href="#Sound" class="headerlink" title="Sound"></a>Sound</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">runAction(SKAction.playSoundFileNamed(&quot;hitCat.wav&quot;,waitForCompletion: false))</span><br></pre></td></tr></table></figure>
+<p>但是上述代码存在的问题是：当第一次加载音乐文件时后有延迟，所以正确的解决方法是将音乐文件提前加在，方法之一是将加载音乐播放音乐设置成一个SKAction类型属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let catCollisionSound: SKAction = SKAction.playSoundFileNamed(&quot;hitCat.wav&quot;,waitForCompletion: false)</span><br><span class="line">runAction(catCollisionSound)</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpriteKit/">SpriteKit</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-导航控制器" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/24/导航控制器/" class="article-date">
+  	<time datetime="2016-03-24T17:04:22.000Z" itemprop="datePublished">2016-03-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/24/导航控制器/">导航控制器</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>导航控制器（NavigationController）一些常用方法笔记如下:</p>
+<h3 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PUSH:</span><br><span class="line">[self.navigationController pushViewController: vc Animated:YES];</span><br><span class="line">POP:</span><br><span class="line">[self.navigationController popViewControllerAnimated: YES];</span><br><span class="line">POP TO ROOT:</span><br><span class="line">[self.navigationController popToRootViewControllerAnimated:YES];</span><br></pre></td></tr></table></figure>
+<h3 id="设置标题"><a href="#设置标题" class="headerlink" title="设置标题"></a>设置标题</h3><p>设置标题不需要导航控制器，只需要当前控制器的navigationItem属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.navigationItem.title = @“name”;</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.title = @&quot;&quot;;</span><br></pre></td></tr></table></figure>
+<h3 id="设置导航条左右图标"><a href="#设置导航条左右图标" class="headerlink" title="设置导航条左右图标"></a>设置导航条左右图标</h3><p>将导航条左边按钮设置成相机。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UIBarButtonItem *cameraItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemCamera target:nil action:nil];</span><br><span class="line">self.navigationItem.leftBarButtonItem = cameraItem;</span><br></pre></td></tr></table></figure>
+<p>也可以同时并排添加多个按钮，但是多个按钮的位置无法改变，系统默认。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UIBarButtonItem *composeItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemCompose target:nil action:nil];</span><br><span class="line">self.navigationItem.leftBarButtonItems = @[cameraItem, composeItem];</span><br></pre></td></tr></table></figure>
+<h3 id="自定义返回按钮名字"><a href="#自定义返回按钮名字" class="headerlink" title="自定义返回按钮名字"></a>自定义返回按钮名字</h3><p>首先自定义返回按钮名字，如果要设置当前控制器的导航条返回按钮，则需要在上一个控制器中进行设置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@“” style: UIBarButtonItemStylePlain target:nil action:nil];</span><br><span class="line">self.navigationItem.backBarButtonItem = backItem;</span><br></pre></td></tr></table></figure>
+<h3 id="将返回按钮设置成图片"><a href="#将返回按钮设置成图片" class="headerlink" title="将返回按钮设置成图片"></a>将返回按钮设置成图片</h3><p>下面是失败的两种实现方法：<br>第一种失败方法是直接将item通过图片初始化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:uiimage style: UIBarButtonItemStylePlain target:nil action:nil];</span><br><span class="line">self.navigationItem.backBarButtonItem = item;</span><br></pre></td></tr></table></figure>
+<p>第二种失败方法是自定义按钮，然后通过通过view初始化button。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">UIButton *btn = [[UIButton alloc] init];</span><br><span class="line">btn.bounds = CGRectMake(0，0，46，31);</span><br><span class="line">btn.setBackgroundImage:** forState:UIControlStateNormal];</span><br><span class="line">UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];</span><br><span class="line">self.navigationItem.backBarButtonItem = item;</span><br></pre></td></tr></table></figure>
+<p>以上两种方法都不行，需要进行第三种方法的尝试，就是直接在当前控制器设置当前导航条中的left button。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">UIButton *btn = [[UIButton alloc] init];</span><br><span class="line">btn.bounds = CGRectMake(0，0，46，31);</span><br><span class="line">btn.setBackgroundImage:** forState:UIControlStateNormal];</span><br><span class="line">UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];</span><br><span class="line">self.navigationItem.leftBarButtonItem = item</span><br></pre></td></tr></table></figure>
+<p>这里是直接在需要返回的改控制器内修改导航条的left button，然后需要<strong>额外监听点击事件</strong>。</p>
+<h3 id="导航控制器布局"><a href="#导航控制器布局" class="headerlink" title="导航控制器布局"></a>导航控制器布局</h3><p>这里主要讲IOS7之后的布局。布局层次如下：首先屏幕上有个window，然后window最上面有个状态栏，状态栏再往下有个导航条，之后导航控制器的view的size直接和window一样大，覆盖整个屏幕，然后root view controller的view也是覆盖整个导航控制器的view。</p>
+<h3 id="设置NavigationBar-backgroundColor"><a href="#设置NavigationBar-backgroundColor" class="headerlink" title="设置NavigationBar backgroundColor"></a>设置NavigationBar backgroundColor</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[[UINavigationBar appearance] setBarTintColor:[UIColor redColor]];</span><br><span class="line"></span><br><span class="line">[[UINavigationBar appearance] setTranslucent:NO];</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-通过NodeJS和MongoDB创建RESTful-API" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/16/通过NodeJS和MongoDB创建RESTful-API/" class="article-date">
+  	<time datetime="2016-03-16T20:46:28.000Z" itemprop="datePublished">2016-03-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/16/通过NodeJS和MongoDB创建RESTful-API/">通过NodeJS和MongoDB创建RESTful API</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="RESTful-API简介"><a href="#RESTful-API简介" class="headerlink" title="RESTful API简介"></a>RESTful API简介</h2><p>RESTful 是 Representational State Transfer 的缩写，同MVC模式的属性差不多，它们都不是一种标准，而只是一种设计风格，提供一些约束条件和设计原则。本文着重讨论其部署和实现，故略过其介绍。</p>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>本文平台是Amazon AWS Ubuntu平台。</p>
+<h4 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h4><p>先安装<a href="https://github.com/creationix/nvm" target="_blank" rel="external">nvm</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash</span><br></pre></td></tr></table></figure></p>
+<p>重启终端后执行下面指令安装node:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install node</span><br></pre></td></tr></table></figure></p>
+<p>检查node 和 npm(node package manager) 版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure></p>
+<h4 id="ExpressJS"><a href="#ExpressJS" class="headerlink" title="ExpressJS"></a>ExpressJS</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g express</span><br></pre></td></tr></table></figure>
+<p>参数 －g 主要作用是在系统全局安装express，而且将其安装到PATH，所有它在系统里面的任何地方都可以运行了。</p>
+<p>检查版本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">express -v</span><br></pre></td></tr></table></figure></p>
+<h4 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -y install mongodb</span><br></pre></td></tr></table></figure>
+<p>检查版本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --version</span><br></pre></td></tr></table></figure></p>
+<p>（未完）</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://adrianmejia.com/blog/2014/10/01/creating-a-restful-api-tutorial-with-nodejs-and-mongodb/" target="_blank" rel="external">http://adrianmejia.com/blog/2014/10/01/creating-a-restful-api-tutorial-with-nodejs-and-mongodb/</a></p>
+<p><a href="https://docs.npmjs.com/files/package.json" target="_blank" rel="external">https://docs.npmjs.com/files/package.json</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Backend/">Backend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FullStack/">FullStack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RESTful/">RESTful</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-MongoDB开发笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/16/MongoDB开发笔记/" class="article-date">
+  	<time datetime="2016-03-16T15:59:46.000Z" itemprop="datePublished">2016-03-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/16/MongoDB开发笔记/">MongoDB开发笔记</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h2><p>通过JSON文件创建数据库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoimport -db library --collection library_open_time --drop --file library.json</span><br></pre></td></tr></table></figure></p>
+<p>此处如果需要将数据转成JSON格式，则可以用Python json库中的dump方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">with open(&apos;data.txt&apos;, &apos;w&apos;) as outfile:</span><br><span class="line">    json.dump(data, outfile)</span><br></pre></td></tr></table></figure></p>
+<p>启动关闭重启开始使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongodb start</span><br><span class="line">sudo service mongodb stop</span><br><span class="line">sudo service mongodb restart</span><br><span class="line">mongo</span><br></pre></td></tr></table></figure></p>
+<p>查看所有db，以及切换db<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show dbs</span><br><span class="line">use db-name</span><br></pre></td></tr></table></figure></p>
+<p>查看collection纪录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.collection_name.find();</span><br></pre></td></tr></table></figure></p>
+<p>通过id删除记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.collection_name.remove(&#123;&quot;_id&quot; : ObjectId(&quot;5773747f041e3dc116fd71ba&quot;)&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h2><p>js脚本执行MongoDB命令：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test.js:</span><br><span class="line">use test</span><br><span class="line">db.collections.find()</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo &lt; test.js</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Backend/">Backend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FullStack/">FullStack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/">MongoDB</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-aws-开发笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/16/aws-开发笔记/" class="article-date">
+  	<time datetime="2016-03-16T15:12:27.000Z" itemprop="datePublished">2016-03-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/16/aws-开发笔记/">AWS开发笔记</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ssh登陆：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i keyfile user@host-ip</span><br></pre></td></tr></table></figure></p>
+<p>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i ~/.ssh/keyfile.pem ubuntu@127.0.0.0</span><br></pre></td></tr></table></figure></p>
+<p>后台运行python程序：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup python program.py &amp;</span><br></pre></td></tr></table></figure></p>
+<p>查看该任务：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps</span><br></pre></td></tr></table></figure></p>
+<p>终止某任务：</p>
+<p>通过上一个指令获得任务的pid，然后直接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill pid</span><br></pre></td></tr></table></figure></p>
+<p>或者有时上述方法不行，需要加上参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 pid</span><br></pre></td></tr></table></figure></p>
+<p>其中－9表示SIGKILL<br><code>ls -ef</code>可以查看所有pid</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Backend/">Backend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FullStack/">FullStack</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Sprite-Kit学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/13/Sprite-Kit学习笔记/" class="article-date">
+  	<time datetime="2016-03-13T17:14:47.000Z" itemprop="datePublished">2016-03-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/13/Sprite-Kit学习笔记/">Sprite Kit学习笔记</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在学Sprite Kit，它是Apple原生的2D游戏开发库，下面简要列一下学习中的一些要点。</p>
+<h2 id="音频延迟处理"><a href="#音频延迟处理" class="headerlink" title="音频延迟处理"></a>音频延迟处理</h2><p>在游戏中，如果要给action加上音效，一般会用如下代码实现。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.runAction(<span class="type">SKAction</span>.playSoundFileNamed(<span class="string">"hit.wav"</span>, waitForCompletion: <span class="literal">true</span>))</span><br></pre></td></tr></table></figure></p>
+<p>但是该方法有一个缺陷，就是如果对音频实时性要求很高，比如一些碰撞声、炮弹发射声音等等，这就需要提前加载改音频到运存，可以用如下方法实现。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">	<span class="keyword">let</span> sounds = [<span class="string">"cannon"</span>, <span class="string">"hit"</span>]</span><br><span class="line">    <span class="keyword">for</span> sound <span class="keyword">in</span> sounds &#123;</span><br><span class="line">    	<span class="keyword">let</span> player = <span class="keyword">try</span> <span class="type">AVAudioPlayer</span>(contentsOfURL: <span class="type">NSURL</span>(fileURLWithPath: 					<span class="type">NSBundle</span>.mainBundle().pathForResource(sound, ofType: <span class="string">"wav"</span>)!))</span><br><span class="line">        player.prepareToPlay()</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="创建自定义Frame-Animation"><a href="#创建自定义Frame-Animation" class="headerlink" title="创建自定义Frame Animation"></a>创建自定义Frame Animation</h2><p>通过一组图片可以自定义动画<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">createFrameAnimation</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> frames : [<span class="type">SKTexture</span>] = []</span><br><span class="line">    <span class="keyword">for</span> <span class="keyword">var</span> i : <span class="type">Int</span> = <span class="number">1</span>; i &amp;lt;= <span class="number">10</span>; i++ &#123;</span><br><span class="line">    	<span class="keyword">let</span> tex : <span class="type">SKTexture</span>  = <span class="type">SKTexture</span>(imageNamed: <span class="string">"\(i).png"</span>)</span><br><span class="line">    	frames.append(tex)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//run animation</span></span><br><span class="line">    <span class="comment">//object.runAction(SKAction.animateWithTextures(frames, timePerFrame:0.03))</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpriteKit/">SpriteKit</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-知乎日报App-UI-Framework" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -350,528 +835,6 @@
 	<a class="article-category-link" href="/categories/Algorithm/">Algorithm</a>
 	</div>
 
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-有向图的单源最短路径算法实现" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/28/有向图的单源最短路径算法实现/" class="article-date">
-  	<time datetime="2016-02-29T02:55:16.000Z" itemprop="datePublished">2016-02-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/28/有向图的单源最短路径算法实现/">有向图的单源最短路径算法实现</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="有向图的实现"><a href="#有向图的实现" class="headerlink" title="有向图的实现"></a>有向图的实现</h2><p>首先，我们再来讨论一下图。图是数据结构中相当重要的一部分，与之相关的算法也有很多，但是如果要让你代码实现有向图，相信很多人都会写很长的时间。下面就用Java实现一个Adjacency List存储的有向图。关于图的存储，可以参见<a href="http://pengfeixing.com/2016/02/19/图遍历/" target="_blank" rel="external">这篇博客</a>。</p>
-<p>这里主要定义了三个类，点(Vertex)、边(Edge)、有向图（Digraph）。</p>
-<h3 id="Vetex-Class"><a href="#Vetex-Class" class="headerlink" title="Vetex Class"></a>Vetex Class</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> GraphImplementation;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by novelidea on 2/28/16.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Vertex</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> distance = Integer.MAX_VALUE;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Vertex</span><span class="params">(String id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getId</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getDistance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> distance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDistance</span><span class="params">(<span class="keyword">int</span> dis)</span></span>&#123;</span><br><span class="line">        distance = dis;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Edge-Class"><a href="#Edge-Class" class="headerlink" title="Edge Class"></a>Edge Class</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> GraphImplementation;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by novelidea on 2/28/16.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Edge</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Vertex in;</span><br><span class="line">    <span class="keyword">private</span> Vertex out;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> weight;</span><br><span class="line">    Edge(Vertex i, Vertex o, <span class="keyword">int</span> w)&#123;</span><br><span class="line">        in = i;</span><br><span class="line">        out = o;</span><br><span class="line">        weight = w;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Vertex <span class="title">getIn</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> in;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Vertex <span class="title">getOut</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> out;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getWeight</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> weight;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Vertex <span class="title">getAdjacentVertex</span><span class="params">(Vertex v)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> v.getId().equals(in.getId()) ? out : in;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Directed-Graph-Class"><a href="#Directed-Graph-Class" class="headerlink" title="Directed Graph Class"></a>Directed Graph Class</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> GraphImplementation;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by novelidea on 2/28/16.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Digraph</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> HashMap&lt;Vertex, ArrayList&lt;Edge&gt;&gt; adjacentList = <span class="keyword">new</span> HashMap&lt;Vertex, ArrayList&lt;Edge&gt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addVertex</span><span class="params">(Vertex v)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(adjacentList.containsKey(v)) <span class="keyword">return</span>;</span><br><span class="line">        adjacentList.put(v, <span class="keyword">new</span> ArrayList&lt;&gt;());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(Vertex in, Vertex out, <span class="keyword">int</span> weight)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.addVertex(in);</span><br><span class="line">        <span class="keyword">this</span>.addVertex(out);</span><br><span class="line">        adjacentList.get(in).add(<span class="keyword">new</span> Edge(in, out, weight));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">outDegree</span><span class="params">(Vertex v)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> adjacentList.get(v).size();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> HashMap&lt;Vertex, ArrayList&lt;Edge&gt;&gt; getMap()&#123;</span><br><span class="line">        <span class="keyword">return</span> adjacentList;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;Edge&gt; <span class="title">getAdjacentEdges</span><span class="params">(Vertex v)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> adjacentList.get(v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Dijkstra实现"><a href="#Dijkstra实现" class="headerlink" title="Dijkstra实现"></a>Dijkstra实现</h2><p>实现有向图单源最短路径主要是Dijkstra算法，下面为算法实现。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> GraphImplementation;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by novelidea on 2/28/16.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dijkstra</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Digraph graph;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Dijkstra</span><span class="params">(Digraph g)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(graph == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"the input graph cannot be null"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.graph = g;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VertexComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&amp;<span class="title">lt</span></span>;Vertex&amp;gt; &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Vertex v1, Vertex v2)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> Integer.compare(v1.getDistance(), v2.getDistance());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Set&lt;Vertex&gt; <span class="title">findShortestPath</span><span class="params">(String sourceID)</span></span>&#123;</span><br><span class="line">        Queue&lt;Vertex&gt; queue = <span class="keyword">new</span> PriorityQueue&lt;&gt;(<span class="number">10</span>, <span class="keyword">new</span> VertexComparator());</span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&lt;Vertex, ArrayList&lt;Edge&gt;&gt; e : graph.getMap().entrySet())&#123;</span><br><span class="line">            Vertex v = e.getKey();</span><br><span class="line">            <span class="keyword">if</span>(v.getId().equals(sourceID))&#123;</span><br><span class="line">                v.setDistance(<span class="number">0</span>);</span><br><span class="line">                queue.add(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Set&lt;Vertex&gt; visited = <span class="keyword">new</span> HashSet&lt;Vertex&gt;();</span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty())&#123;</span><br><span class="line">            Vertex src = queue.poll();</span><br><span class="line">            visited.add(src);</span><br><span class="line">            <span class="keyword">for</span>(Edge e : graph.getAdjacentEdges(src))&#123;</span><br><span class="line">                Vertex v = e.getAdjacentVertex(src);</span><br><span class="line">                <span class="keyword">if</span>(! visited.contains(v))&#123;</span><br><span class="line">                    <span class="keyword">int</span> newDistance = src.getDistance() + e.getWeight();</span><br><span class="line">                    <span class="keyword">if</span>(newDistance &amp;lt; v.getDistance())&#123;</span><br><span class="line">                        v.setDistance(newDistance);</span><br><span class="line">                        visited.add(v);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> graph.getMap().keySet();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-面向对象设计" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/28/面向对象设计/" class="article-date">
-  	<time datetime="2016-02-28T21:21:57.000Z" itemprop="datePublished">2016-02-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/28/面向对象设计/">面向对象设计</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文主要讨论用面相对象的思想设计一副纸牌，并且实现洗牌算法。设计了两个类Card, Deck，以及两个枚举Suit, Face.</p>
-<p><pre class="lang:default decode:true " title="Suit">package com.pengfeixing.ood;</pre></p>
-<p>/**</p>
-<ul>
-<li>Created by novelidea on 2/28/16.<br>*/<br>public enum Suit {<br> Club(0), Diamond(1), Heart(2), Spade(3);<br> private int value;<br> private Suit(int v){<pre><code>value = v;
-</code></pre> }<br> public int getValue(){<pre><code>return value;
-</code></pre> }<br> public static Suit getSuitFromValue(int value){<pre><code>switch (value){
-    case 0 : return Suit.Club;
-    case 1 : return Suit.Diamond;
-    case 2 : return Suit.Heart;
-    case 3 : return Suit.Spade;
-    default: return null;
-}
-</code></pre> }<br>}<br><br><pre class="lang:default decode:true " title="Face">package com.pengfeixing.ood;</pre></li>
-</ul>
-<p>/**</p>
-<ul>
-<li><p>Created by novelidea on 2/28/16.<br>*/<br>public enum Face {<br> A(1), Two(2), Three(3), Four(4), Five(5), Six(6), Seven(7), Eight(8), Nine(9), Ten(10), Jack(11), Queen(12), King(13);</p>
-<p> private int value;<br> private Face(int v){</p>
-<pre><code>value = v;
-</code></pre><p> }<br> public int getValue(){</p>
-<pre><code>return value;
-</code></pre><p> }<br> public static Face getFaceFromValue(int v){</p>
-<pre><code>switch (v){
-    case 1 : return Face.A;
-    case 2 : return Face.Two;
-    case 3 : return Face.Three;
-    case 4 : return Face.Four;
-    case 5 : return Face.Five;
-    case 6 : return Face.Six;
-    case 7 : return Face.Seven;
-    case 8 : return Face.Eight;
-    case 9 : return Face.Nine;
-    case 10 : return Face.Ten;
-    case 11 : return Face.Jack;
-    case 12 : return Face.Queen;
-    case 13 : return Face.King;
-    default: return null;
-}
-</code></pre><p> }<br>}<br><br><pre class="lang:default decode:true " title="Card">package com.pengfeixing.ood;</pre></p>
-</li>
-</ul>
-<p>/**</p>
-<ul>
-<li>Created by novelidea on 2/28/16.<br>*/<br>public class Card {<br> private Face faceValue;<br> private Suit suit;<br> public Card(Face v, Suit s){<pre><code>faceValue = v;
-suit = s;
-</code></pre> }<br> public Card(Card otherCard){<pre><code>faceValue = otherCard.faceValue;
-suit = otherCard.suit;
-</code></pre> }<br> public Face getFaceValue(){<pre><code>return faceValue;
-</code></pre> }<br> public Suit getSuit(){<pre><code>return suit;
-</code></pre> }<br>}<br><br><pre class="lang:default decode:true " title="Deck">package com.pengfeixing.ood;</pre></li>
-</ul>
-<p>/**</p>
-<ul>
-<li>Created by novelidea on 2/28/16.<br>*/<br>import java.util.ArrayList;<br>import java.util.Random;</li>
-</ul>
-<p>public class Deck {<br>    private static int SUIT_PER_DECK = 4;<br>    private static int CARDS_PER_SUIT = 13;<br>    private ArrayList&lt;Card&gt; cards;<br>    public Deck(){<br>        cards = new ArrayList&lt;Card&gt;(SUIT_PER_DECK <em> CARDS_PER_SUIT);<br>        int index = 0;<br>        for (int i = 0; i &lt; SUIT_PER_DECK; i ++) {<br>            for (int j = 1; j &lt;= CARDS_PER_SUIT; j ++){<br>                index = i </em> CARDS_PER_SUIT + j - 1;<br>                Card card = new Card(Face.getFaceFromValue(j), Suit.getSuitFromValue(i));<br>                cards.add(card);<br>            }<br>        }<br>    }<br>    public void Shuffle(){<br>        if(cards.isEmpty()){<br>            return;<br>        }<br>        Random rand = new Random();<br>        for (int i = SUIT_PER_DECK * CARDS_PER_SUIT - 1; i &gt; 0; i –){<br>            int j = rand.nextInt(i);<br>            Card tmp = new Card(cards.get(i));<br>            cards.set(i, cards.get(j));<br>            cards.set(j, tmp);<br>        }<br>        return;<br>    }</p>
-<pre><code>public void printCards(){
-    for(int i = 0; i &amp;lt; CARDS_PER_SUIT * SUIT_PER_DECK; i ++){
-        Card card = cards.get(i);
-        System.out.println(card.getFaceValue() + &quot;,  &quot; + card.getSuit());
-    }
-}
-</code></pre><p>}<br><br>测试函数：</p>
-<p><pre class="lang:default decode:true">package com.pengfeixing.ood;</pre></p>
-<p>public class Main {<br>    public static void main(String[] args) {<br>        Deck deck = new Deck();<br>        deck.Shuffle();<br>        deck.printCards();<br>    }<br>}<br><br>输出结果：</p>
-<p><pre class="lang:default decode:true " title="Result">Five,  Heart<br>Two,  Spade<br>Five,  Club<br>King,  Heart<br>Jack,  Spade<br>Queen,  Heart<br>Ten,  Spade<br>Three,  Diamond<br>Jack,  Club<br>Ten,  Heart<br>Four,  Diamond<br>King,  Diamond<br>Nine,  Spade<br>King,  Spade<br>Two,  Club<br>Eight,  Heart<br>Seven,  Diamond<br>Three,  Club<br>Three,  Heart<br>Nine,  Heart<br>King,  Club<br>Six,  Club<br>A,  Club<br>Eight,  Club<br>A,  Spade<br>A,  Heart<br>Nine,  Diamond<br>Nine,  Club<br>Eight,  Spade<br>A,  Diamond<br>Three,  Spade<br>Jack,  Diamond<br>Two,  Diamond<br>Seven,  Heart<br>Queen,  Diamond<br>Eight,  Diamond<br>Two,  Heart<br>Five,  Spade<br>Jack,  Heart<br>Six,  Heart<br>Seven,  Club<br>Seven,  Spade<br>Queen,  Spade<br>Six,  Diamond<br>Queen,  Club<br>Six,  Spade<br>Five,  Diamond<br>Four,  Spade<br>Four,  Heart<br>Ten,  Club<br>Four,  Club<br>Ten,  Diamond</pre></p>
-<p>Process finished with exit code 0<br><br>&nbsp;</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OOD/">OOD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Trie的典型应用" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/26/Trie的典型应用/" class="article-date">
-  	<time datetime="2016-02-27T02:35:47.000Z" itemprop="datePublished">2016-02-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/26/Trie的典型应用/">单词查找树（Trie）的典型应用</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>单词查找树是介绍详见<a href="https://en.wikipedia.org/wiki/Trie" target="_blank" rel="external">维基百科</a>，主要解决的问题是在一个字符串集合中快速找出目标字符串。实现如下：</p>
-<p>给定一个字符串数组，构建单词查找树。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TrieNode</span></span>&#123;</span><br><span class="line">        TrieNode[] next = <span class="keyword">new</span> TrieNode[<span class="number">26</span>];</span><br><span class="line">        String word;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TrieNode <span class="title">buildTrie</span><span class="params">(String[] words)</span></span>&#123;</span><br><span class="line">        TrieNode root = <span class="keyword">new</span> TrieNode();</span><br><span class="line">        <span class="keyword">for</span>(String w : words)&#123;</span><br><span class="line">            TrieNode p = root;</span><br><span class="line">            <span class="keyword">for</span>(Character c : w.toCharArray())&#123;</span><br><span class="line">                <span class="keyword">int</span> index = c - <span class="string">'a'</span>;</span><br><span class="line">                <span class="keyword">if</span>(p.next[index] == <span class="keyword">null</span>) p.next[index] = <span class="keyword">new</span> TrieNode();</span><br><span class="line">                p = p.next[index];</span><br><span class="line">            &#125;</span><br><span class="line">            p.word = w;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这里我们的应用场景是给定一个N*M的字符串矩阵，一个单词列表，返回所有可以在字符串矩阵中存在的单词。该问题过于复杂，我们可以先来处理简化版本。</p>
-<p>简化版本是，将单词列表换成一个单词，判断该字符串矩阵是否能找出该单词。比如，给定<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  [<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'E'</span>],</span><br><span class="line">  [<span class="string">'S'</span>,<span class="string">'F'</span>,<span class="string">'C'</span>,<span class="string">'S'</span>],</span><br><span class="line">  [<span class="string">'A'</span>,<span class="string">'D'</span>,<span class="string">'E'</span>,<span class="string">'E'</span>]</span><br><span class="line">]</span><br><span class="line"><span class="string">"ABCCED"</span>-&gt;TRUE</span><br><span class="line"><span class="string">"SEE"</span>-&gt;TRUE</span><br><span class="line"><span class="string">"ABCB"</span>-&gt;FALSE</span><br></pre></td></tr></table></figure></p>
-<p>该问题可以用dfs递归解决，算法实现如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">boolean</span> visited[][];</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">exist</span><span class="params">(<span class="keyword">char</span>[][] board, String word)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(board.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; board.length; i ++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &amp;lt; board[i].length; j++) &#123;</span><br><span class="line">                <span class="keyword">return</span> dfs(board, visited, word, i, j, <span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">dfs</span><span class="params">(<span class="keyword">char</span>[][] board, <span class="keyword">boolean</span>[][] visited, String word, <span class="keyword">int</span> i, <span class="keyword">int</span> j, <span class="keyword">int</span> index)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index == word.length()) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(i &amp;lt; <span class="number">0</span> || i &lt; board.length || j &amp;lt; <span class="number">0</span> || j &amp;gt; board[<span class="number">0</span>].length) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(visited[i][j] == <span class="keyword">true</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(word.charAt(index) != board[i][j]) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        visited[i][j] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">boolean</span> result = dfs(board, visited, word, i - <span class="number">1</span>, j, index + <span class="number">1</span>) ||</span><br><span class="line">                         dfs(board, visited, word, i + <span class="number">1</span>, j, index + <span class="number">1</span>) ||</span><br><span class="line">                         dfs(board, visited, word, i, j - <span class="number">1</span>, index + <span class="number">1</span>) ||</span><br><span class="line">                         dfs(board, visited, word, i, j + <span class="number">1</span>, index + <span class="number">1</span>);</span><br><span class="line">        visited[i][j] = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>但是，当要查找的目标变成一个字符串集合时，问题就会变复杂了，当然可以暴力遍历改集合，不断调用上面方法，但是时间复杂度很高。所有，这里就要借用单词查找树（Trie）。实现如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&amp;lt;String&amp;gt; findWords(<span class="keyword">char</span>[][] board, String[] words) &#123;</span><br><span class="line">        List&amp;lt;String&amp;gt; result = <span class="keyword">new</span> ArrayList&amp;lt;&amp;gt;();</span><br><span class="line">        TrieNode root = buildTrie(words);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; board.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &amp;lt; board[<span class="number">0</span>].length; j++) &#123;</span><br><span class="line">                dfs(board, i, j, root, result);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">char</span>[][] board, <span class="keyword">int</span> i, <span class="keyword">int</span> j, TrieNode p, List&amp;lt;String&amp;gt; result)</span></span>&#123;</span><br><span class="line">        <span class="comment">// if(i &amp;lt; 0 || i &amp;gt;= board.length || j &amp;lt; 0 || j &amp;gt;= board[0].length) return;</span></span><br><span class="line">        <span class="keyword">char</span> c = board[i][j];</span><br><span class="line">        <span class="keyword">if</span>(c == <span class="string">'#'</span> || p.next[c - <span class="string">'a'</span>] == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        p = p.next[c - <span class="string">'a'</span>];</span><br><span class="line">        <span class="keyword">if</span>(p.word != <span class="keyword">null</span>)&#123;</span><br><span class="line">            result.add(p.word);</span><br><span class="line">            p.word = <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        board[i][j] = <span class="string">'#'</span>;</span><br><span class="line">        <span class="keyword">if</span>(i &amp;gt; <span class="number">0</span>) dfs(board, i - <span class="number">1</span>, j, p, result);</span><br><span class="line">        <span class="keyword">if</span>(j &amp;gt; <span class="number">0</span>) dfs(board, i, j - <span class="number">1</span>, p, result);</span><br><span class="line">        <span class="keyword">if</span>(i &amp;lt; board.length - <span class="number">1</span>) dfs(board, i + <span class="number">1</span>, j, p, result);</span><br><span class="line">        <span class="keyword">if</span>(j &amp;lt; board[<span class="number">0</span>].length - <span class="number">1</span>) dfs(board, i, j + <span class="number">1</span>, p, result);</span><br><span class="line">        board[i][j] = c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>&nbsp;</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Java疑难问题" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/25/Java疑难问题/" class="article-date">
-  	<time datetime="2016-02-26T06:31:59.000Z" itemprop="datePublished">2016-02-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/25/Java疑难问题/">Java疑难问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>类中类</p>
-<p><pre class="lang:default decode:true ">package com.pengfeixing;</pre></p>
-<p>import java.util.HashMap;<br>import java.util.Map;<br>import java.util.ArrayList;</p>
-<p>public class DirectedGraph {<br>    public static class Vertex{<br>        private int value;<br>        public Vertex(int val){<br>            this.value = val;<br>        }<br>        public int getValue(){<br>            return this.value;<br>        }<br>    }</p>
-<pre><code>public static void main(String[] args){
-    DirectedGraph test = new DirectedGraph();
-    test.addVertex(new Vertex(0));
-    test.addVertex(new Vertex(1));
-}
-</code></pre><p>}<br><br>为何Vertex要定义成静态类？</p>
-<p>答：这里可以理解为类方法，假设类A含有内部类B，则将B声明为静态类，即可将B看成A的类方法，生成类B只需要用类A名就可以了，而不需要生成一个类A，即A.B b = new A.B();相反，如果B不是静态类，生成类B则需要先生成类A，即A.B b = new A().new B()。如果该内部类定义为私有，则只能在外部类内访问。</p>
-<p><a href="http://stackoverflow.com/questions/70324/java-inner-class-and-static-nested-class" target="_blank" rel="external">http://stackoverflow.com/questions/70324/java-inner-class-and-static-nested-class</a></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FullStack/">FullStack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-basic-algorithm" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/23/basic-algorithm/" class="article-date">
-  	<time datetime="2016-02-23T09:09:21.000Z" itemprop="datePublished">2016-02-23</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/23/basic-algorithm/">Basic Algorithm</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="翻转字符串中的单词"><a href="#翻转字符串中的单词" class="headerlink" title="翻转字符串中的单词"></a>翻转字符串中的单词</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">reverseWords</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        String[] words = s.split(<span class="string">" "</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; words.length / <span class="number">2</span>; i ++)&#123;</span><br><span class="line">            String tmp = words[i];</span><br><span class="line">            words[i] = words[words.length - <span class="number">1</span> - i];</span><br><span class="line">            words[words.length - <span class="number">1</span> - i] = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(String str : words)&#123;</span><br><span class="line">            sb.append(str + <span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        String result = sb.toString();</span><br><span class="line">        result.trim();</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2Sum"><a href="#2Sum" class="headerlink" title="2Sum"></a>2Sum</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] defaultResult = &#123;<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">null</span> == nums) <span class="keyword">return</span> defaultResult;</span><br><span class="line">        Map&lt;Integer, Integer&gt; mp = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i ++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(mp.containsKey(target - nums[i]) == <span class="keyword">true</span>) &#123;</span><br><span class="line">                <span class="keyword">int</span>[] result1 = &#123;mp.get(target - nums[i]), i&#125;;</span><br><span class="line">                <span class="keyword">return</span> result1;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                mp.put(nums[i], i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> defaultResult;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Binary-Search"><a href="#Binary-Search" class="headerlink" title="Binary Search"></a>Binary Search</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> end = nums.length - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(start &lt;= end) &#123;</span><br><span class="line">		<span class="keyword">int</span> mid = start + (end - start) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">			<span class="keyword">return</span> mid;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">			start = mid + <span class="number">1</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			mid = mid - <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Top-K问题" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/22/Top-K问题/" class="article-date">
-  	<time datetime="2016-02-23T06:38:56.000Z" itemprop="datePublished">2016-02-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/22/Top-K问题/">top k问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>top k问题是指给定元素集合，找出前k大的元素，或者找出出现频率前k大的元素。这个问题在算法课上经常讨论，但是却从未实现过，现在就来实现一下改算法。</p>
-<p>top k问题暴力求解方法当然是对所有元素的比较依据元素进行排序，然后选出前k大的元素，这里的时间复杂度是O(nlg(n))，空间复杂度是O(1)。但是这个效率不高，改进主要有两种方法，一种是利用堆，一种是利用快排的辅助函数quick search算法。</p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>首先，我们用第一种方法来实现一下，以找出文中出现频率最高的单词为例。首先，我们需要遍历文本，构造｛单词：频率｝的哈希表，这里的时间复杂度是O(1)，空间复杂度是O(n)。然后我们再遍历一遍哈希表，利用小顶堆找出出现频率钱k大的单词，该时间复杂度是O(nlog(k))，空间复杂度是O(k)（关于堆操作的时间空间复杂度在这就不再赘述了）。综上，利用堆来处理topK问题的时间复杂度是O(nlog(k))，空间复杂度是O(n)。</p>
-<p>代码实现如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.pengfeixing;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.lang.model.util.ElementFilter;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.PriorityQueue;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by novelidea on 2/22/16.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TopKWords</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String[] topKWords(String stream, <span class="keyword">int</span> k)&#123;</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">WordFrequency</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">WordFrequency</span>&gt;</span>&#123;</span><br><span class="line">            String word;</span><br><span class="line">            <span class="keyword">int</span> frequency;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="title">WordFrequency</span><span class="params">(String word, <span class="keyword">int</span> frequency)</span></span>&#123;</span><br><span class="line">                <span class="keyword">this</span>.word = word;</span><br><span class="line">                <span class="keyword">this</span>.frequency = frequency;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(WordFrequency o)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> Integer.compare(<span class="keyword">this</span>.frequency, o.frequency);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        HashMap&amp;lt;String, Integer&amp;gt; mp = <span class="keyword">new</span> HashMap&amp;lt;String, Integer&amp;gt;();</span><br><span class="line">        PriorityQueue&amp;lt;WordFrequency&amp;gt; topKHeap = <span class="keyword">new</span> PriorityQueue&amp;lt;WordFrequency&amp;gt;(k);</span><br><span class="line"></span><br><span class="line">        String[] words = stream.toLowerCase().trim().split(<span class="string">" "</span>);</span><br><span class="line">        <span class="keyword">for</span>(String word : words)&#123;</span><br><span class="line">            <span class="keyword">int</span> wordFrequency = mp.containsKey(word) ? mp.get(word) + <span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">            mp.put(word, wordFrequency);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&amp;lt;String, Integer&amp;gt; e : mp.entrySet())&#123;</span><br><span class="line">            <span class="keyword">if</span>(topKHeap.size() &amp;lt; k)&#123;</span><br><span class="line">                topKHeap.add(<span class="keyword">new</span> WordFrequency(e.getKey(), e.getValue()));</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(e.getValue() &amp;gt; topKHeap.peek().frequency)&#123;</span><br><span class="line">                topKHeap.remove();</span><br><span class="line">                topKHeap.add(<span class="keyword">new</span> WordFrequency(e.getKey(), e.getValue()));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        String[] topK = <span class="keyword">new</span> String[k];</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(topKHeap.size() &amp;gt; <span class="number">0</span>)&#123;</span><br><span class="line">            topK[index ++] = topKHeap.remove().word;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> topK;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里需要注意的是，由于是topK，所有用小顶堆。如果是选取出现最少的，则用大顶堆，只需要将compareTo中的反回方法顺序调换一下。关于compareTo的返回值，有三个0，1，－1。</p>
-<p>接下来，我们用快排算法中用到的quick search来解决top k问题。即找到第k大的出现频率，然后将所有单词的频率和该频率进行比较，大于该数值的则为输出结果。该算法的时间复杂度是O(n)，空间复杂度是O(k)。</p>
-<p>实现如下：</p>
-<p>＃我们假设有找出数组中第k大的数的函数，为findkthLargestNumber(int[] nums, int k);<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TopKWords</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> String[] topKWordsQuickSearch(String stream, <span class="keyword">int</span> k) &#123;</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">WordFrequency</span> <span class="keyword">implements</span> <span class="title">Comparable</span>(<span class="title">WordFrequency</span>)</span>&#123;</span><br><span class="line">            String word;</span><br><span class="line">            <span class="keyword">int</span> frequency;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="title">WordFrequency</span><span class="params">(String word, <span class="keyword">int</span> frequency)</span></span>&#123;</span><br><span class="line">                <span class="keyword">this</span>.word = word;</span><br><span class="line">                <span class="keyword">this</span>.frequency = frequency;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(WordFrequency o)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> Integer.compare(<span class="keyword">this</span>.frequency, o.frequency);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        HashMap&lt;String, Integer&gt; mp = <span class="keyword">new</span> HashMap&amp;lt;String, Integer&amp;gt;();</span><br><span class="line">        PriorityQueue&amp;lt;WordFrequency&amp;gt; topKHeap = <span class="keyword">new</span> PriorityQueue&lt;WordFrequency&gt;(k);</span><br><span class="line"></span><br><span class="line">        String[] words = stream.toLowerCase().trim().split(<span class="string">" "</span>);</span><br><span class="line">        <span class="keyword">for</span>(String word : words)&#123;</span><br><span class="line">            <span class="keyword">int</span> wordFrequency = mp.containsKey(word) ? mp.get(word) + <span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">            mp.put(word, wordFrequency);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] frequency = <span class="keyword">new</span> <span class="keyword">int</span>[mp.size()];</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&amp;lt;String, Integer&amp;gt; e : mp)&#123;</span><br><span class="line">            frequency[index ++] = e.getValue();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> kthFrequency = findkthLargestNumber(frequency, k);</span><br><span class="line"></span><br><span class="line">        String[] topK = <span class="keyword">new</span> String[k];</span><br><span class="line">        index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&amp;lt;String, Integer&amp;gt; e : mp.entrySet())&#123;</span><br><span class="line">            <span class="keyword">if</span>(e.getValue() &amp;gt;= kthFrequency)&#123;</span><br><span class="line">                topK[index ++] = e.getKey();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> topK;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.zrzahid.com/top-k-or-k-most-frequent-words-in-a-document/" target="_blank" rel="external">http://www.zrzahid.com/top-k-or-k-most-frequent-words-in-a-document/</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-图的遍历分析" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/19/图的遍历分析/" class="article-date">
-  	<time datetime="2016-02-19T19:26:16.000Z" itemprop="datePublished">2016-02-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/19/图的遍历分析/">图的遍历分析</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="图的存储"><a href="#图的存储" class="headerlink" title="图的存储"></a>图的存储</h2><p>如果只是粗略地讲图的遍历，即DFS和BFS是完全不用讲这一个点，但是，本着讲（装）透（逼）的原则，还是要简要介绍一下图在计算机中的存储方式，因为在后面的时间复杂度分析中会用到。</p>
-<p>图的存储基本有两种，邻接矩阵（Adjacency Matrix）和邻接表（Adjacency List）。首先来说邻接矩阵，顾名思义，邻接矩阵是一个n*n矩阵，其中n是指图中节点数目，横纵坐标对应相应的节点，对于普通图来说，如果某两个节点中有边相连，则将这两点在邻接矩阵中对应的元素赋值为1，反之则为0；对于加权图来说，如果某两点间有边相连，则将邻接矩阵中对应的元素赋值为该权值，反之则为＋Infinity。</p>
-<p>邻接矩阵在处理密集图比较好，但是对于稀疏图来说就会存在空间利用率不足的弊端，这就要用到邻接表。邻接表是一种数组与链表相对结合的方式，数组中存放的是图中所有的节点（node），然后每个node又是一个链表的头节点，每个链表中的节点是图中所有与改链表头节点相邻的节点，如果是有向图，则是由头节点指向的节点。可见，邻接表的空间复杂度是和图中节点数和边数成正比的，不像邻接矩阵中的n*n是固定的，所以在处理稀疏图时首选邻接表。</p>
-<p>总结一下，图的两种存储的空间复杂度分别为（图中有n个节点，m条边）：</p>
-<p>邻接矩阵：O(n * n)</p>
-<p>邻接表：O(m + n)</p>
-<h2 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h2><h3 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h3><p>图的遍历分为深度优先（DFS）和广度优先（BFS）。首先来讲广度优先，广度优先是一层一层的遍历图，由于本篇重在分析，所以略过具体的过程描述，伪代码如下。</p>
-<p><pre class="lang:default decode:true ">set start vertex to visited</pre></p>
-<p>load it into queue</p>
-<pre><code>while queue not empty
-
-    for each edge incident to vertex
-
-         if its not visited
-
-             load into queue
-
-             mark vertex&lt;/pre&gt;
-</code></pre><p>现在我们来分析一下它的时间复杂度，简单起见，我们假设图是用邻接表存储的。假设用集合{v1, v2, v3, …, vn}来表示途中的n个节点，则执行时间可以简单描述为：</p>
-<p>v1 + (从v1出去的边数) ＋ v2 ＋ (从v2出去的边数) ＋ v3 ＋ … ＋ vn ＋ (从vn出去的边数)</p>
-<p>变换为：</p>
-<p>(v1 + v2 + … + vn) + {(从v1出去的边数) + (从v2出去的边数) + … + (从vn出去的边数) }</p>
-<p>前一部分是O(n)，后一部分是O(m)，所以，综上，用邻接表存储的图的BFS时间复杂度是O(m + n)。</p>
-<h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3><p>深度优先，深度优先就是一条路走到底，然后再走另外一条。同样略过具体实现细节，类比于BFS，DFS也是将所有点和边都走一边，只不过点边的访问顺序不一样，所以，时间复杂度同样为O(m + n)。</p>
-<h3 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h3><p>这不同于上文所说的图的存储的空间复杂度，而是图在遍历过程中额外的空间开销。在图的遍历中，为了避免因为图中有环而对同一点重复访问造成死循环，所以引入一个矩阵，来标志某点是否已经被访问，该矩阵长度为n，所以DFS和BFS的空间复杂度就为O(n)。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://stackoverflow.com/questions/11468621/why-is-the-time-complexity-of-both-dfs-and-bfs-o-v-e" target="_blank" rel="external">http://stackoverflow.com/questions/11468621/why-is-the-time-complexity-of-both-dfs-and-bfs-o-v-e</a></p>
-<p><a href="http://stackoverflow.com/questions/9844193/what-is-the-time-and-space-complexity-of-a-breadth-first-and-depth-first-tree-tr" target="_blank" rel="external">http://stackoverflow.com/questions/9844193/what-is-the-time-and-space-complexity-of-a-breadth-first-and-depth-first-tree-tr</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
-	</div>
-
-      
 
       
       <div class="clearfix"></div>
