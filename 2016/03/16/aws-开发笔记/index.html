@@ -8,34 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>AWS开发笔记 | 邢鹏飞的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ssh登陆：1ssh -i keyfile user@host-ip
-比如：1ssh -i ~/.ssh/keyfile.pem ubuntu@127.0.0.0
-后台运行python程序：1nohup python program.py &amp;amp;
-查看该任务：1ps
-终止某任务：
-通过上一个指令获得任务的pid，然后直接1kill pid
-或者有时上述方法不行，需要加上参数：1kill -9">
+  <meta name="description" content="ssh登陆：1ssh -i keyfile user@host-ip 比如：1ssh -i ~/.ssh/keyfile.pem ubuntu@127.0.0.0 后台运行python程序：1nohup python program.py &amp;amp; 查看该任务：1ps 终止某任务： 通过上一个指令获得任务的p">
+<meta name="keywords" content="FullStack,Backend">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AWS开发笔记">
 <meta property="og:url" content="http://yoursite.com/2016/03/16/aws-开发笔记/index.html">
 <meta property="og:site_name" content="邢鹏飞的博客">
-<meta property="og:description" content="ssh登陆：1ssh -i keyfile user@host-ip
-比如：1ssh -i ~/.ssh/keyfile.pem ubuntu@127.0.0.0
-后台运行python程序：1nohup python program.py &amp;amp;
-查看该任务：1ps
-终止某任务：
-通过上一个指令获得任务的pid，然后直接1kill pid
-或者有时上述方法不行，需要加上参数：1kill -9">
+<meta property="og:description" content="ssh登陆：1ssh -i keyfile user@host-ip 比如：1ssh -i ~/.ssh/keyfile.pem ubuntu@127.0.0.0 后台运行python程序：1nohup python program.py &amp;amp; 查看该任务：1ps 终止某任务： 通过上一个指令获得任务的pid，然后直接1kill pid 或者有时上述方法不行，需要加上参数：1kill -9">
 <meta property="og:updated_time" content="2016-04-18T20:30:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS开发笔记">
-<meta name="twitter:description" content="ssh登陆：1ssh -i keyfile user@host-ip
-比如：1ssh -i ~/.ssh/keyfile.pem ubuntu@127.0.0.0
-后台运行python程序：1nohup python program.py &amp;amp;
-查看该任务：1ps
-终止某任务：
-通过上一个指令获得任务的pid，然后直接1kill pid
-或者有时上述方法不行，需要加上参数：1kill -9">
+<meta name="twitter:description" content="ssh登陆：1ssh -i keyfile user@host-ip 比如：1ssh -i ~/.ssh/keyfile.pem ubuntu@127.0.0.0 后台运行python程序：1nohup python program.py &amp;amp; 查看该任务：1ps 终止某任务： 通过上一个指令获得任务的pid，然后直接1kill pid 或者有时上述方法不行，需要加上参数：1kill -9">
   
     <link rel="alternative" href="/atom.xml" title="邢鹏飞的博客" type="application/atom+xml">
   
@@ -195,13 +178,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>ssh登陆：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i keyfile user@host-ip</span><br></pre></td></tr></table></figure></p>
-<p>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i ~/.ssh/keyfile.pem ubuntu@127.0.0.0</span><br></pre></td></tr></table></figure></p>
-<p>后台运行python程序：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup python program.py &amp;</span><br></pre></td></tr></table></figure></p>
-<p>查看该任务：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps</span><br></pre></td></tr></table></figure></p>
+        <p>ssh登陆：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i keyfile user@host-ip</span><br></pre></td></tr></table></figure></p>
+<p>比如：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i ~/.ssh/keyfile.pem ubuntu@127.0.0.0</span><br></pre></td></tr></table></figure></p>
+<p>后台运行python程序：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup python program.py &amp;</span><br></pre></td></tr></table></figure></p>
+<p>查看该任务：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps</span><br></pre></td></tr></table></figure></p>
 <p>终止某任务：</p>
 <p>通过上一个指令获得任务的pid，然后直接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill pid</span><br></pre></td></tr></table></figure></p>
-<p>或者有时上述方法不行，需要加上参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 pid</span><br></pre></td></tr></table></figure></p>
+<p>或者有时上述方法不行，需要加上参数：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 pid</span><br></pre></td></tr></table></figure></p>
 <p>其中－9表示SIGKILL<br><code>ls -ef</code>可以查看所有pid</p>
 
       
@@ -460,15 +443,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">FullStack</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -516,15 +499,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">System</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">OOD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
               </li>
             
             <div class="clearfix"></div>

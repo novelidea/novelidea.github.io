@@ -8,19 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>单词查找树（Trie）的典型应用 | 邢鹏飞的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="单词查找树是介绍详见维基百科，主要解决的问题是在一个字符串集合中快速找出目标字符串。实现如下：
-给定一个字符串数组，构建单词查找树。1234567891011121314151617class TrieNode&amp;#123;        TrieNode[] next = new TrieNode[26];        String word;    &amp;#125;    public TrieN">
+  <meta name="description" content="单词查找树是介绍详见维基百科，主要解决的问题是在一个字符串集合中快速找出目标字符串。实现如下： 给定一个字符串数组，构建单词查找树。1234567891011121314151617class TrieNode&amp;#123;        TrieNode[] next = new TrieNode[26];  ">
+<meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="单词查找树（Trie）的典型应用">
 <meta property="og:url" content="http://yoursite.com/2016/02/26/Trie的典型应用/index.html">
 <meta property="og:site_name" content="邢鹏飞的博客">
-<meta property="og:description" content="单词查找树是介绍详见维基百科，主要解决的问题是在一个字符串集合中快速找出目标字符串。实现如下：
-给定一个字符串数组，构建单词查找树。1234567891011121314151617class TrieNode&amp;#123;        TrieNode[] next = new TrieNode[26];        String word;    &amp;#125;    public TrieN">
+<meta property="og:description" content="单词查找树是介绍详见维基百科，主要解决的问题是在一个字符串集合中快速找出目标字符串。实现如下： 给定一个字符串数组，构建单词查找树。1234567891011121314151617class TrieNode&amp;#123;        TrieNode[] next = new TrieNode[26];        String word;    &amp;#125;    public TrieN">
 <meta property="og:updated_time" content="2016-04-14T01:55:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单词查找树（Trie）的典型应用">
-<meta name="twitter:description" content="单词查找树是介绍详见维基百科，主要解决的问题是在一个字符串集合中快速找出目标字符串。实现如下：
-给定一个字符串数组，构建单词查找树。1234567891011121314151617class TrieNode&amp;#123;        TrieNode[] next = new TrieNode[26];        String word;    &amp;#125;    public TrieN">
+<meta name="twitter:description" content="单词查找树是介绍详见维基百科，主要解决的问题是在一个字符串集合中快速找出目标字符串。实现如下： 给定一个字符串数组，构建单词查找树。1234567891011121314151617class TrieNode&amp;#123;        TrieNode[] next = new TrieNode[26];        String word;    &amp;#125;    public TrieN">
   
     <link rel="alternative" href="/atom.xml" title="邢鹏飞的博客" type="application/atom+xml">
   
@@ -180,7 +178,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>单词查找树是介绍详见<a href="https://en.wikipedia.org/wiki/Trie" target="_blank" rel="external">维基百科</a>，主要解决的问题是在一个字符串集合中快速找出目标字符串。实现如下：</p>
+        <p>单词查找树是介绍详见<a href="https://en.wikipedia.org/wiki/Trie" target="_blank" rel="noopener">维基百科</a>，主要解决的问题是在一个字符串集合中快速找出目标字符串。实现如下：</p>
 <p>给定一个字符串数组，构建单词查找树。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TrieNode</span></span>&#123;</span><br><span class="line">        TrieNode[] next = <span class="keyword">new</span> TrieNode[<span class="number">26</span>];</span><br><span class="line">        String word;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TrieNode <span class="title">buildTrie</span><span class="params">(String[] words)</span></span>&#123;</span><br><span class="line">        TrieNode root = <span class="keyword">new</span> TrieNode();</span><br><span class="line">        <span class="keyword">for</span>(String w : words)&#123;</span><br><span class="line">            TrieNode p = root;</span><br><span class="line">            <span class="keyword">for</span>(Character c : w.toCharArray())&#123;</span><br><span class="line">                <span class="keyword">int</span> index = c - <span class="string">'a'</span>;</span><br><span class="line">                <span class="keyword">if</span>(p.next[index] == <span class="keyword">null</span>) p.next[index] = <span class="keyword">new</span> TrieNode();</span><br><span class="line">                p = p.next[index];</span><br><span class="line">            &#125;</span><br><span class="line">            p.word = w;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这里我们的应用场景是给定一个N*M的字符串矩阵，一个单词列表，返回所有可以在字符串矩阵中存在的单词。该问题过于复杂，我们可以先来处理简化版本。</p>
 <p>简化版本是，将单词列表换成一个单词，判断该字符串矩阵是否能找出该单词。比如，给定<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  [<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'E'</span>],</span><br><span class="line">  [<span class="string">'S'</span>,<span class="string">'F'</span>,<span class="string">'C'</span>,<span class="string">'S'</span>],</span><br><span class="line">  [<span class="string">'A'</span>,<span class="string">'D'</span>,<span class="string">'E'</span>,<span class="string">'E'</span>]</span><br><span class="line">]</span><br><span class="line"><span class="string">"ABCCED"</span>-&gt;TRUE</span><br><span class="line"><span class="string">"SEE"</span>-&gt;TRUE</span><br><span class="line"><span class="string">"ABCB"</span>-&gt;FALSE</span><br></pre></td></tr></table></figure></p>
@@ -440,15 +438,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">FullStack</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,15 +494,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">System</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">OOD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
               </li>
             
             <div class="clearfix"></div>

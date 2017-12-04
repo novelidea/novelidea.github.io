@@ -8,19 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Shuffling Algorithm | 邢鹏飞的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简介洗牌算法是一个比较经典的算法，主要讨论如何随机生成一副牌。第一次遇见是2013年春腾讯一面的时候，当时妥妥跪了，题目都没听懂，第二次遇见是大三上系统结构课，最后讲到了洗牌算法。比较经典详细的算法解释参见维基百科。这里主要讨论一种流行的简化版本。
-设计实现主要思路是从扑克的最后一张开始，假设下标为 i，然后从在区间[0, i - 1]中生成随机数j，交换下标为i，j所对应的元素。如此从最后一张循">
+  <meta name="description" content="简介洗牌算法是一个比较经典的算法，主要讨论如何随机生成一副牌。第一次遇见是2013年春腾讯一面的时候，当时妥妥跪了，题目都没听懂，第二次遇见是大三上系统结构课，最后讲到了洗牌算法。比较经典详细的算法解释参见维基百科。这里主要讨论一种流行的简化版本。 设计实现主要思路是从扑克的最后一张开始，假设下标为 i，然后从在区间[">
+<meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Shuffling Algorithm">
 <meta property="og:url" content="http://yoursite.com/2016/02/13/shuffling-algorithm/index.html">
 <meta property="og:site_name" content="邢鹏飞的博客">
-<meta property="og:description" content="简介洗牌算法是一个比较经典的算法，主要讨论如何随机生成一副牌。第一次遇见是2013年春腾讯一面的时候，当时妥妥跪了，题目都没听懂，第二次遇见是大三上系统结构课，最后讲到了洗牌算法。比较经典详细的算法解释参见维基百科。这里主要讨论一种流行的简化版本。
-设计实现主要思路是从扑克的最后一张开始，假设下标为 i，然后从在区间[0, i - 1]中生成随机数j，交换下标为i，j所对应的元素。如此从最后一张循">
+<meta property="og:description" content="简介洗牌算法是一个比较经典的算法，主要讨论如何随机生成一副牌。第一次遇见是2013年春腾讯一面的时候，当时妥妥跪了，题目都没听懂，第二次遇见是大三上系统结构课，最后讲到了洗牌算法。比较经典详细的算法解释参见维基百科。这里主要讨论一种流行的简化版本。 设计实现主要思路是从扑克的最后一张开始，假设下标为 i，然后从在区间[0, i - 1]中生成随机数j，交换下标为i，j所对应的元素。如此从最后一张循">
 <meta property="og:updated_time" content="2016-04-14T01:58:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shuffling Algorithm">
-<meta name="twitter:description" content="简介洗牌算法是一个比较经典的算法，主要讨论如何随机生成一副牌。第一次遇见是2013年春腾讯一面的时候，当时妥妥跪了，题目都没听懂，第二次遇见是大三上系统结构课，最后讲到了洗牌算法。比较经典详细的算法解释参见维基百科。这里主要讨论一种流行的简化版本。
-设计实现主要思路是从扑克的最后一张开始，假设下标为 i，然后从在区间[0, i - 1]中生成随机数j，交换下标为i，j所对应的元素。如此从最后一张循">
+<meta name="twitter:description" content="简介洗牌算法是一个比较经典的算法，主要讨论如何随机生成一副牌。第一次遇见是2013年春腾讯一面的时候，当时妥妥跪了，题目都没听懂，第二次遇见是大三上系统结构课，最后讲到了洗牌算法。比较经典详细的算法解释参见维基百科。这里主要讨论一种流行的简化版本。 设计实现主要思路是从扑克的最后一张开始，假设下标为 i，然后从在区间[0, i - 1]中生成随机数j，交换下标为i，j所对应的元素。如此从最后一张循">
   
     <link rel="alternative" href="/atom.xml" title="邢鹏飞的博客" type="application/atom+xml">
   
@@ -180,7 +178,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>洗牌算法是一个比较经典的算法，主要讨论如何随机生成一副牌。第一次遇见是2013年春腾讯一面的时候，当时妥妥跪了，题目都没听懂，第二次遇见是大三上系统结构课，最后讲到了洗牌算法。比较经典详细的算法解释参见<span style="color: #3366ff;"><a href="https://en.wikipedia.org/wiki/Fisher–Yates_shuffle" target="_blank" rel="external">维基百科</a></span>。这里主要讨论一种流行的简化版本。</p>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>洗牌算法是一个比较经典的算法，主要讨论如何随机生成一副牌。第一次遇见是2013年春腾讯一面的时候，当时妥妥跪了，题目都没听懂，第二次遇见是大三上系统结构课，最后讲到了洗牌算法。比较经典详细的算法解释参见<span style="color: #3366ff;"><a href="https://en.wikipedia.org/wiki/Fisher–Yates_shuffle" target="_blank" rel="noopener">维基百科</a></span>。这里主要讨论一种流行的简化版本。</p>
 <h2 id="设计实现"><a href="#设计实现" class="headerlink" title="设计实现"></a>设计实现</h2><p>主要思路是从扑克的最后一张开始，假设下标为 i，然后从在区间[0, i - 1]中生成随机数j，交换下标为i，j所对应的元素。如此从最后一张循环操作到第二张（到第一张时可以跳出循环）。</p>
 <p>C++代码如下:</p>
 <p><pre class="lang:default decode:true "># include &lt;iostream&gt;</pre></p>
@@ -448,15 +446,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">FullStack</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,15 +502,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">System</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">OOD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
               </li>
             
             <div class="clearfix"></div>

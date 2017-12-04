@@ -8,25 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Java疑难问题 | 邢鹏飞的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="类中类
-package com.pengfeixing;
-import java.util.HashMap;import java.util.Map;import java.util.ArrayList;
-public class DirectedGraph {    public static class Vertex{        private int value;        publ">
+  <meta name="description" content="类中类 package com.pengfeixing; import java.util.HashMap;import java.util.Map;import java.util.ArrayList; public class DirectedGraph {    public static class Verte">
+<meta name="keywords" content="FullStack,Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java疑难问题">
 <meta property="og:url" content="http://yoursite.com/2016/02/25/Java疑难问题/index.html">
 <meta property="og:site_name" content="邢鹏飞的博客">
-<meta property="og:description" content="类中类
-package com.pengfeixing;
-import java.util.HashMap;import java.util.Map;import java.util.ArrayList;
-public class DirectedGraph {    public static class Vertex{        private int value;        publ">
+<meta property="og:description" content="类中类 package com.pengfeixing; import java.util.HashMap;import java.util.Map;import java.util.ArrayList; public class DirectedGraph {    public static class Vertex{        private int value;        publ">
 <meta property="og:updated_time" content="2016-04-18T20:35:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java疑难问题">
-<meta name="twitter:description" content="类中类
-package com.pengfeixing;
-import java.util.HashMap;import java.util.Map;import java.util.ArrayList;
-public class DirectedGraph {    public static class Vertex{        private int value;        publ">
+<meta name="twitter:description" content="类中类 package com.pengfeixing; import java.util.HashMap;import java.util.Map;import java.util.ArrayList; public class DirectedGraph {    public static class Vertex{        private int value;        publ">
   
     <link rel="alternative" href="/atom.xml" title="邢鹏飞的博客" type="application/atom+xml">
   
@@ -197,7 +189,7 @@ public class DirectedGraph {    public static class Vertex{        private int v
 }
 </code></pre><p>}<br><br>为何Vertex要定义成静态类？</p>
 <p>答：这里可以理解为类方法，假设类A含有内部类B，则将B声明为静态类，即可将B看成A的类方法，生成类B只需要用类A名就可以了，而不需要生成一个类A，即A.B b = new A.B();相反，如果B不是静态类，生成类B则需要先生成类A，即A.B b = new A().new B()。如果该内部类定义为私有，则只能在外部类内访问。</p>
-<p><a href="http://stackoverflow.com/questions/70324/java-inner-class-and-static-nested-class" target="_blank" rel="external">http://stackoverflow.com/questions/70324/java-inner-class-and-static-nested-class</a></p>
+<p><a href="http://stackoverflow.com/questions/70324/java-inner-class-and-static-nested-class" target="_blank" rel="noopener">http://stackoverflow.com/questions/70324/java-inner-class-and-static-nested-class</a></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
@@ -457,15 +449,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">FullStack</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -513,15 +505,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">System</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">OOD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
               </li>
             
             <div class="clearfix"></div>

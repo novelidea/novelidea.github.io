@@ -8,27 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>IOS 开发笔记（第三方框架篇） | 邢鹏飞的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;nbsp;
-SDWebImage(https://github.com/rs/SDWebImage)
-该框架在处理网络请求图片优势非常明显，但是本地缓存的图片会吞噬大量内存，所以用该框架的时候，一定要在AppDelegate中实现applicationDidReceiveMemoryWarning的代理。主要是停止图片的下载＋清空缓存。
-[[SDWebImageManager sharedMan">
+  <meta name="description" content="&amp;nbsp; SDWebImage(https://github.com/rs/SDWebImage) 该框架在处理网络请求图片优势非常明显，但是本地缓存的图片会吞噬大量内存，所以用该框架的时候，一定要在AppDelegate中实现applicationDidReceiveMemoryWarning的代理。主要">
+<meta name="keywords" content="Mobile,IOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IOS 开发笔记（第三方框架篇）">
 <meta property="og:url" content="http://yoursite.com/2015/10/24/IOS开发笔记（第三方框架篇）/index.html">
 <meta property="og:site_name" content="邢鹏飞的博客">
-<meta property="og:description" content="&amp;nbsp;
-SDWebImage(https://github.com/rs/SDWebImage)
-该框架在处理网络请求图片优势非常明显，但是本地缓存的图片会吞噬大量内存，所以用该框架的时候，一定要在AppDelegate中实现applicationDidReceiveMemoryWarning的代理。主要是停止图片的下载＋清空缓存。
-[[SDWebImageManager sharedMan">
+<meta property="og:description" content="&amp;nbsp; SDWebImage(https://github.com/rs/SDWebImage) 该框架在处理网络请求图片优势非常明显，但是本地缓存的图片会吞噬大量内存，所以用该框架的时候，一定要在AppDelegate中实现applicationDidReceiveMemoryWarning的代理。主要是停止图片的下载＋清空缓存。 [[SDWebImageManager sharedMan">
 <meta property="og:image" content="http://pengfeixing.com/wp-content/uploads/2015/10/AFNetworkingError1-300x101.jpg">
 <meta property="og:image" content="http://pengfeixing.com/wp-content/uploads/2015/10/textPlainError2-300x47.jpg">
 <meta property="og:updated_time" content="2016-04-18T20:33:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IOS 开发笔记（第三方框架篇）">
-<meta name="twitter:description" content="&amp;nbsp;
-SDWebImage(https://github.com/rs/SDWebImage)
-该框架在处理网络请求图片优势非常明显，但是本地缓存的图片会吞噬大量内存，所以用该框架的时候，一定要在AppDelegate中实现applicationDidReceiveMemoryWarning的代理。主要是停止图片的下载＋清空缓存。
-[[SDWebImageManager sharedMan">
+<meta name="twitter:description" content="&amp;nbsp; SDWebImage(https://github.com/rs/SDWebImage) 该框架在处理网络请求图片优势非常明显，但是本地缓存的图片会吞噬大量内存，所以用该框架的时候，一定要在AppDelegate中实现applicationDidReceiveMemoryWarning的代理。主要是停止图片的下载＋清空缓存。 [[SDWebImageManager sharedMan">
 <meta name="twitter:image" content="http://pengfeixing.com/wp-content/uploads/2015/10/AFNetworkingError1-300x101.jpg">
   
     <link rel="alternative" href="/atom.xml" title="邢鹏飞的博客" type="application/atom+xml">
@@ -190,21 +182,21 @@ SDWebImage(https://github.com/rs/SDWebImage)
     <div class="article-entry" itemprop="articleBody">
       
         <p>&nbsp;</p>
-<p><strong>SDWebImage(<a href="https://github.com/rs/SDWebImage" target="_blank" rel="external">https://github.com/rs/SDWebImage</a>)</strong></p>
+<p><strong>SDWebImage(<a href="https://github.com/rs/SDWebImage" target="_blank" rel="noopener">https://github.com/rs/SDWebImage</a>)</strong></p>
 <p>该框架在处理网络请求图片优势非常明显，但是本地缓存的图片会吞噬大量内存，所以用该框架的时候，一定要在AppDelegate中实现applicationDidReceiveMemoryWarning的代理。主要是停止图片的下载＋清空缓存。</p>
 <p>[[SDWebImageManager sharedManager] cancelAll];</p>
 <p>[[SDWebImageManager sharedManager].imageCache clearMemory];</p>
 <p>&nbsp;</p>
-<p><strong>AFNetworking (<a href="https://github.com/AFNetworking/AFNetworking" target="_blank" rel="external">https://github.com/AFNetworking/AFNetworking</a>)</strong></p>
+<p><strong>AFNetworking (<a href="https://github.com/AFNetworking/AFNetworking" target="_blank" rel="noopener">https://github.com/AFNetworking/AFNetworking</a>)</strong></p>
 <p>该框架提供了很多网络请求的API。有一点需要注意的是，在用</p>
 <p>[AFHTTPRequestOperationManager manager]管理请求的时候，有时会遇到如下error(点击查看大图):</p>
-<p><a href="http://pengfeixing.com/wp-content/uploads/2015/10/AFNetworkingError1.jpg" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2015/10/AFNetworkingError1-300x101.jpg" alt="AFNetworkingError"></a></p>
+<p><a href="http://pengfeixing.com/wp-content/uploads/2015/10/AFNetworkingError1.jpg" target="_blank" rel="noopener"><img src="http://pengfeixing.com/wp-content/uploads/2015/10/AFNetworkingError1-300x101.jpg" alt="AFNetworkingError"></a></p>
 <p>&nbsp;</p>
 <p>该图是以向新浪微博请求OAuth授权请求获取token时的报错，主要原因是新浪服务器响应请求的响应头中content-type为text/plain，而该框架不支持该类型，所有我们需要做一些修改。修改只需要找到AFURLResponseSerialization.m文件，在init方法中添加支持的content-type。修改后截图如下（点击查看大图）：</p>
 <p>&nbsp;</p>
-<p><a href="http://pengfeixing.com/wp-content/uploads/2015/10/textPlainError2.jpg" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2015/10/textPlainError2-300x47.jpg" alt="textPlainError2"></a></p>
+<p><a href="http://pengfeixing.com/wp-content/uploads/2015/10/textPlainError2.jpg" target="_blank" rel="noopener"><img src="http://pengfeixing.com/wp-content/uploads/2015/10/textPlainError2-300x47.jpg" alt="textPlainError2"></a></p>
 <p>&nbsp;</p>
-<p><strong>MJExtension (<a href="https://github.com/CoderMJLee/MJExtension" target="_blank" rel="external">https://github.com/CoderMJLee/MJExtension</a>)</strong></p>
+<p><strong>MJExtension (<a href="https://github.com/CoderMJLee/MJExtension" target="_blank" rel="noopener">https://github.com/CoderMJLee/MJExtension</a>)</strong></p>
 <p>该框架主要实现字典快速转模型，可通过如下函数实现</p>
 <ul>
 <li>(NSMutableArray <em>)objectArrayWithKeyValuesArray:(NSArray </em>)keyValuesArray;</li>
@@ -471,15 +463,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">FullStack</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,15 +519,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">System</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">OOD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
               </li>
             
             <div class="clearfix"></div>

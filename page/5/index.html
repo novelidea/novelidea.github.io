@@ -8,15 +8,12 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>邢鹏飞的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
+  <meta property="og:type" content="website">
 <meta property="og:title" content="邢鹏飞的博客">
 <meta property="og:url" content="http://yoursite.com/page/5/index.html">
 <meta property="og:site_name" content="邢鹏飞的博客">
-<meta property="og:description">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="邢鹏飞的博客">
-<meta name="twitter:description">
   
     <link rel="alternative" href="/atom.xml" title="邢鹏飞的博客" type="application/atom+xml">
   
@@ -178,7 +175,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>洗牌算法是一个比较经典的算法，主要讨论如何随机生成一副牌。第一次遇见是2013年春腾讯一面的时候，当时妥妥跪了，题目都没听懂，第二次遇见是大三上系统结构课，最后讲到了洗牌算法。比较经典详细的算法解释参见<span style="color: #3366ff;"><a href="https://en.wikipedia.org/wiki/Fisher–Yates_shuffle" target="_blank" rel="external">维基百科</a></span>。这里主要讨论一种流行的简化版本。</p>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>洗牌算法是一个比较经典的算法，主要讨论如何随机生成一副牌。第一次遇见是2013年春腾讯一面的时候，当时妥妥跪了，题目都没听懂，第二次遇见是大三上系统结构课，最后讲到了洗牌算法。比较经典详细的算法解释参见<span style="color: #3366ff;"><a href="https://en.wikipedia.org/wiki/Fisher–Yates_shuffle" target="_blank" rel="noopener">维基百科</a></span>。这里主要讨论一种流行的简化版本。</p>
 <h2 id="设计实现"><a href="#设计实现" class="headerlink" title="设计实现"></a>设计实现</h2><p>主要思路是从扑克的最后一张开始，假设下标为 i，然后从在区间[0, i - 1]中生成随机数j，交换下标为i，j所对应的元素。如此从最后一张循环操作到第二张（到第一张时可以跳出循环）。</p>
 <p>C++代码如下:</p>
 <p><pre class="lang:default decode:true "># include &lt;iostream&gt;</pre></p>
@@ -476,10 +473,10 @@ moving forward and backward
 <li>Allow users to read more detailed information about a status;</li>
 <li>Allow users to ‘like’ or ‘share’ status.<br>Posters about new features:</li>
 </ol>
-<p><a href="http://pengfeixing.com/wp-content/uploads/2016/01/1.pic_.jpg" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2016/01/1.pic_-169x300.jpg" alt="home.pic"></a> <a href="http://pengfeixing.com/wp-content/uploads/2016/01/2.pic_.jpg" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2016/01/2.pic_-169x300.jpg" alt="refresh.pic"></a> <a href="http://pengfeixing.com/wp-content/uploads/2016/01/3.pic_.jpg" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2016/01/3.pic_-169x300.jpg" alt="more.pic"></a></p>
-<p><a href="http://pengfeixing.com/wp-content/uploads/2016/01/4.pic_.jpg" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2016/01/4.pic_-169x300.jpg" alt="detail.pic"></a> <a href="http://pengfeixing.com/wp-content/uploads/2016/01/2.pic_1.jpg" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2016/01/2.pic_1-169x300.jpg" alt="2.pic"></a> <a href="http://pengfeixing.com/wp-content/uploads/2016/01/5.pic_.jpg" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2016/01/5.pic_-169x300.jpg" alt="shareAndlike.pic"></a></p>
+<p><a href="http://pengfeixing.com/wp-content/uploads/2016/01/1.pic_.jpg" target="_blank" rel="noopener"><img src="http://pengfeixing.com/wp-content/uploads/2016/01/1.pic_-169x300.jpg" alt="home.pic"></a> <a href="http://pengfeixing.com/wp-content/uploads/2016/01/2.pic_.jpg" target="_blank" rel="noopener"><img src="http://pengfeixing.com/wp-content/uploads/2016/01/2.pic_-169x300.jpg" alt="refresh.pic"></a> <a href="http://pengfeixing.com/wp-content/uploads/2016/01/3.pic_.jpg" target="_blank" rel="noopener"><img src="http://pengfeixing.com/wp-content/uploads/2016/01/3.pic_-169x300.jpg" alt="more.pic"></a></p>
+<p><a href="http://pengfeixing.com/wp-content/uploads/2016/01/4.pic_.jpg" target="_blank" rel="noopener"><img src="http://pengfeixing.com/wp-content/uploads/2016/01/4.pic_-169x300.jpg" alt="detail.pic"></a> <a href="http://pengfeixing.com/wp-content/uploads/2016/01/2.pic_1.jpg" target="_blank" rel="noopener"><img src="http://pengfeixing.com/wp-content/uploads/2016/01/2.pic_1-169x300.jpg" alt="2.pic"></a> <a href="http://pengfeixing.com/wp-content/uploads/2016/01/5.pic_.jpg" target="_blank" rel="noopener"><img src="http://pengfeixing.com/wp-content/uploads/2016/01/5.pic_-169x300.jpg" alt="shareAndlike.pic"></a></p>
 <p>Demo Presentation:</p>
-<p><a href="https://youtu.be/HjWLoYmpzhg" target="_blank" rel="external">https://youtu.be/HjWLoYmpzhg</a></p>
+<p><a href="https://youtu.be/HjWLoYmpzhg" target="_blank" rel="noopener">https://youtu.be/HjWLoYmpzhg</a></p>
 
       
 
@@ -659,8 +656,8 @@ moving forward and backward
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>Demo Presentation:</strong></p>
-<p>URL is: <a href="https://www.youtube.com/watch?v=z_Sufm9xeMw&amp;feature=youtu.be" target="_blank" rel="external">https://www.youtube.com/watch?v=z_Sufm9xeMw&amp;feature=youtu.be</a></p>
-<p><a href="https://youtu.be/z_Sufm9xeMw" target="_blank" rel="external">https://youtu.be/z_Sufm9xeMw</a></p>
+<p>URL is: <a href="https://www.youtube.com/watch?v=z_Sufm9xeMw&amp;feature=youtu.be" target="_blank" rel="noopener">https://www.youtube.com/watch?v=z_Sufm9xeMw&amp;feature=youtu.be</a></p>
+<p><a href="https://youtu.be/z_Sufm9xeMw" target="_blank" rel="noopener">https://youtu.be/z_Sufm9xeMw</a></p>
 <p><strong>项目日记（Project Diary）</strong></p>
 <p><strong>Day 1</strong></p>
 <p>项目进度：10%</p>
@@ -703,14 +700,14 @@ moving forward and backward
 <p>项目进度： 50%</p>
 <p>iPhone端app基本完成，项目暂且搁置，有时间再去做apple watch部分。</p>
 <p>demo presentation:</p>
-<p>youtube:  <a href="https://www.youtube.com/watch?v=S0Eejn3PsEc" target="_blank" rel="external">https://www.youtube.com/watch?v=S0Eejn3PsEc</a></p>
-<p>tencent: <a href="http://v.qq.com/boke/page/x/u/b/x01769q4pub.html" target="_blank" rel="external">http://v.qq.com/boke/page/x/u/b/x01769q4pub.html</a></p>
+<p>youtube:  <a href="https://www.youtube.com/watch?v=S0Eejn3PsEc" target="_blank" rel="noopener">https://www.youtube.com/watch?v=S0Eejn3PsEc</a></p>
+<p>tencent: <a href="http://v.qq.com/boke/page/x/u/b/x01769q4pub.html" target="_blank" rel="noopener">http://v.qq.com/boke/page/x/u/b/x01769q4pub.html</a></p>
 <p><strong>Day 9</strong></p>
 <p>项目进度100%</p>
 <p>架设了服务器数据库来解决了library部分数据请求存在一定的失败率的bug；</p>
 <p>将library开放时间的数据由原先的一天扩展到了四天；</p>
 <p>完成了Apple Watch部分的设计及实现。</p>
-<p>demo展示：<a href="https://youtu.be/z_Sufm9xeMw" target="_blank" rel="external">https://youtu.be/z_Sufm9xeMw</a></p>
+<p>demo展示：<a href="https://youtu.be/z_Sufm9xeMw" target="_blank" rel="noopener">https://youtu.be/z_Sufm9xeMw</a></p>
 
       
 
@@ -1225,15 +1222,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">FullStack</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1281,15 +1278,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">System</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">OOD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
               </li>
             
             <div class="clearfix"></div>

@@ -8,19 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>MongoDB开发笔记 | 邢鹏飞的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基本指令通过JSON文件创建数据库1mongoimport -db library --collection library_open_time --drop --file library.json
-此处如果需要将数据转成JSON格式，则可以用Python json库中的dump方法：123import jsonwith open(&amp;apos;data.txt&amp;apos;, &amp;apos;w&amp;apo">
+  <meta name="description" content="基本指令通过JSON文件创建数据库1mongoimport -db library --collection library_open_time --drop --file library.json 此处如果需要将数据转成JSON格式，则可以用Python json库中的dump方法：123import jsonwit">
+<meta name="keywords" content="FullStack,Backend,MongoDB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MongoDB开发笔记">
 <meta property="og:url" content="http://yoursite.com/2016/03/16/MongoDB开发笔记/index.html">
 <meta property="og:site_name" content="邢鹏飞的博客">
-<meta property="og:description" content="基本指令通过JSON文件创建数据库1mongoimport -db library --collection library_open_time --drop --file library.json
-此处如果需要将数据转成JSON格式，则可以用Python json库中的dump方法：123import jsonwith open(&amp;apos;data.txt&amp;apos;, &amp;apos;w&amp;apo">
+<meta property="og:description" content="基本指令通过JSON文件创建数据库1mongoimport -db library --collection library_open_time --drop --file library.json 此处如果需要将数据转成JSON格式，则可以用Python json库中的dump方法：123import jsonwith open(&apos;data.txt&apos;, &apos;w&apos;) as outfile:    j">
 <meta property="og:updated_time" content="2016-08-01T00:14:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB开发笔记">
-<meta name="twitter:description" content="基本指令通过JSON文件创建数据库1mongoimport -db library --collection library_open_time --drop --file library.json
-此处如果需要将数据转成JSON格式，则可以用Python json库中的dump方法：123import jsonwith open(&amp;apos;data.txt&amp;apos;, &amp;apos;w&amp;apo">
+<meta name="twitter:description" content="基本指令通过JSON文件创建数据库1mongoimport -db library --collection library_open_time --drop --file library.json 此处如果需要将数据转成JSON格式，则可以用Python json库中的dump方法：123import jsonwith open(&apos;data.txt&apos;, &apos;w&apos;) as outfile:    j">
   
     <link rel="alternative" href="/atom.xml" title="邢鹏飞的博客" type="application/atom+xml">
   
@@ -180,14 +178,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h2><p>通过JSON文件创建数据库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoimport -db library --collection library_open_time --drop --file library.json</span><br></pre></td></tr></table></figure></p>
-<p>此处如果需要将数据转成JSON格式，则可以用Python json库中的dump方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">with open(&apos;data.txt&apos;, &apos;w&apos;) as outfile:</span><br><span class="line">    json.dump(data, outfile)</span><br></pre></td></tr></table></figure></p>
-<p>启动关闭重启开始使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongodb start</span><br><span class="line">sudo service mongodb stop</span><br><span class="line">sudo service mongodb restart</span><br><span class="line">mongo</span><br></pre></td></tr></table></figure></p>
-<p>查看所有db，以及切换db<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show dbs</span><br><span class="line">use db-name</span><br></pre></td></tr></table></figure></p>
-<p>查看collection纪录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.collection_name.find();</span><br></pre></td></tr></table></figure></p>
-<p>通过id删除记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.collection_name.remove(&#123;&quot;_id&quot; : ObjectId(&quot;5773747f041e3dc116fd71ba&quot;)&#125;);</span><br></pre></td></tr></table></figure></p>
+        <h2 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h2><p>通过JSON文件创建数据库<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoimport -db library --collection library_open_time --drop --file library.json</span><br></pre></td></tr></table></figure></p>
+<p>此处如果需要将数据转成JSON格式，则可以用Python json库中的dump方法：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">with open('data.txt', 'w') as outfile:</span><br><span class="line">    json.dump(data, outfile)</span><br></pre></td></tr></table></figure></p>
+<p>启动关闭重启开始使用：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongodb start</span><br><span class="line">sudo service mongodb stop</span><br><span class="line">sudo service mongodb restart</span><br><span class="line">mongo</span><br></pre></td></tr></table></figure></p>
+<p>查看所有db，以及切换db<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show dbs</span><br><span class="line">use db-name</span><br></pre></td></tr></table></figure></p>
+<p>查看collection纪录<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.collection_name.find();</span><br></pre></td></tr></table></figure></p>
+<p>通过id删除记录<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.collection_name.remove(&#123;"_id" : ObjectId("5773747f041e3dc116fd71ba")&#125;);</span><br></pre></td></tr></table></figure></p>
 <h2 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h2><p>js脚本执行MongoDB命令：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test.js:</span><br><span class="line">use test</span><br><span class="line">db.collections.find()</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo &lt; test.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo &lt; test.js</span><br></pre></td></tr></table></figure>
       
 
       
@@ -448,15 +446,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">FullStack</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,15 +502,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">System</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">OOD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
               </li>
             
             <div class="clearfix"></div>

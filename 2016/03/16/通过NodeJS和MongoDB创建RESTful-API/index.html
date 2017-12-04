@@ -8,22 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>通过NodeJS和MongoDB创建RESTful API | 邢鹏飞的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="RESTful API简介RESTful 是 Representational State Transfer 的缩写，同MVC模式的属性差不多，它们都不是一种标准，而只是一种设计风格，提供一些约束条件和设计原则。本文着重讨论其部署和实现，故略过其介绍。
-环境配置本文平台是Amazon AWS Ubuntu平台。
-NodeJS先安装nvm1curl -o- https://raw.githubuse">
+  <meta name="description" content="RESTful API简介RESTful 是 Representational State Transfer 的缩写，同MVC模式的属性差不多，它们都不是一种标准，而只是一种设计风格，提供一些约束条件和设计原则。本文着重讨论其部署和实现，故略过其介绍。 环境配置本文平台是Amazon AWS Ubuntu平台。 Nod">
+<meta name="keywords" content="FullStack,Backend,RESTful">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通过NodeJS和MongoDB创建RESTful API">
 <meta property="og:url" content="http://yoursite.com/2016/03/16/通过NodeJS和MongoDB创建RESTful-API/index.html">
 <meta property="og:site_name" content="邢鹏飞的博客">
-<meta property="og:description" content="RESTful API简介RESTful 是 Representational State Transfer 的缩写，同MVC模式的属性差不多，它们都不是一种标准，而只是一种设计风格，提供一些约束条件和设计原则。本文着重讨论其部署和实现，故略过其介绍。
-环境配置本文平台是Amazon AWS Ubuntu平台。
-NodeJS先安装nvm1curl -o- https://raw.githubuse">
+<meta property="og:description" content="RESTful API简介RESTful 是 Representational State Transfer 的缩写，同MVC模式的属性差不多，它们都不是一种标准，而只是一种设计风格，提供一些约束条件和设计原则。本文着重讨论其部署和实现，故略过其介绍。 环境配置本文平台是Amazon AWS Ubuntu平台。 NodeJS先安装nvm1curl -o- https://raw.githubuse">
 <meta property="og:updated_time" content="2016-04-18T20:44:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通过NodeJS和MongoDB创建RESTful API">
-<meta name="twitter:description" content="RESTful API简介RESTful 是 Representational State Transfer 的缩写，同MVC模式的属性差不多，它们都不是一种标准，而只是一种设计风格，提供一些约束条件和设计原则。本文着重讨论其部署和实现，故略过其介绍。
-环境配置本文平台是Amazon AWS Ubuntu平台。
-NodeJS先安装nvm1curl -o- https://raw.githubuse">
+<meta name="twitter:description" content="RESTful API简介RESTful 是 Representational State Transfer 的缩写，同MVC模式的属性差不多，它们都不是一种标准，而只是一种设计风格，提供一些约束条件和设计原则。本文着重讨论其部署和实现，故略过其介绍。 环境配置本文平台是Amazon AWS Ubuntu平台。 NodeJS先安装nvm1curl -o- https://raw.githubuse">
   
     <link rel="alternative" href="/atom.xml" title="邢鹏飞的博客" type="application/atom+xml">
   
@@ -185,17 +180,17 @@ NodeJS先安装nvm1curl -o- https://raw.githubuse">
       
         <h2 id="RESTful-API简介"><a href="#RESTful-API简介" class="headerlink" title="RESTful API简介"></a>RESTful API简介</h2><p>RESTful 是 Representational State Transfer 的缩写，同MVC模式的属性差不多，它们都不是一种标准，而只是一种设计风格，提供一些约束条件和设计原则。本文着重讨论其部署和实现，故略过其介绍。</p>
 <h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>本文平台是Amazon AWS Ubuntu平台。</p>
-<h4 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h4><p>先安装<a href="https://github.com/creationix/nvm" target="_blank" rel="external">nvm</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash</span><br></pre></td></tr></table></figure></p>
-<p>重启终端后执行下面指令安装node:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install node</span><br></pre></td></tr></table></figure></p>
-<p>检查node 和 npm(node package manager) 版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure></p>
-<h4 id="ExpressJS"><a href="#ExpressJS" class="headerlink" title="ExpressJS"></a>ExpressJS</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g express</span><br></pre></td></tr></table></figure>
+<h4 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h4><p>先安装<a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">nvm</a><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash</span><br></pre></td></tr></table></figure></p>
+<p>重启终端后执行下面指令安装node:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install node</span><br></pre></td></tr></table></figure></p>
+<p>检查node 和 npm(node package manager) 版本<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure></p>
+<h4 id="ExpressJS"><a href="#ExpressJS" class="headerlink" title="ExpressJS"></a>ExpressJS</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g express</span><br></pre></td></tr></table></figure>
 <p>参数 －g 主要作用是在系统全局安装express，而且将其安装到PATH，所有它在系统里面的任何地方都可以运行了。</p>
-<p>检查版本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">express -v</span><br></pre></td></tr></table></figure></p>
-<h4 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -y install mongodb</span><br></pre></td></tr></table></figure>
-<p>检查版本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --version</span><br></pre></td></tr></table></figure></p>
+<p>检查版本：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">express -v</span><br></pre></td></tr></table></figure></p>
+<h4 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -y install mongodb</span><br></pre></td></tr></table></figure>
+<p>检查版本：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --version</span><br></pre></td></tr></table></figure></p>
 <p>（未完）</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://adrianmejia.com/blog/2014/10/01/creating-a-restful-api-tutorial-with-nodejs-and-mongodb/" target="_blank" rel="external">http://adrianmejia.com/blog/2014/10/01/creating-a-restful-api-tutorial-with-nodejs-and-mongodb/</a></p>
-<p><a href="https://docs.npmjs.com/files/package.json" target="_blank" rel="external">https://docs.npmjs.com/files/package.json</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://adrianmejia.com/blog/2014/10/01/creating-a-restful-api-tutorial-with-nodejs-and-mongodb/" target="_blank" rel="noopener">http://adrianmejia.com/blog/2014/10/01/creating-a-restful-api-tutorial-with-nodejs-and-mongodb/</a></p>
+<p><a href="https://docs.npmjs.com/files/package.json" target="_blank" rel="noopener">https://docs.npmjs.com/files/package.json</a></p>
 
       
 
@@ -457,15 +452,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">FullStack</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -513,15 +508,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">System</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">OOD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
               </li>
             
             <div class="clearfix"></div>

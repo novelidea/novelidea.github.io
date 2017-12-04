@@ -8,24 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>IOS开发笔记（大小坑篇） | 邢鹏飞的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="下面列举了一些很弱智但是曾经耗费debug时间大于30分钟的一些ios开发中的大小坑。
-buttonWithType:  
-之前基本都是storyboard布局，少数动态添加UIButton时也没有注意这个参数。但是今天在添加一个按钮的时候颜色总是会变成纯色，然后第一反应是去images.xcassets中去找图片、重新做图，试了两遍还是有问题，然后就回返代码中找错，最后发现这个是由于Button">
+  <meta name="description" content="下面列举了一些很弱智但是曾经耗费debug时间大于30分钟的一些ios开发中的大小坑。 buttonWithType:   之前基本都是storyboard布局，少数动态添加UIButton时也没有注意这个参数。但是今天在添加一个按钮的时候颜色总是会变成纯色，然后第一反应是去images.xcassets中去找图片、重">
+<meta name="keywords" content="Mobile,IOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IOS开发笔记（大小坑篇）">
 <meta property="og:url" content="http://yoursite.com/2015/10/26/IOS开发笔记（Bug篇）/index.html">
 <meta property="og:site_name" content="邢鹏飞的博客">
-<meta property="og:description" content="下面列举了一些很弱智但是曾经耗费debug时间大于30分钟的一些ios开发中的大小坑。
-buttonWithType:  
-之前基本都是storyboard布局，少数动态添加UIButton时也没有注意这个参数。但是今天在添加一个按钮的时候颜色总是会变成纯色，然后第一反应是去images.xcassets中去找图片、重新做图，试了两遍还是有问题，然后就回返代码中找错，最后发现这个是由于Button">
+<meta property="og:description" content="下面列举了一些很弱智但是曾经耗费debug时间大于30分钟的一些ios开发中的大小坑。 buttonWithType:   之前基本都是storyboard布局，少数动态添加UIButton时也没有注意这个参数。但是今天在添加一个按钮的时候颜色总是会变成纯色，然后第一反应是去images.xcassets中去找图片、重新做图，试了两遍还是有问题，然后就回返代码中找错，最后发现这个是由于Button">
 <meta property="og:image" content="http://pengfeixing.com/wp-content/uploads/2015/10/buttonTypeError-164x300.png">
 <meta property="og:image" content="http://pengfeixing.com/wp-content/uploads/2015/10/buttonTypeCorrect-164x300.png">
 <meta property="og:updated_time" content="2016-04-18T20:32:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IOS开发笔记（大小坑篇）">
-<meta name="twitter:description" content="下面列举了一些很弱智但是曾经耗费debug时间大于30分钟的一些ios开发中的大小坑。
-buttonWithType:  
-之前基本都是storyboard布局，少数动态添加UIButton时也没有注意这个参数。但是今天在添加一个按钮的时候颜色总是会变成纯色，然后第一反应是去images.xcassets中去找图片、重新做图，试了两遍还是有问题，然后就回返代码中找错，最后发现这个是由于Button">
+<meta name="twitter:description" content="下面列举了一些很弱智但是曾经耗费debug时间大于30分钟的一些ios开发中的大小坑。 buttonWithType:   之前基本都是storyboard布局，少数动态添加UIButton时也没有注意这个参数。但是今天在添加一个按钮的时候颜色总是会变成纯色，然后第一反应是去images.xcassets中去找图片、重新做图，试了两遍还是有问题，然后就回返代码中找错，最后发现这个是由于Button">
 <meta name="twitter:image" content="http://pengfeixing.com/wp-content/uploads/2015/10/buttonTypeError-164x300.png">
   
     <link rel="alternative" href="/atom.xml" title="邢鹏飞的博客" type="application/atom+xml">
@@ -192,7 +187,7 @@ buttonWithType:
 <p>UIButton *sinaShareButton = [UIButton buttonWithType:UIButtonTypeSystem];</p>
 <p>UIButton *sinaShareButton = [UIButton buttonWithType:UIButtonTypeCustom];</p>
 <p>前后对应效果如下图：</p>
-<p><a href="http://pengfeixing.com/wp-content/uploads/2015/10/buttonTypeError.png" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2015/10/buttonTypeError-164x300.png" alt="buttonTypeError"></a> <a href="http://pengfeixing.com/wp-content/uploads/2015/10/buttonTypeCorrect.png" target="_blank" rel="external"><img src="http://pengfeixing.com/wp-content/uploads/2015/10/buttonTypeCorrect-164x300.png" alt="buttonTypeCorrect"></a></p>
+<p><a href="http://pengfeixing.com/wp-content/uploads/2015/10/buttonTypeError.png" target="_blank" rel="noopener"><img src="http://pengfeixing.com/wp-content/uploads/2015/10/buttonTypeError-164x300.png" alt="buttonTypeError"></a> <a href="http://pengfeixing.com/wp-content/uploads/2015/10/buttonTypeCorrect.png" target="_blank" rel="noopener"><img src="http://pengfeixing.com/wp-content/uploads/2015/10/buttonTypeCorrect-164x300.png" alt="buttonTypeCorrect"></a></p>
 <p>原因如下：blablabla（占位符）</p>
 <p>被这种弱智bug折腾实在有点坑爹啊，感觉自学在没成才之前就成仁了。</p>
 
@@ -452,15 +447,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">FullStack</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,15 +503,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">System</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">OOD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RESTful</a>
               </li>
             
             <div class="clearfix"></div>
