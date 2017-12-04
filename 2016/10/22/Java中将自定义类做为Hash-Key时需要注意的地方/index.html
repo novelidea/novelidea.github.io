@@ -1,21 +1,12 @@
 <!DOCTYPE html>
-<html >
+<html>
 <head>
-
-    <!--[if lt IE 9]>
-        <style>body {display: none; background: none !important} </style>
-        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
-    <![endif]-->
-
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no" />
-<meta name="author" content="Pengfei Xing" />
-
-
-
-<meta name="description" content="Java在处理自定义类做为Hash Key时（或者拓宽到任意的对象），比较往往是根据reference比较的，而不是根据value，如果有需要根据value进行比较的需求的话，则需要在类中重写 equals 和 hashCode 两个方法，具体以重写二维矩阵中每个横纵坐标对来举个🌰。
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Java中将自定义类做为Hash Key时需要注意的地方 | 邢鹏飞的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Java在处理自定义类做为Hash Key时（或者拓宽到任意的对象），比较往往是根据reference比较的，而不是根据value，如果有需要根据value进行比较的需求的话，则需要在类中重写 equals 和 hashCode 两个方法，具体以重写二维矩阵中每个横纵坐标对来举个🌰。
 12345678910111213141516class Cell &amp;#123;        int x, y">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java中将自定义类做为Hash Key时需要注意的地方">
@@ -28,245 +19,167 @@
 <meta name="twitter:title" content="Java中将自定义类做为Hash Key时需要注意的地方">
 <meta name="twitter:description" content="Java在处理自定义类做为Hash Key时（或者拓宽到任意的对象），比较往往是根据reference比较的，而不是根据value，如果有需要根据value进行比较的需求的话，则需要在类中重写 equals 和 hashCode 两个方法，具体以重写二维矩阵中每个横纵坐标对来举个🌰。
 12345678910111213141516class Cell &amp;#123;        int x, y">
-
-<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
-
-
-    <link rel="alternate" href="/atom.xml" title="邢鹏飞的博客" type="application/atom+xml">
-
-
-
-    <link rel="shortcut icon" href="/favicon.png">
-
-
-
-    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
-
-
-
-    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
-
-
-
-    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
-
-
-<link rel="stylesheet" href="/css/style.css">
-
-
-
-<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-
-
-<title>Java中将自定义类做为Hash Key时需要注意的地方 | 邢鹏飞的博客</title>
-
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-
-<script>
-    var yiliaConfig = {
-        fancybox: true,
-        animate: true,
-        isHome: false,
-        isPost: true,
-        isArchive: false,
-        isTag: false,
-        isCategory: false,
-        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
-        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
-    }
-</script>
-
-
-    <script> yiliaConfig.jquery_ui = [false]; </script>
-
-
-
-    <script> yiliaConfig.rootUrl = "\/";</script>
-
-
-
-
-
-
+  
+    <link rel="alternative" href="/atom.xml" title="邢鹏飞的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
   <div id="container">
     <div class="left-col">
     <div class="overlay"></div>
 <div class="intrude-less">
-    <header id="header" class="inner">
-        <a href="/" class="profilepic">
-            <img src="/img/avatar.png" class="animated zoomIn">
-        </a>
-        <hgroup>
-          <h1 class="header-author"><a href="/">Pengfei Xing</a></h1>
-        </hgroup>
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://o6szdc7js.bkt.clouddn.com/blog_profile_new.jpg" class="js-avatar">
+			
+		</a>
 
-        
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Pengfei Xing</a></h1>
+		</hgroup>
 
-        
+		
 
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
 
-        
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
-                        
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
-                        
-                        <li>友情链接</li>
-                        
-                        
-                        <li>关于我</li>
-                        
-                    </ul>
-                </div>
-            </div>
-        
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">文章</a></li>
+				        
+							<li><a href="/tags/Mobile">移动开发</a></li>
+				        
+							<li><a href="/tags/FullStack">全栈</a></li>
+				        
+							<li><a href="/tags/System">系统</a></li>
+				        
+							<li><a href="/tags/algorithm">算法</a></li>
+				        
+							<li><a href="/tags/Diary">随笔</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/novelidea" title="github">github</a>
+					        
+								<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/pengfei-xing-65886578" title="linkedin">linkedin</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Backend/" style="font-size: 13.33px;">Backend</a> <a href="/tags/Cheet-Sheet/" style="font-size: 10px;">Cheet Sheet</a> <a href="/tags/Diary/" style="font-size: 13.33px;">Diary</a> <a href="/tags/FullStack/" style="font-size: 15px;">FullStack</a> <a href="/tags/Game/" style="font-size: 10px;">Game</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/IOS/" style="font-size: 16.67px;">IOS</a> <a href="/tags/Java/" style="font-size: 11.67px;">Java</a> <a href="/tags/Mobile/" style="font-size: 18.33px;">Mobile</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/OOD/" style="font-size: 10px;">OOD</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Scrappy/" style="font-size: 10px;">Scrappy</a> <a href="/tags/SpriteKit/" style="font-size: 11.67px;">SpriteKit</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/WatchOS/" style="font-size: 10px;">WatchOS</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a>
+					</div>
+				</section>
+				
+				
+				
 
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a href="/">主页</a></li>
-                        
-                            <li><a href="/archives/">所有文章</a></li>
-                        
-                            <li><a href="/tags/">标签云</a></li>
-                        
-                            <li><a href="/about/">关于我</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
-                            
-                                <a class="fa GitHub" href="#" title="GitHub"></a>
-                            
-                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Backend/">Backend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cheet-Sheet/">Cheet Sheet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Diary/">Diary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FullStack/">FullStack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game/">Game</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/">IOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mobile/">Mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOD/">OOD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTful/">RESTful</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scrappy/">Scrappy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpriteKit/">SpriteKit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/System/">System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/">Unity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WatchOS/">WatchOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/系统/">系统</a></li></ul>
-                    </div>
-                </section>
-                
-                
-                
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
-                    
-                    </div>
-                </section>
-                
-
-                
-                
-                <section class="switch-part switch-part4">
-                
-                    <div id="js-aboutme">专注于前端</div>
-                </section>
-                
-            </div>
-        </div>
-    </header>                
+				
+			</div>
+		</div>
+	</header>				
 </div>
+
     </div>
     <div class="mid-col">
       <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Pengfei Xing</a></h1>
-      </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                <img src="/img/avatar.png" class="animated zoomIn">
-            </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页">Pengfei Xing</a></h1>
-            </hgroup>
-            
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/">主页</a></li>
-                
-                    <li><a href="/archives/">所有文章</a></li>
-                
-                    <li><a href="/tags/">标签云</a></li>
-                
-                    <li><a href="/about/">关于我</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
-                            
-                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
-                            
-                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
-                            
-                        </ul>
-            </nav>
-        </header>                
-    </div>
-    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Pengfei Xing</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://o6szdc7js.bkt.clouddn.com/blog_profile_new.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Pengfei Xing</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">文章</a></li>
+		        
+					<li><a href="/tags/Mobile">移动开发</a></li>
+		        
+					<li><a href="/tags/FullStack">全栈</a></li>
+		        
+					<li><a href="/tags/System">系统</a></li>
+		        
+					<li><a href="/tags/algorithm">算法</a></li>
+		        
+					<li><a href="/tags/Diary">随笔</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/novelidea" title="github">github</a>
+			        
+						<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/pengfei-xing-65886578" title="linkedin">linkedin</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
 </nav>
+
       <div class="body-wrap"><article id="post-Java中将自定义类做为Hash-Key时需要注意的地方" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2016/10/22/Java中将自定义类做为Hash-Key时需要注意的地方/" class="article-date">
-      <time datetime="2016-10-23T06:06:50.000Z" itemprop="datePublished">2016-10-22</time>
+  	<time datetime="2016-10-23T06:06:50.000Z" itemprop="datePublished">2016-10-22</time>
 </a>
-
-
     </div>
   
   <div class="article-inner">
@@ -286,11 +199,11 @@
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+	</div>
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
-    </div>
 
         <div class="clearfix"></div>
       </div>
@@ -298,7 +211,6 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-          
         <p>Java在处理自定义类做为Hash Key时（或者拓宽到任意的对象），比较往往是根据reference比较的，而不是根据value，如果有需要根据value进行比较的需求的话，则需要在类中重写 <code>equals</code> 和 <code>hashCode</code> 两个方法，具体以重写二维矩阵中每个横纵坐标对来举个🌰。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cell</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> x, y;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Cell</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.x = x;</span><br><span class="line">            <span class="keyword">this</span>.y = y;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> o <span class="keyword">instanceof</span> Cell &amp;&amp; ((Cell)o).x == <span class="keyword">this</span>.x &amp;&amp; ((Cell)o).y == <span class="keyword">this</span>.y;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> hashCode = <span class="number">1</span>;</span><br><span class="line">            hashCode = hashCode * <span class="number">31</span> + <span class="keyword">this</span>.x;</span><br><span class="line">            hashCode = hashCode * <span class="number">31</span> + <span class="keyword">this</span>.y;</span><br><span class="line">            <span class="keyword">return</span> hashCode;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
       
@@ -307,87 +219,45 @@
   </div>
   
     
-    <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/10/22/Java中将自定义类做为Hash-Key时需要注意的地方/">Java中将自定义类做为Hash Key时需要注意的地方</a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主页">Pengfei Xing</a></p>
-        <p><span>发布时间:</span>2016-10-22, 23:06:50</p>
-        <p><span>最后更新:</span>2016-10-22, 23:10:44</p>
-        <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/10/22/Java中将自定义类做为Hash-Key时需要注意的地方/" title="Java中将自定义类做为Hash Key时需要注意的地方">http://yoursite.com/2016/10/22/Java中将自定义类做为Hash-Key时需要注意的地方/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/10/22/Java中将自定义类做为Hash-Key时需要注意的地方/　　作者: Pengfei Xing" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
-        </p>
-    </div>
-
-
-
-    <nav id="article-nav">
+<nav id="article-nav">
+  
+    <a href="/2016/10/27/Algorithm-exercise-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/10/27/Algorithm-exercise-1/">
-                    Algorithm exercise 1
-                </a>
-            </div>
+          Algorithm exercise 1
         
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/09/28/Java不常用语法cheat-sheet/">
-                    Java不常用语法cheat sheet
-                </a>
-            </div>
-        
-    </nav>
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/28/Java不常用语法cheat-sheet/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java不常用语法cheat sheet</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
   
 </article>
 
-    <div id="toc" class="toc-article">
-        <strong class="toc-title">文章目录</strong>
-        
-            
-        
-    </div>
-    <style>
-        .left-col .switch-btn,
-        .left-col .switch-area {
-            display: none;
-        }
-        .toc-level-3 i,
-        .toc-level-3 ol {
-            display: none !important;
-        }
-    </style>
 
-    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-    <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
-    </script>
-
-
-
-    
-<div class="share">
-    
-        <div class="bdsharebuttonbox">
-            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
-            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
-            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
-            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
-            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
-            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
-        </div>
-        <script>
-            window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Java中将自定义类做为Hash Key时需要注意的地方　| 邢鹏飞的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-        </script>
-    
-
-    
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
 </div>
 
 
@@ -395,122 +265,88 @@
 
 
 
-
-    
-
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2016/10/27/Algorithm-exercise-1/" title="上一篇: Algorithm exercise 1">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/2016/09/28/Java不常用语法cheat-sheet/" title="下一篇: Java不常用语法cheat sheet">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/01/01/写在岁末年初（2016）/">写在岁末年初（2016）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/18/Algorithm-Exercise-7/">Algorithm Exercise 7(Lyft)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/15/hash相关/">hash相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/Java死锁例子/">Java死锁例子</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/Java中abstract和interface区别/">Java中abstract和interface区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/11/Algorithm-Exercise-6/">Algorithm Exercise 6</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/01/Algorithm-Exercise-5/">Algorithm Exercise 5</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/30/Algorithm-Exercise-4/">Algorithm Exercise 4</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/29/Algorithm-Exercise-3/">Algorithm Exercise 3</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/28/Algorithm-Exercise-2/">Algorithm Exercise 2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/27/Algorithm-exercise-1/">Algorithm exercise 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/Java中将自定义类做为Hash-Key时需要注意的地方/">Java中将自定义类做为Hash Key时需要注意的地方</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/28/Java不常用语法cheat-sheet/">Java不常用语法cheat sheet</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/22/类Sweep-Line问题分析/">类Sweep Line问题分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/20/Java中的比较器重写/">Java中的比较器重写</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/31/英语俚语/">英语俚语</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/09/Terminal-Command-Cheat-Sheet/">Terminal Command Cheat Sheet</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Android事件处理/">Android事件处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/12/Android笔记/">Android笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/07/IOS开发中的四大对象及程序启动过程混讲/">IOS开发中的四大对象及程序启动过程混讲</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/20/用户系统设计流程/">用户系统设计流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/16/SpriteKit项目总结（一）/">SpriteKit项目总结（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/24/导航控制器/">导航控制器</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/16/通过NodeJS和MongoDB创建RESTful-API/">通过NodeJS和MongoDB创建RESTful API</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/16/MongoDB开发笔记/">MongoDB开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/16/aws-开发笔记/">AWS开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/13/Sprite-Kit学习笔记/">Sprite Kit学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/11/知乎日报App-UI-Framework/">知乎日报App UI Framework</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/09/IOS沙盒简介/">IOS沙盒简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/02/从判断括号字符串是否有效看代码优化/">从有效括号判断代码看代码优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/28/有向图的单源最短路径算法实现/">有向图的单源最短路径算法实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/28/面向对象设计/">面向对象设计</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/26/Trie的典型应用/">单词查找树（Trie）的典型应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/25/Java疑难问题/">Java疑难问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/23/basic-algorithm/">Basic Algorithm</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/22/Top-K问题/">top k问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/图的遍历分析/">图的遍历分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Java中ArrayList排序/">Java中ArrayList排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/区间重叠问题/">区间重叠问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/14/kmpknuth-morris-pratt-algorithm/">KMP(Knuth–Morris–Pratt) Algorithm</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/13/shuffling-algorithm/">Shuffling Algorithm</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/07/Scrappy安装注意事项/">Scrappy 安装注意事项</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/02/unity-3d-note/">Unity 3D Note</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/sina-microblog-app-for-apple-watch/">Sina Microblog App for Apple Watch</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/31/写在岁末年初/">写在岁末年初（2015）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/23/Uschedule-APP-Diary/">Uschedule APP</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/12/Watch-OS学习笔记/">WatchOS学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/07/IOS学习笔记/">IOS学习笔记（零碎笔记）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/05/IOS开发笔记（代码块篇）/">IOS开发笔记（代码块篇）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/05/IOS规范总结/">IOS规范总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/26/IOS开发笔记（Bug篇）/">IOS开发笔记（大小坑篇）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/26/Git-Cheat-Sheet/">git cheat sheet</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/24/IOS开发笔记（第三方框架篇）/">IOS 开发笔记（第三方框架篇）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/18/introduction-to-bloom-filter/">analysis to bloom filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/01/09/google-onsite/">google onsite</a></li></ul>
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Java中将自定义类做为Hash-Key时需要注意的地方" data-title="Java中将自定义类做为Hash Key时需要注意的地方" data-url="http://yoursite.com/2016/10/22/Java中将自定义类做为Hash-Key时需要注意的地方/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
 
-    <script>
-        
-    </script>
 </div>
       <footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                <i class="fa fa-copyright"></i> 
-                2016-2017 Pengfei Xing
-            </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
-            </div>
-        </div>
-        
-            <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>| </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
-            </div>
-        
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Pengfei Xing
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
     </div>
+  </div>
 </footer>
     </div>
     
-<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            var iPad = window.navigator.userAgent.indexOf('iPad');
-            if (iPad > -1 || $(".left-col").css("display") === "none") {
-                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
-                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
-                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
-            }
-            else {
-                var backgroundnum = 5;
-                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
-            }
-        })
-    </script>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
 
 
-
-
-
-<div class="scroll" id="scroll">
-    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
-</div>
 <script>
-    // Open in New Window
-    
-        var oOpenInNew = {
-            
-            
-            
-            
-            
-            
-             archives: ".archive-article-title", 
-             miniArchives: "a.post-list-link", 
-            
-             friends: "#js-friends a", 
-             socail: ".social a" 
-        }
-        for (var x in oOpenInNew) {
-            $(oOpenInNew[x]).attr("target", "_blank");
-        }
-    
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
 </script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+
+
   </div>
 </body>
 </html>
