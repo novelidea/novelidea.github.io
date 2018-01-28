@@ -1,0 +1,54 @@
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Uschedule 项目日志 | 美漂的野指针</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Uschedule 项目日志</h1><a id="logo" href="/.">美漂的野指针</a><p class="description">Make a difference</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Uschedule 项目日志</h1><div class="post-meta">Nov 23, 2015</div><div class="post-content"><p><strong>Demo Presentation:</strong></p>
+<p>URL is: <a href="https://www.youtube.com/watch?v=z_Sufm9xeMw&amp;feature=youtu.be" target="_blank" rel="noopener">https://www.youtube.com/watch?v=z_Sufm9xeMw&amp;feature=youtu.be</a></p>
+<p><a href="https://youtu.be/z_Sufm9xeMw" target="_blank" rel="noopener">https://youtu.be/z_Sufm9xeMw</a></p>
+<p><strong>项目日记（Project Diary）</strong></p>
+<p><strong>Day 1</strong></p>
+<p>项目进度：10%</p>
+<p>主要的工作，立项，并完成了基本的UI框架，界面优化打算等模型写完后再回过来修改。</p>
+<p>下午写完585的extra credit assignment，比想象的要简单不少，所以就多了许多预留给该project的时间，下午4点的时候有了写个app的想法，5点建立的工程。</p>
+<p><strong>Day 2</strong></p>
+<p>项目进度： 20%</p>
+<p>今天遇到了一个大bug，主要是在解析图书馆网页的时候有些div解析不了，但是查看网页元素该div确实存在网页html文件中。然后今天debug了一整个下午，试了各种方法，终于在晚上解决了这个大bug！</p>
+<p>主要原因是这些无法解析的div是通过Ajax获得的，所以在向request函数传递url参数时，不需要传递图书馆主页的url，而只需要传递Ajax动态交互时的url。浪费了这么多时间主要还是对前端知识的不熟悉，所以下学期申请上571 web technology是一个明智的选择，尽管老师很变态班级考试均分之有40+。</p>
+<p>今天在解析html也推进了一点，主要是google到了一个第三方框架，当然自己也能手写，但是在代码执行效率上不敢保证，唯一不足的是该框架已经好几月月没有更新了。后期等有空会简单介绍一下该框架。</p>
+<p><strong>Day 3</strong></p>
+<p>项目进度：25%</p>
+<p>今天主要建立了学校20个图书馆HTML文件node id的plist文件，并且将node id字典转换成了model（字典转模型）；然后从网页上抓取了当天的图书馆的open close时间数据，并且呈现在了table view中。</p>
+<p>遇到的主要困难：一开始将plist文件错误地建立在了工程文件(ProjectName)Tests文件目录的Supporting Files下面，所以在main bundle的app package中找不到该plist文件，后来就通过在xcode中进行拖拽的方式将该文件从(ProjectName)Tests目录拖拽到了(ProjectName)下的Supporting Files下面，然后还是找不到，最后只得重新新建plist文件。</p>
+<p>待解决的问题：</p>
+<ol>
+<li>leavey library图书馆大部分时间是24小时开放，并没有open close time，需要特殊处理一下；</li>
+<li>ios中在图书馆的时间查询网站短时间内重复请求会产生400错误（网络连接成功，但是没有数据返回），网站初步差了一下说是cookie导致的。设想的解决方案有两个：2.1 深入调研导致400的错误原因，看能否消除cookie的影响（如果真的是cookie导致的话）； 2.2 在沙盒中建立文件保存当天的数据，一方面避免段时间内连续向服务器拿数据，另一方面也提高了效率，因为可以直接从本地拿数据，这样的话需要建立一个时间戳，每次查询前需要将本地时间与沙盒数据对应的时间戳进行比较，之有在需要更新的时候才向服务器发送请求。目前初步打算先实现第二种解决方案。<br><strong>Day 4</strong></li>
+</ol>
+<p>项目进度：30%</p>
+<p>今天主要实现了前一天待解决问题中的第2点，没实现第一点主要是因为今天是holiday，leavey有了open time和close time，所以没有了测试数据。</p>
+<p>关于第二点的实现，今天感觉实现的非常棒！首先是建立了图书馆的数据模型，然后根据业务逻辑抽出了一个模型工具类，放在了tool目录下面，主要负责模型的存档读档、以及时间戳的判断，感觉在项目中锻炼了自己面相对象编程的能力。</p>
+<p>今天遇到了小bug是宏定义最后不能加封号，不过只卡了10分钟左右，其他都很顺利。</p>
+<p>不要奇怪为什么项目进度这么慢，下周两门考试。</p>
+<p>另外，今天也初步看了一下gym版块的情况，感觉还可以，内容的获取难度大概是library的160%，主要是gym有一个正常时间，然后额外还有一个节假日时间，节假日时间版块的url、排版布局都是动态实现的，但是初步想了个解决方案，明天打算实现一下。</p>
+<p>下一步计划：</p>
+<p>实现gym版块的数据获取、展示；UI美化打算等所有数据获取结束后再做，一方面可以在同一段时间内做类似的工作，另一方面也是在做UI时可以留出足够的时间来进行数据测试。</p>
+<p><strong>Day 5</strong></p>
+<p>项目进度：35%</p>
+<p>考完试后玩了两天，然后今天继续code。</p>
+<p>今天主要完成了gym, swimming pool, restaurant开放时间数据的获取，并且开始设计iPhone端的界面布局。但是，数据尚未转化成模型，打算明天再继续这方面的工作。</p>
+<p>另外，今天感觉最成功的还是修复了之前Ajax请求url很多情况请求数据失败的情况，主要是NSURLRequest初始化参数设置的问题。</p>
+<p><strong>Day 6</strong></p>
+<p>项目进度：40%</p>
+<p>今天主要处理MVVM模型，实现了gym, restaurant基本UI。明天实现swimming pool，并进行一些UI调整，添上加载进度条。然后iPhone端的开发先告一段落。</p>
+<p><strong>Day 7</strong></p>
+<p>项目进度： 45％</p>
+<p>今天主要完成了pool部分的数据处理及展示，外加做了一点首页部分的UI,，不过整个app的UI需要集中来做一下，但是现在对配色、布局还没有比较好的想法，所有先搁置，开始apple watch部分的开发。</p>
+<p><strong>Day 8</strong></p>
+<p>项目进度： 50%</p>
+<p>iPhone端app基本完成，项目暂且搁置，有时间再去做apple watch部分。</p>
+<p>demo presentation:</p>
+<p>youtube:  <a href="https://www.youtube.com/watch?v=S0Eejn3PsEc" target="_blank" rel="noopener">https://www.youtube.com/watch?v=S0Eejn3PsEc</a></p>
+<p>tencent: <a href="http://v.qq.com/boke/page/x/u/b/x01769q4pub.html" target="_blank" rel="noopener">http://v.qq.com/boke/page/x/u/b/x01769q4pub.html</a></p>
+<p><strong>Day 9</strong></p>
+<p>项目进度100%</p>
+<p>架设了服务器数据库来解决了library部分数据请求存在一定的失败率的bug；</p>
+<p>将library开放时间的数据由原先的一天扩展到了四天；</p>
+<p>完成了Apple Watch部分的设计及实现。</p>
+<p>demo展示：<a href="https://youtu.be/z_Sufm9xeMw" target="_blank" rel="noopener">https://youtu.be/z_Sufm9xeMw</a></p>
+</div><div class="tags"><a href="/tags/iOS/">iOS</a></div><div class="post-nav"><a class="pre" href="/2015/12/31/写在岁末年初（2015）/">写在岁末年初（2015）</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://pengfeixing.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Kategorien</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Diary/" style="font-size: 15px;">Diary</a> <a href="/tags/Algorithm/" style="font-size: 15px;">Algorithm</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Letzte</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/12/31/写在岁末年初（2017）/">写在岁末年初 （2017）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/01/写在岁末年初（2016）/">写在岁末年初（2016）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/27/算法基础/">算法基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/07/IOS开发中的四大对象及程序启动过程混讲/">IOS开发中的四大对象及程序启动过程混讲</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/09/IOS沙盒简介/">IOS沙盒简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Java基础/">Java基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/13/算法进阶/">算法进阶</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/新浪微博Apple Watch客户端/">新浪微博Apple Watch客户端</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/31/写在岁末年初（2015）/">写在岁末年初（2015）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/23/Uschedule项目日志/">Uschedule 项目日志</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">美漂的野指针.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
